@@ -1,3 +1,7 @@
+/**
+ * May be used for easier sprite setup once moving onto textures
+ */
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "EnemySpriteSet", menuName = "Game/Enemy Sprite Set")]

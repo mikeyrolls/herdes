@@ -1,17 +1,9 @@
 
-setup git
+loot db and init
 
-
-enemy inherits from creature
-hero moved to own class, inherits from creature
-uppercase functions
-
-
-
+fix hallway manager :sob:
 
 inventory?
-move shit from constructor to back
-
 
 
 implement fighting
@@ -23,7 +15,7 @@ might be menuless? attack = click enemy, heal = use item somehow, shield/heal/sp
 small:
 going back hurts
 bug clicking on button location from a room clicks the button too
-
+add def to enemy
 
 
 textures, soundtrack wowie

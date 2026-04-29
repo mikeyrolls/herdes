@@ -1,3 +1,7 @@
+/**
+ * Script for door object, transfers between scenes
+ */
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
@@ -8,16 +12,15 @@ public class Door : MonoBehaviour {
         Debug.Log("Door clicked");
 
         // entering room
-        if (GameManager.Instance.currentRoom == GameManager.Room.none) {
+        if (GameManager.Instance.currentRoom == Room.None) {
 
-            GameManager.Room type = GameManager.Instance.nextRooms[(int)GameManager.Instance.currentDirection];
+            Room type = GameManager.Instance.nextRooms[(int)GameManager.Instance.currentDirection];
             
-
-            if (type == GameManager.Room.back) {
+            if (type == Room.Back) {
                 Debug.Log("Trying to walk back, kill them");
-            } else if (type == GameManager.Room.wall) {
+            } else if (type == Room.Wall) {
                 Debug.Log("Trying to walk into a wall, dumbshit");
-            } else if (type == GameManager.Room.shop) {
+            } else if (type == Room.Shop) {
                 Debug.Log("shop doesn't exist yet");
                 GameManager.Instance.IncreaseRoomCount();
             } else {    //treasure, fight
@@ -27,16 +30,10 @@ public class Door : MonoBehaviour {
                 SceneManager.LoadScene("Room_Hallway");
             }
             
-            
-
         // leaving room
         } else if (!GameManager.Instance.combat) {
-            GameManager.Instance.currentRoom = GameManager.Room.none;
+            GameManager.Instance.currentRoom = Room.None;
             SceneManager.LoadScene("Room_Between");
         }
-
     }
-
-
-
 }

@@ -1,10 +1,14 @@
+/**
+ * Hell on earth 2.0
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class HallwayManager : MonoBehaviour
 {
-    GameManager.Room type;
+    Room type;
     [SerializeField] GameObject lootPrefab;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] TMP_Text textTmp;
@@ -17,14 +21,13 @@ public class HallwayManager : MonoBehaviour
     public enum CombatState { PlayerTurn, EnemyTurn, Won, Lost }
     CombatState combatState;
 
-    void Start()
-    {
+    void Start() {
         type = GameManager.Instance.currentRoom;
         Debug.Log("Entered room type " + type);
 
-        if (type == GameManager.Room.fight) {
+        if (type == Room.Fight) {
             HandleFightRoom();
-        } else if (type == GameManager.Room.treasure) {
+        } else if (type == Room.Treasure) {
             HandleTreasureRoom();
         }
     }
@@ -41,13 +44,12 @@ public class HallwayManager : MonoBehaviour
                 stopLoot = true;
             } else {
                 int amount = Random.Range(1, 50);
-                SpawnTreasure(Random.Range(-4f, 4f), Random.Range(-4f, 0), Loot.LootType.gold, amount);
+                SpawnTreasure(Random.Range(-4f, 4f), Random.Range(-4f, 0), LootType.Gold, amount);
             }
         }
     }
 
-    void SpawnTreasure(float x, float y, Loot.LootType lootType, int value)
-    {
+    void SpawnTreasure(float x, float y, LootType lootType, int value) {
         GameObject loot = Instantiate(lootPrefab, new Vector3(x, y, 0f), Quaternion.identity);
         loot.GetComponent<Loot>().Init(lootType, value, "Gold");
     }
@@ -62,7 +64,7 @@ public class HallwayManager : MonoBehaviour
         currentEnemy = enemyObject.GetComponent<Enemy>();
 
         currentEnemy.InitEnemy(EnemyType.Bat);
-        AddInfoText("spawned enemy: " + currentEnemy.enemyName);
+        AddInfoText("spawned enemy: " + currentEnemy.nameStr);
 
         int round = 1;
         combatState = CombatState.PlayerTurn;
@@ -74,13 +76,13 @@ public class HallwayManager : MonoBehaviour
     {
         if (combatState != CombatState.PlayerTurn) return;
 
-        int heroDmg = GameManager.Instance.giveDmg();
-        currentEnemy.takeDmg(heroDmg);
+        int heroDmg = GameManager.Instance.hero.GiveDmg();
+        currentEnemy.TakeDmg(heroDmg);
 
-        AddInfoText("Hit " + currentEnemy.enemyName + " for " + heroDmg + " dmg, " + currentEnemy.currHP + "/" + currentEnemy.maxHP + "hp left");
+        AddInfoText("Hit " + currentEnemy.nameStr + " for " + heroDmg + " dmg, " + currentEnemy.currHP + "/" + currentEnemy.maxHP + "hp left");
 
         //dodge too
-        if(!currentEnemy.isAlive()) {
+        if(!currentEnemy.IsAlive()) {
             combatState = CombatState.Won;
             AddInfoText("You won! Leave");
         }

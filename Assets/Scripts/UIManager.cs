@@ -1,3 +1,7 @@
+/**
+ * UI handler
+ */
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,7 +28,6 @@ public class UIManager : MonoBehaviour {
 
     void Start() {
         SceneManager.LoadScene("Room_Between");
-        RefreshHUD();
 
         CursorSetDefault();
     }
@@ -56,17 +59,17 @@ public class UIManager : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        bool isNoneRoom = GameManager.Instance.currentRoom == GameManager.Room.none;
+        bool isNoneRoom = GameManager.Instance.currentRoom == Room.None;
         leftButton.gameObject.SetActive(isNoneRoom);
         rightButton.gameObject.SetActive(isNoneRoom);
     }
 
     public void RefreshHUD() {
-        moneyText.text = GameManager.Instance.moneyAmount.ToString() + " gold";
+        moneyText.text = GameManager.Instance.hero.gold.ToString() + " gold";
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
-        hpText.text = "HP: " + GameManager.Instance.currHp.ToString() + "/" + GameManager.Instance.maxHp.ToString();
+        hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.maxHP.ToString();
 
-        if(GameManager.Instance.getHpPerc() > 50) {
+        if(GameManager.Instance.hero.GetHpPerc() > 50) {
             stateIcon.sprite = stateIconHp1;
         } else {
             stateIcon.sprite = stateIconHp2;
