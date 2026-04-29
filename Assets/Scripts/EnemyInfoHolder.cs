@@ -1,0 +1,12 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "EnemySpriteSet", menuName = "Game/Enemy Sprite Set")]
+public class EnemySpriteSet : ScriptableObject
+{
+    public Sprite idle;
+    public Sprite damaged;
+    public AudioClip damagedSound;
+    public AnimationClip walkAnimation;
+}
+
+//unused for now

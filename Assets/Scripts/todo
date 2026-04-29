@@ -1,0 +1,29 @@
+
+setup git
+
+
+enemy inherits from creature
+hero moved to own class, inherits from creature
+uppercase functions
+
+
+
+
+inventory?
+move shit from constructor to back
+
+
+
+implement fighting
+implement dialogue? maybe skippable if smart, only keep in shop maybe
+
+
+might be menuless? attack = click enemy, heal = use item somehow, shield/heal/special whatever click cat, flee = click door
+
+small:
+going back hurts
+bug clicking on button location from a room clicks the button too
+
+
+
+textures, soundtrack wowie
