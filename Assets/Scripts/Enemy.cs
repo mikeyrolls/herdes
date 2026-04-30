@@ -11,19 +11,24 @@ public class Enemy : Creature {
 
     private EnemyType enemyType;
 	
-	Loot dropItem;
+	LootPreset dropItem;
 	int dropRate;
 
-    [SerializeField] private Sprite spriteNormal;
+    public EnemySpriteSet enemySpriteSet;
+    private SpriteRenderer sr;
 
     public void InitEnemy() {
         setEnemyType();
         InitializeFromDB(enemyType);
+        sr.sprite = enemySpriteSet.idle;
+        sr.sortingOrder = 10;
     }
 
     public void InitEnemy(EnemyType enemyType) {
         this.enemyType = enemyType;
         InitializeFromDB(enemyType);
+        sr = GetComponent<SpriteRenderer>(); // just force it here for now
+        sr.sprite = enemySpriteSet.idle;
     }
 
     void setEnemyType(){
@@ -43,7 +48,7 @@ public class Enemy : Creature {
             dodge = enemyData.dodge;
             acc = enemyData.acc;
             gold = enemyData.gold;
-            dropItem = new Loot(enemyData.dropItem);
+            dropItem = enemyData.dropItem;
             dropRate = enemyData.dropRate;
             def = 0;
             
@@ -53,19 +58,8 @@ public class Enemy : Creature {
         }
     }
 
-    void OnMouseDown()
-    {
-
-        FindObjectOfType<HallwayManager>().OnEnemyClicked();
-
-        // hurt for 1hp now
-        GameManager.Instance.hero.TakeDmg(1);
-        
-        if(!IsAlive()) {
-            GameManager.Instance.combat = false;
-            UIManager.Instance.CursorSetDefault();
-            Destroy(gameObject);
-        }
+    void OnMouseDown() {
+        FindAnyObjectByType<HallwayManager>().OnEnemyClicked();
     }
 
     void OnMouseEnter() {
@@ -74,6 +68,24 @@ public class Enemy : Creature {
 
     void OnMouseExit() {
         UIManager.Instance.CursorSetDefault();
+    }
+
+    public void Kill() {
+        UIManager.Instance.CursorSetDefault();
+        Destroy(gameObject);
+        //todo loot?
+    }
+
+    void Awake() {
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    public void ShowDamagedSprite() {
+        sr.sprite = enemySpriteSet.damaged;
+    }
+
+    public void ShowIdleSprite() {
+        sr.sprite = enemySpriteSet.idle;
     }
 
 }

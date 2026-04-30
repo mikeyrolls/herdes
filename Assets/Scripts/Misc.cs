@@ -20,6 +20,10 @@ public static class Helper {
         roomAmount = Enum.GetNames(typeof(Room)).Length;
     }
 
+    public static int GetPerc() {
+        return Random.Range(0, 100);
+    }
+
 }
 
 
@@ -65,6 +69,7 @@ public enum EnemyType {
 }
 
 public static class EnemyDB {
+
     public static Dictionary<EnemyType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc, int gold, LootPreset dropItem, int dropRate)> enemies = new() {
         
         // name                     hp      dmg     dodg    acc     gold    drop + rate

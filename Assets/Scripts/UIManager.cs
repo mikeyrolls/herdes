@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class UIManager : MonoBehaviour {
 
@@ -42,12 +43,12 @@ public class UIManager : MonoBehaviour {
     }
 
     public void OnRotateLeft() {
-        FindObjectOfType<RoomGen>()?.RotateLeft();
+        FindAnyObjectByType<RoomGen>()?.RotateLeft();
         Debug.Log("button wants left");
     }
 
     public void OnRotateRight() {
-        FindObjectOfType<RoomGen>()?.RotateRight();
+        FindAnyObjectByType<RoomGen>()?.RotateRight();
     }
 
     void OnEnable() {
@@ -60,8 +61,15 @@ public class UIManager : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
         bool isNoneRoom = GameManager.Instance.currentRoom == Room.None;
-        leftButton.gameObject.SetActive(isNoneRoom);
-        rightButton.gameObject.SetActive(isNoneRoom);
+        leftButton.gameObject.SetActive(false);
+        rightButton.gameObject.SetActive(false);
+        if (isNoneRoom) StartCoroutine(EnableButtonsNextFrame());
+    }
+
+    private IEnumerator EnableButtonsNextFrame() {
+        yield return null;
+        leftButton.gameObject.SetActive(true);
+        rightButton.gameObject.SetActive(true);
     }
 
     public void RefreshHUD() {

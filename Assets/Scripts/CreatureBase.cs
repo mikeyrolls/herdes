@@ -41,4 +41,16 @@ public class Creature : MonoBehaviour {
         return 100 * currHP / maxHP;
     }
 
+    public bool Dodge() {
+        return Helper.GetPerc() <= dodge;
+    }
+
+    public bool LandHit() {
+        return Helper.GetPerc() <= acc;
+    }
+
+    public int GetGoldValue() {
+        return gold;
+    }
+
 }

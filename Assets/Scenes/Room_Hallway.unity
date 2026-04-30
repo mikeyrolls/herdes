@@ -1042,17 +1042,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 613509099045130547, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
+      propertyPath: enemySpriteSet
+      value: 
+      objectReference: {fileID: 11400000, guid: d60a6abc6d0df914591ad0b30e472713, type: 2}
     - target: {fileID: 630529464173961083, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4731056039953322388, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.03
+      value: -21.16
       objectReference: {fileID: 0}
     - target: {fileID: 4731056039953322388, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.15
+      value: 6.21
       objectReference: {fileID: 0}
     - target: {fileID: 4731056039953322388, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
       propertyPath: m_LocalPosition.z

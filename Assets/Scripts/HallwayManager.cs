@@ -5,6 +5,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class HallwayManager : MonoBehaviour
 {
@@ -32,24 +33,18 @@ public class HallwayManager : MonoBehaviour
         }
     }
 
-    public static int getPerc() {
-        return Random.Range(0, 100);
-    }
-
-    void HandleTreasureRoom() { // +x right, -x left, -y down
-        bool stopLoot = false;
-        while (!stopLoot) {
-            //int perc = Random.Range(0, 100);
-            if (getPerc() < 40) {
-                stopLoot = true;
-            } else {
-                int amount = Random.Range(1, 50);
-                SpawnTreasure(Random.Range(-4f, 4f), Random.Range(-4f, 0), LootType.Gold, amount);
-            }
+    void HandleTreasureRoom() {
+        while (Helper.GetPerc() < 55) {
+            int amount = Random.Range(1, 50);
+            SpawnTreasure(LootType.Gold, amount);
         }
     }
 
-    void SpawnTreasure(float x, float y, LootType lootType, int value) {
+    void SpawnTreasure(LootType lootType, int value) {
+        SpawnTreasure(Random.Range(-4f, 4f), Random.Range(-4f, 0), lootType, value);
+    }
+
+    void SpawnTreasure(float x, float y, LootType lootType, int value) {    // +x right, -x left, -y down
         GameObject loot = Instantiate(lootPrefab, new Vector3(x, y, 0f), Quaternion.identity);
         loot.GetComponent<Loot>().Init(lootType, value, "Gold");
     }
@@ -66,67 +61,68 @@ public class HallwayManager : MonoBehaviour
         currentEnemy.InitEnemy(EnemyType.Bat);
         AddInfoText("spawned enemy: " + currentEnemy.nameStr);
 
-        int round = 1;
         combatState = CombatState.PlayerTurn;
-
-
     }
 
-    public void OnEnemyClicked()
-    {
+    public void OnEnemyClicked() {
+
         if (combatState != CombatState.PlayerTurn) return;
 
-        int heroDmg = GameManager.Instance.hero.GiveDmg();
-        currentEnemy.TakeDmg(heroDmg);
+        combatState = CombatState.EnemyTurn;
+        StartCoroutine(CombatRound());
 
-        AddInfoText("Hit " + currentEnemy.nameStr + " for " + heroDmg + " dmg, " + currentEnemy.currHP + "/" + currentEnemy.maxHP + "hp left");
-
-        //dodge too
-        if(!currentEnemy.IsAlive()) {
-            combatState = CombatState.Won;
-            AddInfoText("You won! Leave");
-        }
-
-        
-
-
-
-
-        // currentEnemy.takeDamage();
-        // AddInfoText("You dealt " + GameManager.Instance.playerDamage + " damage");
-
-        // if (!currentEnemy.isAlive)
-        // {
-        //     combatState = CombatState.Won;
-        //     OnCombatWon();
-        // }
-        // else
-        // {
-        //     combatState = CombatState.EnemyTurn;
-        //     EnemyTurn();
-        // }
     }
 
-    // void EnemyTurn()
-    // {
-    //     int dmg = currentEnemy.giveDmg();
-    //     GameManager.Instance.TakeDmg(dmg);
-    //     AddInfoText("Enemy dealt " + dmg + " damage");
-    //     combatState = CombatState.PlayerTurn;
-    //     AddInfoText("Your turn");
-    // }
+    IEnumerator CombatRound() {
+        //player attack
+        AttackRound(GameManager.Instance.hero, currentEnemy);
 
-    // void OnCombatWon()
-    // {
-    //     GameManager.Instance.combat = false;
-    //     Destroy(enemyObject);
-    //     AddInfoText("You won!");
-    // }
+        //check status TODO method somehow, for counterattacks and reusability
+        if(!currentEnemy.IsAlive()) {
+            GameManager.Instance.combat = false;
+            combatState = CombatState.Won;
+
+            EnemyDied();
+            yield return new WaitForSeconds(1f);
+            currentEnemy.Kill();
+            AddInfoText("You won! Leave");
+        } else {
+
+            yield return new WaitForSeconds(0.7f); //TODO for now in place of animations
+            //enemy attack
+            AttackRound(currentEnemy, GameManager.Instance.hero);
+            //todo check status one hero death matters
+
+            combatState = CombatState.PlayerTurn;
+        }
+    }
+
+    void AttackRound(Creature attacker, Creature attacked) {
+        int hitDmg = attacker.GiveDmg();
+
+        if(!attacker.LandHit()) {
+            AddInfoText(attacker.nameStr + " missed " + attacked.nameStr);
+            return;
+        }
+        if(attacked.Dodge()) {
+            AddInfoText(attacked.nameStr + " dodged ");
+        } else {
+            attacked.TakeDmg(hitDmg);
+            AddInfoText(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.maxHP + "hp left");
+        }
+    }
+
+    void EnemyDied() {
+        currentEnemy.ShowDamagedSprite();
+        //drop loot too todo
+        SpawnTreasure(LootType.Gold, currentEnemy.GetGoldValue());
+    }
 
     void AddInfoText(string newText) {
         infoTextStrings[0] = infoTextStrings[1];
         infoTextStrings[1] = infoTextStrings[2];
         infoTextStrings[2] = newText;
         textTmp.text = infoTextStrings[0] + "\n" + infoTextStrings[1] + "\n" + infoTextStrings[2];
+        UIManager.Instance.RefreshHUD();
     }
 }

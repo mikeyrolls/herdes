@@ -32,7 +32,7 @@ public class RoomGen : MonoBehaviour {
                 
             }
         }
-        Debug.Log("Roomtypes: 1: " + GameManager.Instance.nextRooms[1] + ", 2: " + GameManager.Instance.nextRooms[2] + ", 3: " + GameManager.Instance.nextRooms[3]);
+        Debug.Log("Roomtypes: left: " + GameManager.Instance.nextRooms[0] + ", middle: " + GameManager.Instance.nextRooms[1] + ", right: " + GameManager.Instance.nextRooms[2] + ", back: " + GameManager.Instance.nextRooms[3]);
     }
 
     public void RotateLeft() {
