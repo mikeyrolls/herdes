@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 public class Hero : Creature {
 
     public void InitializeFromDB(HeroType heroType) {
-        if (HeroDB.enemies.TryGetValue(heroType, out var heroData)) {
+        if (HeroDB.heroes.TryGetValue(heroType, out var heroData)) {
 
             nameStr = heroType.ToString();
             maxHP = heroData.maxHP;

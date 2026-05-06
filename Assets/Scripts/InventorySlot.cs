@@ -1,16 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+public class InventorySlot : MonoBehaviour {
+
+    [SerializeField] Image itemImage;
+    Item item;
+
+    void Start() {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         
+    }
+
+    bool isEmpty() {
+        return item == null;
     }
 }

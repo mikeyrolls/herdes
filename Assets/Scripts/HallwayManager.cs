@@ -10,7 +10,7 @@ using System.Collections;
 public class HallwayManager : MonoBehaviour
 {
     Room type;
-    [SerializeField] GameObject lootPrefab;
+    [SerializeField] GameObject itemPrefab;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] TMP_Text textTmp;
 
@@ -35,18 +35,18 @@ public class HallwayManager : MonoBehaviour
 
     void HandleTreasureRoom() {
         while (Helper.GetPerc() < 55) {
-            int amount = Random.Range(1, 50);
-            SpawnTreasure(LootType.Gold, amount);
+            int amount = Random.Range(1, 30);
+            SpawnGold(amount);
         }
     }
 
-    void SpawnTreasure(LootType lootType, int value) {
-        SpawnTreasure(Random.Range(-4f, 4f), Random.Range(-4f, 0), lootType, value);
+    void SpawnGold(int value) {
+        SpawnGold(Random.Range(-4f, 4f), Random.Range(-4f, 0), value);
     }
 
-    void SpawnTreasure(float x, float y, LootType lootType, int value) {    // +x right, -x left, -y down
-        GameObject loot = Instantiate(lootPrefab, new Vector3(x, y, 0f), Quaternion.identity);
-        loot.GetComponent<Loot>().Init(lootType, value, "Gold");
+    void SpawnGold(float x, float y, int value) {    // +x right, -x left, -y down
+        GameObject item = Instantiate(itemPrefab, new Vector3(x, y, 0f), Quaternion.identity);
+        item.GetComponent<ItemGold>().InitGold(value);
     }
 
 
@@ -124,7 +124,7 @@ public class HallwayManager : MonoBehaviour
     void EnemyDied() {
         currentEnemy.ShowDamagedSprite();
         //drop loot too todo
-        SpawnTreasure(LootType.Gold, currentEnemy.GetGoldValue());
+        SpawnGold(currentEnemy.GetGoldValue());
     }
 
     void AddInfoText(string newText) {

@@ -48,9 +48,9 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.RefreshHUD();
     }
 
-    public void addToInventory(Loot loot) {
-        if (loot.lootType == LootType.Gold) {
-            hero.updateMoney(loot.value);
+    public void addToInventory(Item item) {
+        if (item.itemType == ItemType.Gold) {
+            hero.updateMoney(item.value);
         } else {
             //todo
         }

@@ -12,7 +12,7 @@ public class Enemy : Creature {
 
     private EnemyType enemyType;
 	
-	LootPreset dropItem;
+	ItemName dropItem;
 	int dropRate;
 
     public EnemySpriteSet enemySpriteSet;

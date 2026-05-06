@@ -432,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fbc44db8f407404dbc3f37c2e13dc5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 7446989745397900288, guid: 657446438ad6d2f489d440beef466ed2, type: 3}
+  itemPrefab: {fileID: 7446989745397900288, guid: 657446438ad6d2f489d440beef466ed2, type: 3}
   enemyPrefab: {fileID: 630529464173961083, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
   textTmp: {fileID: 539891650}
 --- !u!4 &595471740
