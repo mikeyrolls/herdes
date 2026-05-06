@@ -3,6 +3,7 @@
  */
 
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
@@ -22,6 +23,8 @@ public class Enemy : Creature {
         InitializeFromDB(enemyType);
         sr.sprite = enemySpriteSet.idle;
         sr.sortingOrder = 10;
+        mat = GetComponent<SpriteRenderer>().material;
+        Debug.Log("sprite and mat for enemy set");
     }
 
     public void InitEnemy(EnemyType enemyType) {
@@ -59,6 +62,7 @@ public class Enemy : Creature {
     }
 
     void OnMouseDown() {
+        Debug.Log("enemy clicked");
         FindAnyObjectByType<HallwayManager>().OnEnemyClicked();
     }
 
@@ -78,6 +82,7 @@ public class Enemy : Creature {
 
     void Awake() {
         sr = GetComponent<SpriteRenderer>();
+        mat = GetComponent<SpriteRenderer>().material;
     }
 
     public void ShowDamagedSprite() {
@@ -86,6 +91,18 @@ public class Enemy : Creature {
 
     public void ShowIdleSprite() {
         sr.sprite = enemySpriteSet.idle;
+    }
+
+    // ------------------------------------------------------------------
+
+    public override IEnumerator DodgeAnimation() {  // no color change
+        yield return StartCoroutine(MoveSprite(Direction.Right));
+        yield return StartCoroutine(MoveSprite(Direction.Left));
+    }
+
+    public override IEnumerator GetHurtAnimation() {  // red tint up
+        yield return StartCoroutine(MoveSprite(Direction.Right, 0.75f));
+        yield return StartCoroutine(MoveSprite(Direction.Left, 0));
     }
 
 }

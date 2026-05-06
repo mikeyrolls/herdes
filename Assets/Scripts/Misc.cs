@@ -12,6 +12,8 @@ using Random = UnityEngine.Random;
 
 public enum Direction{Left, Middle, Right, Back}
 
+public enum SpriteColor{Normal, Red}
+
 public static class Helper {
 
     public static int roomAmount;
@@ -48,7 +50,7 @@ public enum HeroType {
     Clover,      // fuck if I know man
     Tacobean    //throws bombs
 
-    // mage archer thief from old
+    // mage can heal, archer thief can go "invisible" (buff dodge, maybe crit dodge?) from old
 }
 
 public static class HeroDB {
@@ -75,7 +77,7 @@ public static class EnemyDB {
         // name                     hp      dmg     dodg    acc     gold    drop + rate
         // [EnemyType.Slime] =         (20,    2, 5,   15,     70,     5,      LootPreset.HealingPotion, 70),
         // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,     15,     LootPreset.None, 0),
-        [EnemyType.Bat] =           (15,    1, 10,  40,     90,     10,     LootPreset.DodgePotion, 35),
+        [EnemyType.Bat] =           (150,    1, 10,  40,     90,     10,     LootPreset.DodgePotion, 35),
         // [EnemyType.Bandit] =        (35,    10, 12, 10,     70,     50,     LootPreset.None, 0),    //weapon sharpen
         // [EnemyType.Spider] =        (20,    10, 15, 40,     90,     100,    LootPreset.None, 0)     //big healing potion
         // [EnemyType.Undead] =        (25,    1, 5,   10,     60,     5,      LootPreset.None,        0),

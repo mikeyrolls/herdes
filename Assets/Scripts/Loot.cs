@@ -4,8 +4,7 @@
 
 using UnityEngine;
 
-public class Loot : MonoBehaviour
-{
+public class Loot : MonoBehaviour {
     public string itemName;
     
     public LootType lootType = LootType.Other;
@@ -31,3 +30,5 @@ public class Loot : MonoBehaviour
     //todo sprite system how??
 
 }
+
+

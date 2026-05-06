@@ -3,6 +3,7 @@
  */
  
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
@@ -30,12 +31,25 @@ public class Hero : Creature {
     }
 
     public bool updateMoney(int amount) {
-            if (gold + amount < 0) {
-                return false;
-            } else {
-                gold += amount;
-                return true;
-            }
+        if (gold + amount < 0) {
+            return false;
+        } else {
+            gold += amount;
+            return true;
+        }
 
     }
+
+    public override IEnumerator DodgeAnimation() {
+        // yield return StartCoroutine(MoveSprite(Direction.Left));
+        // yield return StartCoroutine(MoveSprite(Direction.Right));
+        yield return null;
+    }
+
+    public override IEnumerator GetHurtAnimation() {
+        // yield return StartCoroutine(MoveSprite(Direction.Left));
+        // yield return StartCoroutine(MoveSprite(Direction.Right));
+        yield return null;
+    }
+
 }

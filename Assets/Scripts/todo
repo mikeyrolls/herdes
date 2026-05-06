@@ -3,14 +3,31 @@
 
 loot db and init
 
-fix hallway manager :sob:
+fix treasure room spawn rates, check old code?
 
-inventory?
+set visual layers properly bruh wtf
+
+fix enemy death, spawn corpse object instead of being alive?
+
+fix wait times for enemy attacks
+
+hero dodging animations
+
+inventory setup, 
+    - just healing carrots
+    - treasure room temporarily always has 1 carrot
+    - bat also
+    - show info on click or hover
+    - use on double click or drag
+
+armor inventory setup?
+
+remove carrots from bat and treasure
 
 setup more enemy types somehow
 
+setup shop
 
-small:
 going back hurts
 
 add def to enemy
@@ -20,5 +37,18 @@ round in combat for archer
 countering system for both hero and enemy, fishbone special?
 
 losing screen
+
+balancing (sort enems from easiest to hardest, spawn according to roomname, add harder later)
+
+some sort of story u know what
+
+more chars, godmode for testing purposes?
+
+quests (rescuing tacobean, not playable(?), some shop quest to unlock clover(mage), fake enemy encounter for Wisp )
+
+
+
+
+
 
 textures, soundtrack wowie
