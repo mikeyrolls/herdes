@@ -1,7 +1,5 @@
 
-
-
-loot db and init
+change door to reflect what's in
 
 fix treasure room spawn rates, check old code?
 
@@ -21,8 +19,6 @@ inventory setup,
     - bat also
     - show info on click or hover
     - use on double click or drag
-
-armor inventory setup?
 
 remove carrots from bat and treasure
 

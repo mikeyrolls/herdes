@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class Creature : MonoBehaviour {
 
-    // -------------------------[ stars ]-----------------------------------------
+    // -------------------------[ stats ]-----------------------------------------
 
     public String nameStr;
 	public int maxHP;

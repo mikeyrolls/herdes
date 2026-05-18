@@ -7,8 +7,8 @@ using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 
-public class HallwayManager : MonoBehaviour
-{
+public class HallwayManager : MonoBehaviour {
+    
     Room type;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] GameObject enemyPrefab;
@@ -38,6 +38,9 @@ public class HallwayManager : MonoBehaviour
             int amount = Random.Range(1, 30);
             SpawnGold(amount);
         }
+
+        GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
+        item.GetComponent<ItemGO>().InitializeFromDB(ItemName.Carrot);
     }
 
     void SpawnGold(int value) {
@@ -46,7 +49,7 @@ public class HallwayManager : MonoBehaviour
 
     void SpawnGold(float x, float y, int value) {    // +x right, -x left, -y down
         GameObject item = Instantiate(itemPrefab, new Vector3(x, y, 0f), Quaternion.identity);
-        item.GetComponent<ItemGold>().InitGold(value);
+        item.GetComponent<ItemGO>().InitGold(value);
     }
 
 

@@ -26,11 +26,18 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Texture2D defaultCursor;
     [SerializeField] Texture2D hoverEnemyCursor;
 
+    [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[6];
+
 
     void Start() {
         SceneManager.LoadScene("Room_Between");
 
         CursorSetDefault();
+
+        for(int i = 0; i < GameManager.Instance.hero.GetInvSize(); i++) {
+            inventorySlots[i].slotIndex = i;
+        }
+
     }
 
     void Awake() {
@@ -73,6 +80,9 @@ public class UIManager : MonoBehaviour {
     }
 
     public void RefreshHUD() {
+
+        GameManager.Instance.hero.InvStateDebug();
+
         moneyText.text = GameManager.Instance.hero.gold.ToString() + " gold";
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
         hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.maxHP.ToString();
@@ -81,6 +91,10 @@ public class UIManager : MonoBehaviour {
             stateIcon.sprite = stateIconHp1;
         } else {
             stateIcon.sprite = stateIconHp2;
+        }
+
+        for(int i = 0; i < GameManager.Instance.hero.GetInvSize(); i++) {
+            inventorySlots[i].UpdateSprite();
         }
     }
 

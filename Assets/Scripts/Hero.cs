@@ -10,6 +10,9 @@ using Random = UnityEngine.Random;
 
 public class Hero : Creature {
 
+    private int inventorySize = 6;
+    [NonSerialized] public Item[] inventory;
+
     public void InitializeFromDB(HeroType heroType) {
         if (HeroDB.heroes.TryGetValue(heroType, out var heroData)) {
 
@@ -23,6 +26,8 @@ public class Hero : Creature {
 
             gold = 0;
             def = 0;
+
+            inventory = new Item[6];
             
             Debug.Log($"Spawned {nameStr} with {currHP}/{maxHP} HP");
         } else {
@@ -39,6 +44,40 @@ public class Hero : Creature {
         }
 
     }
+
+    public int GetInvSize() {
+        return inventorySize;
+    }
+
+    public int GetEmptyInvSlot() {
+        int i = 0;
+        for(; i < GetInvSize(); i++) {
+            if (inventory[i] == null) break;
+        }
+        Debug.Log("empty slot on " + i);
+        return i;
+        
+    }
+
+    public void InvStateDebug() {
+        string log = "";
+        int i = 0;
+        for(; i < GetInvSize(); i++) {
+            log += "[" + i + ": ";
+            if (inventory[i] != null) log += inventory[i].nameStr;
+            log += "] ";
+        }
+        Debug.Log(log);
+    }
+
+    public void Heal(int amount) {
+        currHP += amount;
+        if (currHP > maxHP) {
+            currHP = maxHP;
+        }
+        UIManager.Instance.RefreshHUD();
+    }
+
 
     public override IEnumerator DodgeAnimation() {
         // yield return StartCoroutine(MoveSprite(Direction.Left));

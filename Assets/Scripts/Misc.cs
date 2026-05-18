@@ -30,8 +30,11 @@ public static class Helper {
 
 
 // -----------[ roomgen ]-----------
-
-public enum Room{None, Back, Shop, Wall, Fight, Treasure } //fakewall, fishing, ...
+      
+public enum Room{None, Back, Shop,          // special
+                Wall,                       // never middle
+                Empty, Fight, Treasure } 
+                //fakewall, fishing, ...
 
 
 // -----------[ item ]-----------
@@ -56,7 +59,7 @@ public static class ItemDB {
         [ItemName.Drumstick] =              ("drumstick",                   20,      10,     ItemType.Heal),
         [ItemName.HealingPotion] =          ("healing potion",              35,      15,     ItemType.Heal),
         [ItemName.LargeHealingPotion] =     ("large healing potion",        50,      20,     ItemType.Heal),
-        [ItemName.HealingGland] =           ("healing gland",               100,     50,     ItemType.Heal),
+        //[ItemName.HealingGland] =           ("healing gland",               100,     50,     ItemType.Heal),
 
     };
 }
