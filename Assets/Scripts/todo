@@ -1,8 +1,4 @@
 
-change door to reflect what's in
-
-fix treasure room spawn rates, check old code?
-
 set visual layers properly bruh wtf
 
 fix enemy death, spawn corpse object instead of being alive?
@@ -13,14 +9,9 @@ hero dodging animations
 
 corpse currently blocks loot pickup sometimes
 
-inventory setup, 
-    - just healing carrots
-    - treasure room temporarily always has 1 carrot
-    - bat also
-    - show info on click or hover
-    - use on double click or drag
+inventory hover
 
-remove carrots from bat and treasure
+remove carrots from treasure
 
 setup more enemy types somehow
 

@@ -180,8 +180,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
+  m_Sprite: {fileID: 895356729926828991, guid: 46f7900650a57c04dabce5f593716058, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -200,8 +200,8 @@ Transform:
   m_GameObject: {fileID: 449162896}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0197, y: 0.1779, z: 0}
-  m_LocalScale: {x: 25.229315, y: 11.157683, z: 1}
+  m_LocalPosition: {x: -0.02, y: -2.92, z: 0}
+  m_LocalScale: {x: 2.2, y: 3.1036925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -457,10 +457,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorSprite: {fileID: 1218079065}
-  doorLeft: {fileID: 5520298777766234712, guid: 616a6b1de1a789641a1828ced774cbd6, type: 3}
-  doorMiddle: {fileID: -4243721492880348913, guid: 361d44af39aab4a49afd8c0800dfcd3d, type: 3}
-  doorRight: {fileID: -7238880418578888527, guid: 0ecad3a975336c24590c17dcffd5a383, type: 3}
-  doorBack: {fileID: -5156701655118037150, guid: bd5a509f19e8e28438f28d12fafd9990, type: 3}
+  doorBack: {fileID: -6465941973556907788, guid: 0921216d24e952748a319079710c2b8f, type: 3}
+  doorBack2: {fileID: 1814011712603469264, guid: bc4707e9750c7024da619e093bb547b2, type: 3}
+  doorEmpty: {fileID: 6610290702223584376, guid: e923df6317fcd77439ee12d9e4de3f60, type: 3}
+  doorFight: {fileID: -8985533931235831439, guid: 130a9272f7061c443b0c850f17251fb1, type: 3}
+  doorTreasure: {fileID: 1646848898062856157, guid: 16bb683f56f128d48a09923ac5ab67f7, type: 3}
+  doorFakewall: {fileID: 2245327703522746293, guid: bd6c9c551951c1c4db93f685d6c66337, type: 3}
+  doorWall: {fileID: 4513551060921317192, guid: 133fa4df29776fc4a8fe27b4ccd37355, type: 3}
+  doorShop: {fileID: 3485722519210976898, guid: a5876d1afabff884996ca66acd9533cb, type: 3}
 --- !u!4 &1038635336
 Transform:
   m_ObjectHideFlags: 0

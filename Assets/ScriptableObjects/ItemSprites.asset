@@ -21,3 +21,11 @@ MonoBehaviour:
     sprite: {fileID: 6391399019768103929, guid: 7aec9ad5c0c217c48904c6635a8bfab4, type: 3}
   - id: 3
     sprite: {fileID: -7857076427495117616, guid: 2bc6d55af5a4cee43a1445efd6ab3522, type: 3}
+  - id: 4
+    sprite: {fileID: -3049513333588244637, guid: f1cc15e5a8133d547a1ccee21763c7b4, type: 3}
+  - id: 5
+    sprite: {fileID: 3171298304120081043, guid: 6e61a152e82adfe48a73132a77d9b974, type: 3}
+  - id: 6
+    sprite: {fileID: -3510943735552176674, guid: 1039d894ac3d56b44841a7680b184234, type: 3}
+  - id: 7
+    sprite: {fileID: -7857076427495117616, guid: 2bc6d55af5a4cee43a1445efd6ab3522, type: 3}

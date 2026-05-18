@@ -8,8 +8,8 @@ using TMPro;
 using System.Collections;
 
 public class HallwayManager : MonoBehaviour {
-    
-    Room type;
+
+    RoomType type;
     [SerializeField] GameObject itemPrefab;
     [SerializeField] GameObject enemyPrefab;
     [SerializeField] TMP_Text textTmp;
@@ -23,24 +23,43 @@ public class HallwayManager : MonoBehaviour {
     CombatState combatState;
 
     void Start() {
-        type = GameManager.Instance.currentRoom;
+        type = GameManager.Instance.currentRoomType;
         Debug.Log("Entered room type " + type);
 
-        if (type == Room.Fight) {
-            HandleFightRoom();
-        } else if (type == Room.Treasure) {
-            HandleTreasureRoom();
+        switch (type) {
+            case RoomType.Fight:
+                HandleFightRoom();
+                break;
+            case RoomType.Treasure:
+                HandleTreasureRoom();
+                break;
+            case RoomType.Empty:
+                //nothing lol
+                break;
+            case RoomType.Fakewall:
+                HandleFakewallRoom();
+                break;
         }
+
     }
 
-    void HandleTreasureRoom() {
-        while (Helper.GetPerc() < 55) {
-            int amount = Random.Range(1, 30);
-            SpawnGold(amount);
-        }
+// -------------------------[ treasure ]-----------------------------------------------------
 
+
+    void HandleTreasureRoom() {
         GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
         item.GetComponent<ItemGO>().InitializeFromDB(ItemName.Carrot);
+    }
+
+// -------------------------[ fakewall ]-----------------------------------------------------
+
+    void HandleFakewallRoom() {
+        do {
+            int amount = Random.Range(1, 30);
+            SpawnGold(amount);
+        } while (Helper.GetPerc() < 55);
+
+
     }
 
     void SpawnGold(int value) {
@@ -51,6 +70,8 @@ public class HallwayManager : MonoBehaviour {
         GameObject item = Instantiate(itemPrefab, new Vector3(x, y, 0f), Quaternion.identity);
         item.GetComponent<ItemGO>().InitGold(value);
     }
+
+// -------------------------[ fight ]-----------------------------------------------------
 
 
     void HandleFightRoom() {

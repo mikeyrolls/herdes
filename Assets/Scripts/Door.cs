@@ -12,27 +12,49 @@ public class Door : MonoBehaviour {
         Debug.Log("Door clicked");
 
         // entering room
-        if (GameManager.Instance.currentRoom == Room.None) {
+        if (GameManager.Instance.currentRoomType == RoomType.None) {
 
-            Room type = GameManager.Instance.nextRooms[(int)GameManager.Instance.currentDirection];
+            int dir = (int)GameManager.Instance.currentDirection;
+            RoomType type = GameManager.Instance.nextRooms[dir].roomType;
             
-            if (type == Room.Back) {
-                Debug.Log("Trying to walk back, kill them");
-            } else if (type == Room.Wall) {
-                Debug.Log("Trying to walk into a wall, dumbshit");
-            } else if (type == Room.Shop) {
-                Debug.Log("shop doesn't exist yet");
-                GameManager.Instance.IncreaseRoomCount();
-            } else {    //treasure, fight
-                GameManager.Instance.currentRoom = type;
-                Debug.Log("Trying to enter " + type);
-                GameManager.Instance.IncreaseRoomCount();
-                SceneManager.LoadScene("Room_Hallway");
+
+            switch (type) {
+                case RoomType.Back:
+                    Debug.Log("Trying to walk back, kill them");
+                    FindAnyObjectByType<RoomGen>()?.ChangeRoomType(dir, RoomType.Back2);
+                    FindAnyObjectByType<RoomGen>()?.resetDoorSprite();
+                    break;
+                case RoomType.Back2:
+                case RoomType.Wall:
+                    Debug.Log("Trying to walk into a wall, dumbshit");
+                    break;
+                case RoomType.Shop:
+                    GameManager.Instance.currentRoomType = type;
+                    Debug.Log("Trying to enter " + type);
+                    GameManager.Instance.IncreaseRoomCount();
+                    SceneManager.LoadScene("Room_Shop");
+                    break;
+                default:    //empty, treasure, fight 
+                    GameManager.Instance.currentRoomType = type;
+                    Debug.Log("Trying to enter " + type);
+                    GameManager.Instance.IncreaseRoomCount();
+                    SceneManager.LoadScene("Room_Hallway");
+                    break;
             }
+
+            // if (type == RoomType.Back) {
+                
+            // } else if (type == RoomType.Wall) {
+            //     Debug.Log("Trying to walk into a wall, dumbshit");
+            // } else if (type == RoomType.Shop) {
+                
+            // } else {    //treasure, fight
+
+            // }
             
         // leaving room
         } else if (!GameManager.Instance.combat) {
-            GameManager.Instance.currentRoom = Room.None;
+            GameManager.Instance.currentRoomType = RoomType.None;
             SceneManager.LoadScene("Room_Between");
         }
     }

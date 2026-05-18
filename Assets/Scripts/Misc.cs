@@ -18,10 +18,6 @@ public static class Helper {
 
     public static int roomAmount;
 
-    static Helper () {
-        roomAmount = Enum.GetNames(typeof(Room)).Length;
-    }
-
     public static int GetPerc() {
         return Random.Range(0, 100);
     }
@@ -31,10 +27,20 @@ public static class Helper {
 
 // -----------[ roomgen ]-----------
       
-public enum Room{None, Back, Shop,          // special
+public enum RoomType{None, Back, Back2, Shop,          // special
                 Wall,                       // never middle
-                Empty, Fight, Treasure } 
-                //fakewall, fishing, ...
+                Empty, Fight, Treasure, Fakewall } 
+                //fishing, ...
+
+public class Room {
+    public RoomType roomType;
+    public Sprite roomSprite;
+
+    public void ChangeRoomType(RoomType newRoomType, Sprite newRoomSprite) {
+        roomType = newRoomType;
+        roomSprite = newRoomSprite;
+    }
+}
 
 
 // -----------[ item ]-----------

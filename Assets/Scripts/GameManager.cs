@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour {
     
     // none room navig 
     public int reservedRooms = 3;
-    public Room currentRoom = Room.None;
+    public RoomType currentRoomType = RoomType.None;
     [NonSerialized] public Room[] nextRooms = new Room[4];
     public Direction currentDirection = Direction.Middle;
 
@@ -26,7 +26,11 @@ public class GameManager : MonoBehaviour {
     void Start() {
         Debug.Log("in gameman start");
         UIManager.Instance.RefreshHUD();
-        nextRooms[3] = Room.Back;
+        
+        for (int i = 0; i < 4; i++) {
+            nextRooms[i] = new Room();
+        }
+
     }
 
     void Awake() {

@@ -67,7 +67,7 @@ public class UIManager : MonoBehaviour {
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        bool isNoneRoom = GameManager.Instance.currentRoom == Room.None;
+        bool isNoneRoom = GameManager.Instance.currentRoomType == RoomType.None;
         leftButton.gameObject.SetActive(false);
         rightButton.gameObject.SetActive(false);
         if (isNoneRoom) StartCoroutine(EnableButtonsNextFrame());
