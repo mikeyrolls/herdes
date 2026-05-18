@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
+  m_Name: SpritesBat
+  m_EditorClassIdentifier: 
+  idle: {fileID: 3309719141475895791, guid: e3274dc023797de46aeff9ee70a953a9, type: 3}
+  dead: {fileID: -8366411042981776909, guid: 719d817ddf9236948b4e645b16a16da6, type: 3}

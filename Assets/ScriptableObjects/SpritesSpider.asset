@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
+  m_Name: SpritesSpider
+  m_EditorClassIdentifier: 
+  idle: {fileID: -2461971576596781131, guid: 4d9204365912b66419b8c8b1596caf29, type: 3}
+  dead: {fileID: -4028741829400089660, guid: d8a74ed8405a41d429ccc031b66af8db, type: 3}

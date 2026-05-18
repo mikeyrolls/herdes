@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
-  m_Name: BatSPrites
+  m_Name: SpritesSnake
   m_EditorClassIdentifier: 
-  idle: {fileID: -8215943933353358612, guid: 9f619c080049170499ffb09e74c3db12, type: 3}
-  damaged: {fileID: -2654553983746902062, guid: 0fc44e9a365d9a645a9eab5a4b64c1aa, type: 3}
-  damagedSound: {fileID: 0}
-  walkAnimation: {fileID: 0}
+  idle: {fileID: 134782726169223636, guid: 48a9969abca6bc4429cb76edcce1a942, type: 3}
+  dead: {fileID: -6494532225669906711, guid: be958d8933461d74b82e2064a6964be8, type: 3}

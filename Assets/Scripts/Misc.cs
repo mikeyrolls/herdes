@@ -50,6 +50,7 @@ public enum ItemName {
     Carrot, Drumstick, HealingPotion, LargeHealingPotion, HealingGland,   //heals
 
     //DodgePotion, None   //other
+    None,
 }
 
 public enum ItemType{Gold, Heal, Buff, Upgrade, Story, Other}
@@ -93,9 +94,8 @@ public static class HeroDB {
 // -----------[ enemy ]-----------
 
 public enum EnemyType {   
-    //Slime,  Goblin,     
-    Bat,    
-    //Bandit,     Spider,     Undead,     Skeleton,   Snail,      Troll
+    Slime, Bat, Bandit,     Spider,  Snail,      Golem,
+    Flies, Rat, Snake
 }
 
 public static class EnemyDB {
@@ -103,13 +103,24 @@ public static class EnemyDB {
     public static Dictionary<EnemyType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc, int gold, ItemName dropItem, int dropRate)> enemies = new() {
         
         // name                     hp      dmg     dodg    acc     gold    drop + rate
-        // [EnemyType.Slime] =         (20,    2, 5,   15,     70,     5,      ItemName.HealingPotion, 70),
+        [EnemyType.Slime] =         (20,    2, 5,   15,     70,     5,      ItemName.HealingPotion, 70),
         // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,     15,     ItemName.None, 0),
         [EnemyType.Bat] =           (15,    1, 10,  40,     90,     10,     ItemName.Carrot, 35),
-        // [EnemyType.Bandit] =        (35,    10, 12, 10,     70,     50,     ItemName.None, 0),    //weapon sharpen
-        // [EnemyType.Spider] =        (20,    10, 15, 40,     90,     100,    ItemName.None, 0)     //big healing potion
+        [EnemyType.Bandit] =        (35,    10, 12, 10,     70,     50,     ItemName.None, 0),    //weapon sharpen
+        [EnemyType.Spider] =        (20,    10, 15, 40,     90,     100,    ItemName.None, 0),     //big healing potion
         // [EnemyType.Undead] =        (25,    1, 5,   10,     60,     5,      ItemName.None,        0),
         // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,     10,     ItemName.None,        0),
-        // [EnemyType.GiantSnail] =    (40,    1, 2,   0,      100,    15,     ItemName.None,        0)  //armor/armor potion
+        [EnemyType.Snail] =         (40,    1, 2,   0,      100,    15,     ItemName.None,        0),  //armor/armor potion
+
+        [EnemyType.Flies] =         (10,    2, 6,   0,      50,    3,     ItemName.None,        0),
+        [EnemyType.Rat] =           (15,    2, 5,   20,      100,    15,     ItemName.None,        0),
+        [EnemyType.Snake] =         (20,    5, 10,   20,      90,    15,     ItemName.None,        0),
+        [EnemyType.Golem] =         (40,    8, 10,   5,      65,    50,     ItemName.None,        0),
     };
+
+    public static Dictionary<EnemyType, EnemySpriteSet> sprites = new();
+
+    public static void InitSprites(Dictionary<EnemyType, EnemySpriteSet> spriteSets) {
+        sprites = spriteSets;
+    }
 }

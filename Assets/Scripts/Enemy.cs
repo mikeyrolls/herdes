@@ -18,19 +18,22 @@ public class Enemy : Creature {
     public EnemySpriteSet enemySpriteSet;
     private SpriteRenderer sr;
 
-    public void InitEnemy() {
-        setEnemyType();
-        InitializeFromDB(enemyType);
-        sr.sprite = enemySpriteSet.idle;
-        sr.sortingOrder = 10;
-        mat = GetComponent<SpriteRenderer>().material;
-        Debug.Log("sprite and mat for enemy set");
-    }
+    //???
 
-    public void InitEnemy(EnemyType enemyType) {
+    // public void InitEnemy() {
+    //     setEnemyType();
+    //     InitializeFromDB(enemyType);
+    //     sr.sprite = enemySpriteSet.idle;
+    //     sr.sortingOrder = 10;
+    //     mat = GetComponent<SpriteRenderer>().material;
+    //     Debug.Log("sprite and mat for enemy set");
+    // }
+
+    public void InitEnemy(EnemyType enemyType, EnemySpriteSet set) {
         this.enemyType = enemyType;
         InitializeFromDB(enemyType);
-        sr = GetComponent<SpriteRenderer>(); // just force it here for now
+        sr = GetComponent<SpriteRenderer>();
+        enemySpriteSet = set;
         sr.sprite = enemySpriteSet.idle;
     }
 
@@ -85,8 +88,12 @@ public class Enemy : Creature {
         mat = GetComponent<SpriteRenderer>().material;
     }
 
-    public void ShowDamagedSprite() {
-        sr.sprite = enemySpriteSet.damaged;
+    // public void ShowDamagedSprite() {
+    //     sr.sprite = enemySpriteSet.damaged;
+    // }
+
+    public void ShowDeadSprite() {
+        sr.sprite = enemySpriteSet.dead;
     }
 
     public void ShowIdleSprite() {

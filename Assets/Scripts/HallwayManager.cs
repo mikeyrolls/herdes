@@ -79,10 +79,13 @@ public class HallwayManager : MonoBehaviour {
         GameManager.Instance.combat = true;
         AddInfoText("entered combat");
 
-        enemyObject = Instantiate(enemyPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        enemyObject = Instantiate(enemyPrefab, new Vector3(0f, -1f, 0f), Quaternion.identity);
         currentEnemy = enemyObject.GetComponent<Enemy>();
 
-        currentEnemy.InitEnemy(EnemyType.Bat);
+        EnemyType testEnem = EnemyType.Rat; //snail flies rat snake golem
+
+        currentEnemy.InitEnemy(testEnem, EnemyDB.sprites[testEnem]);
+
         AddInfoText("spawned enemy: " + currentEnemy.nameStr);
 
         combatState = CombatState.PlayerTurn;
@@ -146,7 +149,7 @@ public class HallwayManager : MonoBehaviour {
     }
 
     void EnemyDied() {
-        currentEnemy.ShowDamagedSprite();
+        currentEnemy.ShowDeadSprite();
         //drop loot too todo
         SpawnGold(currentEnemy.GetGoldValue());
     }

@@ -8,9 +8,10 @@ using UnityEngine;
 public class EnemySpriteSet : ScriptableObject
 {
     public Sprite idle;
-    public Sprite damaged;
-    public AudioClip damagedSound;
-    public AnimationClip walkAnimation;
+    //public Sprite damaged;
+    public Sprite dead;
+    //public AudioClip damagedSound;
+    //public AnimationClip walkAnimation;
 }
 
 //unused for now

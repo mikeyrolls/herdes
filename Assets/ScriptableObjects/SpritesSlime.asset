@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
+  m_Name: SpritesSlime
+  m_EditorClassIdentifier: 
+  idle: {fileID: 8069619478552258361, guid: 1af31ae59a9d3cb42b382a7705dc4e0e, type: 3}
+  dead: {fileID: 538079202415156762, guid: f36015f80eeb2454aa8de6855271252c, type: 3}
