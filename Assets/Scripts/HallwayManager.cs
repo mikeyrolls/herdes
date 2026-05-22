@@ -32,7 +32,7 @@ public class HallwayManager : MonoBehaviour {
 
         hero = GameManager.Instance.hero;
 
-        heroGO = Instantiate(heroPrefab, new Vector3(-6f, -1f, 0f), Quaternion.identity).GetComponent<HeroGO>();
+        heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -1f, 0f), Quaternion.identity).GetComponent<HeroGO>();
         heroGO.InitGO(EnemyDB.sprites[EnemyType.Fishbone]);
         hero.sceneObject = heroGO;
 
@@ -55,7 +55,7 @@ public class HallwayManager : MonoBehaviour {
 // -------------------------[ treasure ]-----------------------------------------------------
 
     void SpawnItem(ItemName itemName) {
-        GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
+        GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-2f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
         item.GetComponent<ItemGO>().InitializeFromDB(itemName);
     }
 
@@ -73,7 +73,7 @@ public class HallwayManager : MonoBehaviour {
     }
 
     void SpawnGold(int value) {
-        SpawnGold(Random.Range(-4f, 4f), Random.Range(-4f, 0), value);
+        SpawnGold(Random.Range(-2f, 4f), Random.Range(-4f, 0), value);
     }
 
     void SpawnGold(float x, float y, int value) {    // +x right, -x left, -y down
@@ -94,7 +94,7 @@ public class HallwayManager : MonoBehaviour {
 
         enemy = new Enemy();
         enemy.InitEnemy(spawnedEnemy);
-        enemyGO = Instantiate(enemyPrefab, new Vector3(0f, -1f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
+        enemyGO = Instantiate(enemyPrefab, new Vector3(2f, -1f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
         enemyGO.InitGO(EnemyDB.sprites[spawnedEnemy]);
         enemy.sceneObject = enemyGO;
         enemyGO.onDeath = () => EnemyDied();

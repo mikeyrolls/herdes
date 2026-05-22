@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Image stateIcon;
     [SerializeField] Sprite stateIconHp1;
     [SerializeField] Sprite stateIconHp2;
+    [SerializeField] Slider hpSlider;
 
     [SerializeField] Texture2D defaultCursor;
     [SerializeField] Texture2D hoverEnemyCursor;
@@ -33,6 +34,8 @@ public class UIManager : MonoBehaviour {
         SceneManager.LoadScene("Room_Between");
 
         CursorSetDefault();
+        hpSlider.minValue = 0f;
+        hpSlider.maxValue = 100f;
 
         for(int i = 0; i < GameManager.Instance.hero.GetInvSize(); i++) {
             inventorySlots[i].slotIndex = i;
@@ -87,6 +90,8 @@ public class UIManager : MonoBehaviour {
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
         hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.maxHP.ToString();
 
+
+        hpSlider.value = GameManager.Instance.hero.GetHpPerc();
         if(GameManager.Instance.hero.GetHpPerc() > 50) {
             stateIcon.sprite = stateIconHp1;
         } else {

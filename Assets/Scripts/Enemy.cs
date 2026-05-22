@@ -60,4 +60,9 @@ public class Enemy : Creature {
         }
     }
 
+    protected override void TakeDmg(int rawDmg) {
+        base.TakeDmg(rawDmg);
+        ((EnemyGO)sceneObject).SetHpBar(GetHpPerc());
+    }
+
 }

@@ -66,7 +66,7 @@ public class Creature {
         return (currHP > 0);
     }
 
-    protected void TakeDmg(int rawDmg) {
+    protected virtual void TakeDmg(int rawDmg) {
         currHP -= rawDmg;
         if (currHP < 0) {
             currHP = 0;

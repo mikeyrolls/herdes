@@ -16,7 +16,16 @@ public class ItemGO : MonoBehaviour {
     void OnMouseDown() {
         if(GameManager.Instance.addToInventory(data)) {
             Destroy(gameObject);
+            UIManager.Instance.CursorSetDefault();
         }
+    }
+
+    void OnMouseEnter() {
+        UIManager.Instance.CursorSetHoverEnemy();
+    }
+
+    void OnMouseExit() {
+        UIManager.Instance.CursorSetDefault();
     }
 
     public void InitializeFromDB(ItemName itemName) {

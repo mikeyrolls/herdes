@@ -17,7 +17,7 @@ public class CreatureGO : MonoBehaviour {
 
     protected Material mat;
     protected float animSpeed = 0.45f; //0.25f;
-    protected float animDist = 0.6f;
+    protected float animDist = 1.4f;
 
     protected Direction dirCenter;
     protected Direction dirEdge;
