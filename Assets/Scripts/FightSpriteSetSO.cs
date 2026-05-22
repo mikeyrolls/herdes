@@ -1,5 +1,5 @@
 /**
- * Sprite holder for enemies and currently heroes (combat only)
+ * Sprite holder for enemies and heroes (combat only)
  */
 
 using UnityEngine;

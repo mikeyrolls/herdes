@@ -1,5 +1,5 @@
 /**
- * Hero game object class for hallway
+ * Item game object class, accesses data
  */
 
 using UnityEngine;

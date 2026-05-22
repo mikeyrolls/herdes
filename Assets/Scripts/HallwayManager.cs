@@ -32,8 +32,8 @@ public class HallwayManager : MonoBehaviour {
 
         hero = GameManager.Instance.hero;
 
-        heroGO = Instantiate(heroPrefab, new Vector3(-3f, -1f, 0f), Quaternion.identity).GetComponent<HeroGO>();
-        heroGO.InitVisuals(EnemyDB.sprites[EnemyType.Fishbone]);
+        heroGO = Instantiate(heroPrefab, new Vector3(-6f, -1f, 0f), Quaternion.identity).GetComponent<HeroGO>();
+        heroGO.InitGO(EnemyDB.sprites[EnemyType.Fishbone]);
         hero.sceneObject = heroGO;
 
         switch (type) {
@@ -50,15 +50,17 @@ public class HallwayManager : MonoBehaviour {
                 HandleFakewallRoom();
                 break;
         }
-
     }
 
 // -------------------------[ treasure ]-----------------------------------------------------
 
+    void SpawnItem(ItemName itemName) {
+        GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
+        item.GetComponent<ItemGO>().InitializeFromDB(itemName);
+    }
 
     void HandleTreasureRoom() {
-        GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-4f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
-        item.GetComponent<ItemGO>().InitializeFromDB(ItemName.Carrot);
+        SpawnItem(ItemName.Carrot);
     }
 
 // -------------------------[ fakewall ]-----------------------------------------------------
@@ -68,8 +70,6 @@ public class HallwayManager : MonoBehaviour {
             int amount = Random.Range(1, 30);
             SpawnGold(amount);
         } while (Helper.GetPerc() < 55);
-
-
     }
 
     void SpawnGold(int value) {
@@ -89,14 +89,15 @@ public class HallwayManager : MonoBehaviour {
         GameManager.Instance.combat = true;
         AddInfoText("entered combat");
 
-        //spawnign whatever
-        EnemyType testEnem = EnemyType.Rat; //snail flies rat snake golem
+        EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
+        Debug.Log("spawnedEnemy = " + spawnedEnemy);
 
         enemy = new Enemy();
-        enemy.InitEnemy(testEnem);
+        enemy.InitEnemy(spawnedEnemy);
         enemyGO = Instantiate(enemyPrefab, new Vector3(0f, -1f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
-        enemyGO.InitVisuals(EnemyDB.sprites[testEnem]);
+        enemyGO.InitGO(EnemyDB.sprites[spawnedEnemy]);
         enemy.sceneObject = enemyGO;
+        enemyGO.onDeath = () => EnemyDied();
 
         AddInfoText("spawned enemy: " + enemy.nameStr);
         combatState = CombatState.PlayerTurn;
@@ -120,51 +121,45 @@ public class HallwayManager : MonoBehaviour {
         if(!enemy.IsAlive()) {
             GameManager.Instance.combat = false;
             combatState = CombatState.Won;
-
-            EnemyDied();
-            yield return new WaitForSeconds(1f);
-            ((EnemyGO)enemy.sceneObject).Kill();
-            AddInfoText("You won! Leave");
+            
         } else {
             Debug.Log("enemy attacking");
-            yield return new WaitForSeconds(0.7f); //TODO for now in place of animations
+            yield return new WaitForSeconds(1f); //TODO for now in place of animations
             //enemy attack
             StartCoroutine(AttackRound(enemy, hero));
             //todo check status one hero death matters
 
+            yield return new WaitForSeconds(0.45f); // enemy attack duration
             combatState = CombatState.PlayerTurn;
         }
     }
 
     IEnumerator AttackRound(Creature attacker, Creature attacked) {
         Debug.Log("attackRound entered, attacker = " + attacker.nameStr + ", attacked = " + attacked.nameStr);
-        int hitDmg = attacker.GiveDmg();
 
-        if(!attacker.LandHit()) {
-            Debug.Log("if(!attacker.LandHit())");   
-            AddInfoText(attacker.nameStr + " missed " + attacked.nameStr);
-            yield return StartCoroutine(attacked.sceneObject.DodgeAnimation());
-            yield break;
-        }
+        if (attacker.LandHit()) {
+            int hitDmg = attacker.Attack();
+            if(attacked.GetAttacked(hitDmg)) {
+                AddInfoText(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.maxHP + "hp left");
+            } else {
+                AddInfoText(attacked.nameStr + " dodged ");
+            }
 
-        if(attacked.Dodge()) {
-            Debug.Log("if(attacked.Dodge())");
-            AddInfoText(attacked.nameStr + " dodged ");
-            yield return StartCoroutine(attacked.sceneObject.DodgeAnimation());
         } else {
-            Debug.Log("else");
-            attacked.TakeDmg(hitDmg);
-            AddInfoText(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.maxHP + "hp left");
-            yield return StartCoroutine(attacked.sceneObject.GetHurtAnimation());
+            attacker.Miss();
+            AddInfoText(attacker.nameStr + " missed " + attacked.nameStr);
         }
+
+        yield return null;
+
     }
 
+    
+
     void EnemyDied() {
-        //enemy.ShowDeadSprite();   //old
-        ((EnemyGO)enemy.sceneObject).ShowDeadSprite();
-        
-        //drop loot too todo
+        SpawnItem(enemy.dropItem);
         SpawnGold(enemy.GetGoldValue());
+        AddInfoText("You won! Leave");
     }
 
     void AddInfoText(string newText) {

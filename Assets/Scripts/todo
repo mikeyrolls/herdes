@@ -1,33 +1,37 @@
-fix enemy creature inheritance and game object whatever
 
 
-set visual layers properly bruh wtf
+hp bar enemy
 
-fix enemy death, spawn corpse object instead of being alive?
+hp bar hero
 
-fix wait times for enemy attacks
+loot pickup blocks sometimes
 
-hero dodging animations
+losing screen
 
-corpse currently blocks loot pickup sometimes
+texture status, cursors, items, ...
 
-inventory hover
+text to show dmg dealt
 
-remove carrots from treasure
 
-setup more enemy types somehow
 
-setup shop
+
+inventory hover?
+
+treasure setup
+
+
 
 going back hurts
 
 add def to enemy
 
-round in combat for archer
+set visual layers properly bruh wtf
+
+setup shop
 
 countering system for both hero and enemy, fishbone special?
 
-losing screen
+---------------------------------------------------------------------
 
 balancing (sort enems from easiest to hardest, spawn according to roomname, add harder later)
 
@@ -35,11 +39,8 @@ some sort of story u know what
 
 more chars, godmode for testing purposes?
 
+round in combat for archer
+
 quests (rescuing tacobean, not playable(?), some shop quest to unlock clover(mage), fake enemy encounter for Wisp )
-
-
-
-
-
 
 textures, soundtrack wowie

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
-  m_Name: SpritesBandit
+  m_Script: {fileID: 11500000, guid: 4d387f56e27113741bc34ee8800b4b02, type: 3}
+  m_Name: FS_Bandit
   m_EditorClassIdentifier: 
   idle: {fileID: 21300000, guid: dd9f0eb83d067b245ba51fc576c61a71, type: 3}
   damaged: {fileID: 21300000, guid: 4f52410aef0943041a67854bf1306633, type: 3}

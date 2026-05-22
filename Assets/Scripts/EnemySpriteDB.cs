@@ -7,20 +7,20 @@ using System.Collections.Generic;
 
 public class EnemySpriteDB : MonoBehaviour {
     
-    [SerializeField] EnemySpriteSet batSprites;
-    [SerializeField] EnemySpriteSet slimeSprites;
-    [SerializeField] EnemySpriteSet banditSprites;
-    [SerializeField] EnemySpriteSet spiderSprites;
-    [SerializeField] EnemySpriteSet snailSprites;
-    [SerializeField] EnemySpriteSet golemSprites;
-    [SerializeField] EnemySpriteSet fliesSprites;
-    [SerializeField] EnemySpriteSet ratSprites;
-    [SerializeField] EnemySpriteSet snakeSprites;
+    [SerializeField] FightSpriteSet batSprites;
+    [SerializeField] FightSpriteSet slimeSprites;
+    [SerializeField] FightSpriteSet banditSprites;
+    [SerializeField] FightSpriteSet spiderSprites;
+    [SerializeField] FightSpriteSet snailSprites;
+    [SerializeField] FightSpriteSet golemSprites;
+    [SerializeField] FightSpriteSet fliesSprites;
+    [SerializeField] FightSpriteSet ratSprites;
+    [SerializeField] FightSpriteSet snakeSprites;
 
-    [SerializeField] EnemySpriteSet fishboneSprites;
+    [SerializeField] FightSpriteSet fishboneSprites;
 
     void Awake() {
-        EnemyDB.InitSprites(new Dictionary<EnemyType, EnemySpriteSet>() {
+        EnemyDB.InitSprites(new Dictionary<EnemyType, FightSpriteSet>() {
             // name           sprites
             [EnemyType.Bat] = batSprites,
             [EnemyType.Slime] = slimeSprites,

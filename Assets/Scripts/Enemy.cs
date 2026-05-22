@@ -14,7 +14,7 @@ public class Enemy : Creature {
 
     private EnemyType enemyType;
 	
-	ItemName dropItem;
+	public ItemName dropItem;
 	int dropRate;
 
     //???

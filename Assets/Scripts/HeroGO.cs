@@ -10,16 +10,9 @@ using Random = UnityEngine.Random;
 
 public class HeroGO : CreatureGO {
 
-    public override IEnumerator DodgeAnimation() {
-        // yield return StartCoroutine(MoveSprite(Direction.Left));
-        // yield return StartCoroutine(MoveSprite(Direction.Right));
-        yield return null;
+    public override void InitGO(FightSpriteSet set) {
+        base.InitGO(set);
+        SetIsEnemy(false);
     }
-
-    public override IEnumerator GetHurtAnimation() {
-        // yield return StartCoroutine(MoveSprite(Direction.Left));
-        // yield return StartCoroutine(MoveSprite(Direction.Right));
-        yield return null;
-    }
-
+    
 }

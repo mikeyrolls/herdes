@@ -27,11 +27,46 @@ public class Creature {
 
     // -------------------------[ methods ]-----------------------------------------
 
+    public bool LandHit() {
+        return Helper.GetPerc() <= acc;
+    }
+
+    public void Miss() {
+        sceneObject.PlayAnimation(AnimationType.Attack);
+        // "missed"?
+    }
+
+    public int Attack() {
+        sceneObject.PlayAnimation(AnimationType.Attack);
+        return GiveDmg();
+    }
+
+    public bool GetAttacked(int dmg) {  //todo change to void once text set up
+        if(Dodge()) {
+            sceneObject.PlayAnimation(AnimationType.Dodge);
+            return false;
+            //dodged
+        } else {
+            TakeDmg(dmg);
+            
+            
+            //dmg
+            if(IsAlive()) {
+                sceneObject.PlayAnimation(AnimationType.GetHurt);
+            } else {
+                sceneObject.PlayAnimation(AnimationType.Death);
+            }
+            return true;
+        }
+    }
+
+    // smaller methods
+
     public bool IsAlive() {
         return (currHP > 0);
     }
 
-    public void TakeDmg(int rawDmg) {
+    protected void TakeDmg(int rawDmg) {
         currHP -= rawDmg;
         if (currHP < 0) {
             currHP = 0;
@@ -39,21 +74,19 @@ public class Creature {
         UIManager.Instance.RefreshHUD();
     }
 
-    public int GiveDmg() {
+    protected int GiveDmg() {
         int rawDmg = Random.Range(minDMG, maxDMG);
         return rawDmg;
     }
 
-    public int GetHpPerc() {
-        return 100 * currHP / maxHP;
-    }
-
-    public bool Dodge() {
+    protected bool Dodge() {
         return Helper.GetPerc() <= dodge;
     }
 
-    public bool LandHit() {
-        return Helper.GetPerc() <= acc;
+
+
+    public int GetHpPerc() {
+        return 100 * currHP / maxHP;
     }
 
     public int GetGoldValue() {

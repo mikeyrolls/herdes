@@ -1,5 +1,5 @@
 /**
- * Item logic/data class
+ * Item logic/data class, accessed from ItemGO
  */
 
 using UnityEngine;
@@ -11,10 +11,11 @@ public class Item {
     public int value;
     public ItemType itemType;
     public Sprite itemSprite;
-
+    ItemName itemName;
 
     public void InitializeFromDB(ItemName itemName, ItemSpriteDatabase spriteSet) {
         if (ItemDB.items.TryGetValue(itemName, out var itemData)) {
+            this.itemName = itemName;
             nameStr = itemData.displayName;
             value = itemData.value;
             price = itemData.price;

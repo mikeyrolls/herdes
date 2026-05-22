@@ -1410,16 +1410,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfa5be0e3a53ed64fbafcbd65661e244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  batSprites: {fileID: 11400000, guid: d60a6abc6d0df914591ad0b30e472713, type: 2}
-  slimeSprites: {fileID: 11400000, guid: 306a6d050f807614d97665b7cae6b36f, type: 2}
-  banditSprites: {fileID: 11400000, guid: 8802a4844968f034d8e4e340c14afc45, type: 2}
-  spiderSprites: {fileID: 11400000, guid: 49153fae9ac8ec8488ae5095dc66ae04, type: 2}
-  snailSprites: {fileID: 11400000, guid: 00fe592f5d103974cb0180713eef3edc, type: 2}
-  golemSprites: {fileID: 11400000, guid: f1df9e55d6034774d8ea488d1fcfeb62, type: 2}
-  fliesSprites: {fileID: 11400000, guid: ded62e5b82261cb498af4f8cc312710b, type: 2}
-  ratSprites: {fileID: 11400000, guid: 254923b75eb306c49a6c3f0d1d55709f, type: 2}
-  snakeSprites: {fileID: 11400000, guid: cd7490c9b1c4fba4789b09336cfdc4fe, type: 2}
-  fishboneSprites: {fileID: 11400000, guid: d6da51d6b10f73847acb7c4e4435d1b8, type: 2}
+  batSprites: {fileID: 11400000, guid: 30617b8bc59bfd64b910701189a8ec37, type: 2}
+  slimeSprites: {fileID: 11400000, guid: 50e376844a808af43bf9c5d46d535dcc, type: 2}
+  banditSprites: {fileID: 11400000, guid: 54fef6e0e8f99d04d9f19a32f99fdbfd, type: 2}
+  spiderSprites: {fileID: 11400000, guid: eb9785f267b2df04c8c77826f7ef8321, type: 2}
+  snailSprites: {fileID: 11400000, guid: a054a96785b2732488cb5bbda3919023, type: 2}
+  golemSprites: {fileID: 11400000, guid: 910da693de300a748b2870277a4eceeb, type: 2}
+  fliesSprites: {fileID: 11400000, guid: b68eb37a54ba3e3458b32d7f61c3da52, type: 2}
+  ratSprites: {fileID: 11400000, guid: 5713cf6d53ead52468f64cbcba72dabe, type: 2}
+  snakeSprites: {fileID: 11400000, guid: d4214f7b30fa42d408bb6f2d054a91aa, type: 2}
+  fishboneSprites: {fileID: 11400000, guid: bd15018a8e9616a4c917c8c251719938, type: 2}
 --- !u!1001 &1163742218
 PrefabInstance:
   m_ObjectHideFlags: 0
