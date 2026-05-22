@@ -1,3 +1,7 @@
+/**
+ * Item sprite dictionary (todo change to dict and name lol)
+ */
+
 using UnityEngine;
 using System.Collections.Generic;
 

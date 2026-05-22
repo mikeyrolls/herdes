@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
   m_Name: SpritesSnake
   m_EditorClassIdentifier: 
-  idle: {fileID: 134782726169223636, guid: 48a9969abca6bc4429cb76edcce1a942, type: 3}
-  dead: {fileID: -6494532225669906711, guid: be958d8933461d74b82e2064a6964be8, type: 3}
+  idle: {fileID: 21300000, guid: 48a9969abca6bc4429cb76edcce1a942, type: 3}
+  damaged: {fileID: 21300000, guid: de84b757215435a479e00d49cc1cc9fa, type: 3}
+  attacking: {fileID: 21300000, guid: 1a0ce1a40eb2f1947800016eb804a845, type: 3}
+  dead: {fileID: 21300000, guid: be958d8933461d74b82e2064a6964be8, type: 3}

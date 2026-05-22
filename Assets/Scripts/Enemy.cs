@@ -1,5 +1,5 @@
 /**
- * Enemy game object and script object
+ * Enemy logic/data class
  */
 
 using UnityEngine;
@@ -10,13 +10,12 @@ using Random = UnityEngine.Random;
 
 public class Enemy : Creature {
 
+    //public EnemyGO sceneObject;
+
     private EnemyType enemyType;
 	
 	ItemName dropItem;
 	int dropRate;
-
-    public EnemySpriteSet enemySpriteSet;
-    private SpriteRenderer sr;
 
     //???
 
@@ -29,12 +28,9 @@ public class Enemy : Creature {
     //     Debug.Log("sprite and mat for enemy set");
     // }
 
-    public void InitEnemy(EnemyType enemyType, EnemySpriteSet set) {
+    public void InitEnemy(EnemyType enemyType) {
         this.enemyType = enemyType;
         InitializeFromDB(enemyType);
-        sr = GetComponent<SpriteRenderer>();
-        enemySpriteSet = set;
-        sr.sprite = enemySpriteSet.idle;
     }
 
     void setEnemyType(){
@@ -62,54 +58,6 @@ public class Enemy : Creature {
         } else {
             Debug.LogError($"Enemy type '{enemyType}' not found in database!");
         }
-    }
-
-    void OnMouseDown() {
-        Debug.Log("enemy clicked");
-        FindAnyObjectByType<HallwayManager>().OnEnemyClicked();
-    }
-
-    void OnMouseEnter() {
-        UIManager.Instance.CursorSetHoverEnemy();
-    }
-
-    void OnMouseExit() {
-        UIManager.Instance.CursorSetDefault();
-    }
-
-    public void Kill() {
-        UIManager.Instance.CursorSetDefault();
-        Destroy(gameObject);
-        //todo loot?
-    }
-
-    void Awake() {
-        sr = GetComponent<SpriteRenderer>();
-        mat = GetComponent<SpriteRenderer>().material;
-    }
-
-    // public void ShowDamagedSprite() {
-    //     sr.sprite = enemySpriteSet.damaged;
-    // }
-
-    public void ShowDeadSprite() {
-        sr.sprite = enemySpriteSet.dead;
-    }
-
-    public void ShowIdleSprite() {
-        sr.sprite = enemySpriteSet.idle;
-    }
-
-    // ------------------------------------------------------------------
-
-    public override IEnumerator DodgeAnimation() {  // no color change
-        yield return StartCoroutine(MoveSprite(Direction.Right));
-        yield return StartCoroutine(MoveSprite(Direction.Left));
-    }
-
-    public override IEnumerator GetHurtAnimation() {  // red tint up
-        yield return StartCoroutine(MoveSprite(Direction.Right, 0.75f));
-        yield return StartCoroutine(MoveSprite(Direction.Left, 0));
     }
 
 }

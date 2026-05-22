@@ -1,3 +1,7 @@
+/**
+ * Hero game object class for hallway
+ */
+
 using UnityEngine;
 
 public class ItemGO : MonoBehaviour {

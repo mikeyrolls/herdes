@@ -95,7 +95,9 @@ public static class HeroDB {
 
 public enum EnemyType {   
     Slime, Bat, Bandit,     Spider,  Snail,      Golem,
-    Flies, Rat, Snake
+    Flies, Rat, Snake,
+
+    Fishbone,
 }
 
 public static class EnemyDB {

@@ -434,6 +434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7446989745397900288, guid: 657446438ad6d2f489d440beef466ed2, type: 3}
   enemyPrefab: {fileID: 630529464173961083, guid: eabf98247372eb64fbe3b9bd8aa76b11, type: 3}
+  heroPrefab: {fileID: 4542119117404702763, guid: a89a782bef34a4f43bb028ebe250ca33, type: 3}
   textTmp: {fileID: 539891650}
 --- !u!4 &595471740
 Transform:

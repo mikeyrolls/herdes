@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour {
 
     //surviving objects
     public static GameManager Instance;
-    GameObject heroGO;
+    //GameObject heroGO; ueh
     public Hero hero;
     
     // none room navig 
@@ -38,9 +38,11 @@ public class GameManager : MonoBehaviour {
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            heroGO = new GameObject("Hero");
-            heroGO.transform.SetParent(transform); // hero survives as child of GameManager
-            hero = heroGO.AddComponent<Hero>();
+            // heroGO = new GameObject("Hero");
+            // heroGO.transform.SetParent(transform); // hero survives as child of GameManager
+            // hero = heroGO.AddComponent<Hero>();
+
+            hero = new Hero();
             hero.InitializeFromDB(HeroType.Fishbone);
         } else {
             Destroy(gameObject);

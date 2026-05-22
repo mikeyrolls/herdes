@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: SpritesFlies
   m_EditorClassIdentifier: 
   idle: {fileID: 21300000, guid: 77c3735fd119a8f4597222d8dd410250, type: 3}
-  dead: {fileID: 2173485619646797909, guid: 964da39dfbe2e3c469c820c8f0a8b291, type: 3}
+  damaged: {fileID: 21300000, guid: e859be9290281904c85a0518893598ef, type: 3}
+  attacking: {fileID: 21300000, guid: 108e03fbd68148d4a963cfb4a8ee4972, type: 3}
+  dead: {fileID: 21300000, guid: 964da39dfbe2e3c469c820c8f0a8b291, type: 3}

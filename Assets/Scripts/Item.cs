@@ -1,3 +1,7 @@
+/**
+ * Item logic/data class
+ */
+
 using UnityEngine;
 
 [System.Serializable]

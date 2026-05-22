@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
   m_Name: SpritesSlime
   m_EditorClassIdentifier: 
-  idle: {fileID: 8069619478552258361, guid: 1af31ae59a9d3cb42b382a7705dc4e0e, type: 3}
-  dead: {fileID: 538079202415156762, guid: f36015f80eeb2454aa8de6855271252c, type: 3}
+  idle: {fileID: 21300000, guid: 1af31ae59a9d3cb42b382a7705dc4e0e, type: 3}
+  damaged: {fileID: 21300000, guid: 15e788dff14b75c4ab871af8ef292dbf, type: 3}
+  attacking: {fileID: 21300000, guid: e2ebeb725da03114397663e5e33a2934, type: 3}
+  dead: {fileID: 21300000, guid: f36015f80eeb2454aa8de6855271252c, type: 3}

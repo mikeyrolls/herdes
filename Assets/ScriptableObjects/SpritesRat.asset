@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
   m_Name: SpritesRat
   m_EditorClassIdentifier: 
-  idle: {fileID: -9082749752497556151, guid: 2f76401796193fe42b353b3903cc8a1b, type: 3}
-  dead: {fileID: 6415200724113406662, guid: 9f0546a9ad6883646b6896be1f27a399, type: 3}
+  idle: {fileID: 21300000, guid: 2f76401796193fe42b353b3903cc8a1b, type: 3}
+  damaged: {fileID: 21300000, guid: 494e332f044912443ba2498c617ba17d, type: 3}
+  attacking: {fileID: 21300000, guid: 1da16f7dc09e7234eb221ce74a2221ea, type: 3}
+  dead: {fileID: 21300000, guid: 9f0546a9ad6883646b6896be1f27a399, type: 3}

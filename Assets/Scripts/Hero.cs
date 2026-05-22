@@ -1,5 +1,5 @@
 /**
- * Hero game object and script object
+ * Hero logic/data class
  */
  
 using UnityEngine;
@@ -9,6 +9,8 @@ using System;
 using Random = UnityEngine.Random;
 
 public class Hero : Creature {
+
+    // hub scene object
 
     private int inventorySize = 6;
     [NonSerialized] public Item[] inventory;
@@ -76,19 +78,6 @@ public class Hero : Creature {
             currHP = maxHP;
         }
         UIManager.Instance.RefreshHUD();
-    }
-
-
-    public override IEnumerator DodgeAnimation() {
-        // yield return StartCoroutine(MoveSprite(Direction.Left));
-        // yield return StartCoroutine(MoveSprite(Direction.Right));
-        yield return null;
-    }
-
-    public override IEnumerator GetHurtAnimation() {
-        // yield return StartCoroutine(MoveSprite(Direction.Left));
-        // yield return StartCoroutine(MoveSprite(Direction.Right));
-        yield return null;
     }
 
 }

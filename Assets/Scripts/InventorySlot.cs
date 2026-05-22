@@ -1,3 +1,7 @@
+/**
+ * Single inventory slot UI element
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;

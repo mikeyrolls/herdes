@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
   m_Name: SpritesBat
   m_EditorClassIdentifier: 
-  idle: {fileID: 3309719141475895791, guid: e3274dc023797de46aeff9ee70a953a9, type: 3}
-  dead: {fileID: -8366411042981776909, guid: 719d817ddf9236948b4e645b16a16da6, type: 3}
+  idle: {fileID: 21300000, guid: e3274dc023797de46aeff9ee70a953a9, type: 3}
+  damaged: {fileID: 21300000, guid: 4cd1a1d659b8ea444ae7fb178fbd5492, type: 3}
+  attacking: {fileID: 21300000, guid: 6ced98ad359a3734e8872a003c7515bb, type: 3}
+  dead: {fileID: 21300000, guid: 719d817ddf9236948b4e645b16a16da6, type: 3}

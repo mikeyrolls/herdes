@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcff4d4017138ec48a7b97881eadfd3c, type: 3}
   m_Name: SpritesSpider
   m_EditorClassIdentifier: 
-  idle: {fileID: -2461971576596781131, guid: 4d9204365912b66419b8c8b1596caf29, type: 3}
-  dead: {fileID: -4028741829400089660, guid: d8a74ed8405a41d429ccc031b66af8db, type: 3}
+  idle: {fileID: 21300000, guid: 4d9204365912b66419b8c8b1596caf29, type: 3}
+  damaged: {fileID: 21300000, guid: 2e62ad9ff8af3bd43b29ed0ee48b54f9, type: 3}
+  attacking: {fileID: 21300000, guid: 2f5afab83285f8240adc98954cbece04, type: 3}
+  dead: {fileID: 21300000, guid: d8a74ed8405a41d429ccc031b66af8db, type: 3}
