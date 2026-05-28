@@ -22,10 +22,13 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Image stateIcon;
     [SerializeField] Sprite stateIconHp1;
     [SerializeField] Sprite stateIconHp2;
+    [SerializeField] Sprite stateIconHp3;
+    [SerializeField] Sprite stateIconHp4;
     [SerializeField] Slider hpSlider;
 
     [SerializeField] Texture2D defaultCursor;
     [SerializeField] Texture2D hoverEnemyCursor;
+    [SerializeField] Texture2D hoverGrabCursor;
 
     [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[6];
 
@@ -90,12 +93,17 @@ public class UIManager : MonoBehaviour {
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
         hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.maxHP.ToString();
 
+        int hpPerc = GameManager.Instance.hero.GetHpPerc();
+        hpSlider.value = hpPerc;
 
-        hpSlider.value = GameManager.Instance.hero.GetHpPerc();
-        if(GameManager.Instance.hero.GetHpPerc() > 50) {
+        if(hpPerc > 50) {
             stateIcon.sprite = stateIconHp1;
-        } else {
+        } else if (hpPerc > 25) {
             stateIcon.sprite = stateIconHp2;
+        } else if (hpPerc > 10) {
+            stateIcon.sprite = stateIconHp3;
+        } else {
+            stateIcon.sprite = stateIconHp4;
         }
 
         for(int i = 0; i < GameManager.Instance.hero.GetInvSize(); i++) {
@@ -105,5 +113,6 @@ public class UIManager : MonoBehaviour {
 
     public void CursorSetDefault() => Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
     public void CursorSetHoverEnemy() => Cursor.SetCursor(hoverEnemyCursor, Vector2.zero, CursorMode.Auto);
+    public void CursorSetHoverGrab() => Cursor.SetCursor(hoverGrabCursor, Vector2.zero, CursorMode.Auto);
 
 }

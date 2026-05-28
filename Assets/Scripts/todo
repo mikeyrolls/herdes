@@ -1,8 +1,16 @@
-fix colliders
+more pics
+
+use new doors, bg 
+
+make animation (spawn left/right? move bg and cat? idk man)
+
+setup hero hub object
+
+enemy fix drops
+
+------- maybe also:
 
 losing screen
-
-texture status, cursors, items, ...
 
 text to show dmg dealt
 
@@ -27,7 +35,7 @@ countering system for both hero and enemy, fishbone special?
 
 ---------------------------------------------------------------------
 
-balancing (sort enems from easiest to hardest, spawn according to roomname, add harder later)
+balancing if needed
 
 some sort of story u know what
 

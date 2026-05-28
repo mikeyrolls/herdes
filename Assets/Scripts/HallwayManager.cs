@@ -55,6 +55,7 @@ public class HallwayManager : MonoBehaviour {
 // -------------------------[ treasure ]-----------------------------------------------------
 
     void SpawnItem(ItemName itemName) {
+        if (itemName == ItemName.None) return;
         GameObject item = Instantiate(itemPrefab, new Vector3(Random.Range(-2f, 4f), Random.Range(-4f, 0), 0f), Quaternion.identity);
         item.GetComponent<ItemGO>().InitializeFromDB(itemName);
     }
@@ -69,7 +70,7 @@ public class HallwayManager : MonoBehaviour {
         do {
             int amount = Random.Range(1, 30);
             SpawnGold(amount);
-        } while (Helper.GetPerc() < 55);
+        } while (Helper.GetPerc() < 30);
     }
 
     void SpawnGold(int value) {
@@ -157,7 +158,7 @@ public class HallwayManager : MonoBehaviour {
     
 
     void EnemyDied() {
-        SpawnItem(enemy.dropItem);
+        SpawnItem(enemy.GetDrop());
         SpawnGold(enemy.GetGoldValue());
         AddInfoText("You won! Leave");
     }

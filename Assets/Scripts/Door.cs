@@ -58,4 +58,12 @@ public class Door : MonoBehaviour {
             SceneManager.LoadScene("Room_Between");
         }
     }
+
+    void OnMouseEnter() {
+        UIManager.Instance.CursorSetHoverGrab();
+    }
+
+    void OnMouseExit() {
+        UIManager.Instance.CursorSetDefault();
+    }
 }

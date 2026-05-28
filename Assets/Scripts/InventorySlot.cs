@@ -18,7 +18,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
    public void OnPointerEnter(PointerEventData eventData) {
-        if (!isEmpty()) UIManager.Instance.CursorSetHoverEnemy();
+        if (!isEmpty()) UIManager.Instance.CursorSetHoverGrab();
     }
 
     public void OnPointerExit(PointerEventData eventData) {
@@ -39,5 +39,4 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             itemImage.gameObject.SetActive(true);
         }
     }
-
 }

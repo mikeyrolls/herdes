@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemGO : MonoBehaviour {
     public Item data = new Item();
-    public ItemSpriteDatabase itemSpriteSet;
+    public ItemSpriteDB itemSpriteDB;
     private SpriteRenderer sr;
 
     void Awake() {
@@ -21,7 +21,7 @@ public class ItemGO : MonoBehaviour {
     }
 
     void OnMouseEnter() {
-        UIManager.Instance.CursorSetHoverEnemy();
+        UIManager.Instance.CursorSetHoverGrab();
     }
 
     void OnMouseExit() {
@@ -29,12 +29,12 @@ public class ItemGO : MonoBehaviour {
     }
 
     public void InitializeFromDB(ItemName itemName) {
-        data.InitializeFromDB(itemName, itemSpriteSet);
+        data.InitializeFromDB(itemName, itemSpriteDB);
         sr.sprite = data.itemSprite;
     }
 
     public void InitGold(int value) {
-        data.InitGold(value, itemSpriteSet);
+        data.InitGold(value, itemSpriteDB);
         sr.sprite = data.itemSprite;
     }
 

@@ -10,23 +10,10 @@ using Random = UnityEngine.Random;
 
 public class Enemy : Creature {
 
-    //public EnemyGO sceneObject;
-
     private EnemyType enemyType;
 	
 	public ItemName dropItem;
 	int dropRate;
-
-    //???
-
-    // public void InitEnemy() {
-    //     setEnemyType();
-    //     InitializeFromDB(enemyType);
-    //     sr.sprite = enemySpriteSet.idle;
-    //     sr.sortingOrder = 10;
-    //     mat = GetComponent<SpriteRenderer>().material;
-    //     Debug.Log("sprite and mat for enemy set");
-    // }
 
     public void InitEnemy(EnemyType enemyType) {
         this.enemyType = enemyType;
@@ -63,6 +50,13 @@ public class Enemy : Creature {
     protected override void TakeDmg(int rawDmg) {
         base.TakeDmg(rawDmg);
         ((EnemyGO)sceneObject).SetHpBar(GetHpPerc());
+    }
+
+    public ItemName GetDrop() {
+        if (dropRate > Helper.GetPerc()) {
+            return dropItem;
+        }
+        return ItemName.None;
     }
 
 }

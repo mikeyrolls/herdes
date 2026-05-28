@@ -62,11 +62,12 @@ public static class ItemDB {
         [ItemName.GoldBag] =                ("gold bag",                    0,      15,     ItemType.Gold),
         [ItemName.GoldPile] =               ("gold pile",                   0,      25,     ItemType.Gold),
 
-        [ItemName.Carrot] =                 ("carrot",                      10,      5,     ItemType.Heal),
-        [ItemName.Drumstick] =              ("drumstick",                   20,      10,     ItemType.Heal),
-        [ItemName.HealingPotion] =          ("healing potion",              35,      15,     ItemType.Heal),
-        [ItemName.LargeHealingPotion] =     ("large healing potion",        50,      20,     ItemType.Heal),
-        //[ItemName.HealingGland] =           ("healing gland",               100,     50,     ItemType.Heal),
+        //                                                                          heals for
+        [ItemName.Carrot] =                 ("carrot",                      10,     5,     ItemType.Heal),
+        [ItemName.Drumstick] =              ("drumstick",                   20,     10,     ItemType.Heal),
+        [ItemName.HealingPotion] =          ("healing potion",              35,     15,     ItemType.Heal),
+        [ItemName.LargeHealingPotion] =     ("large healing potion",        50,     20,     ItemType.Heal),
+        [ItemName.HealingGland] =           ("healing gland",               100,    100,     ItemType.Heal),
 
     };
 }
@@ -107,9 +108,9 @@ public static class EnemyDB {
         // name                     hp      dmg     dodg    acc     gold    drop + rate
         [EnemyType.Slime] =         (20,    2, 5,   15,     70,     5,      ItemName.HealingPotion, 70),
         // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,     15,     ItemName.None, 0),
-        [EnemyType.Bat] =           (15,    1, 10,  40,     90,     15,     ItemName.None, 35),
+        [EnemyType.Bat] =           (15,    1, 10,  40,     90,     15,     ItemName.Carrot, 25),
         [EnemyType.Bandit] =        (35,    10, 12, 10,     70,     50,     ItemName.None, 0),    //weapon sharpen
-        [EnemyType.Spider] =        (20,    10, 15, 40,     90,     100,    ItemName.None, 0),     //big healing potion
+        [EnemyType.Spider] =        (20,    10, 15, 40,     90,     100,    ItemName.HealingGland, 100),     //big healing potion
         // [EnemyType.Undead] =        (25,    1, 5,   10,     60,     5,      ItemName.None,        0),
         // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,     10,     ItemName.None,        0),
         [EnemyType.Snail] =         (40,    1, 2,   0,      100,    10,     ItemName.None,        0),  //armor/armor potion

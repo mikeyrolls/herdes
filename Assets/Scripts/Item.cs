@@ -13,23 +13,26 @@ public class Item {
     public Sprite itemSprite;
     ItemName itemName;
 
-    public void InitializeFromDB(ItemName itemName, ItemSpriteDatabase spriteSet) {
+    public void InitializeFromDB(ItemName itemName, ItemSpriteDB itemSpriteDB) {
         if (ItemDB.items.TryGetValue(itemName, out var itemData)) {
             this.itemName = itemName;
             nameStr = itemData.displayName;
             value = itemData.value;
             price = itemData.price;
             itemType = itemData.itemType;
-            itemSprite = spriteSet.GetSprite(itemName);
+            itemSprite = itemSpriteDB.Get(itemName);
+            if (itemSprite == null) {
+                Debug.LogError($"Item Sprite '{itemName}' not found in database!");
+            }
         } else {
             Debug.LogError($"Item '{itemName}' not found in database!");
         }
     }
 
-    public void InitGold(int goldValue, ItemSpriteDatabase spriteSet) {
-        if (goldValue < 10) InitializeFromDB(ItemName.GoldCoin, spriteSet);
-        else if (goldValue > 20) InitializeFromDB(ItemName.GoldPile, spriteSet);
-        else InitializeFromDB(ItemName.GoldBag, spriteSet);
+    public void InitGold(int goldValue, ItemSpriteDB itemSpriteDB) {
+        if (goldValue < 10) InitializeFromDB(ItemName.GoldCoin, itemSpriteDB);
+        else if (goldValue > 20) InitializeFromDB(ItemName.GoldPile, itemSpriteDB);
+        else InitializeFromDB(ItemName.GoldBag, itemSpriteDB);
         value = goldValue;
     }
 
