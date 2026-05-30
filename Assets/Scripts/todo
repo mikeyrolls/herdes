@@ -1,5 +1,19 @@
 enemy set sprite when dead, normal cursor when enemy attacking?
 
+
+proper item randomization
+
+fix item and enemy spawn positions
+
+remove the need for refresh uid etc.
+
+better item usage/drag/whatever
+
+armor inventory slots
+
+
+fix inventory clicking too
+
 more pics
 
 use new doors, bg 

@@ -14,7 +14,7 @@ public class ItemGO : MonoBehaviour {
     }
 
     void OnMouseDown() {
-        if(GameManager.Instance.addToInventory(data)) {
+        if(GameManager.Instance.hero.addToInventory(data)) {
             Destroy(gameObject);
             CursorManager.Instance.RemoveRequest(this);
         }

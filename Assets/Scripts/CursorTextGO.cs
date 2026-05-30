@@ -3,11 +3,12 @@
  */
 
 using UnityEngine;
+using TMPro;
 
 public class CursorTextGO : MonoBehaviour {
     public static CursorTextGO Instance { get; private set; }
     [SerializeField] private GameObject panel;
-    [SerializeField] private TMPro.TextMeshProUGUI label;
+    [SerializeField] private TextMeshProUGUI label;
     // offset so text appears below/beside cursor
     private Vector2 newPos = new(0 , 0);
 
@@ -35,7 +36,7 @@ public class CursorTextGO : MonoBehaviour {
     }
 
     public void Show(string text) {
-        Debug.Log("here");
+        limitX = Screen.width - 100;
         if (string.IsNullOrEmpty(text)) { 
             Hide(); 
             return; 

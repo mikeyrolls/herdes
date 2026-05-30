@@ -11,7 +11,8 @@ public class Item {
     public int value;
     public ItemType itemType;
     public Sprite itemSprite;
-    ItemName itemName;
+    public ItemName itemName;
+    public string description;
 
     public void InitializeFromDB(ItemName itemName, ItemSpriteDB itemSpriteDB) {
         if (ItemDB.items.TryGetValue(itemName, out var itemData)) {

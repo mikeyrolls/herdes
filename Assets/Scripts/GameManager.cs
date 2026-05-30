@@ -54,27 +54,10 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.RefreshHUD();
     }
 
-    public bool addToInventory(Item item) {
-        if (item.itemType == ItemType.Gold) {
-            hero.updateMoney(item.value);
-        } else {
-            int firstEmpty = hero.GetEmptyInvSlot();
-            if (firstEmpty < hero.GetInvSize()) {
-                hero.inventory[firstEmpty] = item;
-                Debug.Log("added " + item.nameStr + " on inv space " + firstEmpty); 
-            } else {
-                return false;
-            }
-        }
-        UIManager.Instance.RefreshHUD();
-        return true;
-    }
+
 
     public void UseFromInventory(int index) {
-        if (index >= hero.GetInvSize()) {
-            Debug.LogError("Out of bounds");
-            return;
-        }
+        
         if (hero.inventory[index] == null) return;
 
         hero.inventory[index].UseItem();

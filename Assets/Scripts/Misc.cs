@@ -57,18 +57,18 @@ public enum ItemName {
 public enum ItemType{Gold, Heal, Buff, Upgrade, Story, Other}
 
 public static class ItemDB {
-    public static Dictionary<ItemName, ( string displayName,  int price, int value, ItemType itemType)> items = new() {
+    public static Dictionary<ItemName, ( string displayName,  int price, int value, ItemType itemType, string description)> items = new() {
         //name                              name                            price   value
-        [ItemName.GoldCoin] =               ("gold coin",                   0,      5,     ItemType.Gold),
-        [ItemName.GoldBag] =                ("gold bag",                    0,      15,     ItemType.Gold),
-        [ItemName.GoldPile] =               ("gold pile",                   0,      25,     ItemType.Gold),
+        [ItemName.GoldCoin] =               ("gold coin",                   0,      5,     ItemType.Gold,   ""),
+        [ItemName.GoldBag] =                ("gold bag",                    0,      15,     ItemType.Gold,  ""),
+        [ItemName.GoldPile] =               ("gold pile",                   0,      25,     ItemType.Gold,  ""),
 
         //                                                                          heals for
-        [ItemName.Carrot] =                 ("carrot",                      10,     5,     ItemType.Heal),
-        [ItemName.Drumstick] =              ("drumstick",                   20,     10,     ItemType.Heal),
-        [ItemName.HealingPotion] =          ("healing potion",              35,     15,     ItemType.Heal),
-        [ItemName.LargeHealingPotion] =     ("large healing potion",        50,     20,     ItemType.Heal),
-        [ItemName.HealingGland] =           ("healing gland",               100,    100,     ItemType.Heal),
+        [ItemName.Carrot] =                 ("carrot",                      10,     5,     ItemType.Heal,   "A small carrot. Heals for 5 HP."),
+        [ItemName.Drumstick] =              ("drumstick",                   20,     10,     ItemType.Heal,  "A juicy drumstick. Heals for 10 HP."),
+        [ItemName.HealingPotion] =          ("healing potion",              35,     15,     ItemType.Heal,  "An average looking healing potion. Heals for 15 HP."),
+        [ItemName.LargeHealingPotion] =     ("large healing potion",        50,     20,     ItemType.Heal,  "An extra large healing potion. Heals for 12 HP."),
+        [ItemName.HealingGland] =           ("healing gland",               100,    100,     ItemType.Heal, "A squishy spider gland. A heal for the bravest."),
 
     };
 }

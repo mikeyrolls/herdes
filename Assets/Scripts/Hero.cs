@@ -37,7 +37,7 @@ public class Hero : Creature {
         }
     }
 
-    public bool updateMoney(int amount) {
+    private bool updateMoney(int amount) {
         if (gold + amount < 0) {
             return false;
         } else {
@@ -51,14 +51,13 @@ public class Hero : Creature {
         return inventorySize;
     }
 
-    public int GetEmptyInvSlot() {
+    private int GetEmptyInvSlot() {
         int i = 0;
         for(; i < GetInvSize(); i++) {
             if (inventory[i] == null) break;
         }
         Debug.Log("empty slot on " + i);
         return i;
-        
     }
 
     public void InvStateDebug() {
@@ -78,6 +77,33 @@ public class Hero : Creature {
             currHP = maxHP;
         }
         UIManager.Instance.RefreshHUD();
+    }
+
+    public bool addToInventory(Item item) {
+        if (item.itemType == ItemType.Gold) {
+            updateMoney(item.value);
+        } else {
+            int firstEmpty = GetEmptyInvSlot();
+            if (firstEmpty < GetInvSize()) {
+                inventory[firstEmpty] = item;
+                Debug.Log("added " + item.nameStr + " on inv space " + firstEmpty); 
+            } else {
+                return false;
+            }
+        }
+        UIManager.Instance.RefreshHUD();
+        return true;
+    }
+
+    public bool buy(Item item) {
+        if(item.price > gold) return false;
+
+        if(addToInventory(item)) {
+            gold -= item.price;
+            return true;
+        }
+
+        return false;
     }
 
 }
