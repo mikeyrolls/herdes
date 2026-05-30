@@ -11,7 +11,7 @@ public class CursorManager : MonoBehaviour {
 
     private Dictionary<object, (CursorType type, int priority, string TooltipText)> requests = new();
 
-    private Vector3 hotspot = new Vector3(10, 10, 1);
+    private Vector3 hotspot = new Vector3(20, 20, 1);
 
     void Awake() {
         Instance = this;
