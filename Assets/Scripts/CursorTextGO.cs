@@ -1,3 +1,7 @@
+/**
+ * Cursor text visibility and movement
+ */
+
 using UnityEngine;
 
 public class CursorTextGO : MonoBehaviour {

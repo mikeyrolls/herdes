@@ -1,3 +1,7 @@
+/**
+ * Hover script for buttons
+ */
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 

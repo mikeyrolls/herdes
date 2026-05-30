@@ -1,3 +1,7 @@
+/**
+ * Cursor switching
+ */
+
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
