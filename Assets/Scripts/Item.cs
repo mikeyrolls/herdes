@@ -21,6 +21,7 @@ public class Item {
             value = itemData.value;
             price = itemData.price;
             itemType = itemData.itemType;
+            description = itemData.description;
             itemSprite = itemSpriteDB.Get(itemName);
             if (itemSprite == null) {
                 Debug.LogError($"Item Sprite '{itemName}' not found in database!");

@@ -61,7 +61,9 @@ public class HallwayManager : MonoBehaviour {
     }
 
     void HandleTreasureRoom() {
-        SpawnItem(ItemName.Carrot);
+        do {
+            SpawnItem(ItemDB.GetRandom(GameManager.Instance.roomCount));
+        } while (Helper.GetPerc() < 10);
     }
 
 // -------------------------[ fakewall ]-----------------------------------------------------

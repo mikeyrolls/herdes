@@ -17,7 +17,8 @@ public class ShopManager : MonoBehaviour {
         hero = GameManager.Instance.hero;
 
         foreach (var slot in shopSlots)
-            slot.Init(ItemName.Drumstick);
+            slot.Init(ItemDB.GetRandomForShop(GameManager.Instance.roomCount));
+            
         
         DisableExpensive();
     }

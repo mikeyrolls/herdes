@@ -1,7 +1,6 @@
+more item types 
+
 enemy set sprite when dead, normal cursor when enemy attacking?
-
-
-proper item randomization
 
 fix item and enemy spawn positions
 
@@ -30,13 +29,7 @@ losing screen
 
 text to show dmg dealt
 
-
-
-
 inventory hover?
-
-treasure setup
-
 
 
 going back hurts
@@ -44,8 +37,6 @@ going back hurts
 add def to enemy
 
 set visual layers properly bruh wtf
-
-setup shop
 
 countering system for both hero and enemy, fishbone special?
 

@@ -6,6 +6,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
+using System.Linq;
 
 
 // -----------[ helpers ]-----------
@@ -56,22 +57,60 @@ public enum ItemName {
 
 public enum ItemType{Gold, Heal, Buff, Upgrade, Story, Other}
 
+public enum ItemRarity { Common, Uncommon, Rare, Special }
+
 public static class ItemDB {
-    public static Dictionary<ItemName, ( string displayName,  int price, int value, ItemType itemType, string description)> items = new() {
+    public static Dictionary<ItemName, ( string displayName,  int price, int value, ItemType itemType, ItemRarity rarity, string description)> items = new() {
         //name                              name                            price   value
-        [ItemName.GoldCoin] =               ("gold coin",                   0,      5,     ItemType.Gold,   ""),
-        [ItemName.GoldBag] =                ("gold bag",                    0,      15,     ItemType.Gold,  ""),
-        [ItemName.GoldPile] =               ("gold pile",                   0,      25,     ItemType.Gold,  ""),
+        [ItemName.GoldCoin] =               ("Gold coin",                   0,      5,     ItemType.Gold, ItemRarity.Common,   ""),
+        [ItemName.GoldBag] =                ("Gold bag",                    0,      15,     ItemType.Gold, ItemRarity.Uncommon,  ""),
+        [ItemName.GoldPile] =               ("Gold pile",                   0,      25,     ItemType.Gold, ItemRarity.Uncommon,  ""),
 
         //                                                                          heals for
-        [ItemName.Carrot] =                 ("carrot",                      10,     5,     ItemType.Heal,   "A small carrot. Heals for 5 HP."),
-        [ItemName.Drumstick] =              ("drumstick",                   20,     10,     ItemType.Heal,  "A juicy drumstick. Heals for 10 HP."),
-        [ItemName.HealingPotion] =          ("healing potion",              35,     15,     ItemType.Heal,  "An average looking healing potion. Heals for 15 HP."),
-        [ItemName.LargeHealingPotion] =     ("large healing potion",        50,     20,     ItemType.Heal,  "An extra large healing potion. Heals for 12 HP."),
-        [ItemName.HealingGland] =           ("healing gland",               100,    100,     ItemType.Heal, "A squishy spider gland. A heal for the bravest."),
+        [ItemName.Carrot] =                 ("Carrot",                      10,     5,     ItemType.Heal, ItemRarity.Common,   "A small carrot. Heals for 5 HP."),
+        [ItemName.Drumstick] =              ("Drumstick",                   20,     10,     ItemType.Heal, ItemRarity.Common,  "A juicy drumstick. Heals for 10 HP."),
+        [ItemName.HealingPotion] =          ("Healing potion",              35,     15,     ItemType.Heal, ItemRarity.Uncommon,  "An average looking healing potion. Heals for 15 HP."),
+        [ItemName.LargeHealingPotion] =     ("Large healing potion",        50,     20,     ItemType.Heal, ItemRarity.Uncommon,  "An extra large healing potion. Heals for 12 HP."),
+        [ItemName.HealingGland] =           ("Healing gland",               100,    100,     ItemType.Heal, ItemRarity.Rare, "A squishy spider gland. A heal for the bravest."),
 
     };
+
+    public static List<ItemName> GetPool(ItemRarity rarity) {
+        return items.Where(kvp => kvp.Value.rarity == rarity).Select(kvp => kvp.Key).ToList();
+    }
+
+    public static List<ItemName> GetShopPool(ItemRarity rarity) {
+        return items.Where(kvp => kvp.Value.rarity == rarity && kvp.Value.itemType != ItemType.Gold).Select(kvp => kvp.Key).ToList();
+    }
+
+    public static ItemName GetRandom(int roomNumber) {
+        ItemRarity rarity = GetRarity(roomNumber);
+        var pool = GetPool(rarity);
+        return pool[Random.Range(0, pool.Count)];
+    }
+
+    public static ItemName GetRandomForShop(int roomNumber) {
+        ItemRarity rarity = GetRarity(roomNumber);
+        var pool = GetShopPool(rarity);
+        return pool[Random.Range(0, pool.Count)];
+    }
+
+    public static ItemRarity GetRarity(int roomNumber) {
+        float perc = Helper.GetPerc();
+        float mult = (float)(1 / (1 + 0.02 * roomNumber) + 0.25);
+        perc *= mult;
+
+        if (perc < 15) { //rare items 10%
+            return ItemRarity.Rare;
+        } else if (perc < 45) { //uncommon items 35%
+            return ItemRarity.Uncommon;
+        } else { //common items 55% 
+            return ItemRarity.Common;
+        } 
+    }
 }
+
+
 
 
 // -----------[ hero ]-----------
