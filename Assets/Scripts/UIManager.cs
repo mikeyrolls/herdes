@@ -36,7 +36,6 @@ public class UIManager : MonoBehaviour {
     void Start() {
         SceneManager.LoadScene("Room_Between");
 
-        CursorSetDefault();
         hpSlider.minValue = 0f;
         hpSlider.maxValue = 100f;
 
@@ -111,8 +110,8 @@ public class UIManager : MonoBehaviour {
         }
     }
 
-    public void CursorSetDefault() => Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
-    public void CursorSetHoverEnemy() => Cursor.SetCursor(hoverEnemyCursor, Vector2.zero, CursorMode.Auto);
-    public void CursorSetHoverGrab() => Cursor.SetCursor(hoverGrabCursor, Vector2.zero, CursorMode.Auto);
+    // public void CursorSetDefault() => Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
+    // public void CursorSetHoverEnemy() => Cursor.SetCursor(hoverEnemyCursor, Vector2.zero, CursorMode.Auto);
+    // public void CursorSetHoverGrab() => Cursor.SetCursor(hoverGrabCursor, Vector2.zero, CursorMode.Auto);
 
 }

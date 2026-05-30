@@ -14,14 +14,15 @@ public enum Direction{Left, Middle, Right, Back}
 
 public enum SpriteColor{Normal, Red}
 
-public static class Helper {
+public enum CursorType {Normal, Attack, Grab}
 
-    public static int roomAmount;
+public enum Prio {Base, Background, World, UI, Overlay}
+
+public static class Helper {
 
     public static int GetPerc() {
         return Random.Range(0, 100);
     }
-
 }
 
 
@@ -154,3 +155,5 @@ public static class EnemyDB {
 public enum AnimationType {   
     Attack, Dodge, GetHurt, Death
 }
+
+

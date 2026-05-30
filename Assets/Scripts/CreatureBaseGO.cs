@@ -123,7 +123,9 @@ public class CreatureGO : MonoBehaviour {
         onDeath?.Invoke();
         GetComponent<Collider2D>().enabled = false;
         SetDeadSprite();
-        UIManager.Instance.CursorSetDefault();
+
+        //UIManager.Instance.CursorSetDefault();
+
         yield return StartCoroutine(FadeSprite(0f));
         // yield return new WaitForSeconds(2f);
         // Destroy(gameObject);

@@ -32,12 +32,14 @@ public class Door : MonoBehaviour {
                     GameManager.Instance.currentRoomType = type;
                     Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
+                    CursorManager.Instance.RemoveRequest(this);
                     SceneManager.LoadScene("Room_Shop");
                     break;
                 default:    //empty, treasure, fight 
                     GameManager.Instance.currentRoomType = type;
                     Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
+                    CursorManager.Instance.RemoveRequest(this);
                     SceneManager.LoadScene("Room_Hallway");
                     break;
             }
@@ -55,15 +57,16 @@ public class Door : MonoBehaviour {
         // leaving room
         } else if (!GameManager.Instance.combat) {
             GameManager.Instance.currentRoomType = RoomType.None;
+            CursorManager.Instance.RemoveRequest(this);
             SceneManager.LoadScene("Room_Between");
         }
     }
 
     void OnMouseEnter() {
-        UIManager.Instance.CursorSetHoverGrab();
+        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.Background, "enter door");
     }
 
     void OnMouseExit() {
-        UIManager.Instance.CursorSetDefault();
+        CursorManager.Instance.RemoveRequest(this);
     }
 }

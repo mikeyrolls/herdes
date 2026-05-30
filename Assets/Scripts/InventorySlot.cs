@@ -18,11 +18,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
    public void OnPointerEnter(PointerEventData eventData) {
-        if (!isEmpty()) UIManager.Instance.CursorSetHoverGrab();
+        if (!isEmpty()) {
+            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "use");
+        } else {
+            CursorManager.Instance.AddRequest(this, CursorType.Normal, Prio.UI, "empty");
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
-        UIManager.Instance.CursorSetDefault();
+        CursorManager.Instance.RemoveRequest(this);
     }
 
     public void OnPointerClick(PointerEventData eventData) {

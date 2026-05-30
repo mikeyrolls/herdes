@@ -24,11 +24,15 @@ public class EnemyGO : CreatureGO {
     }
 
     void OnMouseEnter() {
-        UIManager.Instance.CursorSetHoverEnemy();
+        CursorManager.Instance.AddRequest(this, CursorType.Attack, Prio.World, "attack");
     }
 
     void OnMouseExit() {
-        UIManager.Instance.CursorSetDefault();
+        CursorManager.Instance.RemoveRequest(this);
+    }
+
+    void OnDeath() {
+        CursorManager.Instance.RemoveRequest(this);
     }
 
     public void SetHpBar(float percent) {

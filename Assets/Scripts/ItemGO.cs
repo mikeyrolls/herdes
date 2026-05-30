@@ -16,16 +16,16 @@ public class ItemGO : MonoBehaviour {
     void OnMouseDown() {
         if(GameManager.Instance.addToInventory(data)) {
             Destroy(gameObject);
-            UIManager.Instance.CursorSetDefault();
+            CursorManager.Instance.RemoveRequest(this);
         }
     }
 
     void OnMouseEnter() {
-        UIManager.Instance.CursorSetHoverGrab();
+        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.World, "take");
     }
 
     void OnMouseExit() {
-        UIManager.Instance.CursorSetDefault();
+        CursorManager.Instance.RemoveRequest(this);
     }
 
     public void InitializeFromDB(ItemName itemName) {
