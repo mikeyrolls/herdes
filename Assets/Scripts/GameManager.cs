@@ -54,15 +54,4 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.RefreshHUD();
     }
 
-
-
-    public void UseFromInventory(int index) {
-        
-        if (hero.inventory[index] == null) return;
-
-        hero.inventory[index].UseItem();
-        hero.inventory[index] = null;
-        UIManager.Instance.RefreshHUD();
-    }
-
 }

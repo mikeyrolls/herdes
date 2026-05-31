@@ -34,7 +34,7 @@ public class ShopManager : MonoBehaviour {
     }
 
     private void HandlePurchase(ShopSlot slot) {
-        if(hero.buy(slot.item)) {
+        if(hero.inventory.Buy(slot.item)) {
             slot.SetSoldOut();
             DisableExpensive();
         }
@@ -43,7 +43,7 @@ public class ShopManager : MonoBehaviour {
 
     private void DisableExpensive() {
         foreach (var slot in shopSlots)
-            slot.DisableExpensive(hero.gold);
+            slot.DisableExpensive(hero.inventory.GetGold());
     }
 
 

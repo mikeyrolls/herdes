@@ -55,7 +55,9 @@ public enum ItemName {
     None,
 }
 
-public enum ItemType{Gold, Heal, Buff, Upgrade, Story, Other}
+public enum ItemType{Gold, Heal, Ring,
+                    //Buff, Upgrade, Story, Other
+                    }
 
 public enum ItemRarity { Common, Uncommon, Rare, Special }
 

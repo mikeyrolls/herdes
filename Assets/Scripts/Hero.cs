@@ -12,8 +12,7 @@ public class Hero : Creature {
 
     // hub scene object
 
-    private int inventorySize = 6;
-    [NonSerialized] public Item[] inventory;
+    public Inventory inventory = new Inventory();
 
     public void InitializeFromDB(HeroType heroType) {
         if (HeroDB.heroes.TryGetValue(heroType, out var heroData)) {
@@ -26,49 +25,12 @@ public class Hero : Creature {
             dodge = heroData.dodge;
             acc = heroData.acc;
 
-            gold = 0;
             def = 0;
-
-            inventory = new Item[6];
             
             Debug.Log($"Spawned {nameStr} with {currHP}/{maxHP} HP");
         } else {
             Debug.LogError($"Hero '{heroType}' not found in database!");
         }
-    }
-
-    private bool updateMoney(int amount) {
-        if (gold + amount < 0) {
-            return false;
-        } else {
-            gold += amount;
-            return true;
-        }
-
-    }
-
-    public int GetInvSize() {
-        return inventorySize;
-    }
-
-    private int GetEmptyInvSlot() {
-        int i = 0;
-        for(; i < GetInvSize(); i++) {
-            if (inventory[i] == null) break;
-        }
-        Debug.Log("empty slot on " + i);
-        return i;
-    }
-
-    public void InvStateDebug() {
-        string log = "";
-        int i = 0;
-        for(; i < GetInvSize(); i++) {
-            log += "[" + i + ": ";
-            if (inventory[i] != null) log += inventory[i].nameStr;
-            log += "] ";
-        }
-        Debug.Log(log);
     }
 
     public void Heal(int amount) {
@@ -77,33 +39,6 @@ public class Hero : Creature {
             currHP = maxHP;
         }
         UIManager.Instance.RefreshHUD();
-    }
-
-    public bool addToInventory(Item item) {
-        if (item.itemType == ItemType.Gold) {
-            updateMoney(item.value);
-        } else {
-            int firstEmpty = GetEmptyInvSlot();
-            if (firstEmpty < GetInvSize()) {
-                inventory[firstEmpty] = item;
-                Debug.Log("added " + item.nameStr + " on inv space " + firstEmpty); 
-            } else {
-                return false;
-            }
-        }
-        UIManager.Instance.RefreshHUD();
-        return true;
-    }
-
-    public bool buy(Item item) {
-        if(item.price > gold) return false;
-
-        if(addToInventory(item)) {
-            gold -= item.price;
-            return true;
-        }
-
-        return false;
     }
 
 }

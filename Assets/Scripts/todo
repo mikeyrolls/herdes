@@ -1,17 +1,26 @@
+finish inventory (use ring properly, attached texture when dragging, drop, drag to kitty)
+
+on ground:
+    click to add to inventory
+    click and hold to carry
+
+from inventory:
+    click to highlight what to do? maybe? skip for now
+    click and hold to carry
+    double click to use
+
+when holding:
+    release to drop
+
+fix hero sliding
+
 more item types 
 
 enemy set sprite when dead, normal cursor when enemy attacking?
 
 fix item and enemy spawn positions
 
-remove the need for refresh uid etc.
-
 better item usage/drag/whatever
-
-armor inventory slots
-
-
-fix inventory clicking too
 
 more pics
 

@@ -17,7 +17,6 @@ public class Creature {
     public String nameStr;
 	public int maxHP;
     public int currHP;
-    public int gold;
 
 	protected int minDMG;
 	protected int maxDMG;
@@ -83,14 +82,8 @@ public class Creature {
         return Helper.GetPerc() <= dodge;
     }
 
-
-
     public int GetHpPerc() {
         return 100 * currHP / maxHP;
-    }
-
-    public int GetGoldValue() {
-        return gold;
     }
 
 }

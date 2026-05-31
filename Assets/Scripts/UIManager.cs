@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Texture2D hoverEnemyCursor;
     [SerializeField] Texture2D hoverGrabCursor;
 
-    [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[6];
+    [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[9];
 
 
     void Start() {
@@ -39,8 +39,8 @@ public class UIManager : MonoBehaviour {
         hpSlider.minValue = 0f;
         hpSlider.maxValue = 100f;
 
-        for(int i = 0; i < GameManager.Instance.hero.GetInvSize(); i++) {
-            inventorySlots[i].slotIndex = i;
+        for(int i = 0; i < 9; i++) {
+            inventorySlots[i].Init(GameManager.Instance.hero.inventory, i);
         }
 
     }
@@ -86,9 +86,9 @@ public class UIManager : MonoBehaviour {
 
     public void RefreshHUD() {
 
-        GameManager.Instance.hero.InvStateDebug();
+        GameManager.Instance.hero.inventory.InvStateDebug();
 
-        moneyText.text = GameManager.Instance.hero.gold.ToString() + " gold";
+        moneyText.text = GameManager.Instance.hero.inventory.GetGold().ToString() + " gold";
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
         hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.maxHP.ToString();
 
@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour {
             stateIcon.sprite = stateIconHp4;
         }
 
-        for(int i = 0; i < GameManager.Instance.hero.GetInvSize(); i++) {
+        for(int i = 0; i < 9; i++) {
             inventorySlots[i].UpdateSprite();
         }
     }

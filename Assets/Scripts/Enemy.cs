@@ -14,6 +14,7 @@ public class Enemy : Creature {
 	
 	public ItemName dropItem;
 	int dropRate;
+    public int gold;
 
     public void InitEnemy(EnemyType enemyType) {
         this.enemyType = enemyType;
@@ -57,6 +58,10 @@ public class Enemy : Creature {
             return dropItem;
         }
         return ItemName.None;
+    }
+
+    public int GetGoldValue() {
+        return gold;
     }
 
 }
