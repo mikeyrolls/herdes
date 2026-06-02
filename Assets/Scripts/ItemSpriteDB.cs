@@ -24,6 +24,10 @@ public class ItemSpriteDB : ScriptableObject {
     public Sprite attackRing;
     public Sprite dodgeRing;
 
+
+    public Sprite poison;
+    public Sprite continuousHeal;
+
     private Dictionary<ItemName, Sprite> itemSpritesDict;
 
     public Dictionary<ItemName, Sprite> ItemSpritesDict {
@@ -51,6 +55,10 @@ public class ItemSpriteDB : ScriptableObject {
 
             [ItemName.AttackRing] = attackRing,
             [ItemName.DodgeRing] = dodgeRing,
+
+
+            [ItemName.Poison] = poison,
+            [ItemName.ContinuousHeal] = continuousHeal,
         };
     }
 

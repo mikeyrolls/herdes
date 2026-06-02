@@ -12,6 +12,7 @@ public class Hero : Creature {
 
 
     public Inventory inventory = new Inventory();
+    public EffectList effectList = new EffectList();
 
     public void InitializeFromDB(HeroType heroType) {
         if (HeroDB.heroes.TryGetValue(heroType, out var heroData)) {
@@ -34,22 +35,16 @@ public class Hero : Creature {
         }
     }
 
-    public void Heal(int amount) {
-        currHP += amount;
-        if (currHP > maxHP) {
-            currHP = maxHP;
-        }
-        UIManager.Instance.RefreshHUD();
-    }
-
     public void RecalculateStats() {
+        Debug.Log("recalculating, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
         ResetToBaseStats();
-        Debug.Log("recalculating");
+        
         inventory.UseEffectOnly(7);
-        Debug.Log("counted ring 1");
         inventory.UseEffectOnly(8);
-        Debug.Log("counted ring2");
-        //active buffs/debuffs?
+        effectList.CalculateEffects();
+        Debug.Log("recalculating pre scale, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
+        if (currHP > currMaxHP) currHP = currMaxHP;
+        Debug.Log("recalculating done, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
     }
 
 }

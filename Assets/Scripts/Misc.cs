@@ -59,12 +59,14 @@ public enum ItemName {
     Carrot, Drumstick, HealingPotion, LargeHealingPotion, HealingGland,   //heals
     HealthUpgrade, DmgUpgrade,      // upgrades
     AttackRing, DodgeRing,
+
+    Poison, ContinuousHeal,
     //DodgePotion, None   //other
     None,
 }
 
-public enum ItemType{Gold, Heal, Ring, Upgrade,
-                    //Buff, Story, Other
+public enum ItemType{Gold, Heal, Ring, Upgrade, Buff,
+                    //Story, Other
                     }
 
 public enum ItemRarity { Common, Uncommon, Rare, Special }
@@ -91,6 +93,9 @@ public static class ItemDB {
         //                                                                          increase stat for
         [ItemName.AttackRing] =             ("Ring of attack",              10,     50,     ItemType.Ring, ItemRarity.Common,   "Hydrogen bomb."),
         [ItemName.DodgeRing] =              ("Ring of dodge",               20,     100,     ItemType.Ring, ItemRarity.Common,  "Don't get hit ever."),
+
+        [ItemName.Poison] =                 ("Poison",                      20,     0,     ItemType.Buff, ItemRarity.Common,  "Get poisoned."),
+        [ItemName.ContinuousHeal] =         ("Continuous heal",             20,     0,     ItemType.Buff, ItemRarity.Common,  "Get healed slowly."),
 
     };
 
@@ -151,7 +156,7 @@ public static class HeroDB {
 }
 
 public enum StatType {
-    MaxHP, DMG, Dodge, Acc, Def, 
+    MaxHP, DMG, Dodge, Acc, Def, CurrHP
 }
 
 
@@ -219,3 +224,34 @@ public enum AnimationType {
 }
 
 
+// -----------[ effects ]-----------
+
+public enum EffectName {
+    HpInc, AtkInc, AccInc, DodgeInc, DefInc,
+    HpDec, AtkDec, AccDec, DodgeDec, DefDec,
+    Heal, Poison, PoisonBig,
+}
+
+public static class EffectDB {
+
+    public static Dictionary<EffectName, ( int duration, bool isDebuff, StatType stat, int value)> effects = new() {
+        // name                     duration    is debuff   stat                value
+        [EffectName.HpInc] =        (10,        false,      StatType.MaxHP,    5),
+        [EffectName.AtkInc] =       (10,        false,      StatType.DMG,    1),
+        [EffectName.AccInc] =       (10,        false,      StatType.Acc,    10),
+        [EffectName.DodgeInc] =     (10,        false,      StatType.Dodge,    10),
+        [EffectName.DefInc] =       (10,        false,      StatType.Def,    10),
+
+        [EffectName.HpDec] =        (5,        true,      StatType.MaxHP,    5),
+        [EffectName.AtkDec] =       (5,        true,      StatType.DMG,    1),
+        [EffectName.AccDec] =       (5,        true,      StatType.Acc,    10),
+        [EffectName.DodgeDec] =     (5,        true,      StatType.Dodge,    10),
+        [EffectName.DefDec] =       (5,        true,      StatType.Def,    10),
+
+        [EffectName.Heal] =         (5,        false,      StatType.CurrHP,    4),
+        [EffectName.Poison] =       (5,        true,      StatType.CurrHP,    2),
+        [EffectName.PoisonBig] =    (5,        true,      StatType.CurrHP,    5),
+    };
+
+
+}

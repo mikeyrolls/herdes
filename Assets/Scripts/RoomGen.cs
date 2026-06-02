@@ -24,6 +24,7 @@ public class RoomGen : MonoBehaviour {
 
     void Start() {
         GameManager.Instance.currentDirection = Direction.Middle;
+        GameManager.Instance.hero.effectList.ApplyEffects();
         if (debug) {
             GenerateRoomsDebug();
         } else {

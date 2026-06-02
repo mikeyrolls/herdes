@@ -15,21 +15,23 @@ public class Creature {
     // -------------------------[ stats ]-----------------------------------------
 
     public String nameStr;
-	public int maxHP;
     public int currHP;
 
+    protected int maxHP;
 	protected int minDMG;
 	protected int maxDMG;
 	protected int dodge;
 	protected int acc;
     protected int def = 0;
 
-    protected int currMaxHP;
+    public int currMaxHP;
     protected int currMinDMG;
     protected int currMaxDMG;
     protected int currDodge;
     protected int currAcc;
     protected int currDef;
+
+    List<int> numbers = new List<int> {};
 
     // -------------------------[ methods ]-----------------------------------------
 
@@ -75,6 +77,25 @@ public class Creature {
         }
     }
 
+    public void TakePoisonDmg(int rawDmg) {
+        currHP = Helper.AddPositive(currHP, -rawDmg);
+        UIManager.Instance.RefreshHUD();
+        //todo anim
+    }
+
+    public void HealBuff(int amount) {
+        Heal(amount);
+        //todo anim
+    }
+
+    public void Heal(int amount) {
+        currHP += amount;
+        if (currHP > currMaxHP) {
+            currHP = currMaxHP;
+        }
+        UIManager.Instance.RefreshHUD();
+    }
+
     // smaller methods
 
     public bool IsAlive() {
@@ -96,7 +117,7 @@ public class Creature {
     }
 
     public int GetHpPerc() {
-        return (int)(100.0 * currHP / currMaxHP + 0.5);
+        return 100 * currHP / currMaxHP;
     }
 
     public void IncreaseStatPermanent(int amount, StatType stat) {

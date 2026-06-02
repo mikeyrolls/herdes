@@ -15,6 +15,7 @@ public class ShopManager : MonoBehaviour {
 
         Debug.Log("starting shop");
         hero = GameManager.Instance.hero;
+        hero.effectList.ApplyEffects();
 
         foreach (var slot in shopSlots)
             slot.Init(ItemDB.GetRandomForShop(GameManager.Instance.roomCount));

@@ -36,6 +36,8 @@ public class HallwayManager : MonoBehaviour {
         heroGO.InitGO(EnemyDB.sprites[EnemyType.Fishbone]);
         hero.sceneObject = heroGO;
 
+        hero.effectList.ApplyEffects();
+
         switch (type) {
             case RoomType.Fight:
                 HandleFightRoom();
@@ -104,6 +106,7 @@ public class HallwayManager : MonoBehaviour {
 
         AddInfoText("spawned enemy: " + enemy.nameStr);
         combatState = CombatState.PlayerTurn;
+        
     }
 
     public void OnEnemyClicked() {
@@ -134,6 +137,7 @@ public class HallwayManager : MonoBehaviour {
 
             yield return new WaitForSeconds(0.45f); // enemy attack duration
             combatState = CombatState.PlayerTurn;
+            hero.effectList.ApplyEffects();
         }
     }
 
@@ -143,7 +147,7 @@ public class HallwayManager : MonoBehaviour {
         if (attacker.LandHit()) {
             int hitDmg = attacker.Attack();
             if(attacked.GetAttacked(hitDmg)) {
-                AddInfoText(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.maxHP + "hp left");
+                AddInfoText(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
             } else {
                 AddInfoText(attacked.nameStr + " dodged ");
             }

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1adbc93da4a48be4c819440bab18a886, type: 3}
+  m_Name: EffectSpriteDB
+  m_EditorClassIdentifier: 
+  hpInc: {fileID: 7803205293886956972, guid: 841ac8333ed821449a21bb19d1cba1be, type: 3}
+  atkInc: {fileID: -8674146233321178474, guid: f7ba04abe773977459423c92c1cd401d, type: 3}
+  accInc: {fileID: 7189526700942596929, guid: c478ab6eaa62dcb44989267dee9bb9cd, type: 3}
+  dodgeInc: {fileID: -6656921372503543274, guid: 6f6f756d708eade4098c351c71841728, type: 3}
+  defInc: {fileID: -2140827313873195626, guid: ea6c624054c88fc439a83a16dfbf568a, type: 3}
+  hpDec: {fileID: -7933684908365705954, guid: b7a5a42cc01bfe34dbdcde21573413e4, type: 3}
+  atkDec: {fileID: 7110122300063084181, guid: 84c18156096ee4a4cb581f82d6e2996b, type: 3}
+  accDec: {fileID: 6255772473650673599, guid: c86f55c3ef86fb4499da4b0095422f43, type: 3}
+  dodgeDec: {fileID: 7517836271706311192, guid: c01ea35a7aaafa2448fb9a8837d48724, type: 3}
+  defDec: {fileID: -2610361346835064253, guid: 97cb145613030ca40879b1c4cce77a64, type: 3}
+  heal: {fileID: -7413598721336029530, guid: d9a5c7b0096cca04685edb9f5bc61dcd, type: 3}
+  poison: {fileID: -7648114527532167538, guid: f7ad28fb1f653b3409746889cc2f1fbb, type: 3}
+  poisonBig: {fileID: -733951850486316906, guid: be10d2dcc5d0e2c4db16bbbc6b3a833c, type: 3}

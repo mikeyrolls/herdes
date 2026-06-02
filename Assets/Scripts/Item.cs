@@ -39,7 +39,7 @@ public class Item {
     }
 
     public bool IsConsumable() { 
-        return (itemType == ItemType.Heal || itemType == ItemType.Upgrade);
+        return (itemType == ItemType.Heal || itemType == ItemType.Upgrade || itemType == ItemType.Buff);
     }
 
     public void UseItem() {
@@ -56,6 +56,11 @@ public class Item {
                 if(itemName == ItemName.AttackRing) GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.DMG);
                 if(itemName == ItemName.DodgeRing) GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Dodge);
                 break;
+            case ItemType.Buff:
+                if(itemName == ItemName.Poison) GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Poison, 5, 5);
+                if(itemName == ItemName.ContinuousHeal) GameManager.Instance.hero.effectList.AddEffect(EffectName.Heal);
+                break;
+
         }
     }
 }

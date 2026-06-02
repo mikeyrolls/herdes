@@ -24,3 +24,4 @@ MonoBehaviour:
   dmgUpgrade: {fileID: -7900851517274145832, guid: 6a646b8e8c551314fa79e5ded84ba7c6, type: 3}
   attackRing: {fileID: -4676093299339909737, guid: 7584377f24419cf4fbd1a252f6365b3e, type: 3}
   dodgeRing: {fileID: 8975106287229735331, guid: 75c8688dc0d1da84dbb3c12e00e09fb5, type: 3}
+  poison: {fileID: 133982719826790466, guid: 329aa29083cb649498e0b1f40c80bb88, type: 3}

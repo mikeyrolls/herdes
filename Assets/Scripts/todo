@@ -16,6 +16,8 @@ implement def calculation
 
 fix prices (50, 75? dmg more)
 
+add threat
+
 fix showing dead sprite on 1hp
 
 check currhp is fine when changing stats
@@ -23,6 +25,8 @@ check currhp is fine when changing stats
 change stats from percent to ((1)/(1+0.02 x))*100, no longer needs addPositive if possible
 
 implement defense
+
+cutscene when interacting with the path back and transfer to a new location?
 
 rings to decrease enemy stats, increase own stat, don't spawn specific enemies, for own stats big and small?
 
@@ -58,6 +62,7 @@ text to show dmg dealt
 
 inventory hover?
 
+clover adds hints to progress
 
 going back hurts
 

@@ -32,6 +32,8 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[9];
 
+    [SerializeField] private ActiveEffectsUI activeEffectsUI;
+
 
     void Start() {
         SceneManager.LoadScene("Room_Between");
@@ -90,7 +92,7 @@ public class UIManager : MonoBehaviour {
 
         moneyText.text = GameManager.Instance.hero.inventory.GetGold().ToString() + " gold";
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
-        hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.maxHP.ToString();
+        hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.currMaxHP.ToString();
 
         int hpPerc = GameManager.Instance.hero.GetHpPerc();
         hpSlider.value = hpPerc;
@@ -99,7 +101,7 @@ public class UIManager : MonoBehaviour {
             stateIcon.sprite = stateIconHp1;
         } else if (hpPerc > 25) {
             stateIcon.sprite = stateIconHp2;
-        } else if (hpPerc > 10) {
+        } else if (GameManager.Instance.hero.IsAlive()) {
             stateIcon.sprite = stateIconHp3;
         } else {
             stateIcon.sprite = stateIconHp4;
@@ -108,6 +110,8 @@ public class UIManager : MonoBehaviour {
         for(int i = 0; i < 9; i++) {
             inventorySlots[i].UpdateSprite();
         }
+
+        activeEffectsUI.Refresh();
     }
 
     // public void CursorSetDefault() => Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
