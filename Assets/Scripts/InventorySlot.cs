@@ -80,8 +80,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     void OnDoubleClick() {
-        inventory.UseFromInventory(slotIndex);
-        UpdateSprite();
+        if(slotIndex < 6) inventory.UseFromInventory(slotIndex);
+        else inventory.UnequipFromInventory(slotIndex);
+        //UpdateSprite();
     }
 
     void OnHold() {

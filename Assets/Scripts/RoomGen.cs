@@ -19,17 +19,21 @@ public class RoomGen : MonoBehaviour {
     [SerializeField] Sprite doorWall;
     [SerializeField] Sprite doorShop;
 
+    private bool debug = true;
+
 
     void Start() {
         GameManager.Instance.currentDirection = Direction.Middle;
-        GenerateRooms();
+        if (debug) {
+            GenerateRoomsDebug();
+        } else {
+            GenerateRooms();
+        }
         resetDoorSprite();
     }
 
     void GenerateRooms() {
         ChangeRoomType(3, RoomType.Back);
-
-        //Debug.Log("room num " + GameManager.Instance.roomCount);
 
         if  ((GameManager.Instance.roomCount + 1) % 5 == 0){
             ChangeRoomType(0, RoomType.Wall);
@@ -38,11 +42,6 @@ public class RoomGen : MonoBehaviour {
 
         } else {
             for (int i = 0; i < 3; i++) {
-                // Room pickedRoom = (Room)Random.Range(
-                //     GameManager.Instance.reservedRooms + (i % 2), // start after reserved, middle can't be wall ever
-                //     Helper.roomAmount
-                // );
-                // GameManager.Instance.nextRooms[i] = pickedRoom;
 
                 RoomType newRoomType;
 
@@ -65,6 +64,16 @@ public class RoomGen : MonoBehaviour {
                 ChangeRoomType(i, newRoomType);
             }
         }
+        Debug.Log("Roomtypes: left: " + GameManager.Instance.nextRooms[0].roomType + ", middle: " + GameManager.Instance.nextRooms[1].roomType + ", right: " + GameManager.Instance.nextRooms[2].roomType + ", back: " + GameManager.Instance.nextRooms[3].roomType);
+    }
+
+    void GenerateRoomsDebug() {
+        
+        ChangeRoomType(0, RoomType.Treasure);
+        ChangeRoomType(1, RoomType.Shop);
+        ChangeRoomType(2, RoomType.Fight);
+        ChangeRoomType(3, RoomType.Fakewall);
+
         Debug.Log("Roomtypes: left: " + GameManager.Instance.nextRooms[0].roomType + ", middle: " + GameManager.Instance.nextRooms[1].roomType + ", right: " + GameManager.Instance.nextRooms[2].roomType + ", back: " + GameManager.Instance.nextRooms[3].roomType);
     }
 

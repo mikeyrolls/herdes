@@ -10,7 +10,6 @@ using Random = UnityEngine.Random;
 
 public class Hero : Creature {
 
-    // hub scene object
 
     public Inventory inventory = new Inventory();
 
@@ -26,6 +25,8 @@ public class Hero : Creature {
             acc = heroData.acc;
 
             def = 0;
+
+            ResetToBaseStats();
             
             Debug.Log($"Spawned {nameStr} with {currHP}/{maxHP} HP");
         } else {
@@ -39,6 +40,16 @@ public class Hero : Creature {
             currHP = maxHP;
         }
         UIManager.Instance.RefreshHUD();
+    }
+
+    public void RecalculateStats() {
+        ResetToBaseStats();
+        Debug.Log("recalculating");
+        inventory.UseEffectOnly(7);
+        Debug.Log("counted ring 1");
+        inventory.UseEffectOnly(8);
+        Debug.Log("counted ring2");
+        //active buffs/debuffs?
     }
 
 }

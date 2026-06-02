@@ -12,6 +12,24 @@ from inventory:
 when holding:
     release to drop
 
+implement def calculation
+
+fix prices (50, 75? dmg more)
+
+fix showing dead sprite on 1hp
+
+check currhp is fine when changing stats
+
+change stats from percent to ((1)/(1+0.02 x))*100, no longer needs addPositive if possible
+
+implement defense
+
+rings to decrease enemy stats, increase own stat, don't spawn specific enemies, for own stats big and small?
+
+better item names for permanent upgrades
+
+permanent more hp stats and atk both max and minmax
+
 fix hero sliding
 
 more item types 

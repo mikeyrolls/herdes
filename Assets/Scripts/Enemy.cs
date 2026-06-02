@@ -41,6 +41,8 @@ public class Enemy : Creature {
             dropItem = enemyData.dropItem;
             dropRate = enemyData.dropRate;
             def = 0;
+
+            ResetToBaseStats();
             
             Debug.Log($"Spawned {nameStr} with {currHP}/{maxHP} HP");
         } else {

@@ -7,7 +7,7 @@ public class Inventory {
     public Item[] itemInventory  = new Item[9];     // indexes 0-5 normal
                                                     //         6 weapon
                                                     //         7-8 rings
-    private int gold = 0;
+    private int gold = 1000;
 
     private int GetEmptyInvSlot() {
         int i = 0;
@@ -63,14 +63,30 @@ public class Inventory {
         return false;
     }
 
-    public void UseFromInventory(int index) {
-
-        //using logic here
-        
+    public void UseFromInventory(int index) { 
         if (itemInventory[index] == null) return;
 
-        itemInventory[index].UseItem();
-        itemInventory[index] = null;
+        if (itemInventory[index].IsConsumable()) {  //use consumables
+            itemInventory[index].UseItem();
+            itemInventory[index] = null;
+        } else if (itemInventory[index].itemType == ItemType.Ring) {    // find slot for ring
+            if(itemInventory[7] == null || itemInventory[8] != null) {  // first empty or both taken
+                Swap(index, 7);
+            } else {    //first taken second empty
+                Swap(index, 8);
+            }
+        }
+
+        UIManager.Instance.RefreshHUD();
+    }
+
+    public void UnequipFromInventory(int index) {
+        if (itemInventory[index] == null) return;
+
+        int invIndex = GetEmptyInvSlot();
+        if (invIndex < 6) {
+            Swap(index, invIndex);
+        }
         UIManager.Instance.RefreshHUD();
     }
 
@@ -94,6 +110,7 @@ public class Inventory {
 
         itemInventory[index2] = item1;
         itemInventory[index1] = item2;
+        GameManager.Instance.hero.RecalculateStats();
         UIManager.Instance.RefreshHUD();
     }
 
@@ -102,6 +119,11 @@ public class Inventory {
         if (index < 6) return true;
         if (index == 7 || index == 8) return item.itemType == ItemType.Ring;
         return false;
+    }
+
+    public void UseEffectOnly(int index) {
+        if (itemInventory[index] == null) return;
+        itemInventory[index].UseItem();
     }
 
 }

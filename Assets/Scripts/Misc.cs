@@ -13,6 +13,8 @@ using System.Linq;
 
 public enum Direction{Left, Middle, Right, Back}
 
+public enum Duration{Temporary, Permanent}
+
 public enum SpriteColor{Normal, Red}
 
 public enum CursorType {Normal, Attack, Grab}
@@ -23,6 +25,11 @@ public static class Helper {
 
     public static int GetPerc() {
         return Random.Range(0, 100);
+    }
+
+    public static int AddPositive(int a, int b) {
+        int r = a + b;
+        return (r >= 0) ? r : 0;
     }
 }
 
@@ -50,13 +57,14 @@ public class Room {
 public enum ItemName {
     GoldCoin, GoldPile, GoldBag,    // gold
     Carrot, Drumstick, HealingPotion, LargeHealingPotion, HealingGland,   //heals
-
+    HealthUpgrade, DmgUpgrade,      // upgrades
+    AttackRing, DodgeRing,
     //DodgePotion, None   //other
     None,
 }
 
-public enum ItemType{Gold, Heal, Ring,
-                    //Buff, Upgrade, Story, Other
+public enum ItemType{Gold, Heal, Ring, Upgrade,
+                    //Buff, Story, Other
                     }
 
 public enum ItemRarity { Common, Uncommon, Rare, Special }
@@ -65,7 +73,7 @@ public static class ItemDB {
     public static Dictionary<ItemName, ( string displayName,  int price, int value, ItemType itemType, ItemRarity rarity, string description)> items = new() {
         //name                              name                            price   value
         [ItemName.GoldCoin] =               ("Gold coin",                   0,      5,     ItemType.Gold, ItemRarity.Common,   ""),
-        [ItemName.GoldBag] =                ("Gold bag",                    0,      15,     ItemType.Gold, ItemRarity.Uncommon,  ""),
+        [ItemName.GoldBag] =                ("Gold bag",                    0,      15,     ItemType.Gold, ItemRarity.Common,  ""),
         [ItemName.GoldPile] =               ("Gold pile",                   0,      25,     ItemType.Gold, ItemRarity.Uncommon,  ""),
 
         //                                                                          heals for
@@ -74,6 +82,15 @@ public static class ItemDB {
         [ItemName.HealingPotion] =          ("Healing potion",              35,     15,     ItemType.Heal, ItemRarity.Uncommon,  "An average looking healing potion. Heals for 15 HP."),
         [ItemName.LargeHealingPotion] =     ("Large healing potion",        50,     20,     ItemType.Heal, ItemRarity.Uncommon,  "An extra large healing potion. Heals for 12 HP."),
         [ItemName.HealingGland] =           ("Healing gland",               100,    100,     ItemType.Heal, ItemRarity.Rare, "A squishy spider gland. A heal for the bravest."),
+
+        //                                                                          stat increase
+        [ItemName.HealthUpgrade] =          ("Health upgrade",              5,     2,     ItemType.Upgrade, ItemRarity.Uncommon,   "Permanently upgrades hp by 1."),
+        [ItemName.DmgUpgrade] =             ("Dmg upgrade",                 7,     1,     ItemType.Upgrade, ItemRarity.Uncommon,  "Permanently upgrades atk by 1."),
+        
+
+        //                                                                          increase stat for
+        [ItemName.AttackRing] =             ("Ring of attack",              10,     50,     ItemType.Ring, ItemRarity.Common,   "Hydrogen bomb."),
+        [ItemName.DodgeRing] =              ("Ring of dodge",               20,     100,     ItemType.Ring, ItemRarity.Common,  "Don't get hit ever."),
 
     };
 
@@ -131,6 +148,10 @@ public static class HeroDB {
         [HeroType.Fishbone] =   (40,    8, 10,  10,     100),
 
     };
+}
+
+public enum StatType {
+    MaxHP, DMG, Dodge, Acc, Def, 
 }
 
 

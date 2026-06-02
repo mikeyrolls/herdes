@@ -38,9 +38,24 @@ public class Item {
         value = goldValue;
     }
 
+    public bool IsConsumable() { 
+        return (itemType == ItemType.Heal || itemType == ItemType.Upgrade);
+    }
+
     public void UseItem() {
-        if(itemType == ItemType.Heal) {
-            GameManager.Instance.hero.Heal(value);
+        switch(itemType) {
+            case ItemType.Heal:
+                GameManager.Instance.hero.Heal(value);
+                break;
+            case ItemType.Upgrade:
+                if(itemName == ItemName.HealthUpgrade) GameManager.Instance.hero.IncreaseStatPermanent(value, StatType.MaxHP);
+                if(itemName == ItemName.DmgUpgrade) GameManager.Instance.hero.IncreaseStatPermanent(value, StatType.DMG);
+                break;
+            case ItemType.Ring:
+                Debug.Log("using item ring");
+                if(itemName == ItemName.AttackRing) GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.DMG);
+                if(itemName == ItemName.DodgeRing) GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Dodge);
+                break;
         }
     }
 }

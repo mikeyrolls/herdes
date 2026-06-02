@@ -18,6 +18,12 @@ public class ItemSpriteDB : ScriptableObject {
     public Sprite healBig;
     public Sprite healGland;
 
+    public Sprite healthUpgrade;
+    public Sprite dmgUpgrade;
+
+    public Sprite attackRing;
+    public Sprite dodgeRing;
+
     private Dictionary<ItemName, Sprite> itemSpritesDict;
 
     public Dictionary<ItemName, Sprite> ItemSpritesDict {
@@ -39,6 +45,12 @@ public class ItemSpriteDB : ScriptableObject {
             [ItemName.HealingPotion] = healSmall,
             [ItemName.LargeHealingPotion] = healBig,
             [ItemName.HealingGland] = healGland,
+
+            [ItemName.HealthUpgrade] = healthUpgrade,
+            [ItemName.DmgUpgrade] = dmgUpgrade,
+
+            [ItemName.AttackRing] = attackRing,
+            [ItemName.DodgeRing] = dodgeRing,
         };
     }
 

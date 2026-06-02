@@ -17,10 +17,11 @@ public class ItemGO : MonoBehaviour {
     bool holdFired = false;
     Coroutine holdCoroutine;
 
-    Inventory inventory = GameManager.Instance.hero.inventory;
+    Inventory inventory;
 
     void Awake() {
         sr = GetComponent<SpriteRenderer>();
+        inventory = GameManager.Instance.hero.inventory;
     }
 
     void OnMouseDown() {

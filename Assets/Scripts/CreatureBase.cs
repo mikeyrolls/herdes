@@ -24,10 +24,26 @@ public class Creature {
 	protected int acc;
     protected int def = 0;
 
+    protected int currMaxHP;
+    protected int currMinDMG;
+    protected int currMaxDMG;
+    protected int currDodge;
+    protected int currAcc;
+    protected int currDef;
+
     // -------------------------[ methods ]-----------------------------------------
 
+    public void ResetToBaseStats() {
+        currMaxHP = maxHP;
+        currMinDMG = minDMG;
+        currMaxDMG = maxDMG;
+        currDodge = dodge;
+        currAcc = acc;
+        currDef = def;
+    }
+
     public bool LandHit() {
-        return Helper.GetPerc() <= acc;
+        return Helper.GetPerc() <= currAcc;
     }
 
     public void Miss() {
@@ -66,24 +82,64 @@ public class Creature {
     }
 
     protected virtual void TakeDmg(int rawDmg) {
-        currHP -= rawDmg;
-        if (currHP < 0) {
-            currHP = 0;
-        }
+        currHP = Helper.AddPositive(currHP, -rawDmg);
         UIManager.Instance.RefreshHUD();
     }
 
     protected int GiveDmg() {
-        int rawDmg = Random.Range(minDMG, maxDMG);
+        int rawDmg = Random.Range(currMinDMG, currMaxDMG);
         return rawDmg;
     }
 
     protected bool Dodge() {
-        return Helper.GetPerc() <= dodge;
+        return Helper.GetPerc() <= currDodge;
     }
 
     public int GetHpPerc() {
-        return 100 * currHP / maxHP;
+        return (int)(100.0 * currHP / currMaxHP + 0.5);
+    }
+
+    public void IncreaseStatPermanent(int amount, StatType stat) {
+        switch(stat) {  //MaxHP, DMG, Dodge, Acc, Def, 
+            case StatType.MaxHP:
+                maxHP = Helper.AddPositive(maxHP, amount);
+                break;
+            case StatType.DMG:
+                minDMG = Helper.AddPositive(minDMG, amount);
+                maxDMG = Helper.AddPositive(maxDMG, amount);
+                break;
+            case StatType.Dodge:
+                dodge = Helper.AddPositive(dodge, amount);
+                break;
+            case StatType.Acc:
+                acc = Helper.AddPositive(acc, amount);
+                break;
+            case StatType.Def:
+                def = Helper.AddPositive(def, amount);
+                break;
+        }
+    }
+
+    public void IncreaseStatTemporary(int amount, StatType stat) {
+        Debug.Log("increase stat temporary");
+        switch(stat) {  //MaxHP, DMG, Dodge, Acc, Def, 
+            case StatType.MaxHP:
+                currMaxHP = Helper.AddPositive(currMaxHP, amount);
+                break;
+            case StatType.DMG:
+                currMinDMG = Helper.AddPositive(currMinDMG, amount);
+                currMaxDMG = Helper.AddPositive(currMaxDMG, amount);
+                break;
+            case StatType.Dodge:
+                currDodge = Helper.AddPositive(currDodge, amount);
+                break;
+            case StatType.Acc:
+                currAcc = Helper.AddPositive(currAcc, amount);
+                break;
+            case StatType.Def:
+                currDef = Helper.AddPositive(currDef, amount);
+                break;
+        }
     }
 
 }
