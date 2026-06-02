@@ -1,3 +1,7 @@
+/**
+ * Sprite holder for effect icons (combat only)
+ */
+
 using UnityEngine;
 using System.Collections.Generic;
 

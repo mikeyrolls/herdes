@@ -1,87 +1,204 @@
-finish inventory (use ring properly, attached texture when dragging, drop, drag to kitty)
+Random future:
 
-on ground:
-    click to add to inventory
-    click and hold to carry
+    a
 
-from inventory:
-    click to highlight what to do? maybe? skip for now
-    click and hold to carry
-    double click to use
 
-when holding:
-    release to drop
 
-implement def calculation
 
-fix prices (50, 75? dmg more)
+Inventory:
 
-add threat
+    finish inventory (use ring properly, attached texture when dragging, drop, drag to kitty)
 
-fix showing dead sprite on 1hp
+    on ground:
+        click to add to inventory
+        click and hold to carry
 
-check currhp is fine when changing stats
+    from inventory:
+        click to highlight what to do? maybe? skip for now
+        click and hold to carry
+        double click to use
 
-change stats from percent to ((1)/(1+0.02 x))*100, no longer needs addPositive if possible
+    when holding:
+        release to drop
+    
+    inventory hover?
 
-implement defense
 
-cutscene when interacting with the path back and transfer to a new location?
 
-rings to decrease enemy stats, increase own stat, don't spawn specific enemies, for own stats big and small?
+Items:
 
-better item names for permanent upgrades
+    more item types 
 
-permanent more hp stats and atk both max and minmax
+    permanent more hp stats and atk both max and minmax
 
-fix hero sliding
+    fix prices (50, 75? dmg more)
 
-more item types 
+    rings to decrease enemy stats, increase own stat, don't spawn specific enemies, for own stats big and small?
 
-enemy set sprite when dead, normal cursor when enemy attacking?
+    enemy fix drops
 
-fix item and enemy spawn positions
+    better item names for permanent upgrades (and descriptions and everything)
 
-better item usage/drag/whatever
 
-more pics
+Stats:
 
-use new doors, bg 
+    add def to enemy in database
 
-make animation (spawn left/right? move bg and cat? idk man)
+    implement defense
 
-setup hero hub object
+    change stats from percent to ((1)/(1+0.02 x))*100, no longer needs addPositive if possible
 
-enemy fix drops
 
-------- maybe also:
 
-losing screen
+Small misc:
 
-text to show dmg dealt
+    enemy set sprite when dead, normal cursor when enemy attacking?
+    
+    losing screen
 
-inventory hover?
+    text to show dmg dealt
 
-clover adds hints to progress
+    set visual layers properly bruh wtf (at least for cursor text)
 
-going back hurts
+    enemy has some sort of icon prob unchanging to later examine it
 
-add def to enemy
+    clicking on cat icon shows info about cat
 
-set visual layers properly bruh wtf
+    clicking on enemy icon shows info about enemy
 
-countering system for both hero and enemy, fishbone special?
+    cursor to hold and to do special attack setup
 
----------------------------------------------------------------------
 
-balancing if needed
 
-some sort of story u know what
+Hub:
 
-more chars, godmode for testing purposes?
+    hub manager script and moving some things there?
 
-round in combat for archer
+    setup hero hub object
 
-quests (rescuing tacobean, not playable(?), some shop quest to unlock clover(mage), fake enemy encounter for Wisp )
+    going back hurts
 
-textures, soundtrack wowie
+    make animation (spawn left/right? move bg and cat? idk man)
+
+
+
+Textures:
+
+    (send the paint and current screenshot to dc to check dimensions)
+
+    cat in hub:
+
+        - normal
+        - jumping to screen
+        - walking to door
+        - hitting the wall
+        - getting hit by rocks
+        - headpat
+
+    fix cat leg thing incident
+
+    buffs/debuffs art
+
+    inventory slots normal and special
+
+    new items
+
+    money counter
+
+    inventory background and top?
+
+    hub bg
+
+    hallway bg
+
+    doors all
+
+    animation of rocks falling to the back?
+
+    cursor to hold and do special attack
+
+    title screen
+
+    starting cutscene skippable?
+
+
+
+Fight:
+
+    enemy can add debuffs (poison mainly)
+
+    round in combat for archer and in general
+
+    special attacks?
+
+    countering system for both hero and enemy, fishbone special?
+
+
+
+---------------------------------------------------------------------------------
+
+once ur kinda happy with it makei t playable for dobriv and move onto next things:
+
+
+
+Sound:
+
+    sound effects (enemies buttons everything)
+
+    soundtrack
+
+    setting volume
+
+
+
+Story:
+
+    pickaxe and going back unlock forest maybe?
+
+    cutscene when interacting with the path back and transfer to a new location?
+
+    clover adds hints to progress
+
+    quests (rescuing tacobean, not playable(?), some shop quest to unlock clover(mage), fake enemy encounter for Wisp )
+
+    buy/get keys that take up inventory (maybe get one from each room type?)
+
+        - shop buy for a lot (and the price increases when you drop keys and clover comments on it)
+        - randomly from harder enemies maybe a boss? dragon? one on each level starting with cave one?
+        - fakewall
+        - fishing
+        - in hub somewhere maybe on the ceiling or whatever? or when going back? 
+
+    unlock fishing from shop? plan fishing?
+
+    when you hold a fish you can encounter wisp
+
+    after unlocking fishing you can encounter the minecart room :(
+    
+    entering the minecart room with salmon gets a reaction, cutscene maybe?
+
+
+
+fishing:
+
+    from shop to a side cave? if you buy it, cutscene where clover moves aside some crates and now it's just accessible
+
+    some fish visible under water and they jump up and you can catch them? when dragging too fast or randomly they can slip, you need to drag them to inventory or some basket?
+
+    first time there's 3 fish no salmon
+
+    add threat, maybe you can fish it out? it bites you, takes some hp and does something aj, maybe a kitty ring which increases fish?
+
+
+
+Mechanical things?:
+
+    balancing if needed
+
+    figure out saving between opens if possible (only to leave game not to save the cat)
+
+    show unlocked story cats in shop
+
+    add unlocked cats as playable
+
+    more chars, godmode for testing purposes?

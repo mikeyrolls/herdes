@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void RefreshHUD() {
-
+        hpSlider.fillRect.gameObject.SetActive(true);
         GameManager.Instance.hero.inventory.InvStateDebug();
 
         moneyText.text = GameManager.Instance.hero.inventory.GetGold().ToString() + " gold";
@@ -105,6 +105,7 @@ public class UIManager : MonoBehaviour {
             stateIcon.sprite = stateIconHp3;
         } else {
             stateIcon.sprite = stateIconHp4;
+            hpSlider.fillRect.gameObject.SetActive(false);
         }
 
         for(int i = 0; i < 9; i++) {

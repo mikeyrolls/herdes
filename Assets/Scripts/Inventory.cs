@@ -1,3 +1,6 @@
+/**
+ * Inventory logic/data class
+ */
 
 using UnityEngine;
 

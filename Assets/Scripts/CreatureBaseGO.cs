@@ -16,7 +16,7 @@ public class CreatureGO : MonoBehaviour {
     protected SpriteRenderer sr;
 
     protected Material mat;
-    protected float animSpeed = 0.45f; //0.25f;
+    protected float animSpeed = 0.40f; //0.25f;
     protected float animDist = 1.4f;
 
     protected Direction dirCenter;

@@ -1,3 +1,7 @@
+/**
+ * Buffs and debuffs UI icons, just hero for now
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;

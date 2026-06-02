@@ -1,3 +1,6 @@
+/**
+ * EffectList and Effect classes
+ */
 
 using System.Collections.Generic;
 using UnityEngine;
