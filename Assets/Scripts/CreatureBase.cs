@@ -139,6 +139,8 @@ public class Creature {
                 def = Helper.AddPositive(def, amount);
                 break;
         }
+        RecalculateStats();
+        UIManager.Instance.RefreshHUD();
     }
 
     public void IncreaseStatTemporary(int amount, StatType stat) {
@@ -161,6 +163,11 @@ public class Creature {
                 currDef = Helper.AddPositive(currDef, amount);
                 break;
         }
+        UIManager.Instance.RefreshHUD();
+    }
+
+    public virtual void RecalculateStats() {
+        
     }
 
 }

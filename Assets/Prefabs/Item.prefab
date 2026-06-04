@@ -143,4 +143,7 @@ MonoBehaviour:
     value: 0
     itemType: 0
     itemSprite: {fileID: 0}
+    itemName: 0
+    description: 
   itemSpriteDB: {fileID: 11400000, guid: cd70f5ba8b9252d4a9cbf85040c5e84e, type: 2}
+  itemPrefab: {fileID: 7446989745397900288}

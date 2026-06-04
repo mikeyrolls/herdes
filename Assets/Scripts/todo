@@ -1,3 +1,17 @@
+
+Todo next time:
+
+    add click to show info for inventory, just name and description it'll help a lot trust (and add todos to make it prettier later)
+
+    implement some sort of charm item system
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
 Random future:
 
     a
@@ -7,21 +21,11 @@ Random future:
 
 Inventory:
 
-    finish inventory (use ring properly, attached texture when dragging, drop, drag to kitty)
-
-    on ground:
-        click to add to inventory
-        click and hold to carry
-
-    from inventory:
-        click to highlight what to do? maybe? skip for now
-        click and hold to carry
-        double click to use
-
-    when holding:
-        release to drop
-    
-    inventory hover?
+    clicking shows info yayyy:
+        name
+        description
+        usage (on click etc)
+        _consumable_ or whatever it is
 
 
 
@@ -38,6 +42,8 @@ Items:
     enemy fix drops
 
     better item names for permanent upgrades (and descriptions and everything)
+
+    show item type in descriptions in shop and inventory (consumable/ring/charm/special-or-story)
 
 
 Stats:
@@ -60,13 +66,13 @@ Small misc:
 
     set visual layers properly bruh wtf (at least for cursor text)
 
-    enemy has some sort of icon prob unchanging to later examine it
+    
 
     clicking on cat icon shows info about cat
 
-    clicking on enemy icon shows info about enemy
-
     cursor to hold and to do special attack setup
+
+    sell stuff
 
 
 
@@ -96,6 +102,8 @@ Textures:
         - headpat
 
     fix cat leg thing incident
+
+    trash slot
 
     buffs/debuffs art
 
@@ -133,9 +141,25 @@ Fight:
 
     countering system for both hero and enemy, fishbone special?
 
+    beastiary
 
 
----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------
+
+
+
+-
 
 once ur kinda happy with it makei t playable for dobriv and move onto next things:
 
@@ -153,13 +177,15 @@ Sound:
 
 Story:
 
+    unlocks: fishing spot key - dragon charm - key once you obtain a key - pickaxe (they say don't look behind but maybe you could, just once)
+
     pickaxe and going back unlock forest maybe?
 
     cutscene when interacting with the path back and transfer to a new location?
 
     clover adds hints to progress
 
-    quests (rescuing tacobean, not playable(?), some shop quest to unlock clover(mage), fake enemy encounter for Wisp )
+    quests (rescuing tacobean, not playable(?), some shop quest to unlock clover, fake enemy encounter for Wisp )
 
     buy/get keys that take up inventory (maybe get one from each room type?)
 
@@ -202,3 +228,10 @@ Mechanical things?:
     add unlocked cats as playable
 
     more chars, godmode for testing purposes?
+
+
+Progression??:
+
+    caves to forest 
+
+    maybe beach or ice region, each region is harder and has new enemies which could be just reskins

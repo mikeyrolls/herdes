@@ -7,7 +7,7 @@ using UnityEngine;
 public class Inventory {
 
     private int inventorySize = 6;
-    public Item[] itemInventory  = new Item[9];     // indexes 0-5 normal
+    public Item[] itemInventory  = new Item[10];     // indexes 0-5 normal
                                                     //         6 weapon
                                                     //         7-8 rings
     private int gold = 1000;
@@ -104,17 +104,20 @@ public class Inventory {
         Debug.Log(log);
     }
 
-    public void Swap(int index1, int index2) {  //holding 1, moving to 2
+    public bool Swap(int index1, int index2) {  //holding 1, moving to 2
+
+        if (index2 == 9) itemInventory[index1] = null;  //trashed
 
         Item item1 = itemInventory[index1];
-        if (!CanItemBePlaced(item1, index2)) return;
+        if (!CanItemBePlaced(item1, index2)) return false;
         Item item2 = itemInventory[index2];
-        if (!CanItemBePlaced(item2, index1)) return;
-
+        if (!CanItemBePlaced(item2, index1)) return false;
+        
         itemInventory[index2] = item1;
         itemInventory[index1] = item2;
         GameManager.Instance.hero.RecalculateStats();
         UIManager.Instance.RefreshHUD();
+        return true;
     }
 
     public bool CanItemBePlaced(Item item, int index) {

@@ -35,7 +35,7 @@ public class Hero : Creature {
         }
     }
 
-    public void RecalculateStats() {
+    public override void RecalculateStats() {
         Debug.Log("recalculating, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
         ResetToBaseStats();
         

@@ -21,9 +21,23 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     Coroutine holdCoroutine;
     bool isHolding = false;
 
+    string type = "";
+
     public void Init(Inventory inventory, int index) {
         slotIndex = index;
         this.inventory = inventory;
+
+        switch(index) {
+            case 9:
+                type = "trash"; break;
+            case 8:
+            case 7:
+                type = "ring " + index; break;
+            case 6:
+                type = "charm"; break;
+            default: //0-5
+                type = "inv " + index; break;
+        }
     }
 
     bool isEmpty() {
@@ -32,9 +46,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
    public void OnPointerEnter(PointerEventData eventData) {
         if (!isEmpty()) {
-            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "use");
+            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "inspect WIP");
         } else {
-            CursorManager.Instance.AddRequest(this, CursorType.Normal, Prio.UI, "empty");
+            CursorManager.Instance.AddRequest(this, CursorType.Normal, Prio.UI, type);
         }
     }
 
@@ -86,7 +100,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     void OnHold() {
-        Debug.Log("Holding item?");
+        DragManager.Instance.BeginDrag(itemImage.gameObject, itemImage.sprite);
     }
 
     void OnHoldRelease(PointerEventData eventData) {
@@ -99,10 +113,13 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         foreach (var result in results) {
             InventorySlot target = result.gameObject.GetComponent<InventorySlot>();
             if (target != null && target != this) {
-                inventory.Swap(slotIndex, target.slotIndex);
+                bool success = inventory.Swap(slotIndex, target.slotIndex);
+                DragManager.Instance.EndDrag(!success);
                 return;
             }
         }
+
+        DragManager.Instance.EndDrag(true);
     }
 
     public void UpdateSprite() {
@@ -111,6 +128,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
             itemImage.gameObject.SetActive(false);
         } else {
             itemImage.sprite = item.itemSprite;
+            itemImage.color = Color.white;
             itemImage.gameObject.SetActive(true);
         }
     }

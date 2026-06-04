@@ -3,19 +3,14 @@
  */
 
 using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
+using System.Collections.Generic;
 
-public class ItemGO : MonoBehaviour {
+public class ItemGO : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
     public Item data = new Item();
     public ItemSpriteDB itemSpriteDB;
     private SpriteRenderer sr;
-
-    float lastClickTime;
-    float doubleClickThreshold = 0.3f;
-    float holdThreshold = 0.5f;
-
-    bool holdFired = false;
-    Coroutine holdCoroutine;
 
     Inventory inventory;
 
@@ -24,55 +19,30 @@ public class ItemGO : MonoBehaviour {
         inventory = GameManager.Instance.hero.inventory;
     }
 
-    void OnMouseDown() {
-
-        if (Time.time - lastClickTime < doubleClickThreshold) {
-            OnDoubleClick();
-            return;
-        }
-        lastClickTime = Time.time;
-
-        holdFired = false;
-        holdCoroutine = StartCoroutine(HoldTimer());
+    public void OnPointerEnter(PointerEventData eventData) {
+        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.World, "take");
     }
 
-    void OnMouseUp() {
-        if (holdCoroutine != null)
-            StopCoroutine(holdCoroutine);
-
-        if (!holdFired)
-            OnClick();
+    public void OnPointerExit(PointerEventData eventData) {
+        CursorManager.Instance.RemoveRequest(this);
     }
 
-    // clicking on item adds it to inventory if possible
+    public void OnPointerClick(PointerEventData eventData) {
+        OnClick();
+    }
+
     void OnClick() {
-        if(inventory.addToInventory(data)) {
+        if (inventory.addToInventory(data)) {
             Destroy(gameObject);
             CursorManager.Instance.RemoveRequest(this);
         }
     }
 
-    void OnHold() {
+    //--------------------------------------
 
-    }
-
-    // double click uses the item immediately if possible
-    void OnDoubleClick() {  
-
-    }
-
-    IEnumerator HoldTimer() {
-        yield return new WaitForSeconds(holdThreshold);
-        holdFired = true;
-        OnHold();
-    }
-
-    void OnMouseEnter() {
-        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.World, "take");
-    }
-
-    void OnMouseExit() {
-        CursorManager.Instance.RemoveRequest(this);
+    public void InitializeFromData(Item item) { //unused for now
+        this.data = item;
+        sr.sprite = data.itemSprite;
     }
 
     public void InitializeFromDB(ItemName itemName) {

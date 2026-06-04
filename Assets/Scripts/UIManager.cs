@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour {
     [SerializeField] Texture2D hoverEnemyCursor;
     [SerializeField] Texture2D hoverGrabCursor;
 
-    [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[9];
+    [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[10];
 
     [SerializeField] private ActiveEffectsUI activeEffectsUI;
 
@@ -41,7 +41,7 @@ public class UIManager : MonoBehaviour {
         hpSlider.minValue = 0f;
         hpSlider.maxValue = 100f;
 
-        for(int i = 0; i < 9; i++) {
+        for(int i = 0; i < 10; i++) {
             inventorySlots[i].Init(GameManager.Instance.hero.inventory, i);
         }
 
