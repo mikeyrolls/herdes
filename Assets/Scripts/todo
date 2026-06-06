@@ -1,9 +1,15 @@
 
 Todo next time:
 
-    add click to show info for inventory, just name and description it'll help a lot trust (and add todos to make it prettier later)
-
     implement some sort of charm item system
+
+    for taska release:
+
+        death
+
+        show char info
+
+        item textures :sob:
 
 
 
@@ -14,7 +20,21 @@ Todo next time:
 
 Random future:
 
-    a
+    idle animations for fight
+
+    buff apply animations and sound
+
+    fix item spawn rates by type and rarity
+
+    hide attack number behind attack skill stat, critical?
+
+    can't trash keys
+
+    remove poison item
+
+    fix item descriptions numbers if you change how stats are calculated
+
+    item that drains life?
 
 
 
@@ -142,6 +162,8 @@ Fight:
     countering system for both hero and enemy, fishbone special?
 
     beastiary
+
+    effects show on enemies
 
 
 

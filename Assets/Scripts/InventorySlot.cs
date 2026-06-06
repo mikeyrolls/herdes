@@ -46,7 +46,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
    public void OnPointerEnter(PointerEventData eventData) {
         if (!isEmpty()) {
-            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "inspect WIP");
+            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "inspect");
         } else {
             CursorManager.Instance.AddRequest(this, CursorType.Normal, Prio.UI, type);
         }
@@ -54,6 +54,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerExit(PointerEventData eventData) {
         CursorManager.Instance.RemoveRequest(this);
+        UIManager.Instance.HideInfobox();
     }
 
     public void OnPointerClick(PointerEventData eventData) {
@@ -91,6 +92,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     void OnClick() {
         Debug.Log("Clicked once");
+        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "");
+        UIManager.Instance.ShowInfobox(item, GetComponent<RectTransform>());
     }
 
     void OnDoubleClick() {
@@ -113,8 +116,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         foreach (var result in results) {
             InventorySlot target = result.gameObject.GetComponent<InventorySlot>();
             if (target != null && target != this) {
-                bool success = inventory.Swap(slotIndex, target.slotIndex);
-                DragManager.Instance.EndDrag(!success);
+                inventory.Swap(slotIndex, target.slotIndex);
+                DragManager.Instance.EndDrag(true);
                 return;
             }
         }

@@ -13,16 +13,28 @@ MonoBehaviour:
   m_Name: ItemSpriteDB
   m_EditorClassIdentifier: 
   goldCoin: {fileID: 21300000, guid: 5f04aed5c0b59254b80e47ea7b7ce890, type: 3}
-  goldBag: {fileID: 21300000, guid: 1536d2b03725ea94998529cc873d63a4, type: 3}
   goldPile: {fileID: 21300000, guid: c05b97f0048603941b5fd5314ec5b762, type: 3}
+  goldBag: {fileID: 21300000, guid: 1536d2b03725ea94998529cc873d63a4, type: 3}
   carrot: {fileID: 21300000, guid: edbbd2029d7687740816dd5a3164906c, type: 3}
   drumstick: {fileID: 21300000, guid: 052b3efe4aafa844f86f58e3818475f9, type: 3}
-  healSmall: {fileID: 21300000, guid: 6568f99a6c282a344a1a8d20837983a3, type: 3}
-  healBig: {fileID: 21300000, guid: 4d813e4a8f46c8e41ab3d4545da0f8a4, type: 3}
-  healGland: {fileID: 21300000, guid: 9f7723cd26f1d5f458fbfe1383498f0e, type: 3}
+  healingPotion: {fileID: 21300000, guid: 6568f99a6c282a344a1a8d20837983a3, type: 3}
+  largeHealingPotion: {fileID: 21300000, guid: 4d813e4a8f46c8e41ab3d4545da0f8a4, type: 3}
+  healingGland: {fileID: 21300000, guid: 9f7723cd26f1d5f458fbfe1383498f0e, type: 3}
   healthUpgrade: {fileID: -8805255170832098516, guid: dc47e973fd474a948a2a63c023010b43, type: 3}
   dmgUpgrade: {fileID: -7900851517274145832, guid: 6a646b8e8c551314fa79e5ded84ba7c6, type: 3}
-  attackRing: {fileID: -4676093299339909737, guid: 7584377f24419cf4fbd1a252f6365b3e, type: 3}
-  dodgeRing: {fileID: 8975106287229735331, guid: 75c8688dc0d1da84dbb3c12e00e09fb5, type: 3}
   poison: {fileID: 133982719826790466, guid: 329aa29083cb649498e0b1f40c80bb88, type: 3}
-  continuousHeal: {fileID: -7413598721336029530, guid: d9a5c7b0096cca04685edb9f5bc61dcd, type: 3}
+  continuousHealSmall: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  continuousHeal: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  continuousHealLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  attackPotion: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  clearingPotion: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  healthRingSmall: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  healthRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  healthRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  atkRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  atkRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  defRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  defRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  dodgeRing: {fileID: 8975106287229735331, guid: 75c8688dc0d1da84dbb3c12e00e09fb5, type: 3}
+  dodgeRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  regenRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}

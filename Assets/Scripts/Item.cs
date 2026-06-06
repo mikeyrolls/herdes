@@ -42,6 +42,10 @@ public class Item {
         return (itemType == ItemType.Heal || itemType == ItemType.Upgrade || itemType == ItemType.Buff);
     }
 
+    public bool IsWearable() { 
+        return (itemType == ItemType.Ring || itemType == ItemType.Charm);
+    }
+
     public void UseItem() {
         switch(itemType) {
             case ItemType.Heal:
@@ -53,12 +57,40 @@ public class Item {
                 break;
             case ItemType.Ring:
                 Debug.Log("using item ring");
-                if(itemName == ItemName.AttackRing) GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.DMG);
-                if(itemName == ItemName.DodgeRing) GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Dodge);
-                break;
+
+                switch(itemName) {
+                    case ItemName.HealthRingSmall:
+                    case ItemName.HealthRing:
+                    case ItemName.HealthRingLarge:
+                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.MaxHP);
+                        break;
+                    case ItemName.AtkRing:
+                    case ItemName.AtkRingLarge:
+                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.DMG);
+                        break;
+                    case ItemName.DefRing:
+                    case ItemName.DefRingLarge:
+                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Def);
+                        break;
+                    case ItemName.DodgeRing:
+                    case ItemName.DodgeRingLarge:
+                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Dodge);
+                        break;
+                    case ItemName.RegenRing:
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Heal, 1, value);
+                        break;
+                }
             case ItemType.Buff:
-                if(itemName == ItemName.Poison) GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Poison, 5, 5);
-                if(itemName == ItemName.ContinuousHeal) GameManager.Instance.hero.effectList.AddEffect(EffectName.Heal);
+                if (itemName == ItemName.Poison) 
+                    GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Poison, 5, 5);
+                else if(itemName == ItemName.ContinuousHealSmall || itemName == ItemName.ContinuousHeal || itemName == ItemName.ContinuousHealLarge) 
+                    GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Heal, 5, value);
+                else if (itemName == ItemName.AttackPotion) 
+                    GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.AtkInc, 5, value);
+                else if (itemName == ItemName.ClearingPotion) 
+                    GameManager.Instance.hero.effectList.RemoveDebuffs();
+                
+
                 break;
 
         }

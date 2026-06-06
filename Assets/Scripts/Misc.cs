@@ -58,14 +58,13 @@ public enum ItemName {
     GoldCoin, GoldPile, GoldBag,    // gold
     Carrot, Drumstick, HealingPotion, LargeHealingPotion, HealingGland,   //heals
     HealthUpgrade, DmgUpgrade,      // upgrades
-    AttackRing, DodgeRing,
-
-    Poison, ContinuousHeal,
-    //DodgePotion, None   //other
+    Poison, ContinuousHealSmall, ContinuousHeal, ContinuousHealLarge, AttackPotion, ClearingPotion,
+    HealthRingSmall, HealthRing, HealthRingLarge, AtkRing, AtkRingLarge, DefRing, DefRingLarge, DodgeRing, DodgeRingLarge, RegenRing,
+    
     None,
 }
 
-public enum ItemType{Gold, Heal, Ring, Upgrade, Buff,
+public enum ItemType{Gold, Heal, Ring, Upgrade, Buff, Charm
                     //Story, Other
                     }
 
@@ -73,30 +72,49 @@ public enum ItemRarity { Common, Uncommon, Rare, Special }
 
 public static class ItemDB {
     public static Dictionary<ItemName, ( string displayName,  int price, int value, ItemType itemType, ItemRarity rarity, string description)> items = new() {
-        //name                              name                            price   value
+        //gold                              name                            price   value
         [ItemName.GoldCoin] =               ("Gold coin",                   0,      5,     ItemType.Gold, ItemRarity.Common,   ""),
         [ItemName.GoldBag] =                ("Gold bag",                    0,      15,     ItemType.Gold, ItemRarity.Common,  ""),
         [ItemName.GoldPile] =               ("Gold pile",                   0,      25,     ItemType.Gold, ItemRarity.Uncommon,  ""),
 
-        //                                                                          heals for
-        [ItemName.Carrot] =                 ("Carrot",                      10,     5,     ItemType.Heal, ItemRarity.Common,   "A small carrot. Heals for 5 HP."),
-        [ItemName.Drumstick] =              ("Drumstick",                   20,     10,     ItemType.Heal, ItemRarity.Common,  "A juicy drumstick. Heals for 10 HP."),
-        [ItemName.HealingPotion] =          ("Healing potion",              35,     15,     ItemType.Heal, ItemRarity.Uncommon,  "An average looking healing potion. Heals for 15 HP."),
-        [ItemName.LargeHealingPotion] =     ("Large healing potion",        50,     20,     ItemType.Heal, ItemRarity.Uncommon,  "An extra large healing potion. Heals for 12 HP."),
-        [ItemName.HealingGland] =           ("Healing gland",               100,    100,     ItemType.Heal, ItemRarity.Rare, "A squishy spider gland. A heal for the bravest."),
+        //heals                                                                     heals for
+        [ItemName.Carrot] =                 ("Carrot",                      10,     5,     ItemType.Heal, ItemRarity.Common,   "Heals for 5 HP."),
+        [ItemName.Drumstick] =              ("Drumstick",                   20,     10,     ItemType.Heal, ItemRarity.Common,  "Heals for 10 HP."),
+        [ItemName.HealingPotion] =          ("Healing potion",              35,     15,     ItemType.Heal, ItemRarity.Uncommon,  "Heals for 15 HP."),
+        [ItemName.LargeHealingPotion] =     ("Large healing potion",        50,     20,     ItemType.Heal, ItemRarity.Uncommon,  "Heals for 20 HP."),
+        [ItemName.HealingGland] =           ("Healing gland",               100,    100,     ItemType.Heal, ItemRarity.Rare, "A heal for the bravest."),
 
-        //                                                                          stat increase
-        [ItemName.HealthUpgrade] =          ("Health upgrade",              5,     2,     ItemType.Upgrade, ItemRarity.Uncommon,   "Permanently upgrades hp by 1."),
-        [ItemName.DmgUpgrade] =             ("Dmg upgrade",                 7,     1,     ItemType.Upgrade, ItemRarity.Uncommon,  "Permanently upgrades atk by 1."),
+        //upgrades                                                                 stat increase
+        [ItemName.HealthUpgrade] =          ("Health upgrade",              75,     2,     ItemType.Upgrade, ItemRarity.Rare,   "Permanently upgrades HP by 1."),
+        [ItemName.DmgUpgrade] =             ("Dmg upgrade",                 75,     1,     ItemType.Upgrade, ItemRarity.Rare,  "Permanently upgrades ATK by 1."),
         
+        //buffs                                                                     x for 5 turns
+        [ItemName.Poison] =                 ("Poison",                      1,      0,     ItemType.Buff, ItemRarity.Common,  "Poisons you. Try it."),
+        [ItemName.ContinuousHealSmall] =    ("Small potion of regeneration",20,     2,     ItemType.Buff, ItemRarity.Common,  "Heals for 10 HP slowly."),
+        [ItemName.ContinuousHeal] =   ("Potion of regeneration",      45,     4,     ItemType.Buff, ItemRarity.Uncommon,  "Heals for 20 HP slowly."),
+        [ItemName.ContinuousHealLarge] =    ("Large potion of regeneration",70,     6,     ItemType.Buff, ItemRarity.Rare,  "Heals for 30 HP slowly."),
+        [ItemName.AttackPotion] =           ("Potion of strength",          20,     1,     ItemType.Buff, ItemRarity.Common,  "Increases attack temporarily."),
+        [ItemName.ClearingPotion] =         ("Potion of clarity",           40,     0,     ItemType.Buff, ItemRarity.Uncommon,  "Removes debuffs."),
 
-        //                                                                          increase stat for
-        [ItemName.AttackRing] =             ("Ring of attack",              10,     50,     ItemType.Ring, ItemRarity.Common,   "Hydrogen bomb."),
-        [ItemName.DodgeRing] =              ("Ring of dodge",               20,     100,     ItemType.Ring, ItemRarity.Common,  "Don't get hit ever."),
 
-        [ItemName.Poison] =                 ("Poison",                      20,     0,     ItemType.Buff, ItemRarity.Common,  "Get poisoned."),
-        [ItemName.ContinuousHeal] =         ("Continuous heal",             20,     0,     ItemType.Buff, ItemRarity.Common,  "Get healed slowly."),
+        //rings                                                                     increase stat for
+        [ItemName.HealthRingSmall] =        ("Weak ring of life",           20,     2,     ItemType.Ring, ItemRarity.Common,   "Increases HP by 2."),
+        [ItemName.HealthRing] =             ("Ring of life",                50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases HP by 10."),
+        [ItemName.HealthRingLarge] =        ("Strong ring of life",         100,    20,     ItemType.Ring, ItemRarity.Rare,   "Increases HP by 20."),
+        [ItemName.AtkRing] =                ("Ring of strength",            50,     1,     ItemType.Ring, ItemRarity.Uncommon,   "Increases attack."),
+        [ItemName.AtkRingLarge] =           ("Strong ring of strength",     100,    3,     ItemType.Ring, ItemRarity.Rare,   "Increases attack greatly."),
+        [ItemName.DefRing] =                ("Ring of defense",             50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases defense."),
+        [ItemName.DefRingLarge] =           ("Strong ring of defense",      100,    30,     ItemType.Ring, ItemRarity.Rare,   "Increases defense greatly."),
+        [ItemName.DodgeRing] =              ("Ring of dodging",             50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases dodge."),
+        [ItemName.DodgeRingLarge] =         ("Strong ring of dodging",      100,    20,     ItemType.Ring, ItemRarity.Rare,   "Increases dodge greatly."),
 
+        [ItemName.RegenRing] =              ("Ring of blooming life",       100,    1,     ItemType.Ring, ItemRarity.Rare,   "Restores HP slowly."),
+        
+        //charms
+        // [ItemName.SpiderCharm] =            ("Poison",                      20,     0,     ItemType.Buff, ItemRarity.Common,  "Get poisoned."),
+        // [ItemName.DragonLureCharm] =        ("Continuous heal",             20,     0,     ItemType.Buff, ItemRarity.Common,  "Get healed slowly."),
+
+        
     };
 
     public static List<ItemName> GetPool(ItemRarity rarity) {
@@ -236,11 +254,11 @@ public static class EffectDB {
 
     public static Dictionary<EffectName, ( int duration, bool isDebuff, StatType stat, int value)> effects = new() {
         // name                     duration    is debuff   stat                value
-        [EffectName.HpInc] =        (10,        false,      StatType.MaxHP,    5),
-        [EffectName.AtkInc] =       (10,        false,      StatType.DMG,    1),
-        [EffectName.AccInc] =       (10,        false,      StatType.Acc,    10),
-        [EffectName.DodgeInc] =     (10,        false,      StatType.Dodge,    10),
-        [EffectName.DefInc] =       (10,        false,      StatType.Def,    10),
+        [EffectName.HpInc] =        (5,        false,      StatType.MaxHP,    5),
+        [EffectName.AtkInc] =       (5,        false,      StatType.DMG,    1),
+        [EffectName.AccInc] =       (5,        false,      StatType.Acc,    10),
+        [EffectName.DodgeInc] =     (5,        false,      StatType.Dodge,    10),
+        [EffectName.DefInc] =       (5,        false,      StatType.Def,    10),
 
         [EffectName.HpDec] =        (5,        true,      StatType.MaxHP,    5),
         [EffectName.AtkDec] =       (5,        true,      StatType.DMG,    1),

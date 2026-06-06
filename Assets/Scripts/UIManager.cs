@@ -35,6 +35,12 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private ActiveEffectsUI activeEffectsUI;
 
 
+    [SerializeField] GameObject infobox;
+    [SerializeField] TMP_Text infoBoxName;
+    [SerializeField] TMP_Text infoBoxDesc;
+    [SerializeField] TMP_Text infoBoxType;
+
+
     void Start() {
         SceneManager.LoadScene("Room_Between");
 
@@ -115,8 +121,20 @@ public class UIManager : MonoBehaviour {
         activeEffectsUI.Refresh();
     }
 
-    // public void CursorSetDefault() => Cursor.SetCursor(defaultCursor, Vector2.zero, CursorMode.Auto);
-    // public void CursorSetHoverEnemy() => Cursor.SetCursor(hoverEnemyCursor, Vector2.zero, CursorMode.Auto);
-    // public void CursorSetHoverGrab() => Cursor.SetCursor(hoverGrabCursor, Vector2.zero, CursorMode.Auto);
+    public void ShowInfobox(Item item, RectTransform slotRect) {
+        HideInfobox();
+        RectTransform infoboxRect = infobox.GetComponent<RectTransform>();
+        infoboxRect.anchoredPosition = slotRect.anchoredPosition + new Vector2(-355, 250);
+
+        infoBoxName.text = item.nameStr;
+        infoBoxDesc.text = item.description;
+        infoBoxType.text = item.itemType.ToString() + ((item.IsConsumable()) ? ", Consumable" : "") + ((item.IsWearable()) ? ", Equippable" : "");
+
+        infoboxRect.gameObject.SetActive(true);
+    }
+
+    public void HideInfobox() {
+        infobox.gameObject.SetActive(false);
+    }
 
 }
