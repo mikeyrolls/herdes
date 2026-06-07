@@ -20,21 +20,21 @@ MonoBehaviour:
   healingPotion: {fileID: 21300000, guid: 6568f99a6c282a344a1a8d20837983a3, type: 3}
   largeHealingPotion: {fileID: 21300000, guid: 4d813e4a8f46c8e41ab3d4545da0f8a4, type: 3}
   healingGland: {fileID: 21300000, guid: 9f7723cd26f1d5f458fbfe1383498f0e, type: 3}
-  healthUpgrade: {fileID: -8805255170832098516, guid: dc47e973fd474a948a2a63c023010b43, type: 3}
-  dmgUpgrade: {fileID: -7900851517274145832, guid: 6a646b8e8c551314fa79e5ded84ba7c6, type: 3}
-  poison: {fileID: 133982719826790466, guid: 329aa29083cb649498e0b1f40c80bb88, type: 3}
-  continuousHealSmall: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  continuousHeal: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  continuousHealLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  attackPotion: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  clearingPotion: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  healthRingSmall: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  healthRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  healthRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  atkRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  atkRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  defRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  defRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  dodgeRing: {fileID: 8975106287229735331, guid: 75c8688dc0d1da84dbb3c12e00e09fb5, type: 3}
-  dodgeRingLarge: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  regenRing: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  healthUpgrade: {fileID: 21300000, guid: c02ed84025155134bb5b722a90ab65b3, type: 3}
+  dmgUpgrade: {fileID: 21300000, guid: 4290a88f90a756d4bad3c63b76622139, type: 3}
+  poison: {fileID: 21300000, guid: 1a1683e4cee697d4982782b2321b8cf0, type: 3}
+  continuousHealSmall: {fileID: 21300000, guid: 6c441e3659cf500498e34f65072e94e9, type: 3}
+  continuousHeal: {fileID: 21300000, guid: 75aff632e3112c4408790f1b3829e1a2, type: 3}
+  continuousHealLarge: {fileID: 21300000, guid: 874e2cdb611ace44e8d7c30bab66ef9a, type: 3}
+  attackPotion: {fileID: 21300000, guid: 9fbddeced8ed20041b376f3edc729df9, type: 3}
+  clearingPotion: {fileID: 21300000, guid: 69919fa54c9fb504fab40c000c0aadae, type: 3}
+  healthRingSmall: {fileID: 21300000, guid: df3c71e34a59711439eade4279f06e83, type: 3}
+  healthRing: {fileID: 21300000, guid: a270edf882703a84c885feb51dfa342d, type: 3}
+  healthRingLarge: {fileID: 21300000, guid: bbdd2e7af01949d40870f52e3144fd05, type: 3}
+  atkRing: {fileID: 21300000, guid: 6aeb688cd85b7324badb8c4da3d3f4ba, type: 3}
+  atkRingLarge: {fileID: 21300000, guid: f930b1f4271595d488c8a807215b79e0, type: 3}
+  defRing: {fileID: 21300000, guid: 7264f871d12f61f44bcbbed5b8888734, type: 3}
+  defRingLarge: {fileID: 21300000, guid: a0e6b0020e1708649be9fda46bcd27d4, type: 3}
+  dodgeRing: {fileID: 21300000, guid: 8d663b5ff1929214c9f5e941643939bb, type: 3}
+  dodgeRingLarge: {fileID: 21300000, guid: d7e1c8a737c71854980347b289c3806f, type: 3}
+  regenRing: {fileID: 21300000, guid: 65b7d6f043f6cc942817e9da919bfc12, type: 3}

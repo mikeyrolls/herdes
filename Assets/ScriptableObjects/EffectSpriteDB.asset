@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1adbc93da4a48be4c819440bab18a886, type: 3}
   m_Name: EffectSpriteDB
   m_EditorClassIdentifier: 
-  hpInc: {fileID: 7803205293886956972, guid: 841ac8333ed821449a21bb19d1cba1be, type: 3}
-  atkInc: {fileID: -8674146233321178474, guid: f7ba04abe773977459423c92c1cd401d, type: 3}
-  accInc: {fileID: 7189526700942596929, guid: c478ab6eaa62dcb44989267dee9bb9cd, type: 3}
-  dodgeInc: {fileID: -6656921372503543274, guid: 6f6f756d708eade4098c351c71841728, type: 3}
-  defInc: {fileID: -2140827313873195626, guid: ea6c624054c88fc439a83a16dfbf568a, type: 3}
-  hpDec: {fileID: -7933684908365705954, guid: b7a5a42cc01bfe34dbdcde21573413e4, type: 3}
-  atkDec: {fileID: 7110122300063084181, guid: 84c18156096ee4a4cb581f82d6e2996b, type: 3}
-  accDec: {fileID: 6255772473650673599, guid: c86f55c3ef86fb4499da4b0095422f43, type: 3}
+  hpInc: {fileID: 21300000, guid: 7ffb872134689cd478fd7a5b1885f244, type: 3}
+  atkInc: {fileID: 21300000, guid: 20e5e00aa7a5ccf47bda7b741fd0647e, type: 3}
+  accInc: {fileID: 21300000, guid: 82b20c109ff01304b80894bd63e23254, type: 3}
+  dodgeInc: {fileID: 21300000, guid: 02eb6df3d840a364f885e1a224c081c9, type: 3}
+  defInc: {fileID: 21300000, guid: 45ce456c800d9414b9237f8e5ebbbf89, type: 3}
+  hpDec: {fileID: 21300000, guid: 5aa72cc4c117ac84ab9a0131792cbdd0, type: 3}
+  atkDec: {fileID: 21300000, guid: 8bc478b1ebbf8fe4098608eca45e2003, type: 3}
+  accDec: {fileID: 21300000, guid: 513a0a183d6cb2e4abf2a0bd9b3108e3, type: 3}
   dodgeDec: {fileID: 7517836271706311192, guid: c01ea35a7aaafa2448fb9a8837d48724, type: 3}
-  defDec: {fileID: -2610361346835064253, guid: 97cb145613030ca40879b1c4cce77a64, type: 3}
-  heal: {fileID: -7413598721336029530, guid: d9a5c7b0096cca04685edb9f5bc61dcd, type: 3}
-  poison: {fileID: -7648114527532167538, guid: f7ad28fb1f653b3409746889cc2f1fbb, type: 3}
-  poisonBig: {fileID: -733951850486316906, guid: be10d2dcc5d0e2c4db16bbbc6b3a833c, type: 3}
+  defDec: {fileID: 21300000, guid: 522dfb6bb4817544ea22a3c44513e67a, type: 3}
+  heal: {fileID: 21300000, guid: b91f532ab2c4c1146afd8df99f0186f8, type: 3}
+  poison: {fileID: 21300000, guid: ee37d6bb829cc85438934bbe38c3e64c, type: 3}
+  poisonBig: {fileID: 21300000, guid: a3b054e7dcb350d4b9a728ef350df2d5, type: 3}

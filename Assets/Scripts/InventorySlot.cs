@@ -10,6 +10,7 @@ using System.Collections.Generic;
 
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler {
 
+    [SerializeField] Image background;
     [SerializeField] Image itemImage;
     Item item;
     public int slotIndex;
@@ -93,7 +94,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     void OnClick() {
         Debug.Log("Clicked once");
         CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "");
-        UIManager.Instance.ShowInfobox(item, GetComponent<RectTransform>());
+        UIManager.Instance.ShowInfobox(item, GetComponent<RectTransform>(), slotIndex);
     }
 
     void OnDoubleClick() {
@@ -127,8 +128,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void UpdateSprite() {
         item = inventory.itemInventory[slotIndex];
+        background.gameObject.SetActive(false);
         if (item == null) {
             itemImage.gameObject.SetActive(false);
+            if(slotIndex == 6 || slotIndex == 7 || slotIndex == 8) {
+                background.gameObject.SetActive(true);
+            }
         } else {
             itemImage.sprite = item.itemSprite;
             itemImage.color = Color.white;

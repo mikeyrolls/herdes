@@ -121,10 +121,14 @@ public class UIManager : MonoBehaviour {
         activeEffectsUI.Refresh();
     }
 
-    public void ShowInfobox(Item item, RectTransform slotRect) {
+    public void ShowInfobox(Item item, RectTransform slotRect, int index) {
         HideInfobox();
+        int offset = 0;
+        if (index >= 6 && index < 9) {
+            offset = -560;
+        }
         RectTransform infoboxRect = infobox.GetComponent<RectTransform>();
-        infoboxRect.anchoredPosition = slotRect.anchoredPosition + new Vector2(-355, 250);
+        infoboxRect.anchoredPosition = slotRect.anchoredPosition + new Vector2(-355 + offset, 250);
 
         infoBoxName.text = item.nameStr;
         infoBoxDesc.text = item.description;
