@@ -11,6 +11,8 @@ Todo next time:
 
         item textures :sob:
 
+        remove debug settings (money, room spawn)
+
 
 
 
@@ -20,53 +22,32 @@ Todo next time:
 
 Random future:
 
-    idle animations for fight
-
-    buff apply animations and sound
-
-    fix item spawn rates by type and rarity
-
-    hide attack number behind attack skill stat, critical?
-
-    can't trash keys
-
     remove poison item
-
-    fix item descriptions numbers if you change how stats are calculated
-
-    item that drains life?
-
-
 
 
 Inventory:
 
-    clicking shows info yayyy:
-        name
-        description
-        usage (on click etc)
-        _consumable_ or whatever it is
-
-
 
 Items:
 
-    more item types 
+    fix item spawn rates by type and rarity
 
     permanent more hp stats and atk both max and minmax
 
-    fix prices (50, 75? dmg more)
-
-    rings to decrease enemy stats, increase own stat, don't spawn specific enemies, for own stats big and small?
+    charm to prevent enemy spawn, summon shit etc.
 
     enemy fix drops
 
-    better item names for permanent upgrades (and descriptions and everything)
-
     show item type in descriptions in shop and inventory (consumable/ring/charm/special-or-story)
+
+    fix item descriptions numbers if you change how stats are calculated
+
+    item that drains life from enemies?
 
 
 Stats:
+
+    hide attack number behind attack skill stat, critical?
 
     add def to enemy in database
 
@@ -86,13 +67,19 @@ Small misc:
 
     set visual layers properly bruh wtf (at least for cursor text)
 
-    
+    better new turn (call new room method with bool increase maybe?)
 
     clicking on cat icon shows info about cat
 
     cursor to hold and to do special attack setup
 
     sell stuff
+
+    clicking enter door leaves the text
+
+    room spawn, wall can be in the middle
+
+    hitting wall lowers dodge
 
 
 
@@ -149,6 +136,8 @@ Textures:
 
     starting cutscene skippable?
 
+    idle animations for fight
+
 
 
 Fight:
@@ -194,6 +183,8 @@ Sound:
     soundtrack
 
     setting volume
+
+    buff apply animations and sound
 
 
 

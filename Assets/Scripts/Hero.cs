@@ -38,9 +38,6 @@ public class Hero : Creature {
     public override void RecalculateStats() {
         Debug.Log("recalculating, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
         ResetToBaseStats();
-        
-        inventory.UseEffectOnly(7);
-        inventory.UseEffectOnly(8);
         effectList.CalculateEffects();
         Debug.Log("recalculating pre scale, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
         if (currHP > currMaxHP) currHP = currMaxHP;

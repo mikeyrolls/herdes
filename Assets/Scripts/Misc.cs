@@ -252,23 +252,23 @@ public enum EffectName {
 
 public static class EffectDB {
 
-    public static Dictionary<EffectName, ( int duration, bool isDebuff, StatType stat, int value)> effects = new() {
-        // name                     duration    is debuff   stat                value
-        [EffectName.HpInc] =        (5,        false,      StatType.MaxHP,    5),
-        [EffectName.AtkInc] =       (5,        false,      StatType.DMG,    1),
-        [EffectName.AccInc] =       (5,        false,      StatType.Acc,    10),
-        [EffectName.DodgeInc] =     (5,        false,      StatType.Dodge,    10),
-        [EffectName.DefInc] =       (5,        false,      StatType.Def,    10),
+    public static Dictionary<EffectName, (bool isDebuff, StatType stat)> effects = new() {
+        // name                     is debuff   stat
+        [EffectName.HpInc] =        (false,      StatType.MaxHP),
+        [EffectName.AtkInc] =       (false,      StatType.DMG),
+        [EffectName.AccInc] =       (false,      StatType.Acc),
+        [EffectName.DodgeInc] =     (false,      StatType.Dodge),
+        [EffectName.DefInc] =       (false,      StatType.Def),
 
-        [EffectName.HpDec] =        (5,        true,      StatType.MaxHP,    5),
-        [EffectName.AtkDec] =       (5,        true,      StatType.DMG,    1),
-        [EffectName.AccDec] =       (5,        true,      StatType.Acc,    10),
-        [EffectName.DodgeDec] =     (5,        true,      StatType.Dodge,    10),
-        [EffectName.DefDec] =       (5,        true,      StatType.Def,    10),
+        [EffectName.HpDec] =        (true,      StatType.MaxHP),
+        [EffectName.AtkDec] =       (true,      StatType.DMG),
+        [EffectName.AccDec] =       (true,      StatType.Acc),
+        [EffectName.DodgeDec] =     (true,      StatType.Dodge),
+        [EffectName.DefDec] =       (true,      StatType.Def),
 
-        [EffectName.Heal] =         (5,        false,      StatType.CurrHP,    4),
-        [EffectName.Poison] =       (5,        true,      StatType.CurrHP,    2),
-        [EffectName.PoisonBig] =    (5,        true,      StatType.CurrHP,    5),
+        [EffectName.Heal] =         (false,      StatType.CurrHP),
+        [EffectName.Poison] =       (true,      StatType.CurrHP),
+        [EffectName.PoisonBig] =    (true,      StatType.CurrHP),
     };
 
 

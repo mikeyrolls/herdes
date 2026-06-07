@@ -113,21 +113,34 @@ public class Inventory {
         Item item2 = itemInventory[index2];
         if (!CanItemBePlaced(item2, index1)) return false;
         
-        itemInventory[index2] = item1;
-        itemInventory[index1] = item2;
+        PlaceAt(index2, item1);
+        PlaceAt(index1, item2);
         GameManager.Instance.hero.RecalculateStats();
         UIManager.Instance.RefreshHUD();
         return true;
     }
 
+    private void PlaceAt(int index, Item item) {   //handle unequipping and equipping effects
+
+        if (index == 7 || index == 8) {
+            if(itemInventory[index] != null) GameManager.Instance.hero.effectList.RemoveEffectAtIndex(index);
+            if(item != null) item.UseItem(index);
+        }
+
+        itemInventory[index] = item;
+    }
+
     public bool CanItemBePlaced(Item item, int index) {
+        if (index == 9) return true;    //todo for story items?
+
         if (item == null) return true;
         if (index < 6) return true;
+        if (index == 6) return item.itemType == ItemType.Charm;
         if (index == 7 || index == 8) return item.itemType == ItemType.Ring;
         return false;
     }
 
-    public void UseEffectOnly(int index) {
+    public void UseEffect(int index) {
         if (itemInventory[index] == null) return;
         itemInventory[index].UseItem();
     }

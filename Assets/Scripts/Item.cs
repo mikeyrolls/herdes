@@ -46,7 +46,7 @@ public class Item {
         return (itemType == ItemType.Ring || itemType == ItemType.Charm);
     }
 
-    public void UseItem() {
+    public void UseItem(int index = -1) {
         switch(itemType) {
             case ItemType.Heal:
                 GameManager.Instance.hero.Heal(value);
@@ -62,24 +62,25 @@ public class Item {
                     case ItemName.HealthRingSmall:
                     case ItemName.HealthRing:
                     case ItemName.HealthRingLarge:
-                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.MaxHP);
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.HpInc, -1, value, index);
                         break;
                     case ItemName.AtkRing:
                     case ItemName.AtkRingLarge:
-                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.DMG);
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.AtkInc, -1, value, index);
                         break;
                     case ItemName.DefRing:
                     case ItemName.DefRingLarge:
-                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Def);
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.DefInc, -1, value, index);
                         break;
                     case ItemName.DodgeRing:
                     case ItemName.DodgeRingLarge:
-                        GameManager.Instance.hero.IncreaseStatTemporary(value, StatType.Dodge);
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.DodgeInc, -1, value, index);
                         break;
                     case ItemName.RegenRing:
-                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Heal, 1, value);
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Heal, -1, value, index);
                         break;
                 }
+                break;
             case ItemType.Buff:
                 if (itemName == ItemName.Poison) 
                     GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Poison, 5, 5);
