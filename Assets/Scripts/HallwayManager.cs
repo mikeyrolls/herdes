@@ -151,14 +151,14 @@ public class HallwayManager : MonoBehaviour {
         if (attacker.LandHit()) {
             int hitDmg = attacker.Attack();
             if(attacked.GetAttacked(hitDmg)) {
-                AddInfoText(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
+                Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
             } else {
-                AddInfoText(attacked.nameStr + " dodged ");
+                Debug.Log(attacked.nameStr + " dodged ");
             }
 
         } else {
             attacker.Miss();
-            AddInfoText(attacker.nameStr + " missed " + attacked.nameStr);
+            Debug.Log(attacker.nameStr + " missed " + attacked.nameStr);
         }
 
         yield return null;
@@ -168,7 +168,7 @@ public class HallwayManager : MonoBehaviour {
     void EnemyDied() {
         SpawnItem(enemy.GetDrop());
         SpawnGold(enemy.GetGoldValue());
-        AddInfoText("You won! Leave");
+        Debug.Log("You won! Leave");
     }
 
     void HeroDied() {

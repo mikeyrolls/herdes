@@ -22,7 +22,7 @@ public class Creature {
 	protected int maxDMG;
 	protected int dodge;
 	protected int acc;
-    protected int def = 0;
+    protected int def;
 
     public int currMaxHP;
     protected int currMinDMG;
@@ -103,7 +103,8 @@ public class Creature {
     }
 
     protected virtual void TakeDmg(int rawDmg) {
-        currHP = Helper.AddPositive(currHP, -rawDmg);
+        int armoredDmg = (int)(StatToMult(def) * rawDmg + 0.5);
+        currHP = Helper.AddPositive(currHP, -armoredDmg);
         UIManager.Instance.RefreshHUD();
     }
 
@@ -168,6 +169,10 @@ public class Creature {
 
     public virtual void RecalculateStats() {
         
+    }
+
+    double StatToMult(int stat) { //decimal, 0 -> 1
+        return ((1)/(1+0.02*stat));
     }
 
 }

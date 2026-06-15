@@ -91,9 +91,9 @@ public static class ItemDB {
         //buffs                                                                     x for 5 turns
         [ItemName.Poison] =                 ("Poison",                      1,      0,     ItemType.Buff, ItemRarity.Common,  "Poisons you. Try it."),
         [ItemName.ContinuousHealSmall] =    ("Small potion of regeneration",20,     2,     ItemType.Buff, ItemRarity.Common,  "Heals for 10 HP slowly."),
-        [ItemName.ContinuousHeal] =   ("Potion of regeneration",      45,     4,     ItemType.Buff, ItemRarity.Uncommon,  "Heals for 20 HP slowly."),
+        [ItemName.ContinuousHeal] =         ("Potion of regeneration",      45,     4,     ItemType.Buff, ItemRarity.Uncommon,  "Heals for 20 HP slowly."),
         [ItemName.ContinuousHealLarge] =    ("Large potion of regeneration",70,     6,     ItemType.Buff, ItemRarity.Rare,  "Heals for 30 HP slowly."),
-        [ItemName.AttackPotion] =           ("Potion of strength",          20,     1,     ItemType.Buff, ItemRarity.Common,  "Increases attack temporarily."),
+        [ItemName.AttackPotion] =           ("Potion of strength",          20,     10,     ItemType.Buff, ItemRarity.Common,  "Increases attack temporarily."),
         [ItemName.ClearingPotion] =         ("Potion of clarity",           40,     0,     ItemType.Buff, ItemRarity.Uncommon,  "Removes debuffs."),
 
 
@@ -189,22 +189,22 @@ public enum EnemyType {
 
 public static class EnemyDB {
 
-    public static Dictionary<EnemyType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc, int gold, ItemName dropItem, int dropRate)> enemies = new() {
+    public static Dictionary<EnemyType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc, int def, int gold, ItemName dropItem, int dropRate)> enemies = new() {
         
-        // name                     hp      dmg     dodg    acc     gold    drop + rate
-        [EnemyType.Slime] =         (20,    2, 5,   15,     70,     5,      ItemName.HealingPotion, 70),
-        // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,     15,     ItemName.None, 0),
-        [EnemyType.Bat] =           (15,    1, 10,  40,     90,     15,     ItemName.Carrot, 25),
-        [EnemyType.Bandit] =        (35,    10, 12, 10,     70,     50,     ItemName.None, 0),    //weapon sharpen
-        [EnemyType.Spider] =        (20,    10, 15, 40,     90,     100,    ItemName.HealingGland, 100),     //big healing potion
-        // [EnemyType.Undead] =        (25,    1, 5,   10,     60,     5,      ItemName.None,        0),
-        // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,     10,     ItemName.None,        0),
-        [EnemyType.Snail] =         (40,    1, 2,   0,      100,    10,     ItemName.None,        0),  //armor/armor potion
+        // name                     hp      dmg     dodg    acc     def     gold    drop + rate
+        [EnemyType.Slime] =         (20,    2, 5,   15,     80,     0,    5,      ItemName.ContinuousHeal, 50),
+        // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,          15,     ItemName.None, 0),
+        [EnemyType.Bat] =           (15,    1, 10,  40,     90,     0,    15,     ItemName.DodgeRing, 35),  //dodgepotion
+        [EnemyType.Bandit] =        (35,    10, 12, 10,     90,     30,    50,     ItemName.DmgUpgrade, 40),    //weapon sharpen
+        [EnemyType.Spider] =        (20,    10, 15, 40,     95,     0,    100,    ItemName.HealingGland, 100),     //big healing potion
+        // [EnemyType.Undead] =        (25,    1, 5,   10,     60,          5,      ItemName.None,        0),
+        // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,          10,     ItemName.None,        0),
+        [EnemyType.Snail] =         (20,    1, 2,   0,      100,    90,    10,     ItemName.DefRing,        0),  //armor/armor potion
 
-        [EnemyType.Flies] =         (10,    2, 6,   0,      50,    3,     ItemName.None,        0),
-        [EnemyType.Rat] =           (15,    2, 5,   20,      100,    10,     ItemName.None,        0),
-        [EnemyType.Snake] =         (20,    5, 10,   20,      90,    25,     ItemName.None,        0),
-        [EnemyType.Golem] =         (50,    8, 10,   5,      65,    50,     ItemName.None,        0),
+        [EnemyType.Flies] =         (10,    2, 6,   0,      70,     -20,    3,     ItemName.Poison,        10),
+        [EnemyType.Rat] =           (15,    2, 5,   20,      100,   0,    10,     ItemName.Drumstick,        20),
+        [EnemyType.Snake] =         (20,    5, 10,   20,      90,   10,    25,     ItemName.Poison,        100),
+        [EnemyType.Golem] =         (50,    8, 10,   5,      75,    30,    50,     ItemName.AttackPotion,        50),
     };
 
     public static Dictionary<EnemyType, FightSpriteSet> sprites = new();

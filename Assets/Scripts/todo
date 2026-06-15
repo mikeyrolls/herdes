@@ -1,26 +1,25 @@
-
+commit: defense works, more enemy drops and some stat adjusts
 
 Todo next time:
 
-    implement some sort of charm item system
+    balancing
 
     show char info
 
-    balancing
+    the number thing in fight
 
-
-for dobriv:
-
-    version numbering?
-
-    fix where all it says t5 in the unity things
-
-    remove debug settings (money, room spawn)
+    
 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
 Random future:
+
+    fix attack potion stat gain lol
+
+    health bar size reflects max hp
+
+    FLEEING
 
 
 
@@ -62,11 +61,13 @@ cursor:
     hovering while holding in general
 
 
-
-Inventory:
-
-
 Items:
+
+    implement some sort of charm item system
+
+        - is pretty :3
+        - no spiders
+        - always start first
 
     fix item spawn rates by type and rarity
 
@@ -77,6 +78,8 @@ Items:
     fix item descriptions numbers if you change how stats are calculated
 
     item that drains life from enemies?
+
+    alert potion?
 
 
 Stats:
@@ -172,6 +175,16 @@ Fight:
     beastiary
 
     effects show on enemies
+
+
+
+for dobriv:
+
+    version numbering?
+
+    fix where all it says t5 in the unity things
+
+    remove debug settings (money, room spawn)
 
 
 ----------------------------------------------------------------------------------------------------------------------------

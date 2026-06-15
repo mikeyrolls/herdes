@@ -40,7 +40,7 @@ public class Enemy : Creature {
             gold = enemyData.gold;
             dropItem = enemyData.dropItem;
             dropRate = enemyData.dropRate;
-            def = 0;
+            def = enemyData.def;
 
             ResetToBaseStats();
             
