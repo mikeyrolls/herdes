@@ -241,6 +241,10 @@ public enum AnimationType {
     Attack, Dodge, GetHurt, Death
 }
 
+public enum FloatingTextType {   
+    Miss, Hit, Poison, Heal, Debuff
+}
+
 
 // -----------[ effects ]-----------
 

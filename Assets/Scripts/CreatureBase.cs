@@ -50,7 +50,7 @@ public class Creature {
 
     public void Miss() {
         sceneObject.PlayAnimation(AnimationType.Attack);
-        // "missed"?
+        sceneObject.ShowFloatingText("Missed", FloatingTextType.Miss);  
     }
 
     public int Attack() {
@@ -61,13 +61,12 @@ public class Creature {
     public bool GetAttacked(int dmg) {  //todo change to void once text set up
         if(Dodge()) {
             sceneObject.PlayAnimation(AnimationType.Dodge);
+            sceneObject.ShowFloatingText("Dodged", FloatingTextType.Miss);  
             return false;
-            //dodged
         } else {
-            TakeDmg(dmg);
-            
-            
-            //dmg
+            int actuallyTaken = TakeDmg(dmg);
+            sceneObject.ShowFloatingText(actuallyTaken + "", FloatingTextType.Hit);
+
             if(IsAlive()) {
                 sceneObject.PlayAnimation(AnimationType.GetHurt);
             } else {
@@ -102,10 +101,11 @@ public class Creature {
         return (currHP > 0);
     }
 
-    protected virtual void TakeDmg(int rawDmg) {
+    protected virtual int TakeDmg(int rawDmg) {
         int armoredDmg = (int)(StatToMult(def) * rawDmg + 0.5);
         currHP = Helper.AddPositive(currHP, -armoredDmg);
         UIManager.Instance.RefreshHUD();
+        return armoredDmg;
     }
 
     protected int GiveDmg() {

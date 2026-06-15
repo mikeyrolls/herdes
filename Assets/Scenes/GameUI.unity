@@ -562,6 +562,7 @@ MonoBehaviour:
   infoBoxDesc: {fileID: 197128141}
   infoBoxType: {fileID: 1963477061}
   gameOverScreen: {fileID: 67427207}
+  canvas: {fileID: 851225204}
 --- !u!1 &519341496
 GameObject:
   m_ObjectHideFlags: 0

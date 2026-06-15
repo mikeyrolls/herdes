@@ -148,3 +148,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fightSpriteSet: {fileID: 0}
+  floatingTextPrefab: {fileID: 5176619840349391443, guid: 31d40870521b4ae49a240bd920a96399, type: 3}
