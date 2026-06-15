@@ -4,12 +4,16 @@
 
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour {
 
     void OnMouseDown() {
         Debug.Log("Door clicked");
+
+        if(!GameManager.Instance.hero.IsAlive()) {
+            GameManager.Instance.Die();
+            return;
+        }
 
         // entering room
         if (GameManager.Instance.currentRoomType == RoomType.None) {
@@ -33,32 +37,23 @@ public class Door : MonoBehaviour {
                     Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
                     CursorManager.Instance.RemoveRequest(this);
-                    SceneManager.LoadScene("Room_Shop");
+                    StartCoroutine(GameManager.Instance.LoadNewScene("Room_Shop"));
                     break;
                 default:    //empty, treasure, fight 
                     GameManager.Instance.currentRoomType = type;
                     Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
                     CursorManager.Instance.RemoveRequest(this);
-                    SceneManager.LoadScene("Room_Hallway");
+                    StartCoroutine(GameManager.Instance.LoadNewScene("Room_Hallway"));
                     break;
             }
 
-            // if (type == RoomType.Back) {
-                
-            // } else if (type == RoomType.Wall) {
-            //     Debug.Log("Trying to walk into a wall, dumbshit");
-            // } else if (type == RoomType.Shop) {
-                
-            // } else {    //treasure, fight
-
-            // }
             
         // leaving room
         } else if (!GameManager.Instance.combat) {
             GameManager.Instance.currentRoomType = RoomType.None;
             CursorManager.Instance.RemoveRequest(this);
-            SceneManager.LoadScene("Room_Between");
+            StartCoroutine(GameManager.Instance.LoadNewScene("Room_Between"));
         }
     }
 

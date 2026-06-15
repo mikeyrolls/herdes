@@ -106,7 +106,7 @@ public class Inventory {
 
     public bool Swap(int index1, int index2) {  //holding 1, moving to 2
 
-        if (index2 == 9) itemInventory[index1] = null;  //trashed
+
 
         Item item1 = itemInventory[index1];
         if (!CanItemBePlaced(item1, index2)) return false;
@@ -115,6 +115,11 @@ public class Inventory {
         
         PlaceAt(index2, item1);
         PlaceAt(index1, item2);
+
+        if (index2 == 9) {   //empty trash when filled
+            itemInventory[9] = null;
+        }
+
         GameManager.Instance.hero.RecalculateStats();
         UIManager.Instance.RefreshHUD();
         return true;

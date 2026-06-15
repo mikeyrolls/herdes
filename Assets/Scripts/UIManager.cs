@@ -40,17 +40,21 @@ public class UIManager : MonoBehaviour {
     [SerializeField] TMP_Text infoBoxDesc;
     [SerializeField] TMP_Text infoBoxType;
 
+    [SerializeField] GameObject gameOverScreen;
+
 
     void Start() {
-        SceneManager.LoadScene("Room_Between");
+        StartCoroutine(GameManager.Instance.LoadNewScene("Room_Between"));
+        Init();
+    }
 
+    public void Init() {
         hpSlider.minValue = 0f;
         hpSlider.maxValue = 100f;
 
         for(int i = 0; i < 10; i++) {
             inventorySlots[i].Init(GameManager.Instance.hero.inventory, i);
         }
-
     }
 
     void Awake() {
@@ -132,13 +136,25 @@ public class UIManager : MonoBehaviour {
 
         infoBoxName.text = item.nameStr;
         infoBoxDesc.text = item.description;
-        infoBoxType.text = item.itemType.ToString() + ((item.IsConsumable()) ? ", Consumable" : "") + ((item.IsWearable()) ? ", Equippable" : "");
+        infoBoxType.text = item.itemTypes;
 
         infoboxRect.gameObject.SetActive(true);
     }
 
     public void HideInfobox() {
         infobox.gameObject.SetActive(false);
+    }
+
+    public void ShowGameOver() {
+        gameOverScreen.gameObject.SetActive(true);
+    }
+
+    public void ClickedTryAgain() {
+        GameManager.Instance.Retry();
+    }
+
+    public void HideGameOver() {
+        gameOverScreen.gameObject.SetActive(false);
     }
 
 }

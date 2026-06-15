@@ -1,28 +1,66 @@
 
+
 Todo next time:
 
     implement some sort of charm item system
 
-    for taska release:
+    show char info
 
-        death
-
-        show char info
-
-        item textures :sob:
-
-        remove debug settings (money, room spawn)
+    balancing
 
 
+for dobriv:
+
+    version numbering?
+
+    fix where all it says t5 in the unity things
+
+    remove debug settings (money, room spawn)
 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
-
-
 Random future:
 
-    remove poison item
+
+
+balancing:
+
+    attack potion stronger
+
+    shop every 10
+
+    buff spiders, bandits
+
+    buff dodge ring
+
+    make some enemies attack first
+
+    ambush room?
+
+    higher accuracy
+
+    implement poison needed
+
+    using items in combat takes turn
+
+    and debuffs from enemies
+
+    buff dodge for player
+
+    enemies drop things
+
+
+cursor:
+
+    cursor after clicking on door but stil going elsewhere, when holding down don't accept messages?
+
+    set visual layers properly bruh wtf (at least for cursor text)
+
+    cursor to hold and to do special attack setup
+
+    hovering while holding in general
+
 
 
 Inventory:
@@ -32,13 +70,9 @@ Items:
 
     fix item spawn rates by type and rarity
 
-    permanent more hp stats and atk both max and minmax
-
     charm to prevent enemy spawn, summon shit etc.
 
     enemy fix drops
-
-    show item type in descriptions in shop and inventory (consumable/ring/charm/special-or-story)
 
     fix item descriptions numbers if you change how stats are calculated
 
@@ -61,26 +95,21 @@ Small misc:
 
     enemy set sprite when dead, normal cursor when enemy attacking?
     
-    losing screen
+    losing screen (check what's visible under it, end result small losing panel, maybe fade to new game?)
 
     text to show dmg dealt
 
-    set visual layers properly bruh wtf (at least for cursor text)
-
-    better new turn (call new room method with bool increase maybe?)
+    better new room/turn (call new room method with bool increase maybe?)
 
     clicking on cat icon shows info about cat
 
-    cursor to hold and to do special attack setup
+    sell stuff?
 
-    sell stuff
+    room spawn, wall can be in the middle but make sure all aren't wall
 
-    clicking enter door leaves the text
+    hitting wall lowers dodge temporarily
 
-    room spawn, wall can be in the middle
-
-    hitting wall lowers dodge
-
+    better scene init setup with title screen maybe character picks and all or at least place to do it
 
 
 Hub:
@@ -92,7 +121,6 @@ Hub:
     going back hurts
 
     make animation (spawn left/right? move bg and cat? idk man)
-
 
 
 Textures:
@@ -128,6 +156,7 @@ Textures:
 
     idle animations for fight
 
+    items have shadows?
 
 
 Fight:
@@ -143,17 +172,6 @@ Fight:
     beastiary
 
     effects show on enemies
-
-
-
-
-
-
-
-
-
-
-
 
 
 ----------------------------------------------------------------------------------------------------------------------------

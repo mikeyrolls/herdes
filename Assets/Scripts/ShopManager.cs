@@ -20,7 +20,6 @@ public class ShopManager : MonoBehaviour {
         foreach (var slot in shopSlots)
             slot.Init(ItemDB.GetRandomForShop(GameManager.Instance.roomCount));
             
-        
         DisableExpensive();
     }
 
@@ -39,13 +38,11 @@ public class ShopManager : MonoBehaviour {
             slot.SetSoldOut();
             DisableExpensive();
         }
-        
     }
 
     private void DisableExpensive() {
         foreach (var slot in shopSlots)
             slot.DisableExpensive(hero.inventory.GetGold());
     }
-
 
 }

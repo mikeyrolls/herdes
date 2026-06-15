@@ -13,6 +13,7 @@ public class Item {
     public Sprite itemSprite;
     public ItemName itemName;
     public string description;
+    public string itemTypes;
 
     public void InitializeFromDB(ItemName itemName, ItemSpriteDB itemSpriteDB) {
         if (ItemDB.items.TryGetValue(itemName, out var itemData)) {
@@ -23,6 +24,7 @@ public class Item {
             itemType = itemData.itemType;
             description = itemData.description;
             itemSprite = itemSpriteDB.Get(itemName);
+            itemTypes = /*itemType.ToString() +*/ ((IsConsumable()) ? "Consumable" : "") + ((IsWearable()) ? "Equippable" : "");
             if (itemSprite == null) {
                 Debug.LogError($"Item Sprite '{itemName}' not found in database!");
             }

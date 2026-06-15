@@ -13,6 +13,7 @@ public class ShopSlot : MonoBehaviour {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI itemDisplayName;
     [SerializeField] TextMeshProUGUI itemDescription;
+    [SerializeField] TextMeshProUGUI itemDisplayTypes;
     [SerializeField] Button buyButton;
     [SerializeField] TextMeshProUGUI buttonText;
     [SerializeField] GameObject soldOutPanel;
@@ -37,6 +38,7 @@ public class ShopSlot : MonoBehaviour {
         itemImage.sprite = item.itemSprite;
         itemDisplayName.text = item.nameStr;
         itemDescription.text = item.description;
+        itemDisplayTypes.text = item.itemTypes;
         price = item.price;
         buttonText.text = price + "G";
     }

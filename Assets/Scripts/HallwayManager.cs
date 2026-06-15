@@ -36,6 +36,10 @@ public class HallwayManager : MonoBehaviour {
         heroGO.InitGO(EnemyDB.sprites[EnemyType.Fishbone]);
         hero.sceneObject = heroGO;
 
+
+        //todo do better
+        heroGO.onDeath = () => HeroDied();
+
         hero.effectList.ApplyEffects();
 
         switch (type) {
@@ -161,12 +165,14 @@ public class HallwayManager : MonoBehaviour {
 
     }
 
-    
-
     void EnemyDied() {
         SpawnItem(enemy.GetDrop());
         SpawnGold(enemy.GetGoldValue());
         AddInfoText("You won! Leave");
+    }
+
+    void HeroDied() {
+        GameManager.Instance.Die();
     }
 
     void AddInfoText(string newText) {
