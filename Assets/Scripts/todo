@@ -1,16 +1,29 @@
-commit:
+commit: fight heal
 
 Todo next time:
+
+    healing with items shows anim
+
+    
 
     heal bat after attack
 
     setup more attack types
+
+
 
     fleeing (door initially blocked), (free door after 10 kills?)
 
     balancing
 
     show char info
+
+
+    change to spawning normal
+
+    non debug on release
+
+    fix damage/heal showing incorrect number when capped (make a system lmao)
     
 
 

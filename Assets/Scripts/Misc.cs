@@ -168,7 +168,7 @@ public enum HeroType {
 public static class HeroDB {
     public static Dictionary<HeroType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc )> heroes = new() {
         //name                  hp      dmg     dodge   acc
-        [HeroType.Fishbone] =   (40,    8, 10,  10,     100),
+        [HeroType.Fishbone] =   (400,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
 
     };
 }

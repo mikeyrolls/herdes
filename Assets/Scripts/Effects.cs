@@ -106,7 +106,7 @@ public class Effect {
                 }
                 
             } else {
-                GameManager.Instance.hero.HealBuff(value);
+                GameManager.Instance.hero.Heal(value);
             }
         }
         if(duration > 0)

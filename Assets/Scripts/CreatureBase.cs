@@ -103,13 +103,15 @@ public class Creature {
         } 
     }
 
-    public void HealBuff(int amount) {
-        Heal(amount);
-        //todo anim
-        sceneObject.ShowFloatingText(amount + "", FloatingTextType.Heal); 
-    }
+    // public void HealBuff(int amount) {
+    //     Heal(amount);
+    //     //todo anim
+    //     sceneObject.ShowFloatingText(amount + "", FloatingTextType.Heal); 
+    // }
 
-    public void Heal(int amount) {
+    public virtual void Heal(int amount) {
+        sceneObject.ShowFloatingText(amount + "", FloatingTextType.Heal); 
+
         currHP += amount;
         if (currHP > currMaxHP) {
             currHP = currMaxHP;

@@ -98,7 +98,8 @@ public class HallwayManager : MonoBehaviour {
         GameManager.Instance.combat = true;
         AddInfoText("entered combat");
 
-        EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
+        //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
+        EnemyType spawnedEnemy = EnemyType.Bat;
         Debug.Log("spawnedEnemy = " + spawnedEnemy);
 
         enemy = new Enemy();
@@ -168,13 +169,10 @@ public class HallwayManager : MonoBehaviour {
                 if (attacker.LandHit()) {
                     int hitDmg = attacker.Attack();
                     if(attacked.GetAttacked(hitDmg)) {
-                        //poisons, bleeds from normal
-                        Debug.Log("looking for effects from hit");
+                        //poisons/bleeds from normal
                         foreach (var effectToApply in attacker.GetEffectsFromAtkType(0)) {
-                            Debug.Log("curr effect " + effectToApply);
                             attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
                         }
-                        Debug.Log("done");
 
                         Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
                         healAttacker = attacker.HealAfterAttack(0);
@@ -202,7 +200,7 @@ public class HallwayManager : MonoBehaviour {
         }
 
         if (healAttacker > 0) {
-            //heal todo
+            attacker.Heal(healAttacker);
         }
 
         yield return null;

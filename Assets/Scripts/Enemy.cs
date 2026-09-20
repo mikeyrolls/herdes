@@ -87,6 +87,12 @@ Debug.Log($"[{enemyType}] attackEffects[0].Count={attackEffects[0].Count}, [1]={
         return ad;
     }
 
+
+    public override void Heal(int amount) {
+        base.Heal(amount);
+        ((EnemyGO)sceneObject).SetHpBar(GetHpPerc());
+    }
+
     public ItemName GetDrop() {
         if (dropRate > Helper.GetPerc()) {
             return dropItem;
