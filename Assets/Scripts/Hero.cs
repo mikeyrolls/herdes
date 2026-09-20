@@ -12,7 +12,6 @@ public class Hero : Creature {
 
 
     public Inventory inventory = new Inventory();
-    public EffectList effectList = new EffectList();
 
     public void InitializeFromDB(HeroType heroType) {
         if (HeroDB.heroes.TryGetValue(heroType, out var heroData)) {

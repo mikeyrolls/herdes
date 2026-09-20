@@ -20,14 +20,17 @@ public class FloatingDmgText : MonoBehaviour {
                 color = Color.red;
                 break;
             case FloatingTextType.Poison:
-                color = new Color(0.2f, 0.9f, 0f, 1f);
+                color = new Color(0f, 0.5f, 0.25f, 1f);
+                break;
+            case FloatingTextType.Bleed:
+                color = new Color(0.6f, 0f, 0.4f, 1f);
                 break;
             case FloatingTextType.Heal:
                 color = new Color(0.6f, 1f, 0f, 1f);
-                message = "-" + message;
+                message = "+" + message;
                 break;
             case FloatingTextType.Debuff:
-                color = new Color(0.8f, 0.5f, 1f, 1f);
+                color = new Color(0.6f, 0.3f, 1f, 1f);
                 break;
             default:
                 color = Color.white;

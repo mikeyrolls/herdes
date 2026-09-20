@@ -55,6 +55,7 @@ public class CreatureGO : MonoBehaviour {
     protected IEnumerator MoveSprite(Direction direction, float tintStrength, Color tintColor, float distance) {
         float duration = animSpeed/2;
         if(direction == Direction.Left) distance *= -1;
+        else if (direction == Direction.Back) distance = 0;
 
         // movement
         float elapsed = 0f;
@@ -95,6 +96,9 @@ public class CreatureGO : MonoBehaviour {
             case AnimationType.Death:
                 StartCoroutine(DeathAnimation());
                 break;
+            case AnimationType.DeathStill:
+                StartCoroutine(DeathStillAnimation());
+                break;
         }
     }
 
@@ -122,6 +126,21 @@ public class CreatureGO : MonoBehaviour {
         yield return new WaitForSeconds(animSpeed/2);
         SetDamagedSprite();
         yield return StartCoroutine(MoveSprite(dirEdge, 0.75f));
+        onDeath?.Invoke();
+        GetComponent<Collider2D>().enabled = false;
+        SetDeadSprite();
+
+        //UIManager.Instance.CursorSetDefault();
+
+        yield return StartCoroutine(FadeSprite(0f));
+        // yield return new WaitForSeconds(2f);
+        // Destroy(gameObject);
+    }
+
+    public IEnumerator DeathStillAnimation() {
+        yield return new WaitForSeconds(animSpeed/2);
+        SetDamagedSprite();
+        yield return StartCoroutine(MoveSprite(Direction.Back, 0.75f));
         onDeath?.Invoke();
         GetComponent<Collider2D>().enabled = false;
         SetDeadSprite();

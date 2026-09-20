@@ -184,7 +184,7 @@ public enum EnemyType {
     Slime, Bat, Bandit,     Spider,  Snail,      Golem,
     Flies, Rat, Snake,
 
-    Fishbone,
+    Fishbone, //for sprites rn
 }
 
 public static class EnemyDB {
@@ -194,14 +194,14 @@ public static class EnemyDB {
         // name                     hp      dmg     dodg    acc     def     gold    drop + rate
         [EnemyType.Slime] =         (20,    2, 5,   15,     80,     0,    5,      ItemName.ContinuousHeal, 50),
         // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,          15,     ItemName.None, 0),
-        [EnemyType.Bat] =           (15,    1, 10,  40,     90,     0,    15,     ItemName.DodgeRing, 35),  //dodgepotion
+        [EnemyType.Bat] =           (15,    1, 10,  30,     90,     0,    15,     ItemName.DodgeRing, 35),  //dodgepotion
         [EnemyType.Bandit] =        (35,    10, 12, 10,     90,     30,    50,     ItemName.DmgUpgrade, 40),    //weapon sharpen
-        [EnemyType.Spider] =        (20,    10, 15, 40,     95,     0,    100,    ItemName.HealingGland, 100),     //big healing potion
+        [EnemyType.Spider] =        (30,    10, 15, 30,     95,     0,    100,    ItemName.HealingGland, 100),     //big healing potion
         // [EnemyType.Undead] =        (25,    1, 5,   10,     60,          5,      ItemName.None,        0),
         // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,          10,     ItemName.None,        0),
-        [EnemyType.Snail] =         (20,    1, 2,   0,      100,    90,    10,     ItemName.DefRing,        0),  //armor/armor potion
+        [EnemyType.Snail] =         (1,    1, 2,   0,      100,    90,    10,     ItemName.DefRing,        0),  //armor/armor potion
 
-        [EnemyType.Flies] =         (10,    2, 6,   0,      70,     -20,    3,     ItemName.Poison,        10),
+        [EnemyType.Flies] =         (10,    2, 6,   45,      100,     -20,    3,     ItemName.Poison,        10),
         [EnemyType.Rat] =           (15,    2, 5,   20,      100,   0,    10,     ItemName.Drumstick,        20),
         [EnemyType.Snake] =         (20,    5, 10,   20,      90,   10,    25,     ItemName.Poison,        100),
         [EnemyType.Golem] =         (50,    8, 10,   5,      75,    30,    50,     ItemName.AttackPotion,        50),
@@ -238,11 +238,11 @@ public static class EnemyDB {
 // -----------[ combat ]-----------
 
 public enum AnimationType {   
-    Attack, Dodge, GetHurt, Death
+    Attack, Dodge, GetHurt, Death, DeathStill
 }
 
 public enum FloatingTextType {   
-    Miss, Hit, Poison, Heal, Debuff
+    Miss, Hit, Poison, Bleed, Heal, Debuff
 }
 
 
@@ -251,7 +251,7 @@ public enum FloatingTextType {
 public enum EffectName {
     HpInc, AtkInc, AccInc, DodgeInc, DefInc,
     HpDec, AtkDec, AccDec, DodgeDec, DefDec,
-    Heal, Poison, PoisonBig,
+    Heal, Poison, PoisonBig, Bleed, BleedBig,
 }
 
 public static class EffectDB {
@@ -273,6 +273,8 @@ public static class EffectDB {
         [EffectName.Heal] =         (false,      StatType.CurrHP),
         [EffectName.Poison] =       (true,      StatType.CurrHP),
         [EffectName.PoisonBig] =    (true,      StatType.CurrHP),
+        [EffectName.Bleed] =       (true,      StatType.CurrHP),
+        [EffectName.BleedBig] =    (true,      StatType.CurrHP),
     };
 
 

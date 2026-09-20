@@ -99,7 +99,12 @@ public class Effect {
         Calculate();
         if(stat == StatType.CurrHP) {
             if (isDebuff) {
-                GameManager.Instance.hero.TakePoisonDmg(value);
+                if(name == EffectName.Bleed || name == EffectName.BleedBig) {
+                    GameManager.Instance.hero.TakeBleedDmg(value);
+                } else {
+                    GameManager.Instance.hero.TakePoisonDmg(value);
+                }
+                
             } else {
                 GameManager.Instance.hero.HealBuff(value);
             }

@@ -118,25 +118,36 @@ public class HallwayManager : MonoBehaviour {
         if (combatState != CombatState.PlayerTurn) return;
 
         combatState = CombatState.EnemyTurn;
-        StartCoroutine(CombatRound());
+        StartCoroutine(CombatRound(0));
+    }
+
+    public void OnHeroClicked() {
+        Debug.Log("onHeroClicked");
+        if (combatState != CombatState.PlayerTurn) return;
+
+        combatState = CombatState.EnemyTurn;
+        StartCoroutine(CombatRound(0)); //TODO NOT 1
 
     }
 
-    IEnumerator CombatRound() {
+    IEnumerator CombatRound(int attackType) {
         Debug.Log("CombatRound");
         //player attack
-        StartCoroutine(AttackRound(hero, enemy));
+        StartCoroutine(AttackRound(hero, enemy, attackType));
 
         //check status TODO method somehow, for counterattacks and reusability
+        //test if this is needed
+
         if(!enemy.IsAlive()) {
-            GameManager.Instance.combat = false;
-            combatState = CombatState.Won;
+        //     GameManager.Instance.combat = false;
+        //     combatState = CombatState.Won; //this does things now
             
         } else {
             Debug.Log("enemy attacking");
             yield return new WaitForSeconds(0.8f);
             //enemy attack
-            StartCoroutine(AttackRound(enemy, hero));
+
+            StartCoroutine(AttackRound(enemy, hero, enemy.GetAttackType()));
             //todo check status one hero death matters
 
             yield return new WaitForSeconds(0.60f); // enemy attack duration
@@ -145,20 +156,53 @@ public class HallwayManager : MonoBehaviour {
         }
     }
 
-    IEnumerator AttackRound(Creature attacker, Creature attacked) {
+    IEnumerator AttackRound(Creature attacker, Creature attacked, int attackType) {
         Debug.Log("attackRound entered, attacker = " + attacker.nameStr + ", attacked = " + attacked.nameStr);
 
-        if (attacker.LandHit()) {
-            int hitDmg = attacker.Attack();
-            if(attacked.GetAttacked(hitDmg)) {
-                Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
-            } else {
-                Debug.Log(attacked.nameStr + " dodged ");
-            }
+        int healAttacker = 0;
 
-        } else {
-            attacker.Miss();
-            Debug.Log(attacker.nameStr + " missed " + attacked.nameStr);
+        switch(attackType) {
+
+            //normal attack
+            case 0:
+                if (attacker.LandHit()) {
+                    int hitDmg = attacker.Attack();
+                    if(attacked.GetAttacked(hitDmg)) {
+                        //poisons, bleeds from normal
+                        Debug.Log("looking for effects from hit");
+                        foreach (var effectToApply in attacker.GetEffectsFromAtkType(0)) {
+                            Debug.Log("curr effect " + effectToApply);
+                            attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
+                        }
+                        Debug.Log("done");
+
+                        Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
+                        healAttacker = attacker.HealAfterAttack(0);
+                    } else {
+                        Debug.Log(attacked.nameStr + " dodged ");
+                    }
+
+                } else {
+                    attacker.Miss();
+                    Debug.Log(attacker.nameStr + " missed " + attacked.nameStr);
+                }
+                break;
+
+            //special fast
+            case 1:
+                // buffs only, change if debuffs/attacks, attackeR
+                foreach (var effectToApply in attacker.GetEffectsFromAtkType(1)) {
+                    attacker.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
+                }
+                break;
+
+            //special charged
+            case 2:
+                break;
+        }
+
+        if (healAttacker > 0) {
+            //heal todo
         }
 
         yield return null;
@@ -166,9 +210,13 @@ public class HallwayManager : MonoBehaviour {
     }
 
     void EnemyDied() {
+        GameManager.Instance.combat = false;
+        combatState = CombatState.Won;
+
         SpawnItem(enemy.GetDrop());
         SpawnGold(enemy.GetGoldValue());
         Debug.Log("You won! Leave");
+
     }
 
     void HeroDied() {

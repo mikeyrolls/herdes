@@ -2,6 +2,12 @@ commit:
 
 Todo next time:
 
+    heal bat after attack
+
+    setup more attack types
+
+    fleeing (door initially blocked), (free door after 10 kills?)
+
     balancing
 
     show char info
@@ -12,11 +18,52 @@ Todo next time:
 
 Random future:
 
+    small delay before fight could help idk make the enemy slide in or something
+
+    why char move when dying of poison??
+
+    add bleed
+
+    death reset slower
+
+    fix numbers showing on poisons, heals, ..
+
+    fix and unify text showing nums and stuff
+
+    buying carrots while dead
+
+    dying in shop leaves menu above
+
+    accessing shop with active buff breaks shopping??
+
+    change snail hp to 16
+
+    poison color more poisony
+
+
+
+
+
     fix attack potion stat gain lol
 
     health bar size reflects max hp
 
     FLEEING
+
+    change/sell/craft your items?
+
+
+
+
+    charms: poison attacks, door open?, no spiders?, stronger special/normal?, cannot be debuffed?, lover enemy dodge? survive death and heal fully once, no poison
+
+    fleeing
+
+    special attacks enemies
+
+    special attacks type 1 2 hero on click fishbone parry
+
+
 
 
 

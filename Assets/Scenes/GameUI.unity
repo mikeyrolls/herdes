@@ -562,7 +562,6 @@ MonoBehaviour:
   infoBoxDesc: {fileID: 197128141}
   infoBoxType: {fileID: 1963477061}
   gameOverScreen: {fileID: 67427207}
-  canvas: {fileID: 851225204}
 --- !u!1 &519341496
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 789723557}
   - component: {fileID: 789723556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1844,7 +1843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1102049606}
   - component: {fileID: 1102049607}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EnemySpriteDBHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

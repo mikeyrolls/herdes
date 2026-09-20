@@ -20,6 +20,8 @@ public class EffectSpriteDB : ScriptableObject {
     public Sprite heal;
     public Sprite poison;
     public Sprite poisonBig;
+    public Sprite bleed;
+    public Sprite bleedBig;
 
     private Dictionary<EffectName, Sprite> effectSpritesDict;
     public Dictionary<EffectName, Sprite> EffectSpritesDict {
@@ -44,6 +46,8 @@ public class EffectSpriteDB : ScriptableObject {
             [EffectName.Heal]       = heal,
             [EffectName.Poison]     = poison,
             [EffectName.PoisonBig]  = poisonBig,
+            [EffectName.Bleed]      = bleed,
+            [EffectName.BleedBig]   = bleedBig,
         };
     }
 

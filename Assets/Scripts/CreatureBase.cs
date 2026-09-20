@@ -31,7 +31,14 @@ public class Creature {
     protected int currAcc;
     protected int currDef;
 
-    List<int> numbers = new List<int> {};
+    public EffectList effectList = new EffectList();
+
+
+    public List<(EffectName effect, int duraction, int value, int perc)>[] attackEffects = new List<(EffectName effect, int duraction, int value, int perc)>[] {
+        new List<(EffectName, int, int, int)>(),  //dealt in normal attack
+        new List<(EffectName, int, int, int)>(),  //special fast
+        new List<(EffectName, int, int, int)>()   //special charged
+    };
 
     // -------------------------[ methods ]-----------------------------------------
 
@@ -58,7 +65,7 @@ public class Creature {
         return GiveDmg();
     }
 
-    public bool GetAttacked(int dmg) {  //todo change to void once text set up
+    public bool GetAttacked(int dmg) {  //todo change to void once text set up??? idk
         if(Dodge()) {
             sceneObject.PlayAnimation(AnimationType.Dodge);
             sceneObject.ShowFloatingText("Dodged", FloatingTextType.Miss);  
@@ -80,11 +87,26 @@ public class Creature {
         currHP = Helper.AddPositive(currHP, -rawDmg);
         UIManager.Instance.RefreshHUD();
         //todo anim
+        sceneObject.ShowFloatingText(rawDmg + "", FloatingTextType.Poison); 
+        if(!IsAlive()) {
+            sceneObject.PlayAnimation(AnimationType.Death);
+        } 
+    }
+
+    public void TakeBleedDmg(int rawDmg) {
+        currHP = Helper.AddPositive(currHP, -rawDmg);
+        UIManager.Instance.RefreshHUD();
+        //todo anim
+        sceneObject.ShowFloatingText(rawDmg + "", FloatingTextType.Bleed);
+        if(!IsAlive()) {
+            sceneObject.PlayAnimation(AnimationType.Death);
+        } 
     }
 
     public void HealBuff(int amount) {
         Heal(amount);
         //todo anim
+        sceneObject.ShowFloatingText(amount + "", FloatingTextType.Heal); 
     }
 
     public void Heal(int amount) {
@@ -173,6 +195,23 @@ public class Creature {
 
     double StatToMult(int stat) { //decimal, 0 -> 1
         return ((1)/(1+0.02*stat));
+    }
+
+    public List<(EffectName effect, int duration, int value)> GetEffectsFromAtkType(int type) {
+
+        var e = new List<(EffectName, int, int)>();
+        foreach (var x in attackEffects[type]) {
+            Debug.Log("trying to add " + x);
+            if (Helper.GetPerc() <= x.perc) {
+                e.Add((x.effect, x.duraction, x.value));
+                Debug.Log("added");
+            } 
+        }
+        return e;
+    }
+
+    public virtual int HealAfterAttack(int attackType) {
+        return 0;
     }
 
 }
