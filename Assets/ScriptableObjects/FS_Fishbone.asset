@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d387f56e27113741bc34ee8800b4b02, type: 3}
   m_Name: FS_Fishbone
   m_EditorClassIdentifier: 
-  idle: {fileID: 21300000, guid: 1214ce2aa97921a4a9a1a3d0fe5fe6a1, type: 3}
+  idle: {fileID: 936449175292713077, guid: db562c9ec3c35c347ab68d650d305669, type: 3}
   damaged: {fileID: 21300000, guid: 0a01761ad30a0db41a1ef1b03cc19baa, type: 3}
   attacking: {fileID: 21300000, guid: d87507b454e45474eab5d1f3eeb333a7, type: 3}
   dead: {fileID: 21300000, guid: d7144a9ea8aafde4e8b4f8be4a99e994, type: 3}
+  specialFast: {fileID: 21300000, guid: 86861fcce8c89d642b943ec66a331907, type: 3}
+  specialCharged1: {fileID: 0}
+  specialCharged2: {fileID: 0}

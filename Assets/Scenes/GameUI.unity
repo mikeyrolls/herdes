@@ -271,7 +271,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5.000046, y: 0}
+  m_AnchoredPosition: {x: -5.000061, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &197128139
@@ -2765,9 +2765,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 193720594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 147.42, y: -23.728}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 2.4199982, y: 1.2719994}
   m_SizeDelta: {x: 294.83, y: 52.402}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1304117470
@@ -3121,9 +3121,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 384, y: -134}
-  m_SizeDelta: {x: 309.831, y: 99.857}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 229.08453, y: -183.92847}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1356746823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3544,6 +3544,7 @@ MonoBehaviour:
   normalCursor: {fileID: 2800000, guid: e3892014af78f1e4ba0b82d9af435ed8, type: 3}
   grabCursor: {fileID: 2800000, guid: 277aa68e28c98624c92e473edd31e50f, type: 3}
   attackCursor: {fileID: 2800000, guid: fe03e9b91e0e77a44b5e58e7089e3ee6, type: 3}
+  specialCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
 --- !u!4 &1568520784
 Transform:
   m_ObjectHideFlags: 0

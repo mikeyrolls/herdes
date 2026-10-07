@@ -104,6 +104,10 @@ public class UIManager : MonoBehaviour {
         roomCountText.text = "Room num: " + GameManager.Instance.roomCount.ToString();
         hpText.text = "HP: " + GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.currMaxHP.ToString();
 
+        float width = 0.1f + Mathf.Sqrt(GameManager.Instance.hero.currMaxHP/40);
+        hpSlider.transform.localScale = new Vector3(width, 1, 1);
+        hpText.transform.localScale = new Vector3(1/width, 1, 1);
+
         int hpPerc = GameManager.Instance.hero.GetHpPerc();
         hpSlider.value = hpPerc;
 

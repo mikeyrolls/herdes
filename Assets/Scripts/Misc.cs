@@ -170,7 +170,7 @@ public enum HeroType {
 public static class HeroDB {
     public static Dictionary<HeroType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc )> heroes = new() {
         //name                  hp      dmg     dodge   acc
-        [HeroType.Fishbone] =   (400,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
+        [HeroType.Fishbone] =   (100,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
 
     };
 }
@@ -203,7 +203,7 @@ public static class EnemyDB {
         // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,          10,     ItemName.None,        0),
         [EnemyType.Snail] =         (1,    1, 2,   0,      100,    90,    10,     ItemName.DefRing,        0),  //armor/armor potion
 
-        [EnemyType.Flies] =         (10,    2, 6,   45,      100,     -20,    3,     ItemName.Poison,        10),
+        [EnemyType.Flies] =         (8,    2, 6,   45,      100,     0,    3,     ItemName.Poison,        10),
         [EnemyType.Rat] =           (15,    2, 5,   20,      100,   0,    10,     ItemName.Drumstick,        20),
         [EnemyType.Snake] =         (12,    5, 10,   20,      90,   10,    25,     ItemName.Poison,        100),
         [EnemyType.Golem] =         (50,    8, 10,   5,      80,    30,    50,     ItemName.AttackPotion,        50),

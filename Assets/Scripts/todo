@@ -1,4 +1,4 @@
-commit: 
+commit: hp tweaks (enemy heal iq, better numbers for capped values, hp bar size)
 
 Todo next time:
 
@@ -6,9 +6,7 @@ Todo next time:
 
     show char info
 
-    fix damage/heal showing incorrect number when capped (make a system lmao)
-
-    more intelligent enemy heals
+    hero hub object
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -32,8 +30,6 @@ Random future:
 
     better font
 
-    health bar size reflects max hp
-
     FLEEING.. fleeing (door initially blocked), (free door after 10 kills?)
 
     change/sell/craft your items?
@@ -56,7 +52,7 @@ balancing:
 
     enemies drop random things?
 
-    mimics for at least fishbone, super spider, increasing chance to meet them
+    mimics, increasing chance to meet them
 
 
 cursor:
@@ -107,8 +103,6 @@ Small misc:
     enemy set sprite when dead, normal cursor when enemy attacking?
     
     losing screen (check what's visible under it, end result small losing panel, maybe fade to new game?)
-
-    text to show dmg dealt
 
     better new room/turn (call new room method with bool increase maybe?)
 
@@ -174,6 +168,7 @@ Fight:
 
     effects show on enemies
 
+    add mimic
 
 
 Before release:

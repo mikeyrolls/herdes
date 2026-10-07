@@ -101,7 +101,7 @@ public class HallwayManager : MonoBehaviour {
         //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
 
         //debugging picked enemy----------------------------
-        EnemyType spawnedEnemy = EnemyType.Rat;
+        EnemyType spawnedEnemy = EnemyType.Slime;
         //-------------------------
 
         Debug.Log("spawnedEnemy = " + spawnedEnemy);
@@ -111,6 +111,7 @@ public class HallwayManager : MonoBehaviour {
         enemyGO = Instantiate(enemyPrefab, new Vector3(2f, -0.5f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
         enemyGO.InitGO(EnemyDB.sprites[spawnedEnemy]);
         enemy.sceneObject = enemyGO;
+        enemyGO.SetHpBarWidth(enemy.currMaxHP);
         enemyGO.onDeath = () => EnemyDied();
 
         AddInfoText("spawned enemy: " + enemy.nameStr);

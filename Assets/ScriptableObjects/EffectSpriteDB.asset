@@ -25,5 +25,5 @@ MonoBehaviour:
   heal: {fileID: 21300000, guid: b91f532ab2c4c1146afd8df99f0186f8, type: 3}
   poison: {fileID: 21300000, guid: ee37d6bb829cc85438934bbe38c3e64c, type: 3}
   poisonBig: {fileID: 21300000, guid: a3b054e7dcb350d4b9a728ef350df2d5, type: 3}
-  bleed: {fileID: 21300000, guid: 5aa72cc4c117ac84ab9a0131792cbdd0, type: 3}
-  bleedBig: {fileID: 21300000, guid: 5aa72cc4c117ac84ab9a0131792cbdd0, type: 3}
+  bleed: {fileID: 3097429857703834333, guid: 475ae97a325e19640ba369c7db7eb3e8, type: 3}
+  bleedBig: {fileID: 1495794113015848499, guid: ec53c56d956f4e54392422002ff4d61c, type: 3}

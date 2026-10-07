@@ -21,7 +21,7 @@ public class HeroGO : CreatureGO {
     }
 
     void OnMouseEnter() {
-        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.World, "");
+        CursorManager.Instance.AddRequest(this, CursorType.Special, Prio.World, "");
     }
 
     void OnMouseExit() {

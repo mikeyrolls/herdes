@@ -16,3 +16,6 @@ MonoBehaviour:
   damaged: {fileID: 21300000, guid: 494e332f044912443ba2498c617ba17d, type: 3}
   attacking: {fileID: 21300000, guid: 1da16f7dc09e7234eb221ce74a2221ea, type: 3}
   dead: {fileID: 21300000, guid: 9f0546a9ad6883646b6896be1f27a399, type: 3}
+  specialFast: {fileID: 21300000, guid: 9244b3e735810ca4e9ed8609653d55d4, type: 3}
+  specialCharged1: {fileID: 0}
+  specialCharged2: {fileID: 0}

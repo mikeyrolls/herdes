@@ -48,6 +48,11 @@ public class EnemyGO : CreatureGO {
         hpBarGreen.transform.localPosition = new Vector3(-(1 - size)/2, 0, 0);
     }
 
+    public void SetHpBarWidth(int maxHP) {
+        float width = 0.4f + Mathf.Sqrt(maxHP / 4);
+        hpBarRed.transform.localScale = new Vector3(width, 0.4f, 1);
+    }
+
     public IEnumerator HideHpBarAnim() {
         yield return new WaitForSeconds(animSpeed/2);
         hpBarRed.SetActive(false);

@@ -35,6 +35,8 @@ MonoBehaviour:
   atkRingLarge: {fileID: 21300000, guid: f930b1f4271595d488c8a807215b79e0, type: 3}
   defRing: {fileID: 21300000, guid: 7264f871d12f61f44bcbbed5b8888734, type: 3}
   defRingLarge: {fileID: 21300000, guid: a0e6b0020e1708649be9fda46bcd27d4, type: 3}
-  dodgeRing: {fileID: 21300000, guid: 8d663b5ff1929214c9f5e941643939bb, type: 3}
-  dodgeRingLarge: {fileID: 21300000, guid: d7e1c8a737c71854980347b289c3806f, type: 3}
+  dodgeRing: {fileID: 21300000, guid: c8fccdd80b02bea4ba5ededa340ff9ee, type: 3}
+  dodgeRingLarge: {fileID: 21300000, guid: be6e5450a799b084690d3b7e183a7c71, type: 3}
+  accRing: {fileID: 21300000, guid: 8d663b5ff1929214c9f5e941643939bb, type: 3}
+  accRingLarge: {fileID: 21300000, guid: d7e1c8a737c71854980347b289c3806f, type: 3}
   regenRing: {fileID: 21300000, guid: 65b7d6f043f6cc942817e9da919bfc12, type: 3}

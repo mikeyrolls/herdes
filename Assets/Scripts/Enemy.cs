@@ -103,7 +103,7 @@ public class Enemy : Creature {
         switch(enemyType) {
             case EnemyType.Slime:
             case EnemyType.Rat:
-                if(Helper.GetPerc() < 33) return 1;
+                if(Helper.GetPerc() < 33 && GetHpPerc() < 70) return 1;
                 break;
             case EnemyType.Bandit:
             case EnemyType.Spider:
