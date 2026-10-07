@@ -93,7 +93,7 @@ public static class ItemDB {
         [ItemName.ContinuousHealSmall] =    ("Small potion of regeneration",20,     2,     ItemType.Buff, ItemRarity.Common,  "Heals for 10 HP slowly."),
         [ItemName.ContinuousHeal] =         ("Potion of regeneration",      45,     4,     ItemType.Buff, ItemRarity.Uncommon,  "Heals for 20 HP slowly."),
         [ItemName.ContinuousHealLarge] =    ("Large potion of regeneration",70,     6,     ItemType.Buff, ItemRarity.Rare,  "Heals for 30 HP slowly."),
-        [ItemName.AttackPotion] =           ("Potion of strength",          20,     10,     ItemType.Buff, ItemRarity.Common,  "Increases attack temporarily."),
+        [ItemName.AttackPotion] =           ("Potion of strength",          20,     12,     ItemType.Buff, ItemRarity.Common,  "Increases attack temporarily."),
         [ItemName.ClearingPotion] =         ("Potion of clarity",           40,     0,     ItemType.Buff, ItemRarity.Uncommon,  "Removes debuffs."),
 
 
@@ -101,12 +101,12 @@ public static class ItemDB {
         [ItemName.HealthRingSmall] =        ("Weak ring of life",           20,     2,     ItemType.Ring, ItemRarity.Common,   "Increases HP by 2."),
         [ItemName.HealthRing] =             ("Ring of life",                50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases HP by 10."),
         [ItemName.HealthRingLarge] =        ("Strong ring of life",         100,    20,     ItemType.Ring, ItemRarity.Rare,   "Increases HP by 20."),
-        [ItemName.AtkRing] =                ("Ring of strength",            50,     1,     ItemType.Ring, ItemRarity.Uncommon,   "Increases attack."),
-        [ItemName.AtkRingLarge] =           ("Strong ring of strength",     100,    3,     ItemType.Ring, ItemRarity.Rare,   "Increases attack greatly."),
-        [ItemName.DefRing] =                ("Ring of defense",             50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases defense."),
-        [ItemName.DefRingLarge] =           ("Strong ring of defense",      100,    30,     ItemType.Ring, ItemRarity.Rare,   "Increases defense greatly."),
-        [ItemName.DodgeRing] =              ("Ring of dodging",             50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases dodge."),
-        [ItemName.DodgeRingLarge] =         ("Strong ring of dodging",      100,    20,     ItemType.Ring, ItemRarity.Rare,   "Increases dodge greatly."),
+        [ItemName.AtkRing] =                ("Ring of strength",            50,     2,     ItemType.Ring, ItemRarity.Uncommon,   "Increases attack."),
+        [ItemName.AtkRingLarge] =           ("Strong ring of strength",     100,    5,     ItemType.Ring, ItemRarity.Rare,   "Increases attack greatly."),
+        [ItemName.DefRing] =                ("Ring of defense",             50,     15,     ItemType.Ring, ItemRarity.Uncommon,   "Increases defense."),
+        [ItemName.DefRingLarge] =           ("Strong ring of defense",      100,    40,     ItemType.Ring, ItemRarity.Rare,   "Increases defense greatly."),
+        [ItemName.DodgeRing] =              ("Ring of dodging",             50,     15,     ItemType.Ring, ItemRarity.Uncommon,   "Increases dodge."),
+        [ItemName.DodgeRingLarge] =         ("Strong ring of dodging",      100,    35,     ItemType.Ring, ItemRarity.Rare,   "Increases dodge greatly."),
 
         [ItemName.RegenRing] =              ("Ring of blooming life",       100,    1,     ItemType.Ring, ItemRarity.Rare,   "Restores HP slowly."),
         
@@ -192,11 +192,11 @@ public static class EnemyDB {
     public static Dictionary<EnemyType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc, int def, int gold, ItemName dropItem, int dropRate)> enemies = new() {
         
         // name                     hp      dmg     dodg    acc     def     gold    drop + rate
-        [EnemyType.Slime] =         (20,    2, 5,   15,     80,     0,    5,      ItemName.ContinuousHeal, 50),
+        [EnemyType.Slime] =         (20,    2, 5,   10,     85,     0,    5,      ItemName.ContinuousHeal, 50),
         // [EnemyType.Goblin] =        (15,    5, 10,  30,     75,          15,     ItemName.None, 0),
         [EnemyType.Bat] =           (15,    1, 10,  30,     90,     0,    15,     ItemName.DodgeRing, 35),  //dodgepotion
-        [EnemyType.Bandit] =        (35,    10, 12, 10,     90,     30,    50,     ItemName.DmgUpgrade, 40),    //weapon sharpen
-        [EnemyType.Spider] =        (30,    10, 15, 30,     95,     0,    100,    ItemName.HealingGland, 100),     //big healing potion
+        [EnemyType.Bandit] =        (35,    10, 12, 10,     90,     30,    60,     ItemName.DmgUpgrade, 40),    //weapon sharpen
+        [EnemyType.Spider] =        (30,    10, 15, 25,     95,     0,    90,    ItemName.HealingGland, 100),     //big healing potion
         // [EnemyType.Undead] =        (25,    1, 5,   10,     60,          5,      ItemName.None,        0),
         // [EnemyType.Skeleton] =      (20,    5, 7,   15,     65,          10,     ItemName.None,        0),
         [EnemyType.Snail] =         (1,    1, 2,   0,      100,    90,    10,     ItemName.DefRing,        0),  //armor/armor potion
@@ -204,7 +204,7 @@ public static class EnemyDB {
         [EnemyType.Flies] =         (10,    2, 6,   45,      100,     -20,    3,     ItemName.Poison,        10),
         [EnemyType.Rat] =           (15,    2, 5,   20,      100,   0,    10,     ItemName.Drumstick,        20),
         [EnemyType.Snake] =         (12,    5, 10,   20,      90,   10,    25,     ItemName.Poison,        100),
-        [EnemyType.Golem] =         (50,    8, 10,   5,      75,    30,    50,     ItemName.AttackPotion,        50),
+        [EnemyType.Golem] =         (50,    8, 10,   5,      80,    30,    50,     ItemName.AttackPotion,        50),
     };
 
     public static Dictionary<EnemyType, FightSpriteSet> sprites = new();

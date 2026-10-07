@@ -1,29 +1,16 @@
-commit: special attack fast
+commit: balancing (acc and dodge, stronger rings/potions)
 
 Todo next time:
 
-    clear todo
-
-    fix damage/heal showing incorrect number when capped (make a system lmao)
-
-    balancing from notes
-
-    texturing:
-
-        bleed
-
-        accuracy vs dodge ring? both?
-
+    texturing
 
     charged attack
 
     show char info
 
+    fix damage/heal showing incorrect number when capped (make a system lmao)
+
 ----------------------------------------------------------------------------------------------------------------------------
-
-Before release:
-
-    non debug money, rooms, enemy spawns
 
 
 Minor bugs:
@@ -63,25 +50,15 @@ balancing:
 
     shop every 10
 
-    buff spiders, bandits
-
-    buff dodge ring
-
     make some enemies attack first
 
     ambush room?
 
-    higher accuracy
-
-    implement poison needed
-
-    using items in combat takes turn
+    using items in combat takes turn?
 
     and debuffs from enemies
 
-    buff dodge rings for player
-
-    enemies drop things
+    enemies drop random things?
 
     mimics for at least fishbone, super spider, increasing chance to meet them
 
@@ -160,6 +137,10 @@ Hub:
 
 Textures:
 
+    bleed
+
+    accuracy vs dodge ring? both?
+
     (send the paint and current screenshot to dc to check dimensions)
 
     cat in hub:
@@ -196,13 +177,7 @@ Textures:
 
 Fight:
 
-    enemy can add debuffs (poison mainly)
-
     round in combat for archer and in general
-
-    special attacks?
-
-    countering system for both hero and enemy, fishbone special?
 
     beastiary
 
@@ -210,20 +185,18 @@ Fight:
 
 
 
-for dobriv:
+Before release:
 
     version numbering?
 
     fix where all it says t5 in the unity things
 
-    remove debug settings (money, room spawn)
+    non debug money, rooms, enemy spawns
 
 
 ----------------------------------------------------------------------------------------------------------------------------
 
 
-
--
 
 once ur kinda happy with it makei t playable for dobriv and move onto next things:
 
