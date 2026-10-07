@@ -157,7 +157,7 @@ public class CreatureGO : MonoBehaviour {
 
     public IEnumerator SpecialFastAnimation() {
         SetSpecialFastSprite();
-        yield return new WaitForSeconds(animSpeed);
+        yield return new WaitForSeconds(animSpeed/2*3);
         SetIdleSprite();
     }
 
@@ -178,7 +178,7 @@ public class CreatureGO : MonoBehaviour {
     }
 
     public void SetSpecialFastSprite() {
-        sr.sprite = fightSpriteSet.dead;     //todo change
+        sr.sprite = fightSpriteSet.specialFast;
     }
 
     public void ShowFloatingText(string message, FloatingTextType type) {

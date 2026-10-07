@@ -101,7 +101,7 @@ public class HallwayManager : MonoBehaviour {
         //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
 
         //debugging picked enemy----------------------------
-        EnemyType spawnedEnemy = EnemyType.Spider;
+        EnemyType spawnedEnemy = EnemyType.Rat;
         //-------------------------
 
         Debug.Log("spawnedEnemy = " + spawnedEnemy);

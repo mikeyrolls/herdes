@@ -1,14 +1,14 @@
-commit: balancing (acc and dodge, stronger rings/potions)
+commit: 
 
 Todo next time:
-
-    texturing
 
     charged attack
 
     show char info
 
     fix damage/heal showing incorrect number when capped (make a system lmao)
+
+    more intelligent enemy heals
 
 ----------------------------------------------------------------------------------------------------------------------------
 
@@ -38,15 +38,11 @@ Random future:
 
     change/sell/craft your items?
 
-    charms: poison attacks, door open?, no spiders?, stronger special/normal?, cannot be debuffed?, lover enemy dodge? survive death and heal fully once, no poison
-
     approaching shop makes number gold
 
 
 
 balancing:
-
-    attack potion stronger
 
     shop every 10
 
@@ -67,11 +63,9 @@ cursor:
 
     cursor after clicking on door but stil going elsewhere, when holding down don't accept messages?
 
-    set visual layers properly bruh wtf (at least for cursor text)
-
-    cursor to hold and to do special attack setup
-
     hovering while holding in general
+
+    cursor not showing attack when not correct turn
 
 
 Items:
@@ -81,16 +75,21 @@ Items:
         - is pretty :3
         - no spiders
         - always start first
+        - poison attacks
+        - doors always open?
+        - cannot be debuffed? stats only maybe
+        - lower enemy dodge?
+        - survive death
+        - immune to poison
+        - prevent specific enemy spawn
+        - summon specific enemy
+        - life drain
 
     fix item spawn rates by type and rarity
-
-    charm to prevent enemy spawn, summon shit etc.
 
     enemy fix drops
 
     fix item descriptions numbers if you change how stats are calculated
-
-    item that drains life from enemies?
 
     alert potion?
 
@@ -137,10 +136,6 @@ Hub:
 
 Textures:
 
-    bleed
-
-    accuracy vs dodge ring? both?
-
     (send the paint and current screenshot to dc to check dimensions)
 
     cat in hub:
@@ -152,8 +147,6 @@ Textures:
         - getting hit by rocks
         - headpat
 
-    fix cat leg thing incident
-
     trash slot fix, anim?
 
     hub bg
@@ -163,8 +156,6 @@ Textures:
     doors all
 
     animation of rocks falling to the back?
-
-    cursor to hold and do special attack
 
     title screen
 

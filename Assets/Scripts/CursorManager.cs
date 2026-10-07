@@ -12,6 +12,7 @@ public class CursorManager : MonoBehaviour {
     public Texture2D normalCursor;
     public Texture2D grabCursor;
     public Texture2D attackCursor;
+    public Texture2D specialCursor;
 
     private Dictionary<object, (CursorType type, int priority, string TooltipText)> requests = new();
 
@@ -47,6 +48,7 @@ public class CursorManager : MonoBehaviour {
     Texture2D GetTexture(CursorType type) => type switch {
         CursorType.Grab   => grabCursor,
         CursorType.Attack => attackCursor,
+        CursorType.Special => specialCursor,
         _                 => normalCursor
     };
 }

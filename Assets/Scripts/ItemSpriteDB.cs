@@ -37,6 +37,8 @@ public class ItemSpriteDB : ScriptableObject {
     public Sprite defRingLarge;
     public Sprite dodgeRing;
     public Sprite dodgeRingLarge;
+    public Sprite accRing;
+    public Sprite accRingLarge;
     public Sprite regenRing;
 
     private Dictionary<ItemName, Sprite> itemSpritesDict;
@@ -80,6 +82,8 @@ public class ItemSpriteDB : ScriptableObject {
             [ItemName.DefRingLarge] = defRingLarge,
             [ItemName.DodgeRing] = dodgeRing,
             [ItemName.DodgeRingLarge] = dodgeRingLarge,
+            [ItemName.AccRing] = accRing,
+            [ItemName.AccRingLarge] = accRingLarge,
             [ItemName.RegenRing] = regenRing,
         };
     }

@@ -17,7 +17,7 @@ public enum Duration{Temporary, Permanent}
 
 public enum SpriteColor{Normal, Red}
 
-public enum CursorType {Normal, Attack, Grab}
+public enum CursorType {Normal, Attack, Grab, Special}
 
 public enum Prio {Base, Background, World, UI, Overlay}
 
@@ -59,7 +59,7 @@ public enum ItemName {
     Carrot, Drumstick, HealingPotion, LargeHealingPotion, HealingGland,   //heals
     HealthUpgrade, DmgUpgrade,      // upgrades
     Poison, ContinuousHealSmall, ContinuousHeal, ContinuousHealLarge, AttackPotion, ClearingPotion,
-    HealthRingSmall, HealthRing, HealthRingLarge, AtkRing, AtkRingLarge, DefRing, DefRingLarge, DodgeRing, DodgeRingLarge, RegenRing,
+    HealthRingSmall, HealthRing, HealthRingLarge, AtkRing, AtkRingLarge, DefRing, DefRingLarge, DodgeRing, DodgeRingLarge, AccRing, AccRingLarge,  RegenRing,
     
     None,
 }
@@ -107,8 +107,10 @@ public static class ItemDB {
         [ItemName.DefRingLarge] =           ("Strong ring of defense",      100,    40,     ItemType.Ring, ItemRarity.Rare,   "Increases defense greatly."),
         [ItemName.DodgeRing] =              ("Ring of dodging",             50,     15,     ItemType.Ring, ItemRarity.Uncommon,   "Increases dodge."),
         [ItemName.DodgeRingLarge] =         ("Strong ring of dodging",      100,    35,     ItemType.Ring, ItemRarity.Rare,   "Increases dodge greatly."),
+        [ItemName.AccRing] =                ("Ring of accuracy",            50,     15,     ItemType.Ring, ItemRarity.Uncommon,   "Increases accuracy."),
+        [ItemName.AccRingLarge] =           ("Strong ring of accuracy",     100,    35,     ItemType.Ring, ItemRarity.Rare,   "Increases accuracy greatly."),
 
-        [ItemName.RegenRing] =              ("Ring of blooming life",       100,    1,     ItemType.Ring, ItemRarity.Rare,   "Restores HP slowly."),
+        [ItemName.RegenRing] =              ("Ring of blooming life",       120,    1,     ItemType.Ring, ItemRarity.Rare,   "Restores HP slowly."),
         
         //charms
         // [ItemName.SpiderCharm] =            ("Poison",                      20,     0,     ItemType.Buff, ItemRarity.Common,  "Get poisoned."),
