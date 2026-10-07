@@ -99,7 +99,11 @@ public class HallwayManager : MonoBehaviour {
         AddInfoText("entered combat");
 
         //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
-        EnemyType spawnedEnemy = EnemyType.Bat;
+
+        //debugging picked enemy----------------------------
+        EnemyType spawnedEnemy = EnemyType.Spider;
+        //-------------------------
+
         Debug.Log("spawnedEnemy = " + spawnedEnemy);
 
         enemy = new Enemy();
@@ -127,7 +131,7 @@ public class HallwayManager : MonoBehaviour {
         if (combatState != CombatState.PlayerTurn) return;
 
         combatState = CombatState.EnemyTurn;
-        StartCoroutine(CombatRound(0)); //TODO NOT 1
+        StartCoroutine(CombatRound(1)); 
 
     }
 
@@ -158,7 +162,7 @@ public class HallwayManager : MonoBehaviour {
     }
 
     IEnumerator AttackRound(Creature attacker, Creature attacked, int attackType) {
-        Debug.Log("attackRound entered, attacker = " + attacker.nameStr + ", attacked = " + attacked.nameStr);
+        Debug.Log("attackRound entered, attacker = " + attacker.nameStr + "(" + attacker.currDef + "), attacked = " + attacked.nameStr+ "(" + attacked.currDef + ")");
 
         int healAttacker = 0;
 
@@ -187,11 +191,16 @@ public class HallwayManager : MonoBehaviour {
                 break;
 
             //special fast
+            //enemy currently only heals itself immediately and doesn't attack
             case 1:
                 // buffs only, change if debuffs/attacks, attackeR
+
+                attacker.DoSpecialFast();
+
                 foreach (var effectToApply in attacker.GetEffectsFromAtkType(1)) {
                     attacker.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
                 }
+                healAttacker = attacker.HealAfterAttack(1);
                 break;
 
             //special charged

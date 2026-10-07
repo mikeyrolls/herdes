@@ -14,5 +14,18 @@ public class HeroGO : CreatureGO {
         base.InitGO(set);
         SetIsEnemy(false);
     }
+
+    void OnMouseDown() {
+        Debug.Log("hero clicked");
+        FindAnyObjectByType<HallwayManager>().OnHeroClicked();
+    }
+
+    void OnMouseEnter() {
+        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.World, "");
+    }
+
+    void OnMouseExit() {
+        CursorManager.Instance.RemoveRequest(this);
+    }
     
 }

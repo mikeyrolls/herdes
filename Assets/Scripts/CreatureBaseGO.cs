@@ -99,6 +99,9 @@ public class CreatureGO : MonoBehaviour {
             case AnimationType.DeathStill:
                 StartCoroutine(DeathStillAnimation());
                 break;
+            case AnimationType.SpecialFast:
+                StartCoroutine(SpecialFastAnimation());
+                break;
         }
     }
 
@@ -152,6 +155,12 @@ public class CreatureGO : MonoBehaviour {
         // Destroy(gameObject);
     }
 
+    public IEnumerator SpecialFastAnimation() {
+        SetSpecialFastSprite();
+        yield return new WaitForSeconds(animSpeed);
+        SetIdleSprite();
+    }
+
     public void SetIdleSprite() { //todo change protected
         sr.sprite = fightSpriteSet.idle;
     }
@@ -166,6 +175,10 @@ public class CreatureGO : MonoBehaviour {
 
     public void SetDeadSprite() {
         sr.sprite = fightSpriteSet.dead;
+    }
+
+    public void SetSpecialFastSprite() {
+        sr.sprite = fightSpriteSet.dead;     //todo change
     }
 
     public void ShowFloatingText(string message, FloatingTextType type) {

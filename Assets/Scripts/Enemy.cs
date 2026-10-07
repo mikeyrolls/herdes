@@ -51,8 +51,7 @@ public class Enemy : Creature {
         }
     }
 
-    void LoadEffects() {
-        Debug.Log("Loading effects mm");
+    protected override void LoadEffects() {
         switch(enemyType) {
             //effect duration value perc
             case EnemyType.Bat:
@@ -75,10 +74,6 @@ public class Enemy : Creature {
                 attackEffects[2].Add((EffectName.DefDec, 5, 20, 50));
                 attackEffects[2].Add((EffectName.DodgeDec, 5, 20, 50)); break;
         }
-        Debug.Log("effects loaded for normal " + attackEffects[0]);
-
-        // end of LoadEffects()
-Debug.Log($"[{enemyType}] attackEffects[0].Count={attackEffects[0].Count}, [1]={attackEffects[1].Count}, [2]={attackEffects[2].Count}");
     }
 
     protected override int TakeDmg(int rawDmg) {
@@ -106,12 +101,17 @@ Debug.Log($"[{enemyType}] attackEffects[0].Count={attackEffects[0].Count}, [1]={
 
     public int GetAttackType() {
         switch(enemyType) {
-            case EnemyType.Bat:
-                //whatever
-                //break
-            default:
-                return 0;
+            case EnemyType.Slime:
+            case EnemyType.Rat:
+                if(Helper.GetPerc() < 33) return 1;
+                break;
+            case EnemyType.Bandit:
+            case EnemyType.Spider:
+            case EnemyType.Snake:
+                if(Helper.GetPerc() < 25) return 2;
+                break;
         }
+        return 0;
     }
 
     public override int HealAfterAttack(int attackType) {
@@ -124,4 +124,7 @@ Debug.Log($"[{enemyType}] attackEffects[0].Count={attackEffects[0].Count}, [1]={
         return 0;
     }
 
+
 }
+
+

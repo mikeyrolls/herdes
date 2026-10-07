@@ -203,7 +203,7 @@ public static class EnemyDB {
 
         [EnemyType.Flies] =         (10,    2, 6,   45,      100,     -20,    3,     ItemName.Poison,        10),
         [EnemyType.Rat] =           (15,    2, 5,   20,      100,   0,    10,     ItemName.Drumstick,        20),
-        [EnemyType.Snake] =         (20,    5, 10,   20,      90,   10,    25,     ItemName.Poison,        100),
+        [EnemyType.Snake] =         (12,    5, 10,   20,      90,   10,    25,     ItemName.Poison,        100),
         [EnemyType.Golem] =         (50,    8, 10,   5,      75,    30,    50,     ItemName.AttackPotion,        50),
     };
 
@@ -238,11 +238,11 @@ public static class EnemyDB {
 // -----------[ combat ]-----------
 
 public enum AnimationType {   
-    Attack, Dodge, GetHurt, Death, DeathStill
+    Attack, Dodge, GetHurt, Death, DeathStill, SpecialFast
 }
 
 public enum FloatingTextType {   
-    Miss, Hit, Poison, Bleed, Heal, Debuff
+    Miss, Hit, Poison, Bleed, Heal, Debuff, Default
 }
 
 

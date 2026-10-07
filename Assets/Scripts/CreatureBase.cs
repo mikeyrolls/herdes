@@ -22,14 +22,14 @@ public class Creature {
 	protected int maxDMG;
 	protected int dodge;
 	protected int acc;
-    protected int def;
+    public int def; //todo back
 
     public int currMaxHP;
     protected int currMinDMG;
     protected int currMaxDMG;
     protected int currDodge;
     protected int currAcc;
-    protected int currDef;
+    public int currDef;
 
     public EffectList effectList = new EffectList();
 
@@ -83,6 +83,12 @@ public class Creature {
         }
     }
 
+    public virtual void DoSpecialFast(string text = "", FloatingTextType type = FloatingTextType.Default) {
+        sceneObject.PlayAnimation(AnimationType.SpecialFast);
+        if (text != "")
+            sceneObject.ShowFloatingText(text, type);
+    }
+
     public void TakePoisonDmg(int rawDmg) {
         currHP = Helper.AddPositive(currHP, -rawDmg);
         UIManager.Instance.RefreshHUD();
@@ -126,7 +132,7 @@ public class Creature {
     }
 
     protected virtual int TakeDmg(int rawDmg) {
-        int armoredDmg = (int)(StatToMult(def) * rawDmg + 0.5);
+        int armoredDmg = (int)(StatToMult(currDef) * rawDmg + 0.5);
         currHP = Helper.AddPositive(currHP, -armoredDmg);
         UIManager.Instance.RefreshHUD();
         return armoredDmg;
@@ -215,5 +221,7 @@ public class Creature {
     public virtual int HealAfterAttack(int attackType) {
         return 0;
     }
+
+    protected virtual void LoadEffects() { }
 
 }

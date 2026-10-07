@@ -20,8 +20,10 @@ MonoBehaviour:
   hpDec: {fileID: 21300000, guid: 5aa72cc4c117ac84ab9a0131792cbdd0, type: 3}
   atkDec: {fileID: 21300000, guid: 8bc478b1ebbf8fe4098608eca45e2003, type: 3}
   accDec: {fileID: 21300000, guid: 513a0a183d6cb2e4abf2a0bd9b3108e3, type: 3}
-  dodgeDec: {fileID: 7517836271706311192, guid: c01ea35a7aaafa2448fb9a8837d48724, type: 3}
+  dodgeDec: {fileID: 21300000, guid: 522dfb6bb4817544ea22a3c44513e67a, type: 3}
   defDec: {fileID: 21300000, guid: 522dfb6bb4817544ea22a3c44513e67a, type: 3}
   heal: {fileID: 21300000, guid: b91f532ab2c4c1146afd8df99f0186f8, type: 3}
   poison: {fileID: 21300000, guid: ee37d6bb829cc85438934bbe38c3e64c, type: 3}
   poisonBig: {fileID: 21300000, guid: a3b054e7dcb350d4b9a728ef350df2d5, type: 3}
+  bleed: {fileID: 21300000, guid: 5aa72cc4c117ac84ab9a0131792cbdd0, type: 3}
+  bleedBig: {fileID: 21300000, guid: 5aa72cc4c117ac84ab9a0131792cbdd0, type: 3}

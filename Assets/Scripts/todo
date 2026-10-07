@@ -1,82 +1,59 @@
-commit: fight heal
+commit: special attack fast
 
 Todo next time:
 
-    healing with items shows anim
+    clear todo
 
-    
+    fix damage/heal showing incorrect number when capped (make a system lmao)
 
-    heal bat after attack
+    balancing from notes
 
-    setup more attack types
+    texturing:
+
+        bleed
+
+        accuracy vs dodge ring? both?
 
 
-
-    fleeing (door initially blocked), (free door after 10 kills?)
-
-    balancing
+    charged attack
 
     show char info
 
-
-    change to spawning normal
-
-    non debug on release
-
-    fix damage/heal showing incorrect number when capped (make a system lmao)
-    
-
-
 ----------------------------------------------------------------------------------------------------------------------------
+
+Before release:
+
+    non debug money, rooms, enemy spawns
+
+
+Minor bugs:
+
+    why char move when dying of poison?? deathstill
+
+    buying carrots while dead
+
+    accessing shop with active buff breaks shopping??
+
+    dying in shop leaves menu above
+
 
 Random future:
 
     small delay before fight could help idk make the enemy slide in or something
 
-    why char move when dying of poison??
+    proper death screen and handling yeah, slower too
 
-    add bleed
-
-    death reset slower
-
-    fix numbers showing on poisons, heals, ..
-
-    fix and unify text showing nums and stuff
-
-    buying carrots while dead
-
-    dying in shop leaves menu above
-
-    accessing shop with active buff breaks shopping??
-
-    change snail hp to 16
-
-    poison color more poisony
-
-
-
-
-
-    fix attack potion stat gain lol
+    better font
 
     health bar size reflects max hp
 
-    FLEEING
+    FLEEING.. fleeing (door initially blocked), (free door after 10 kills?)
 
     change/sell/craft your items?
 
-
-
-
     charms: poison attacks, door open?, no spiders?, stronger special/normal?, cannot be debuffed?, lover enemy dodge? survive death and heal fully once, no poison
 
-    fleeing
-
-    special attacks enemies
-
-    special attacks type 1 2 hero on click fishbone parry
-
-
+    approaching shop makes number gold
 
 
 
@@ -102,9 +79,11 @@ balancing:
 
     and debuffs from enemies
 
-    buff dodge for player
+    buff dodge rings for player
 
     enemies drop things
+
+    mimics for at least fishbone, super spider, increasing chance to meet them
 
 
 cursor:
@@ -142,10 +121,6 @@ Items:
 Stats:
 
     hide attack number behind attack skill stat, critical?
-
-    add def to enemy in database
-
-    implement defense
 
     change stats from percent to ((1)/(1+0.02 x))*100, no longer needs addPositive if possible
 

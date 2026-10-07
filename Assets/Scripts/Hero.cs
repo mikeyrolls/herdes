@@ -10,6 +10,8 @@ using Random = UnityEngine.Random;
 
 public class Hero : Creature {
 
+    HeroType heroType;
+
 
     public Inventory inventory = new Inventory();
 
@@ -24,9 +26,11 @@ public class Hero : Creature {
             dodge = heroData.dodge;
             acc = heroData.acc;
 
+            this.heroType = heroType;
             def = 0;
 
             ResetToBaseStats();
+            LoadEffects();
             
             Debug.Log($"Spawned {nameStr} with {currHP}/{maxHP} HP");
         } else {
@@ -35,12 +39,25 @@ public class Hero : Creature {
     }
 
     public override void RecalculateStats() {
-        Debug.Log("recalculating, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
+        Debug.Log("recalculating, curr: maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP+ ", def " + def);
         ResetToBaseStats();
         effectList.CalculateEffects();
-        Debug.Log("recalculating pre scale, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
         if (currHP > currMaxHP) currHP = currMaxHP;
-        Debug.Log("recalculating done, maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP);
+        Debug.Log("recalculating done, new: maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP+ ", def " + def);
+    }
+
+    public override void DoSpecialFast(string text = "", FloatingTextType type = FloatingTextType.Default) {
+        if(heroType == HeroType.Fishbone)
+            base.DoSpecialFast("Blocking");
+    }
+
+    protected override void LoadEffects() {
+        switch(heroType) {
+            //effect duration value perc
+            case HeroType.Fishbone:
+                attackEffects[1].Add((EffectName.DefInc, 1, 70, 100)); break;
+
+        }
     }
 
 }
