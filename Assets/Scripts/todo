@@ -2,17 +2,15 @@ commit:
 
 Todo next time:
 
-    charged attack
-
     show char info
-
-    hero hub object
 
 ----------------------------------------------------------------------------------------------------------------------------
 
     show debuff name when receiving it
 
-    later - mage can repeatedly charge? multiplied?
+    later - mage can repeatedly charge? multiplied by 2?
+
+    animation speed of text? base on string length but also anim speed to uniformly set in settings sometime?
 
 Minor bugs:
 

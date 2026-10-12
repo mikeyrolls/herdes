@@ -67,12 +67,12 @@ public class UIManager : MonoBehaviour {
     }
 
     public void OnRotateLeft() {
-        FindAnyObjectByType<RoomGen>()?.RotateLeft();
+        FindAnyObjectByType<HubRoomManager>()?.RotateLeft();
         Debug.Log("button wants left");
     }
 
     public void OnRotateRight() {
-        FindAnyObjectByType<RoomGen>()?.RotateRight();
+        FindAnyObjectByType<HubRoomManager>()?.RotateRight();
     }
 
     void OnEnable() {

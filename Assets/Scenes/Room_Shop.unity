@@ -603,6 +603,8 @@ MonoBehaviour:
   - {fileID: 811089652}
   - {fileID: 251224585}
   - {fileID: 1688310006}
+  heroPrefab: {fileID: 4542119117404702763, guid: 5546e9baae412fd4d86a1bf29efaddca, type: 3}
+  roomSpriteSet: {fileID: 11400000, guid: 862582c868e71c146b19b2e4dfb239de, type: 2}
 --- !u!4 &1114924921
 Transform:
   m_ObjectHideFlags: 0

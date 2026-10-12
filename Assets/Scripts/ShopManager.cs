@@ -9,18 +9,28 @@ using UnityEngine.EventSystems;
 public class ShopManager : MonoBehaviour {
 
     [SerializeField] ShopSlot[] shopSlots = new ShopSlot[4];
+    [SerializeField] GameObject heroPrefab;
+    HeroRoomGO heroGO;
     Hero hero;
+    public RoomSpriteSet roomSpriteSet;
 
     void Start() {
 
         Debug.Log("starting shop");
         hero = GameManager.Instance.hero;
+
+        heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -4f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
+        heroGO.InitGO(roomSpriteSet);
+        hero.sceneObject = heroGO;
+
         hero.effectList.ApplyEffects();
 
         foreach (var slot in shopSlots)
             slot.Init(ItemDB.GetRandomForShop(GameManager.Instance.roomCount));
             
         DisableExpensive();
+
+
     }
 
     private void OnEnable() {

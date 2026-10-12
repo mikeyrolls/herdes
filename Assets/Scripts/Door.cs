@@ -25,8 +25,8 @@ public class Door : MonoBehaviour {
             switch (type) {
                 case RoomType.Back:
                     Debug.Log("Trying to walk back, kill them");
-                    FindAnyObjectByType<RoomGen>()?.ChangeRoomType(dir, RoomType.Back2);
-                    FindAnyObjectByType<RoomGen>()?.resetDoorSprite();
+                    FindAnyObjectByType<HubRoomManager>()?.ChangeRoomType(dir, RoomType.Back2);
+                    FindAnyObjectByType<HubRoomManager>()?.ResetDoorSprite();
                     break;
                 case RoomType.Back2:
                 case RoomType.Wall:

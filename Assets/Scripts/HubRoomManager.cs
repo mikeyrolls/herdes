@@ -1,11 +1,11 @@
 /**
- * Main room setup
+ * Room generation and hub manager
  */
 
 using UnityEngine;
 using System.Collections;
 
-public class RoomGen : MonoBehaviour {
+public class HubRoomManager : MonoBehaviour {
 
     [SerializeField] SpriteRenderer doorSprite;
 
@@ -21,8 +21,19 @@ public class RoomGen : MonoBehaviour {
 
     private bool debug = true;
 
+    [SerializeField] GameObject heroPrefab;
+    HeroRoomGO heroGO;
+    Hero hero;
+    public RoomSpriteSet roomSpriteSet;
 
     void Start() {
+        hero = GameManager.Instance.hero;
+
+        heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -4f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
+        heroGO.InitGO(roomSpriteSet);
+        hero.sceneObject = heroGO;
+
+
         GameManager.Instance.currentDirection = Direction.Middle;
         GameManager.Instance.hero.effectList.ApplyEffects();
         if (debug) {
@@ -30,7 +41,7 @@ public class RoomGen : MonoBehaviour {
         } else {
             GenerateRooms();
         }
-        resetDoorSprite();
+        ResetDoorSprite();
     }
 
     void GenerateRooms() {
@@ -115,15 +126,15 @@ public class RoomGen : MonoBehaviour {
     public void RotateLeft() {
         GameManager.Instance.currentDirection = (Direction)(((int)GameManager.Instance.currentDirection - 1 + 4) % 4);
         Debug.Log("left room func called");
-        resetDoorSprite();
+        ResetDoorSprite();
     }
 
     public void RotateRight() {
         GameManager.Instance.currentDirection = (Direction)(((int)GameManager.Instance.currentDirection + 1) % 4);
-        resetDoorSprite();
+        ResetDoorSprite();
     }
 
-    public void resetDoorSprite() {
+    public void ResetDoorSprite() {
         //if (GameManager.Instance.currentDirection == Direction.Left) {
             int roomIndex = (int)GameManager.Instance.currentDirection;
             doorSprite.sprite = GameManager.Instance.nextRooms[roomIndex].roomSprite;
