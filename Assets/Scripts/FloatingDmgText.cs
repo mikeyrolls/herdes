@@ -14,20 +14,20 @@ public class FloatingDmgText : MonoBehaviour {
         switch(type) {  //Miss, Hit, Poison, Heal, Debuff
             case FloatingTextType.Miss:
                 color = new Color(0.8f, 0.8f, 0.8f, 1f);
-                textObject.GetComponent<TextMeshProUGUI>().fontSize = 0.6f;
                 break;
             case FloatingTextType.Hit:
                 color = Color.red;
                 break;
             case FloatingTextType.Poison:
-                color = new Color(0f, 0.5f, 0.25f, 1f);
+                color = new Color(0.05f, 0.55f, 0.3f, 1f);
                 break;
             case FloatingTextType.Bleed:
                 color = new Color(0.6f, 0f, 0.4f, 1f);
                 break;
             case FloatingTextType.Heal:
                 color = new Color(0.6f, 1f, 0f, 1f);
-                message = "+" + message;
+                if (message != "Regeneration")
+                    message = "+" + message;
                 break;
             case FloatingTextType.Debuff:
                 color = new Color(0.6f, 0.3f, 1f, 1f);
@@ -36,23 +36,26 @@ public class FloatingDmgText : MonoBehaviour {
                 color = Color.white;
                 break;
         }
+        int length = message.Length;
+        if (length > 3)
+            textObject.GetComponent<TextMeshProUGUI>().fontSize = 0.5f;
 
         textObject.text = message;
         textObject.color = color;
 
-        StartCoroutine(Fade());
+        StartCoroutine(Fade(length));
     }
 
-    private IEnumerator Fade() {
+    private IEnumerator Fade(int length) {
         textObject.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f);  //half animation size? todo unify
         textObject.gameObject.SetActive(true);
 
         float duration = 0.3f;
         float elapsed = 0f;
         Color c = textObject.color;
 
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f + length / 10.0f);
 
         while (elapsed < duration) {
             elapsed += Time.deltaTime;

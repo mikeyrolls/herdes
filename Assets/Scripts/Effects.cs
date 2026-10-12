@@ -23,10 +23,13 @@ public class EffectList {
         effects.Add(effect);
         GameManager.Instance.hero.RecalculateStats();
 
+        GameManager.Instance.hero.sceneObject.ShowFloatingText(effect.received, effect.messageType);
+
         if (index == 7) LeftRingEffectId = currId;
         if (index == 8) RightRingEffectId = currId;
 
         Debug.Log("added effect " + effectName.ToString() + " from index " + index);
+
         DebugPrintList();
     }
 
@@ -83,6 +86,9 @@ public class Effect {
     public int value;
     public int id;
 
+    public string received;
+    public FloatingTextType messageType;
+
     public void Calculate() {
         if(stat == StatType.CurrHP) {
             // only when applying
@@ -121,6 +127,9 @@ public class Effect {
             stat = data.stat;
             this.value = value;
             this.id = id;
+
+            this.received = data.received;
+            this.messageType = data.messageType;
         } else {
             Debug.LogError($"Effect '{effectName}' not found in database!");
         }

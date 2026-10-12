@@ -78,6 +78,10 @@ public class Item {
                     case ItemName.DodgeRingLarge:
                         GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.DodgeInc, -1, value, index);
                         break;
+                    case ItemName.AccRing:
+                    case ItemName.AccRingLarge:
+                        GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.AccInc, -1, value, index);
+                        break;
                     case ItemName.RegenRing:
                         GameManager.Instance.hero.effectList.AddEffectDurationValue(EffectName.Heal, -1, value, index);
                         break;

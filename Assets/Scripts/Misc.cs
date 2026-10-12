@@ -258,25 +258,25 @@ public enum EffectName {
 
 public static class EffectDB {
 
-    public static Dictionary<EffectName, (bool isDebuff, StatType stat)> effects = new() {
+    public static Dictionary<EffectName, (bool isDebuff, StatType stat, string received, FloatingTextType messageType)> effects = new() {
         // name                     is debuff   stat
-        [EffectName.HpInc] =        (false,      StatType.MaxHP),
-        [EffectName.AtkInc] =       (false,      StatType.DMG),
-        [EffectName.AccInc] =       (false,      StatType.Acc),
-        [EffectName.DodgeInc] =     (false,      StatType.Dodge),
-        [EffectName.DefInc] =       (false,      StatType.Def),
+        [EffectName.HpInc] =        (false,      StatType.MaxHP     , "Health increased",       FloatingTextType.Default),
+        [EffectName.AtkInc] =       (false,      StatType.DMG       , "Attack increased",       FloatingTextType.Default),
+        [EffectName.AccInc] =       (false,      StatType.Acc       , "Accuracy increased",     FloatingTextType.Default),
+        [EffectName.DodgeInc] =     (false,      StatType.Dodge     , "Dodge increased",        FloatingTextType.Default),
+        [EffectName.DefInc] =       (false,      StatType.Def       , "Defense increased",      FloatingTextType.Default),
 
-        [EffectName.HpDec] =        (true,      StatType.MaxHP),
-        [EffectName.AtkDec] =       (true,      StatType.DMG),
-        [EffectName.AccDec] =       (true,      StatType.Acc),
-        [EffectName.DodgeDec] =     (true,      StatType.Dodge),
-        [EffectName.DefDec] =       (true,      StatType.Def),
+        [EffectName.HpDec] =        (true,      StatType.MaxHP      , "Health decreased",       FloatingTextType.Debuff),
+        [EffectName.AtkDec] =       (true,      StatType.DMG        , "Attack decreased",       FloatingTextType.Debuff),
+        [EffectName.AccDec] =       (true,      StatType.Acc        , "Accuracy decreased",     FloatingTextType.Debuff),
+        [EffectName.DodgeDec] =     (true,      StatType.Dodge      , "Dodge decreased",        FloatingTextType.Debuff),
+        [EffectName.DefDec] =       (true,      StatType.Def        , "Defense decreased",      FloatingTextType.Debuff),
 
-        [EffectName.Heal] =         (false,      StatType.CurrHP),
-        [EffectName.Poison] =       (true,      StatType.CurrHP),
-        [EffectName.PoisonBig] =    (true,      StatType.CurrHP),
-        [EffectName.Bleed] =       (true,      StatType.CurrHP),
-        [EffectName.BleedBig] =    (true,      StatType.CurrHP),
+        [EffectName.Heal] =         (false,     StatType.CurrHP     , "Regeneration",   FloatingTextType.Heal),
+        [EffectName.Poison] =       (true,      StatType.CurrHP     , "Poisoned",       FloatingTextType.Poison),
+        [EffectName.PoisonBig] =    (true,      StatType.CurrHP     , "Poisoned",       FloatingTextType.Poison),
+        [EffectName.Bleed] =        (true,      StatType.CurrHP     , "Bleeding",       FloatingTextType.Bleed),
+        [EffectName.BleedBig] =     (true,      StatType.CurrHP     , "Bleeding",       FloatingTextType.Bleed),
     };
 
 
