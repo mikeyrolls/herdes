@@ -107,7 +107,7 @@ public class Enemy : Creature {
                 break;
             case EnemyType.Bandit:
             case EnemyType.Spider:
-            case EnemyType.Snake:
+            case EnemyType.Golem:
                 if(Helper.GetPerc() < 25) return 2;
                 break;
         }

@@ -101,7 +101,7 @@ public class HallwayManager : MonoBehaviour {
         //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
 
         //debugging picked enemy----------------------------
-        EnemyType spawnedEnemy = EnemyType.Slime;
+        EnemyType spawnedEnemy = EnemyType.Golem;
         //-------------------------
 
         Debug.Log("spawnedEnemy = " + spawnedEnemy);
@@ -167,46 +167,68 @@ public class HallwayManager : MonoBehaviour {
 
         int healAttacker = 0;
 
-        switch(attackType) {
+        //currently attacked can dodge attacker's charged attack but attacker can't miss?
+        //can be configured for repeated charges with attacktype for mage
+        if (attacker.isCharging) {
 
-            //normal attack
-            case 0:
-                if (attacker.LandHit()) {
-                    int hitDmg = attacker.Attack();
-                    if(attacked.GetAttacked(hitDmg)) {
-                        //poisons/bleeds from normal
-                        foreach (var effectToApply in attacker.GetEffectsFromAtkType(0)) {
-                            attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
-                        }
-
-                        Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
-                        healAttacker = attacker.HealAfterAttack(0);
-                    } else {
-                        Debug.Log(attacked.nameStr + " dodged ");
+                int hitDmg = attacker.DoSpecialCharged();
+                if(attacked.GetAttacked(hitDmg)) {
+                    //poisons/bleeds from charged
+                    foreach (var effectToApply in attacker.GetEffectsFromAtkType(2)) {
+                        attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
                     }
 
+                    Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg charged, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
+                    healAttacker = attacker.HealAfterAttack(2);
                 } else {
-                    attacker.Miss();
-                    Debug.Log(attacker.nameStr + " missed " + attacked.nameStr);
+                    Debug.Log(attacked.nameStr + " dodged ");
                 }
-                break;
 
-            //special fast
-            //enemy currently only heals itself immediately and doesn't attack
-            case 1:
-                // buffs only, change if debuffs/attacks, attackeR
+        } else {
 
-                attacker.DoSpecialFast();
+            switch(attackType) {
 
-                foreach (var effectToApply in attacker.GetEffectsFromAtkType(1)) {
-                    attacker.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
-                }
-                healAttacker = attacker.HealAfterAttack(1);
-                break;
+                //normal attack
+                case 0:
+                    if (attacker.LandHit()) {
+                        int hitDmg = attacker.Attack();
+                        if(attacked.GetAttacked(hitDmg)) {
+                            //poisons/bleeds from normal
+                            foreach (var effectToApply in attacker.GetEffectsFromAtkType(0)) {
+                                attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
+                            }
 
-            //special charged
-            case 2:
-                break;
+                            Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
+                            healAttacker = attacker.HealAfterAttack(0);
+                        } else {
+                            Debug.Log(attacked.nameStr + " dodged ");
+                        }
+
+                    } else {
+                        attacker.Miss();
+                        Debug.Log(attacker.nameStr + " missed " + attacked.nameStr);
+                    }
+                    break;
+
+                //special fast
+                //enemy currently only heals itself immediately and doesn't attack
+                case 1:
+                    // buffs only, change if debuffs/attacks, attackeR
+
+                    attacker.DoSpecialFast();
+
+                    foreach (var effectToApply in attacker.GetEffectsFromAtkType(1)) {
+                        attacker.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
+                    }
+                    healAttacker = attacker.HealAfterAttack(1);
+                    break;
+
+                //special charged
+                case 2:
+                    attacker.DoSpecialCharging();
+                    break;
+            }
+
         }
 
         if (healAttacker > 0) {

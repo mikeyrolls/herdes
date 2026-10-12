@@ -55,7 +55,7 @@ public class Hero : Creature {
         switch(heroType) {
             //effect duration value perc
             case HeroType.Fishbone:
-                attackEffects[1].Add((EffectName.DefInc, 1, 70, 100)); break;
+                attackEffects[1].Add((EffectName.DefInc, 1, 100, 100)); break;
 
         }
     }

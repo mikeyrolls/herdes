@@ -1,4 +1,4 @@
-commit: hp tweaks (enemy heal iq, better numbers for capped values, hp bar size)
+commit:
 
 Todo next time:
 
@@ -10,6 +10,9 @@ Todo next time:
 
 ----------------------------------------------------------------------------------------------------------------------------
 
+    show debuff name when receiving it
+
+    later - mage can repeatedly charge? multiplied?
 
 Minor bugs:
 

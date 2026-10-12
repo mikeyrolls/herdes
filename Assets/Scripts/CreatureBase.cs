@@ -40,6 +40,8 @@ public class Creature {
         new List<(EffectName, int, int, int)>()   //special charged
     };
 
+    public bool isCharging = false;
+
     // -------------------------[ methods ]-----------------------------------------
 
     public void ResetToBaseStats() {
@@ -87,6 +89,20 @@ public class Creature {
         sceneObject.PlayAnimation(AnimationType.SpecialFast);
         if (text != "")
             sceneObject.ShowFloatingText(text, type);
+    }
+
+    public void DoSpecialCharging() {
+        sceneObject.SetChargingIdle();
+        sceneObject.SetIdleSprite();
+        sceneObject.ShowFloatingText("Charging", FloatingTextType.Default);
+        isCharging = true;
+    }
+
+    public int DoSpecialCharged() {
+        sceneObject.PlayAnimation(AnimationType.SpecialCharged);
+        sceneObject.SetNormalIdle();
+        isCharging = false;
+        return 2 * GiveDmg();
     }
 
     public void TakePoisonDmg(int rawDmg) {

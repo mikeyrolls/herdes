@@ -26,6 +26,8 @@ public class CreatureGO : MonoBehaviour {
 
     public FloatingDmgText floatingTextPrefab;
 
+    private Sprite currentIdle;
+
     // -------------------------[ object methods ]-----------------------------------------
 
     void Awake() {
@@ -36,7 +38,8 @@ public class CreatureGO : MonoBehaviour {
     public virtual void InitGO(FightSpriteSet set) {
         sr = GetComponent<SpriteRenderer>();
         fightSpriteSet = set;
-        sr.sprite = fightSpriteSet.idle;
+        SetNormalIdle();
+        SetIdleSprite();
     }
 
     protected void SetIsEnemy(bool isEnemy) {
@@ -102,6 +105,9 @@ public class CreatureGO : MonoBehaviour {
             case AnimationType.SpecialFast:
                 StartCoroutine(SpecialFastAnimation());
                 break;
+            case AnimationType.SpecialCharged:
+                StartCoroutine(SpecialChargedAnimation());
+                break;
         }
     }
 
@@ -161,8 +167,15 @@ public class CreatureGO : MonoBehaviour {
         SetIdleSprite();
     }
 
+    public IEnumerator SpecialChargedAnimation() {  // move towards
+        SetChargedSprite();
+        yield return StartCoroutine(MoveSprite(dirCenter));
+        yield return StartCoroutine(MoveSprite(dirEdge));
+        SetIdleSprite();
+    }
+
     public void SetIdleSprite() { //todo change protected
-        sr.sprite = fightSpriteSet.idle;
+        sr.sprite = currentIdle;
     }
 
     public void SetDamagedSprite() {
@@ -181,9 +194,21 @@ public class CreatureGO : MonoBehaviour {
         sr.sprite = fightSpriteSet.specialFast;
     }
 
+    public void SetChargedSprite() {
+        sr.sprite = fightSpriteSet.specialCharged2;
+    }
+
     public void ShowFloatingText(string message, FloatingTextType type) {
         Vector3 offset = (dirEdge == Direction.Right) ? new Vector3(-0.2f,1.2f,0f) : new Vector3(0.5f,2f,0f);
         Instantiate(floatingTextPrefab, transform.position + offset + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-0.8f, 0.8f)), Quaternion.identity).Show(message, type);
+    }
+
+    public void SetChargingIdle() {
+        currentIdle = fightSpriteSet.specialCharged1;
+    }
+
+    public void SetNormalIdle() {
+        currentIdle = fightSpriteSet.idle;
     }
 
 }

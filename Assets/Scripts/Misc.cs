@@ -240,7 +240,7 @@ public static class EnemyDB {
 // -----------[ combat ]-----------
 
 public enum AnimationType {   
-    Attack, Dodge, GetHurt, Death, DeathStill, SpecialFast
+    Attack, Dodge, GetHurt, Death, DeathStill, SpecialFast, SpecialCharged
 }
 
 public enum FloatingTextType {   
