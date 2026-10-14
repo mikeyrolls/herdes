@@ -1,8 +1,6 @@
-commit: full switch to new input system + related fixes
+commit: cursor while holding functionality
 
 Todo next time:
-
-    cursor fixing too?
 
     design and make show char info
 
@@ -24,7 +22,7 @@ Todo next time:
 
 Random future:
 
-    fight has random delays on enemy heals, misses etc. basically till float fade
+    fight has random delays on enemy heals, misses etc. basically till float fade ig? cursor doing stuff too
 
 
 death:
@@ -54,10 +52,6 @@ balancing:
 
 
 cursor:
-
-    cursor after clicking on door but stil going elsewhere, when holding down don't accept messages?
-
-    hovering while holding in general
 
     cursor not showing attack when not correct turn
 

@@ -17,9 +17,9 @@ public enum Duration{Temporary, Permanent}
 
 public enum SpriteColor{Normal, Red}
 
-public enum CursorType {Normal, Attack, Grab, Special}
+public enum CursorType {Normal, Attack, Grab, Special, Holding}
 
-public enum Prio {Base, Background, World, UI, Overlay}
+public enum Prio {Base, Holding, Background, World, UI, Overlay}
 
 public static class Helper {
 

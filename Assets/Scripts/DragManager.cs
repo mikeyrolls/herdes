@@ -32,6 +32,8 @@ public class DragManager : MonoBehaviour
 
         if (sourceImage != null)
             SetOpacity(sourceImage, 0.5f);
+
+        CursorManager.Instance.StartHolding(this);
     }
 
     public void EndDrag(bool cancelled) {
@@ -45,6 +47,8 @@ public class DragManager : MonoBehaviour
 
         source = null;
         sourceImage = null;
+
+        CursorManager.Instance.StopHolding(this);
     }
 
     void SetOpacity(Image image, float alpha) {
@@ -58,5 +62,9 @@ public class DragManager : MonoBehaviour
 
 
         image.color = c;
+    }
+
+    void OnDisable() {
+        CursorManager.Instance?.StopHolding(this);
     }
 }

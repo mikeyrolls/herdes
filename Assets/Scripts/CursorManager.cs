@@ -13,10 +13,13 @@ public class CursorManager : MonoBehaviour {
     public Texture2D grabCursor;
     public Texture2D attackCursor;
     public Texture2D specialCursor;
+    public Texture2D holdingCursor;
 
-    private Dictionary<object, (CursorType type, int priority, string TooltipText)> requests = new();
+    private Dictionary<(object source, bool holding), (CursorType type, int priority, string tooltip)> requests = new();
 
     private Vector3 hotspot = new Vector3(20, 20, 1);
+
+    private object holder;
 
     void Awake() {
         Instance = this;
@@ -24,31 +27,47 @@ public class CursorManager : MonoBehaviour {
     }
 
     void Start() {
-        requests[this] = (CursorType.Normal, (int)Prio.Base, "");
+        requests[(this, false)] = (CursorType.Normal, (int)Prio.Base, "");
         Refresh();
     }
 
-    public void AddRequest(object source, CursorType type, Prio priority, string tooltip = "") {
-        requests[source] = (type, (int)priority, tooltip);
+    public void AddRequest(object source, CursorType type, Prio priority, string tooltip = "", bool whileHolding = false) {
+        requests[(source, whileHolding)] = (type, (int)priority, tooltip);
+        Refresh();
+    }
+
+    public void StartHolding(object source) {
+        holder = source;
+        requests[(this, true)] = (CursorType.Holding, (int)Prio.Holding, "");
+        Refresh();
+    }
+
+    public void StopHolding(object source) {
+        if (holder != source) return;
+        holder = null;
+        requests.Remove((this, true));
         Refresh();
     }
 
     public void RemoveRequest(object source) {
-        requests.Remove(source);
+        requests.Remove((source, false));
+        requests.Remove((source, true));
         Refresh();
     }
 
     void Refresh() {
-        var top = requests.Values.OrderByDescending(r => r.priority).First();
-        Cursor.SetCursor(GetTexture(top.type), hotspot, CursorMode.Auto);
+        bool holding = holder != null;
+        var top = requests.Where(kv => kv.Key.holding == holding).Select(kv => kv.Value).OrderByDescending(r => r.priority).First();
 
-        CursorTextGO.Instance?.Show(top.TooltipText);
+        Cursor.SetCursor(GetTexture(top.type), hotspot, CursorMode.Auto);
+        CursorTextGO.Instance?.Show(top.tooltip);
     }
 
     Texture2D GetTexture(CursorType type) => type switch {
         CursorType.Grab   => grabCursor,
         CursorType.Attack => attackCursor,
         CursorType.Special => specialCursor,
+        CursorType.Holding => holdingCursor,
         _                 => normalCursor
     };
 }

@@ -23,6 +23,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     bool isHolding = false;
 
     string type = "";
+    string textWhenHeld = "";
 
     public void Init(Inventory inventory, int index) {
         slotIndex = index;
@@ -30,14 +31,19 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
         switch(index) {
             case 9:
-                type = "trash"; break;
+                type = "trash";
+                textWhenHeld = "destroy"; break;
             case 8:
             case 7:
-                type = "ring " + index; break;
+                type = "ring " + index;
+                textWhenHeld = "put on";
+                break;
             case 6:
-                type = "charm"; break;
+                type = "charm";
+                textWhenHeld = "put on"; break;
             default: //0-5
-                type = "inv " + index; break;
+                type = "inv " + index;
+                textWhenHeld = "place"; break;
         }
     }
 
@@ -48,8 +54,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
    public void OnPointerEnter(PointerEventData eventData) {
         if (!isEmpty()) {
             CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "inspect");
+            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "switch", true);
         } else {
             CursorManager.Instance.AddRequest(this, CursorType.Normal, Prio.UI, type);
+            CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, textWhenHeld, true);
         }
     }
 
