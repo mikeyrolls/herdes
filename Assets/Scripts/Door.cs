@@ -4,10 +4,12 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
-public class Door : MonoBehaviour {
+public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
-    void OnMouseDown() {
+    public void OnPointerClick(PointerEventData e) {
+        if (GameManager.Instance.isTransitioning) return;
         Debug.Log("Door clicked");
 
         if(!GameManager.Instance.hero.IsAlive()) {
@@ -36,15 +38,13 @@ public class Door : MonoBehaviour {
                     GameManager.Instance.currentRoomType = type;
                     Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
-                    CursorManager.Instance.RemoveRequest(this);
-                    StartCoroutine(GameManager.Instance.LoadNewScene("Room_Shop"));
+                    GameManager.Instance.LoadScene("Room_Shop");
                     break;
                 default:    //empty, treasure, fight 
                     GameManager.Instance.currentRoomType = type;
                     Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
-                    CursorManager.Instance.RemoveRequest(this);
-                    StartCoroutine(GameManager.Instance.LoadNewScene("Room_Hallway"));
+                    GameManager.Instance.LoadScene("Room_Hallway");
                     break;
             }
 
@@ -53,15 +53,22 @@ public class Door : MonoBehaviour {
         } else if (!GameManager.Instance.combat) {
             GameManager.Instance.currentRoomType = RoomType.None;
             CursorManager.Instance.RemoveRequest(this);
-            StartCoroutine(GameManager.Instance.LoadNewScene("Room_Between"));
+            GameManager.Instance.LoadScene("Room_Between");
         }
     }
 
-    void OnMouseEnter() {
+    public void OnPointerEnter(PointerEventData e) {
         CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.Background, "enter door");
     }
 
-    void OnMouseExit() {
+    public void OnPointerExit(PointerEventData e) {
         CursorManager.Instance.RemoveRequest(this);
     }
+
+    public void OnDisable() {
+        if (CursorManager.Instance != null) {
+            CursorManager.Instance.RemoveRequest(this);
+        }
+    }
+
 }

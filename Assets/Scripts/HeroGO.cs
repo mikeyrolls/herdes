@@ -7,24 +7,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
-public class HeroGO : CreatureGO {
+public class HeroGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler  {
 
     public override void InitGO(FightSpriteSet set) {
         base.InitGO(set);
         SetIsEnemy(false);
     }
 
-    void OnMouseDown() {
+    public void OnPointerClick(PointerEventData e) {
         Debug.Log("hero clicked");
         FindAnyObjectByType<HallwayManager>().OnHeroClicked();
     }
 
-    void OnMouseEnter() {
+    public void OnPointerEnter(PointerEventData e) {
         CursorManager.Instance.AddRequest(this, CursorType.Special, Prio.World, "");
     }
 
-    void OnMouseExit() {
+    public void OnPointerExit(PointerEventData e) {
         CursorManager.Instance.RemoveRequest(this);
     }
     

@@ -1,11 +1,10 @@
-commit: 
-todo cleanup, smaller cleaner ui + shop, non-fight spawn coords, showing debuff names when receiving, floating mess slower fade+smaller text for words, accuracy ring fix
+commit: full switch to new input system + related fixes
 
 Todo next time:
 
-    fix colliders, only click one
+    cursor fixing too?
 
-    show char info
+    design and make show char info
 
     one of:
 
@@ -21,10 +20,11 @@ Todo next time:
 
 ----------------------------------------------------------------------------------------------------------------------------
 
+    
 
 Random future:
 
-    clicking thru objects triggering multiple (pet cat man)
+    fight has random delays on enemy heals, misses etc. basically till float fade
 
 
 death:

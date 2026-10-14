@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
 public class CreatureGO : MonoBehaviour {
 
@@ -210,5 +211,11 @@ public class CreatureGO : MonoBehaviour {
     public void SetNormalIdle() {
         currentIdle = fightSpriteSet.idle;
     }
+
+    // for cursor shenanigans
+    void OnDisable() {
+       if (CursorManager.Instance != null)
+           CursorManager.Instance.RemoveRequest(this);
+   }
 
 }

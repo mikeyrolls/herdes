@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.899371, g: 0.82569814, b: 0.7494758, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1276,6 +1276,7 @@ MonoBehaviour:
   currentDirection: 1
   roomCount: 0
   combat: 0
+  isTransitioning: 0
 --- !u!4 &789723557
 Transform:
   m_ObjectHideFlags: 0
@@ -1372,7 +1373,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!224 &851225205
 RectTransform:
@@ -2151,7 +2152,7 @@ GameObject:
   - component: {fileID: 1189100607}
   - component: {fileID: 1189100609}
   - component: {fileID: 1189100608}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3402,7 +3403,7 @@ GameObject:
   - component: {fileID: 1385238888}
   - component: {fileID: 1385238890}
   - component: {fileID: 1385238889}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: CursorTextPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3861,7 +3862,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1700283162}
   - component: {fileID: 1700283163}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: CursorTextScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}

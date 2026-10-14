@@ -7,8 +7,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
-public class HeroRoomGO : CreatureGO {
+public class HeroRoomGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
     public RoomSpriteSet roomSpriteSet;
     public bool isAnimated;
@@ -21,19 +22,19 @@ public class HeroRoomGO : CreatureGO {
         sr.sprite = roomSpriteSet.idle;
     }
 
-    void OnMouseDown() {
+    public void OnPointerClick(PointerEventData e) {
         Debug.Log("hero clicked in room");
         if (!isAnimated) {
             StartCoroutine(Pet());
         }
     }
 
-    void OnMouseEnter() {
+    public void OnPointerEnter(PointerEventData e) {
         if(!isAnimated)
             CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.World, "");
     }
 
-    void OnMouseExit() {
+    public void OnPointerExit(PointerEventData e) {
         CursorManager.Instance.RemoveRequest(this);
     }
 

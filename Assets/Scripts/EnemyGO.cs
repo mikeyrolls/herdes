@@ -7,8 +7,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using Random = UnityEngine.Random;
+using UnityEngine.EventSystems;
 
-public class EnemyGO : CreatureGO {
+public class EnemyGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
     public GameObject hpBarGreen;
     public GameObject hpBarRed;
@@ -18,16 +19,16 @@ public class EnemyGO : CreatureGO {
         SetIsEnemy(true);
     }
 
-    void OnMouseDown() {
+    public void OnPointerClick(PointerEventData e) {
         Debug.Log("enemy clicked");
         FindAnyObjectByType<HallwayManager>().OnEnemyClicked();
     }
 
-    void OnMouseEnter() {
+    public void OnPointerEnter(PointerEventData e) {
         CursorManager.Instance.AddRequest(this, CursorType.Attack, Prio.World, "attack");
     }
 
-    void OnMouseExit() {
+    public void OnPointerExit(PointerEventData e) {
         CursorManager.Instance.RemoveRequest(this);
     }
 

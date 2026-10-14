@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour {
     public int roomCount = 0;
     public bool combat = false;
 
+    // for scene switches
+    public bool isTransitioning;
+
     void Start() {
         Debug.Log("in gameman start");
         UIManager.Instance.RefreshHUD();
@@ -65,9 +68,17 @@ public class GameManager : MonoBehaviour {
         UIManager.Instance.ShowGameOver();
     }
 
-    public IEnumerator LoadNewScene(string sceneName) {
-        yield return new WaitUntil(() => !Input.GetMouseButton(0));
-        SceneManager.LoadScene(sceneName);
+    public void LoadScene(string sceneName) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        StartCoroutine(LoadNewScene(sceneName));
+    }
+
+    IEnumerator LoadNewScene(string sceneName) {
+        // if fade, here
+        var op = SceneManager.LoadSceneAsync(sceneName);
+        yield return op;
+        isTransitioning = false;
     }
 
     public void Retry() {
