@@ -58,8 +58,6 @@ public class Item {
                 if(itemName == ItemName.DmgUpgrade) GameManager.Instance.hero.IncreaseStatPermanent(value, StatType.DMG);
                 break;
             case ItemType.Ring:
-                Debug.Log("using item ring");
-
                 switch(itemName) {
                     case ItemName.HealthRingSmall:
                     case ItemName.HealthRing:

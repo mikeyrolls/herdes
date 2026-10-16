@@ -28,19 +28,15 @@ public class HallwayManager : MonoBehaviour {
 
     void Start() {
         type = GameManager.Instance.currentRoomType;
-        Debug.Log("Entered room type " + type);
-
         hero = GameManager.Instance.hero;
 
         heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -0.5f, 0f), Quaternion.identity).GetComponent<HeroGO>();
         heroGO.InitGO(EnemyDB.sprites[EnemyType.Fishbone]);
         hero.sceneObject = heroGO;
 
+        heroGO.onDeath = () => GameManager.Instance.Die();
 
-        //todo do better
-        heroGO.onDeath = () => HeroDied();
-
-        hero.effectList.ApplyEffects();
+        hero.ApplyEffects();
 
         switch (type) {
             case RoomType.Fight:
@@ -104,8 +100,6 @@ public class HallwayManager : MonoBehaviour {
         EnemyType spawnedEnemy = EnemyType.Spider;
         //-------------------------
 
-        Debug.Log("spawnedEnemy = " + spawnedEnemy);
-
         enemy = new Enemy();
         enemy.InitEnemy(spawnedEnemy);
         enemyGO = Instantiate(enemyPrefab, new Vector3(2f, -0.5f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
@@ -120,51 +114,37 @@ public class HallwayManager : MonoBehaviour {
     }
 
     public void OnEnemyClicked() {
-        Debug.Log("onEnemyClicked");
         if (combatState != CombatState.PlayerTurn) return;
 
         combatState = CombatState.EnemyTurn;
-        StartCoroutine(CombatRound(0));
+        StartCoroutine(CombatRound(0)); //change for mage if overcharging
     }
 
     public void OnHeroClicked() {
-        Debug.Log("onHeroClicked");
         if (combatState != CombatState.PlayerTurn) return;
 
         combatState = CombatState.EnemyTurn;
-        StartCoroutine(CombatRound(1)); 
+        StartCoroutine(CombatRound(1)); //change for mage
 
     }
 
     IEnumerator CombatRound(int attackType) {
-        Debug.Log("CombatRound");
+
         //player attack
-        StartCoroutine(AttackRound(hero, enemy, attackType));
+        StartCoroutine(AttackRound(hero, enemy, attackType)); //get hit, check hp
+        yield return new WaitForSeconds(0.8f); //for anim
 
-        //check status TODO method somehow, for counterattacks and reusability
-        //test if this is needed
-
-        if(!enemy.IsAlive()) {
-        //     GameManager.Instance.combat = false;
-        //     combatState = CombatState.Won; //this does things now
-            
-        } else {
-            Debug.Log("enemy attacking");
-            yield return new WaitForSeconds(0.8f);
-            //enemy attack
-
-            StartCoroutine(AttackRound(enemy, hero, enemy.GetAttackType()));
-            //todo check status one hero death matters
-
-            yield return new WaitForSeconds(0.60f); // enemy attack duration
-            combatState = CombatState.PlayerTurn;
-            hero.effectList.ApplyEffects();
-        }
+        //enemy attack
+        StartCoroutine(AttackRound(enemy, hero, enemy.GetAttackType())); //get hit, check hp
+        yield return new WaitForSeconds(0.60f); // enemy attack duration
+        combatState = CombatState.PlayerTurn;
     }
 
     IEnumerator AttackRound(Creature attacker, Creature attacked, int attackType) {
-        Debug.Log("attackRound entered, attacker = " + attacker.nameStr + "(" + attacker.currDef + "), attacked = " + attacked.nameStr+ "(" + attacked.currDef + ")");
 
+        if(!attacked.IsAlive() || !attacker.IsAlive()) yield break; // pauses combat round
+
+        // for self heals/leeching
         int healAttacker = 0;
 
         //currently attacked can dodge attacker's charged attack but attacker can't miss?
@@ -172,17 +152,14 @@ public class HallwayManager : MonoBehaviour {
         if (attacker.isCharging) {
 
                 int hitDmg = attacker.DoSpecialCharged();
-                if(attacked.GetAttacked(hitDmg)) {
+                if(attacked.GetAttacked(hitDmg)) { //else dodged
                     //poisons/bleeds from charged
                     foreach (var effectToApply in attacker.GetEffectsFromAtkType(2)) {
                         attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
                     }
 
-                    Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg charged, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
                     healAttacker = attacker.HealAfterAttack(2);
-                } else {
-                    Debug.Log(attacked.nameStr + " dodged ");
-                }
+                } 
 
         } else {
 
@@ -192,31 +169,22 @@ public class HallwayManager : MonoBehaviour {
                 case 0:
                     if (attacker.LandHit()) {
                         int hitDmg = attacker.Attack();
-                        if(attacked.GetAttacked(hitDmg)) {
+                        if(attacked.GetAttacked(hitDmg)) {  //else dodged
                             //poisons/bleeds from normal
                             foreach (var effectToApply in attacker.GetEffectsFromAtkType(0)) {
                                 attacked.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
                             }
-
-                            Debug.Log(attacker.nameStr + " hit " + attacked.nameStr + " for " + hitDmg + " dmg, " + attacked.currHP + "/" + attacked.currMaxHP + "hp left");
                             healAttacker = attacker.HealAfterAttack(0);
-                        } else {
-                            Debug.Log(attacked.nameStr + " dodged ");
-                        }
+                        } 
 
                     } else {
                         attacker.Miss();
-                        Debug.Log(attacker.nameStr + " missed " + attacked.nameStr);
                     }
                     break;
 
-                //special fast
-                //enemy currently only heals itself immediately and doesn't attack
+                //special fast (buffs only, change if debuffs/attacks, attackeR)
                 case 1:
-                    // buffs only, change if debuffs/attacks, attackeR
-
                     attacker.DoSpecialFast();
-
                     foreach (var effectToApply in attacker.GetEffectsFromAtkType(1)) {
                         attacker.effectList.AddEffectDurationValue(effectToApply.effect, effectToApply.duration, effectToApply.value);
                     }
@@ -228,12 +196,15 @@ public class HallwayManager : MonoBehaviour {
                     attacker.DoSpecialCharging();
                     break;
             }
-
         }
 
-        if (healAttacker > 0) {
+        if (healAttacker > 0)
             attacker.Heal(healAttacker);
-        }
+
+        if(!attacked.IsAlive())
+            attacked.Die();
+        else
+            attacker.ApplyEffects(); // die should happen here too hopefully?
 
         yield return null;
 
@@ -245,12 +216,6 @@ public class HallwayManager : MonoBehaviour {
 
         SpawnItem(enemy.GetDrop());
         SpawnGold(enemy.GetGoldValue());
-        Debug.Log("You won! Leave");
-
-    }
-
-    void HeroDied() {
-        GameManager.Instance.Die();
     }
 
     void AddInfoText(string newText) {

@@ -68,7 +68,6 @@ public class UIManager : MonoBehaviour {
 
     public void OnRotateLeft() {
         FindAnyObjectByType<HubRoomManager>()?.RotateLeft();
-        Debug.Log("button wants left");
     }
 
     public void OnRotateRight() {
@@ -98,7 +97,6 @@ public class UIManager : MonoBehaviour {
 
     public void RefreshHUD() {
         hpSlider.fillRect.gameObject.SetActive(true);
-        GameManager.Instance.hero.inventory.InvStateDebug();
 
         moneyText.text = GameManager.Instance.hero.inventory.GetGold().ToString() + " gold";
         roomCountText.text = GameManager.Instance.roomCount.ToString();

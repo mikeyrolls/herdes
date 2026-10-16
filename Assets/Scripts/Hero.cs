@@ -39,11 +39,10 @@ public class Hero : Creature {
     }
 
     public override void RecalculateStats() {
-        Debug.Log("recalculating, curr: maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP+ ", def " + def);
         ResetToBaseStats();
         effectList.CalculateEffects();
         if (currHP > currMaxHP) currHP = currMaxHP;
-        Debug.Log("recalculating done, new: maxhp " + maxHP + ", currmaxhp " + currMaxHP + ", currhp " + currHP+ ", def " + def);
+        UIManager.Instance.RefreshHUD();
     }
 
     public override void DoSpecialFast(string text = "", FloatingTextType type = FloatingTextType.Default) {

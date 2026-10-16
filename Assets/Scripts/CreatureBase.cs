@@ -31,7 +31,7 @@ public class Creature {
     protected int currAcc;
     public int currDef;
 
-    public EffectList effectList = new EffectList();
+    public EffectList effectList;
 
 
     public List<(EffectName effect, int duraction, int value, int perc)>[] attackEffects = new List<(EffectName effect, int duraction, int value, int perc)>[] {
@@ -43,6 +43,10 @@ public class Creature {
     public bool isCharging = false;
 
     // -------------------------[ methods ]-----------------------------------------
+
+    public Creature() {
+        effectList = new EffectList(this);
+    }
 
     public void ResetToBaseStats() {
         currMaxHP = maxHP;
@@ -75,12 +79,8 @@ public class Creature {
         } else {
             int actuallyTaken = TakeDmg(dmg);
             sceneObject.ShowFloatingText(actuallyTaken + "", FloatingTextType.Hit);
+            sceneObject.PlayAnimation(AnimationType.GetHurt);
 
-            if(IsAlive()) {
-                sceneObject.PlayAnimation(AnimationType.GetHurt);
-            } else {
-                sceneObject.PlayAnimation(AnimationType.Death);
-            }
             return true;
         }
     }
@@ -105,24 +105,12 @@ public class Creature {
         return 2 * GiveDmg();
     }
 
-    public void TakePoisonDmg(int rawDmg) {
+    public void TakeDotDmg(int rawDmg, FloatingTextType type) {
         currHP = Helper.AddPositive(currHP, -rawDmg);
         UIManager.Instance.RefreshHUD();
-        //todo anim
-        sceneObject.ShowFloatingText(rawDmg + "", FloatingTextType.Poison); 
-        if(!IsAlive()) {
-            sceneObject.PlayAnimation(AnimationType.Death);
-        } 
-    }
-
-    public void TakeBleedDmg(int rawDmg) {
-        currHP = Helper.AddPositive(currHP, -rawDmg);
-        UIManager.Instance.RefreshHUD();
-        //todo anim
-        sceneObject.ShowFloatingText(rawDmg + "", FloatingTextType.Bleed);
-        if(!IsAlive()) {
-            sceneObject.PlayAnimation(AnimationType.Death);
-        } 
+        sceneObject.ShowFloatingText(rawDmg + "", type);
+        if(!IsAlive())
+            sceneObject.DieGO(); //animates and invokes death
     }
 
     public virtual void Heal(int amount) {
@@ -186,7 +174,6 @@ public class Creature {
     }
 
     public void IncreaseStatTemporary(int amount, StatType stat) {
-        Debug.Log("increase stat temporary");
         switch(stat) {  //MaxHP, DMG, Dodge, Acc, Def, 
             case StatType.MaxHP:
                 currMaxHP = Helper.AddPositive(currMaxHP, amount);
@@ -220,10 +207,8 @@ public class Creature {
 
         var e = new List<(EffectName, int, int)>();
         foreach (var x in attackEffects[type]) {
-            Debug.Log("trying to add " + x);
             if (Helper.GetPerc() <= x.perc) {
                 e.Add((x.effect, x.duraction, x.value));
-                Debug.Log("added");
             } 
         }
         return e;
@@ -234,5 +219,14 @@ public class Creature {
     }
 
     protected virtual void LoadEffects() { }
+
+    public virtual void Die() {
+        sceneObject.DieGO();
+        // you can notify things here todo
+    }
+
+    public void ApplyEffects() {
+        effectList.ApplyEffectsFromList();
+    }
 
 }

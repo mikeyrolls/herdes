@@ -17,7 +17,6 @@ public class Inventory {
         for(; i < inventorySize; i++) {
             if (itemInventory[i] == null) break;
         }
-        Debug.Log("empty slot on " + i);
         return i;
     }
 
@@ -29,7 +28,6 @@ public class Inventory {
             int firstEmpty = GetEmptyInvSlot();
             if (firstEmpty < inventorySize) {
                 itemInventory[firstEmpty] = item;
-                Debug.Log("added " + item.nameStr + " on inv space " + firstEmpty); 
             } else {
                 return false;
             }
@@ -56,7 +54,6 @@ public class Inventory {
     }
 
     public bool Buy(Item item) {
-        Debug.Log("buying " + item.nameStr);
         if(item.price > GetGold()) return false;
 
         if(addToInventory(item)) {
@@ -93,20 +90,18 @@ public class Inventory {
         UIManager.Instance.RefreshHUD();
     }
 
-    public void InvStateDebug() {
-        string log = "";
-        int i = 0;
-        for(; i < inventorySize; i++) {
-            log += "[" + i + ": ";
-            if (itemInventory[i] != null) log += itemInventory[i].nameStr;
-            log += "] ";
-        }
-        Debug.Log(log);
-    }
+    // public void InvStateDebug() {
+    //     string log = "";
+    //     int i = 0;
+    //     for(; i < inventorySize; i++) {
+    //         log += "[" + i + ": ";
+    //         if (itemInventory[i] != null) log += itemInventory[i].nameStr;
+    //         log += "] ";
+    //     }
+    //     Debug.Log(log);
+    // }
 
     public bool Swap(int index1, int index2) {  //holding 1, moving to 2
-
-
 
         Item item1 = itemInventory[index1];
         if (!CanItemBePlaced(item1, index2)) return false;

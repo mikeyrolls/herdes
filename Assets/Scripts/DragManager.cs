@@ -37,9 +37,6 @@ public class DragManager : MonoBehaviour
     }
 
     public void EndDrag(bool cancelled) {
-        if (cancelled) Debug.Log("end drag cancelled true");
-        else Debug.Log("end drag cancelled false");
-
         ghostImage.enabled = false;
 
         if (sourceImage != null)

@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour {
     public bool isTransitioning;
 
     void Start() {
-        Debug.Log("in gameman start");
         UIManager.Instance.RefreshHUD();
     }
 

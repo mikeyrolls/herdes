@@ -1,4 +1,4 @@
-commit: cursor while holding functionality
+commit: death untangling :( horrid but works with minor bugs, enemy effects currently stuck to hero, old debug logs deleted
 
 Todo next time:
 
@@ -24,14 +24,26 @@ Random future:
 
     fight has random delays on enemy heals, misses etc. basically till float fade ig? cursor doing stuff too
 
+    cursor on death and reset? empty on death, switch to default, with proper retry it should load all for fishbone or any
+
+    buffs and debuffs are hardcoded to hero in effect script currently, add list owners
+
+    recalculate stats missing for enemy?
+
+    maybe switch enemy health bar to not moving too, place elsewhere with effects too?
+
+    check combat state switching too
+
+    move debug from door to game manager and let it load fishbone currently, separate fishbone from code lol
+
+    so for hero sprites inherits from fight ones and has both those and room and cursors?
+
+    fix healthbar size hero again
+
 
 death:
 
-    why char move when dying of poison?? deathstill all death
-
     buying carrots while dead
-
-    dying in shop leaves menu above
 
     proper death screen and handling yeah, slower too
 

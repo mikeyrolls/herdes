@@ -28,6 +28,7 @@ public class CreatureGO : MonoBehaviour {
     public FloatingDmgText floatingTextPrefab;
 
     private Sprite currentIdle;
+    public bool isEnemy;
 
     // -------------------------[ object methods ]-----------------------------------------
 
@@ -46,10 +47,7 @@ public class CreatureGO : MonoBehaviour {
     protected void SetIsEnemy(bool isEnemy) {
         dirCenter = (isEnemy) ? Direction.Left : Direction.Right;
         dirEdge = (isEnemy) ? Direction.Right : Direction.Left;
-    }
-
-    protected IEnumerator FadeSprite(float tintStrength = 0) {
-        return MoveSprite(Direction.Right, tintStrength, Color.red, 0);
+        this.isEnemy = isEnemy;
     }
 
     protected IEnumerator MoveSprite(Direction direction, float tintStrength = 0) {
@@ -97,12 +95,6 @@ public class CreatureGO : MonoBehaviour {
             case AnimationType.GetHurt:
                 StartCoroutine(GetHurtAnimation());
                 break;
-            case AnimationType.Death:
-                StartCoroutine(DeathAnimation());
-                break;
-            case AnimationType.DeathStill:
-                StartCoroutine(DeathStillAnimation());
-                break;
             case AnimationType.SpecialFast:
                 StartCoroutine(SpecialFastAnimation());
                 break;
@@ -132,40 +124,19 @@ public class CreatureGO : MonoBehaviour {
         SetIdleSprite();
     }
 
-    public IEnumerator DeathAnimation() {
-        yield return new WaitForSeconds(animSpeed/2);
-        SetDamagedSprite();
-        yield return StartCoroutine(MoveSprite(dirEdge, 0.75f));
-        onDeath?.Invoke();
-        GetComponent<Collider2D>().enabled = false;
-        SetDeadSprite();
-
-        //UIManager.Instance.CursorSetDefault();
-
-        yield return StartCoroutine(FadeSprite(0f));
-        // yield return new WaitForSeconds(2f);
-        // Destroy(gameObject);
-    }
-
-    public IEnumerator DeathStillAnimation() {
-        yield return new WaitForSeconds(animSpeed/2);
-        SetDamagedSprite();
-        yield return StartCoroutine(MoveSprite(Direction.Back, 0.75f));
-        onDeath?.Invoke();
-        GetComponent<Collider2D>().enabled = false;
-        SetDeadSprite();
-
-        //UIManager.Instance.CursorSetDefault();
-
-        yield return StartCoroutine(FadeSprite(0f));
-        // yield return new WaitForSeconds(2f);
-        // Destroy(gameObject);
-    }
-
     public IEnumerator SpecialFastAnimation() {
         SetSpecialFastSprite();
         yield return new WaitForSeconds(animSpeed/2*3);
         SetIdleSprite();
+    }
+
+    // called from dieGO
+    IEnumerator DeathStillAnimation() {  // move towards
+        yield return new WaitForSeconds(animSpeed);
+        SetDeadSprite();
+        currentIdle = sr.sprite;
+        onDeath?.Invoke();
+        GetComponent<Collider2D>().enabled = false;
     }
 
     public IEnumerator SpecialChargedAnimation() {  // move towards
@@ -177,9 +148,10 @@ public class CreatureGO : MonoBehaviour {
 
     public void SetIdleSprite() { //todo change protected
         sr.sprite = currentIdle;
+        Debug.Log("to idle");
     }
 
-    public void SetDamagedSprite() {
+    public virtual void SetDamagedSprite() {
         sr.sprite = fightSpriteSet.damaged;
     }
 
@@ -187,7 +159,12 @@ public class CreatureGO : MonoBehaviour {
         sr.sprite = fightSpriteSet.attacking;
     }
 
-    public void SetDeadSprite() {
+    public void DieGO() {
+        StartCoroutine(DeathStillAnimation());
+        Debug.Log("diego");
+    }
+
+    public virtual void SetDeadSprite() {
         sr.sprite = fightSpriteSet.dead;
     }
 

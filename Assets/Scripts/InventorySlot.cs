@@ -92,7 +92,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     IEnumerator HoldTimer() {
-        Debug.Log("Hold timer started");
         yield return new WaitForSeconds(holdThreshold);
         holdFired = true;
         isHolding = true;
@@ -100,7 +99,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     void OnClick() {
-        Debug.Log("Clicked once");
         CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.UI, "");
         UIManager.Instance.ShowInfobox(item, GetComponent<RectTransform>(), slotIndex);
     }
@@ -116,9 +114,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     void OnHoldRelease(PointerEventData eventData) {
-
-        Debug.Log("Released hold");
-
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, results);
 

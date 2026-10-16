@@ -9,6 +9,7 @@ public class RoomSpriteSet : ScriptableObject
 {
     public Sprite idle;
     public Sprite damaged;
+    public Sprite dead;
     public Sprite pet;
     
     //public AudioClip damagedSound;

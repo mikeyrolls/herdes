@@ -20,7 +20,6 @@ public class EnemyGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, I
     }
 
     public void OnPointerClick(PointerEventData e) {
-        Debug.Log("enemy clicked");
         FindAnyObjectByType<HallwayManager>().OnEnemyClicked();
     }
 

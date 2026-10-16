@@ -17,7 +17,6 @@ public class HeroGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IP
     }
 
     public void OnPointerClick(PointerEventData e) {
-        Debug.Log("hero clicked");
         FindAnyObjectByType<HallwayManager>().OnHeroClicked();
     }
 

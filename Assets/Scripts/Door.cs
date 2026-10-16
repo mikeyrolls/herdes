@@ -10,7 +10,6 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
     public void OnPointerClick(PointerEventData e) {
         if (GameManager.Instance.isTransitioning) return;
-        Debug.Log("Door clicked");
 
         if(!GameManager.Instance.hero.IsAlive()) {
             GameManager.Instance.Die();
@@ -26,23 +25,19 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
 
             switch (type) {
                 case RoomType.Back:
-                    Debug.Log("Trying to walk back, kill them");
                     FindAnyObjectByType<HubRoomManager>()?.ChangeRoomType(dir, RoomType.Back2);
                     FindAnyObjectByType<HubRoomManager>()?.ResetDoorSprite();
                     break;
                 case RoomType.Back2:
                 case RoomType.Wall:
-                    Debug.Log("Trying to walk into a wall, dumbshit");
                     break;
                 case RoomType.Shop:
                     GameManager.Instance.currentRoomType = type;
-                    Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
                     GameManager.Instance.LoadScene("Room_Shop");
                     break;
                 default:    //empty, treasure, fight 
                     GameManager.Instance.currentRoomType = type;
-                    Debug.Log("Trying to enter " + type);
                     GameManager.Instance.IncreaseRoomCount();
                     GameManager.Instance.LoadScene("Room_Hallway");
                     break;

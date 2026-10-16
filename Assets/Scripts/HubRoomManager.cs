@@ -33,9 +33,11 @@ public class HubRoomManager : MonoBehaviour {
         heroGO.InitGO(roomSpriteSet);
         hero.sceneObject = heroGO;
 
+        heroGO.onDeath = () => GameManager.Instance.Die();
+
 
         GameManager.Instance.currentDirection = Direction.Middle;
-        GameManager.Instance.hero.effectList.ApplyEffects();
+        GameManager.Instance.hero.ApplyEffects();
         if (debug) {
             GenerateRoomsDebug();
         } else {
@@ -76,17 +78,13 @@ public class HubRoomManager : MonoBehaviour {
                 ChangeRoomType(i, newRoomType);
             }
         }
-        Debug.Log("Roomtypes: left: " + GameManager.Instance.nextRooms[0].roomType + ", middle: " + GameManager.Instance.nextRooms[1].roomType + ", right: " + GameManager.Instance.nextRooms[2].roomType + ", back: " + GameManager.Instance.nextRooms[3].roomType);
     }
 
     void GenerateRoomsDebug() {
-        
         ChangeRoomType(0, RoomType.Treasure);
         ChangeRoomType(1, RoomType.Shop);
         ChangeRoomType(2, RoomType.Fight);
         ChangeRoomType(3, RoomType.Fakewall);
-
-        Debug.Log("Roomtypes: left: " + GameManager.Instance.nextRooms[0].roomType + ", middle: " + GameManager.Instance.nextRooms[1].roomType + ", right: " + GameManager.Instance.nextRooms[2].roomType + ", back: " + GameManager.Instance.nextRooms[3].roomType);
     }
 
     public void ChangeRoomType(int index, RoomType newRoomType) {
@@ -125,7 +123,6 @@ public class HubRoomManager : MonoBehaviour {
 
     public void RotateLeft() {
         GameManager.Instance.currentDirection = (Direction)(((int)GameManager.Instance.currentDirection - 1 + 4) % 4);
-        Debug.Log("left room func called");
         ResetDoorSprite();
     }
 
@@ -135,18 +132,8 @@ public class HubRoomManager : MonoBehaviour {
     }
 
     public void ResetDoorSprite() {
-        //if (GameManager.Instance.currentDirection == Direction.Left) {
             int roomIndex = (int)GameManager.Instance.currentDirection;
             doorSprite.sprite = GameManager.Instance.nextRooms[roomIndex].roomSprite;
-            Debug.Log("facing " + GameManager.Instance.currentDirection);
-
-        // } else if (GameManager.Instance.currentDirection == Direction.Middle) {
-        //     doorSprite.sprite = doorMiddle;
-        // } else if (GameManager.Instance.currentDirection == Direction.Right) {
-        //     doorSprite.sprite = doorRight;
-        // } else if (GameManager.Instance.currentDirection == Direction.Back) {
-        //     doorSprite.sprite = doorBack;
-        // }
     }
 
 }

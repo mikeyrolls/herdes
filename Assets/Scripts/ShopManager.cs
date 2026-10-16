@@ -16,14 +16,15 @@ public class ShopManager : MonoBehaviour {
 
     void Start() {
 
-        Debug.Log("starting shop");
         hero = GameManager.Instance.hero;
 
         heroGO = Instantiate(heroPrefab, new Vector3(-1f, -3f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
         heroGO.InitGO(roomSpriteSet);
         hero.sceneObject = heroGO;
 
-        hero.effectList.ApplyEffects();
+        heroGO.onDeath = () => GameManager.Instance.Die();
+
+        hero.ApplyEffects();
 
         foreach (var slot in shopSlots)
             slot.Init(ItemDB.GetRandomForShop(GameManager.Instance.roomCount));

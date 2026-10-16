@@ -31,8 +31,6 @@ public class ShopSlot : MonoBehaviour {
 
     public void Init(ItemName itemName) {
 
-        Debug.Log("initializing shop item");
-
         item.InitializeFromDB(itemName, itemSpriteDB);
 
         itemImage.sprite = item.itemSprite;

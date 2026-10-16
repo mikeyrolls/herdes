@@ -6,51 +6,45 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectList {
+    Creature owner;
     public List<Effect> effects = new List<Effect> {};
     private int currId = 0;
 
     public int LeftRingEffectId;
     public int RightRingEffectId;
 
+    public EffectList(Creature owner) {
+        this.owner = owner;
+    }
+
     public void RemoveDebuffs() {
         effects.RemoveAll(x => x.isDebuff);
     }
 
     public void AddEffectDurationValue(EffectName effectName, int duration, int value, int index = -1) {
-        DebugPrintList();
-
         Effect effect = new Effect(effectName, duration, value, ++currId);
         effects.Add(effect);
         GameManager.Instance.hero.RecalculateStats();
-
+        UIManager.Instance.RefreshHUD();
         GameManager.Instance.hero.sceneObject.ShowFloatingText(effect.received, effect.messageType);
 
         if (index == 7) LeftRingEffectId = currId;
         if (index == 8) RightRingEffectId = currId;
-
-        Debug.Log("added effect " + effectName.ToString() + " from index " + index);
-
-        DebugPrintList();
     }
 
-    public void DebugPrintList() {
-        string s = "";
-        foreach (var effect in effects) {
-            s += ("[id:" + effect.id + ", eff:" + effect.name + "], ");
-        }
-        Debug.Log(s);
-    }
+    // public void DebugPrintList() {
+    //     string s = "";
+    //     foreach (var effect in effects) {
+    //         s += ("[id:" + effect.id + ", eff:" + effect.name + "], ");
+    //     }
+    //     Debug.Log(s);
+    // }
 
     public void RemoveEffectAtIndex(int index) {
-        DebugPrintList();
-
         int id = 0;
         if (index == 7) id = LeftRingEffectId;
         if (index == 8) id = RightRingEffectId;
         RemoveEffect(id);
-
-        Debug.Log("removing effect index " + index + " id " + id);
-        DebugPrintList();
     }
 
     public void RemoveEffect(int id) {
@@ -58,9 +52,9 @@ public class EffectList {
         GameManager.Instance.hero.RecalculateStats();
     }
 
-    public void ApplyEffects() {
-        Debug.Log("applying");
+    public void ApplyEffectsFromList() {
         foreach (Effect effect in effects) {
+            if (!owner.IsAlive()) break;
             effect.Apply();
         }
         effects.RemoveAll(x => x.duration == 0);
@@ -106,9 +100,9 @@ public class Effect {
         if(stat == StatType.CurrHP) {
             if (isDebuff) {
                 if(name == EffectName.Bleed || name == EffectName.BleedBig) {
-                    GameManager.Instance.hero.TakeBleedDmg(value);
+                    GameManager.Instance.hero.TakeDotDmg(value, FloatingTextType.Bleed);
                 } else {
-                    GameManager.Instance.hero.TakePoisonDmg(value);
+                    GameManager.Instance.hero.TakeDotDmg(value, FloatingTextType.Poison);
                 }
                 
             } else {

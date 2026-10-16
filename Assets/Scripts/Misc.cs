@@ -170,7 +170,7 @@ public enum HeroType {
 public static class HeroDB {
     public static Dictionary<HeroType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc )> heroes = new() {
         //name                  hp      dmg     dodge   acc
-        [HeroType.Fishbone] =   (100,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
+        [HeroType.Fishbone] =   (20,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
 
     };
 }
@@ -240,7 +240,7 @@ public static class EnemyDB {
 // -----------[ combat ]-----------
 
 public enum AnimationType {   
-    Attack, Dodge, GetHurt, Death, DeathStill, SpecialFast, SpecialCharged
+    Attack, Dodge, GetHurt, SpecialFast, SpecialCharged
 }
 
 public enum FloatingTextType {   
