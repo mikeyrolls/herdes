@@ -1,4 +1,4 @@
-commit: death untangling :( horrid but works with minor bugs, enemy effects currently stuck to hero, old debug logs deleted
+commit: unifying hero sprites, prep for proper load and reset, cursor fix and prep
 
 Todo next time:
 
@@ -22,9 +22,7 @@ Todo next time:
 
 Random future:
 
-    fight has random delays on enemy heals, misses etc. basically till float fade ig? cursor doing stuff too
-
-    cursor on death and reset? empty on death, switch to default, with proper retry it should load all for fishbone or any
+    fight has random delays on enemy heals, misses etc. basically till float fade ig? cursor doing stuff too (maybe switched to enemy turn without starting it? idk)
 
     buffs and debuffs are hardcoded to hero in effect script currently, add list owners
 
@@ -36,14 +34,8 @@ Random future:
 
     move debug from door to game manager and let it load fishbone currently, separate fishbone from code lol
 
-    so for hero sprites inherits from fight ones and has both those and room and cursors?
-
-    fix healthbar size hero again
-
 
 death:
-
-    buying carrots while dead
 
     proper death screen and handling yeah, slower too
 
@@ -188,6 +180,8 @@ Before release:
     fix where all it says t5 in the unity things
 
     non debug money, rooms, enemy spawns
+
+    check todos
 
 
 ----------------------------------------------------------------------------------------------------------------------------

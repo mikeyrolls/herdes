@@ -20,20 +20,11 @@ public class UIManager : MonoBehaviour {
     [SerializeField] TMP_Text hpText;
 
     [SerializeField] Image stateIcon;
-    [SerializeField] Sprite stateIconHp1;
-    [SerializeField] Sprite stateIconHp2;
-    [SerializeField] Sprite stateIconHp3;
-    [SerializeField] Sprite stateIconHp4;
     [SerializeField] Slider hpSlider;
-
-    [SerializeField] Texture2D defaultCursor;
-    [SerializeField] Texture2D hoverEnemyCursor;
-    [SerializeField] Texture2D hoverGrabCursor;
 
     [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[10];
 
     [SerializeField] private ActiveEffectsUI activeEffectsUI;
-
 
     [SerializeField] GameObject infobox;
     [SerializeField] TMP_Text infoBoxName;
@@ -102,21 +93,15 @@ public class UIManager : MonoBehaviour {
         roomCountText.text = GameManager.Instance.roomCount.ToString();
         hpText.text = GameManager.Instance.hero.currHP.ToString() + "/" + GameManager.Instance.hero.currMaxHP.ToString();
 
-        float width = 0.1f + Mathf.Sqrt(GameManager.Instance.hero.currMaxHP/40);
-        hpSlider.transform.localScale = new Vector3(width, 1, 1);
-        hpText.transform.localScale = new Vector3(1/width, 1, 1);
+        float width = 50f + 60f * Mathf.Sqrt(GameManager.Instance.hero.currMaxHP);
+        ((RectTransform)hpSlider.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        // hpText needs no change
 
         int hpPerc = GameManager.Instance.hero.GetHpPerc();
         hpSlider.value = hpPerc;
 
-        if(hpPerc > 50) {
-            stateIcon.sprite = stateIconHp1;
-        } else if (hpPerc > 25) {
-            stateIcon.sprite = stateIconHp2;
-        } else if (GameManager.Instance.hero.IsAlive()) {
-            stateIcon.sprite = stateIconHp3;
-        } else {
-            stateIcon.sprite = stateIconHp4;
+        stateIcon.sprite = ((HeroSpriteSet)GameManager.Instance.hero.spriteSet).StateIcon(hpPerc);
+        if(!GameManager.Instance.hero.IsAlive()) {
             hpSlider.fillRect.gameObject.SetActive(false);
         }
 

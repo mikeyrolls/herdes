@@ -11,6 +11,7 @@ using Random = UnityEngine.Random;
 public class Creature {
 
     public CreatureGO sceneObject;
+    public FightSpriteSet spriteSet;
 
     // -------------------------[ stats ]-----------------------------------------
 

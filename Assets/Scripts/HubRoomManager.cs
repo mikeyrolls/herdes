@@ -24,13 +24,13 @@ public class HubRoomManager : MonoBehaviour {
     [SerializeField] GameObject heroPrefab;
     HeroRoomGO heroGO;
     Hero hero;
-    public RoomSpriteSet roomSpriteSet;
 
     void Start() {
         hero = GameManager.Instance.hero;
 
         heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -3f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
-        heroGO.InitGO(roomSpriteSet);
+        heroGO.InitGO(hero.spriteSet);
+        
         hero.sceneObject = heroGO;
 
         heroGO.onDeath = () => GameManager.Instance.Die();

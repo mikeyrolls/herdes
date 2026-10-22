@@ -12,14 +12,13 @@ public class ShopManager : MonoBehaviour {
     [SerializeField] GameObject heroPrefab;
     HeroRoomGO heroGO;
     Hero hero;
-    public RoomSpriteSet roomSpriteSet;
 
     void Start() {
 
         hero = GameManager.Instance.hero;
 
         heroGO = Instantiate(heroPrefab, new Vector3(-1f, -3f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
-        heroGO.InitGO(roomSpriteSet);
+        heroGO.InitGO(hero.spriteSet);
         hero.sceneObject = heroGO;
 
         heroGO.onDeath = () => GameManager.Instance.Die();

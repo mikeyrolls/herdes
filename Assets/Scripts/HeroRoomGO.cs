@@ -11,16 +11,17 @@ using UnityEngine.EventSystems;
 
 public class HeroRoomGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
-    public RoomSpriteSet roomSpriteSet;
     public bool isAnimated;
+    public HeroSpriteSet heroSpriteSet;
 
-    public override void InitGO(FightSpriteSet set) { return; }
-
-    public void InitGO(RoomSpriteSet set) {
+    public override void InitGO(FightSpriteSet set) {
+        Debug.Log("this happens");
         isEnemy = false;
-        roomSpriteSet = set;
+        fightSpriteSet = set;
         sr = GetComponent<SpriteRenderer>();
-        sr.sprite = roomSpriteSet.idle;
+        heroSpriteSet = (HeroSpriteSet)fightSpriteSet;
+
+        sr.sprite = heroSpriteSet.roomIdle;
     }
 
     public void OnPointerClick(PointerEventData e) {
@@ -40,18 +41,18 @@ public class HeroRoomGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler
 
     public IEnumerator Pet() {
         isAnimated = true;
-        sr.sprite = roomSpriteSet.pet;
+        sr.sprite = heroSpriteSet.pet;
         yield return new WaitForSeconds(animSpeed/2);
-        sr.sprite = roomSpriteSet.idle;
+        sr.sprite = heroSpriteSet.roomIdle;
         isAnimated = false;
     }
 
     public override void SetDamagedSprite() {
-        sr.sprite = roomSpriteSet.damaged;
+        sr.sprite = heroSpriteSet.roomDamaged;
     }
 
     public override void SetDeadSprite() {
-        sr.sprite = roomSpriteSet.pet;
+        sr.sprite = heroSpriteSet.roomDead;
     }
     
 }

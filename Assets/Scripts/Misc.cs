@@ -99,8 +99,8 @@ public static class ItemDB {
 
         //rings                                                                     increase stat for
         [ItemName.HealthRingSmall] =        ("Weak ring of life",           20,     2,     ItemType.Ring, ItemRarity.Common,   "Increases HP by 2."),
-        [ItemName.HealthRing] =             ("Ring of life",                50,     10,     ItemType.Ring, ItemRarity.Uncommon,   "Increases HP by 10."),
-        [ItemName.HealthRingLarge] =        ("Strong ring of life",         100,    20,     ItemType.Ring, ItemRarity.Rare,   "Increases HP by 20."),
+        [ItemName.HealthRing] =             ("Ring of life",                50,     7,     ItemType.Ring, ItemRarity.Uncommon,   "Increases HP by 10."),
+        [ItemName.HealthRingLarge] =        ("Strong ring of life",         100,    15,     ItemType.Ring, ItemRarity.Rare,   "Increases HP by 20."),
         [ItemName.AtkRing] =                ("Ring of strength",            50,     2,     ItemType.Ring, ItemRarity.Uncommon,   "Increases attack."),
         [ItemName.AtkRingLarge] =           ("Strong ring of strength",     100,    5,     ItemType.Ring, ItemRarity.Rare,   "Increases attack greatly."),
         [ItemName.DefRing] =                ("Ring of defense",             50,     15,     ItemType.Ring, ItemRarity.Uncommon,   "Increases defense."),
@@ -159,7 +159,8 @@ public static class ItemDB {
 
 // -----------[ hero ]-----------
 
-public enum HeroType {   
+public enum HeroType {
+    Ghost,      //debug
     Fishbone,   // default, hero, cannot flee?
     Clover,      // fuck if I know man
     Tacobean    //throws bombs
@@ -170,7 +171,7 @@ public enum HeroType {
 public static class HeroDB {
     public static Dictionary<HeroType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc )> heroes = new() {
         //name                  hp      dmg     dodge   acc
-        [HeroType.Fishbone] =   (20,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
+        [HeroType.Fishbone] =   (40,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
 
     };
 }

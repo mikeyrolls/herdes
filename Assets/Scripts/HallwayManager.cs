@@ -31,7 +31,7 @@ public class HallwayManager : MonoBehaviour {
         hero = GameManager.Instance.hero;
 
         heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -0.5f, 0f), Quaternion.identity).GetComponent<HeroGO>();
-        heroGO.InitGO(EnemyDB.sprites[EnemyType.Fishbone]);
+        heroGO.InitGO(hero.spriteSet);
         hero.sceneObject = heroGO;
 
         heroGO.onDeath = () => GameManager.Instance.Die();

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35f19774501679848b0aa3cd8b2cabbc, type: 3}
+  m_Name: HS_Fishbone
+  m_EditorClassIdentifier: 
+  idle: {fileID: 21300000, guid: db562c9ec3c35c347ab68d650d305669, type: 3}
+  damaged: {fileID: 21300000, guid: 0a01761ad30a0db41a1ef1b03cc19baa, type: 3}
+  attacking: {fileID: 21300000, guid: d87507b454e45474eab5d1f3eeb333a7, type: 3}
+  dead: {fileID: 21300000, guid: d7144a9ea8aafde4e8b4f8be4a99e994, type: 3}
+  specialFast: {fileID: 21300000, guid: 86861fcce8c89d642b943ec66a331907, type: 3}
+  specialCharged1: {fileID: 0}
+  specialCharged2: {fileID: 0}
+  roomIdle: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
+  roomDamaged: {fileID: 8554009836666190831, guid: 73b8721d5b1e9d24ab7907da039f35d4, type: 3}
+  roomDead: {fileID: 6219476322086543514, guid: 547bea5ab4066a6408de613837335fb0, type: 3}
+  pet: {fileID: 6219476322086543514, guid: 547bea5ab4066a6408de613837335fb0, type: 3}
+  normalCursor: {fileID: 2800000, guid: e3892014af78f1e4ba0b82d9af435ed8, type: 3}
+  grabCursor: {fileID: 2800000, guid: 277aa68e28c98624c92e473edd31e50f, type: 3}
+  attackCursor: {fileID: 2800000, guid: fe03e9b91e0e77a44b5e58e7089e3ee6, type: 3}
+  specialCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
+  holdingCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
+  stateIconHp1: {fileID: 21300000, guid: 9997b3e722a5afd4aa9bc22ba60d2050, type: 3}
+  stateIconHp2: {fileID: 21300000, guid: d80f5fab63ac47c49b45370d03249d51, type: 3}
+  stateIconHp3: {fileID: 21300000, guid: 615e89e063b300145b392daf15aa1969, type: 3}
+  stateIconHp4: {fileID: 21300000, guid: 2f88fbf15cd25a74fbda01ffbef5fe72, type: 3}

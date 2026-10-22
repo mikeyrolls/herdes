@@ -193,6 +193,6 @@ public class CreatureGO : MonoBehaviour {
     void OnDisable() {
        if (CursorManager.Instance != null)
            CursorManager.Instance.RemoveRequest(this);
-   }
+    }
 
 }

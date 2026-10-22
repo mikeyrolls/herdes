@@ -18,4 +18,9 @@ public class UIHoverCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerExit(PointerEventData e) {
         CursorManager.Instance.RemoveRequest(this);
     }
+
+    void OnDisable() {
+       if (CursorManager.Instance != null)
+           CursorManager.Instance.RemoveRequest(this);
+    }
 }

@@ -31,6 +31,14 @@ public class CursorManager : MonoBehaviour {
         Refresh();
     }
 
+    public void SwitchCursors(HeroSpriteSet set) {
+        normalCursor = set.normalCursor;
+        grabCursor = set.grabCursor;
+        attackCursor = set.attackCursor;
+        specialCursor = set.specialCursor;
+        holdingCursor = set.holdingCursor;
+    }
+
     public void AddRequest(object source, CursorType type, Prio priority, string tooltip = "", bool whileHolding = false) {
         requests[(source, whileHolding)] = (type, (int)priority, tooltip);
         Refresh();

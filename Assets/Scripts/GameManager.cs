@@ -28,7 +28,11 @@ public class GameManager : MonoBehaviour {
     // for scene switches
     public bool isTransitioning;
 
-    void Start() {
+    public HeroSpriteSet FishboneSprites;
+    public HeroSpriteSet DefaultSprites;
+
+    void Start() { //after awake
+        InitNewRun();
         UIManager.Instance.RefreshHUD();
     }
 
@@ -36,7 +40,7 @@ public class GameManager : MonoBehaviour {
         if (Instance == null) {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            InitNewRun();
+            
         } else {
             Destroy(gameObject);
         }
@@ -50,6 +54,9 @@ public class GameManager : MonoBehaviour {
     public void InitNewRun() {
         hero = new Hero();
         hero.InitializeFromDB(HeroType.Fishbone);
+        hero.spriteSet = FishboneSprites;
+        CursorManager.Instance.SwitchCursors((HeroSpriteSet)hero.spriteSet);
+        Debug.Log("hero sprites = " + hero.spriteSet);
 
         roomCount = 0;
         currentRoomType = RoomType.None;
