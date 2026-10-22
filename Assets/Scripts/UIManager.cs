@@ -32,11 +32,12 @@ public class UIManager : MonoBehaviour {
     [SerializeField] TMP_Text infoBoxType;
 
     [SerializeField] GameObject gameOverScreen;
+    [SerializeField] GameObject gameOverMenu;
 
 
     void Start() {
         GameManager.Instance.LoadScene("Room_Between");
-        Init();
+        //Init();
     }
 
     public void Init() {
@@ -132,8 +133,19 @@ public class UIManager : MonoBehaviour {
         infobox.gameObject.SetActive(false);
     }
 
-    public void ShowGameOver() {
+    public IEnumerator ShowGameOver() {
         gameOverScreen.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        GameManager.Instance.SetDefaultSprites();
+
+        float duration = 1f;
+        float elapsed = 0f;
+        while (elapsed < duration) {
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / duration;
+            gameOverMenu.GetComponent<RectTransform>().anchoredPosition = Vector2.Lerp(new Vector2(0f, 800f), Vector2.zero, t);
+            yield return null;
+        }
     }
 
     public void ClickedTryAgain() {

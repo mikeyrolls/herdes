@@ -24,7 +24,6 @@ public class HeroSpriteSet : FightSpriteSet
     public Sprite stateIconHp4;
 
     public Sprite StateIcon(int hpPerc) {
-        Debug.Log("int stateicon with perc " + hpPerc);
         if(hpPerc > 50) {
             return stateIconHp1;
         } else if (hpPerc > 25) {

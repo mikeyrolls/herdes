@@ -110,6 +110,8 @@ public class Creature {
         currHP = Helper.AddPositive(currHP, -rawDmg);
         UIManager.Instance.RefreshHUD();
         sceneObject.ShowFloatingText(rawDmg + "", type);
+        if (GameManager.Instance.currentRoomType != RoomType.Fight)
+            sceneObject.PlayDotAnimation();
         if(!IsAlive())
             sceneObject.DieGO(); //animates and invokes death
     }
@@ -196,10 +198,6 @@ public class Creature {
         UIManager.Instance.RefreshHUD();
     }
 
-    public virtual void RecalculateStats() {
-        
-    }
-
     double StatToMult(int stat) { //decimal, 0 -> 1
         return ((1)/(1+0.02*stat));
     }
@@ -228,6 +226,13 @@ public class Creature {
 
     public void ApplyEffects() {
         effectList.ApplyEffectsFromList();
+    }
+
+    public void RecalculateStats() {
+        ResetToBaseStats();
+        effectList.CalculateEffects();
+        if (currHP > currMaxHP) currHP = currMaxHP;
+        UIManager.Instance.RefreshHUD();
     }
 
 }

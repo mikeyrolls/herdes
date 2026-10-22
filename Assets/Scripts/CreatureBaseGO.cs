@@ -29,6 +29,7 @@ public class CreatureGO : MonoBehaviour {
 
     private Sprite currentIdle;
     public bool isEnemy;
+    protected bool isDotAnimating;
 
     // -------------------------[ object methods ]-----------------------------------------
 
@@ -148,7 +149,6 @@ public class CreatureGO : MonoBehaviour {
 
     public void SetIdleSprite() { //todo change protected
         sr.sprite = currentIdle;
-        Debug.Log("to idle");
     }
 
     public virtual void SetDamagedSprite() {
@@ -161,7 +161,6 @@ public class CreatureGO : MonoBehaviour {
 
     public void DieGO() {
         StartCoroutine(DeathStillAnimation());
-        Debug.Log("diego");
     }
 
     public virtual void SetDeadSprite() {
@@ -188,6 +187,8 @@ public class CreatureGO : MonoBehaviour {
     public void SetNormalIdle() {
         currentIdle = fightSpriteSet.idle;
     }
+
+    public virtual void PlayDotAnimation() { }
 
     // for cursor shenanigans
     void OnDisable() {

@@ -22,12 +22,17 @@ public class CursorManager : MonoBehaviour {
     private object holder;
 
     void Awake() {
+        if (Instance != null && Instance != this) {
+            Destroy(gameObject);
+            return;
+        }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        requests[(this, false)] = (CursorType.Normal, (int)Prio.Base, "");
     }
 
     void Start() {
-        requests[(this, false)] = (CursorType.Normal, (int)Prio.Base, "");
         Refresh();
     }
 
@@ -37,6 +42,7 @@ public class CursorManager : MonoBehaviour {
         attackCursor = set.attackCursor;
         specialCursor = set.specialCursor;
         holdingCursor = set.holdingCursor;
+        Refresh();
     }
 
     public void AddRequest(object source, CursorType type, Prio priority, string tooltip = "", bool whileHolding = false) {
@@ -58,12 +64,14 @@ public class CursorManager : MonoBehaviour {
     }
 
     public void RemoveRequest(object source) {
+        if (source == (object)this) return;
         requests.Remove((source, false));
         requests.Remove((source, true));
         Refresh();
     }
 
     void Refresh() {
+        
         bool holding = holder != null;
         var top = requests.Where(kv => kv.Key.holding == holding).Select(kv => kv.Value).OrderByDescending(r => r.priority).First();
 

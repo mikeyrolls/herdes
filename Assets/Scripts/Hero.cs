@@ -38,13 +38,6 @@ public class Hero : Creature {
         }
     }
 
-    public override void RecalculateStats() {
-        ResetToBaseStats();
-        effectList.CalculateEffects();
-        if (currHP > currMaxHP) currHP = currMaxHP;
-        UIManager.Instance.RefreshHUD();
-    }
-
     public override void DoSpecialFast(string text = "", FloatingTextType type = FloatingTextType.Default) {
         if(heroType == HeroType.Fishbone)
             base.DoSpecialFast("Blocking");

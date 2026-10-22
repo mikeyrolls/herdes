@@ -21,6 +21,8 @@ public enum CursorType {Normal, Attack, Grab, Special, Holding}
 
 public enum Prio {Base, Holding, Background, World, UI, Overlay}
 
+public enum CombatState { PlayerTurn, EnemyTurn, Won, Lost }
+
 public static class Helper {
 
     public static int GetPerc() {

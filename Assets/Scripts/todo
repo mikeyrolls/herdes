@@ -1,21 +1,24 @@
-commit:
+commit: 
 
 Todo next time:
 
-    design and make show char info
+    design and make show char info (hero art, stats, effects, bestiary coming soon a book now empty?)
 
-    one of:
+    charms + enemy effects add and show
 
-        - charms
+    design and make shop+hallway backgrounds
 
-        - death properly
+    fleeing system make
 
-        - design and make backgrounds and other textures
+    add mimic
 
-    go thru list and find small tasks maybe
+    hub background, animations and more interactive
 
-    readme
+    settings (animation speed?)
 
+    title screen, pick char/skin + debug mode
+
+    clear todos where possible, finish this list part 1, we ball
 
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -24,44 +27,7 @@ Todo next time:
 
 Random future:
 
-    fight has random delays on enemy heals, misses etc. basically till float fade ig? cursor doing stuff too (maybe switched to enemy turn without starting it? idk)
 
-    buffs and debuffs are hardcoded to hero in effect script currently, add list owners
-
-    recalculate stats missing for enemy?
-
-    maybe switch enemy health bar to not moving too, place elsewhere with effects too?
-
-    check combat state switching too
-
-    move debug from door to game manager and let it load fishbone currently, separate fishbone from code lol
-
-    blocking doesn't work anymore?
-
-
-death:
-
-    proper death screen and handling yeah, slower too
-
-    losing screen (check what's visible under it, end result small losing panel, maybe fade to new game?)
-
-
-balancing:
-
-    shop every 10?
-
-    make some enemies attack first, ambush room?
-
-    using items in combat takes turn?
-
-    enemies drop random things?
-
-    mimics, increasing chance to meet them
-
-
-cursor:
-
-    cursor not showing attack when not correct turn
 
 
 Items:
@@ -83,26 +49,12 @@ Items:
 
     fix item spawn rates by type and rarity
 
-    enemy fix drops
-
-    fix item descriptions numbers if you change how stats are calculated
-
-    alert potion?
-
 
 Small misc:
-
-    enemy set sprite when dead, normal cursor when enemy attacking?
-
-    better new room/turn (call new room method with bool increase maybe?)
-
-    change/sell/craft your items?
 
     better scene init setup with title screen maybe character picks and all or at least place to do it
 
     approaching shop makes number gold
-
-    leaving room when holding cursor thing
 
     animation speed of text? base on string length but also anim speed to uniformly set in settings sometime?
 
@@ -168,14 +120,27 @@ Fight:
 
     effects show on enemies
 
-    add mimic
+    mimics, increasing chance to meet them
 
     FLEEING.. fleeing (door initially blocked), (free door after 10 kills?)
 
     debuff enemies test or make or whatever
 
 
+balancing:
+
+    shop every 10?
+
+    make some enemies attack first, ambush room? alert potion?
+
+    using items in combat takes turn?
+
+    enemies drop random things?
+
+
 Before release:
+
+    readme
 
     version numbering?
 
@@ -263,6 +228,10 @@ Mechanical things?:
         - mage can repeatedly charge? multiplied by 2?
 
         - round in combat for archer and in general
+    
+    fix item descriptions numbers
+
+    change/sell/craft your items?
 
 
 Progression??:

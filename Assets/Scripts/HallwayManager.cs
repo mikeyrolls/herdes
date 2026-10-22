@@ -25,6 +25,7 @@ public class HallwayManager : MonoBehaviour {
 
     public enum CombatState { PlayerTurn, EnemyTurn, Won, Lost }
     CombatState combatState;
+    public bool IsPlayerTurn => combatState == CombatState.PlayerTurn;
 
     void Start() {
         type = GameManager.Instance.currentRoomType;
@@ -97,7 +98,7 @@ public class HallwayManager : MonoBehaviour {
         //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
 
         //debugging picked enemy----------------------------
-        EnemyType spawnedEnemy = EnemyType.Spider;
+        EnemyType spawnedEnemy = EnemyType.Rat;
         //-------------------------
 
         enemy = new Enemy();
@@ -204,7 +205,7 @@ public class HallwayManager : MonoBehaviour {
         if(!attacked.IsAlive())
             attacked.Die();
         else
-            attacker.ApplyEffects(); // die should happen here too hopefully?
+            attacked.ApplyEffects(); // die should happen here too hopefully?
 
         yield return null;
 

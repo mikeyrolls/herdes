@@ -15,7 +15,6 @@ public class HeroRoomGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler
     public HeroSpriteSet heroSpriteSet;
 
     public override void InitGO(FightSpriteSet set) {
-        Debug.Log("this happens");
         isEnemy = false;
         fightSpriteSet = set;
         sr = GetComponent<SpriteRenderer>();
@@ -42,7 +41,7 @@ public class HeroRoomGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler
     public IEnumerator Pet() {
         isAnimated = true;
         sr.sprite = heroSpriteSet.pet;
-        yield return new WaitForSeconds(animSpeed/2);
+        yield return new WaitForSeconds(animSpeed);
         sr.sprite = heroSpriteSet.roomIdle;
         isAnimated = false;
     }
@@ -53,6 +52,19 @@ public class HeroRoomGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler
 
     public override void SetDeadSprite() {
         sr.sprite = heroSpriteSet.roomDead;
+    }
+
+    public override void PlayDotAnimation() {
+        if (isDotAnimating) return;
+        StartCoroutine(PoisonRoomAnimation());
+    }
+
+    IEnumerator PoisonRoomAnimation() {
+        isDotAnimating = true;
+        sr.sprite = heroSpriteSet.roomDamaged;
+        yield return new WaitForSeconds(animSpeed);
+        sr.sprite = heroSpriteSet.roomIdle;
+        isDotAnimating = false;
     }
     
 }

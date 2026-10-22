@@ -22,11 +22,11 @@ public class EffectList {
     }
 
     public void AddEffectDurationValue(EffectName effectName, int duration, int value, int index = -1) {
-        Effect effect = new Effect(effectName, duration, value, ++currId);
+        Effect effect = new Effect(effectName, duration, value, ++currId, owner);
         effects.Add(effect);
-        GameManager.Instance.hero.RecalculateStats();
+        owner.RecalculateStats();
         UIManager.Instance.RefreshHUD();
-        GameManager.Instance.hero.sceneObject.ShowFloatingText(effect.received, effect.messageType);
+        owner.sceneObject.ShowFloatingText(effect.received, effect.messageType);
 
         if (index == 7) LeftRingEffectId = currId;
         if (index == 8) RightRingEffectId = currId;
@@ -49,7 +49,7 @@ public class EffectList {
 
     public void RemoveEffect(int id) {
         effects.RemoveAll(x => x.id == id);
-        GameManager.Instance.hero.RecalculateStats();
+        owner.RecalculateStats();
     }
 
     public void ApplyEffectsFromList() {
@@ -58,7 +58,7 @@ public class EffectList {
             effect.Apply();
         }
         effects.RemoveAll(x => x.duration == 0);
-        GameManager.Instance.hero.RecalculateStats();
+        owner.RecalculateStats();
         UIManager.Instance.RefreshHUD();
     }
 
@@ -83,14 +83,16 @@ public class Effect {
     public string received;
     public FloatingTextType messageType;
 
+    Creature owner;
+
     public void Calculate() {
         if(stat == StatType.CurrHP) {
             // only when applying
         } else {
             if (isDebuff) {
-                GameManager.Instance.hero.IncreaseStatTemporary(-value, stat);
+                owner.IncreaseStatTemporary(-value, stat);
             } else {
-                GameManager.Instance.hero.IncreaseStatTemporary(value, stat);
+                owner.IncreaseStatTemporary(value, stat);
             }
         }
     }
@@ -100,20 +102,20 @@ public class Effect {
         if(stat == StatType.CurrHP) {
             if (isDebuff) {
                 if(name == EffectName.Bleed || name == EffectName.BleedBig) {
-                    GameManager.Instance.hero.TakeDotDmg(value, FloatingTextType.Bleed);
+                    owner.TakeDotDmg(value, FloatingTextType.Bleed);
                 } else {
-                    GameManager.Instance.hero.TakeDotDmg(value, FloatingTextType.Poison);
+                    owner.TakeDotDmg(value, FloatingTextType.Poison);
                 }
                 
             } else {
-                GameManager.Instance.hero.Heal(value);
+                owner.Heal(value);
             }
         }
         if(duration > 0)
             duration--;
     }
 
-    public Effect(EffectName effectName, int duration, int value, int id) {
+    public Effect(EffectName effectName, int duration, int value, int id, Creature owner) {
         if (EffectDB.effects.TryGetValue(effectName, out var data)) {
             name = effectName;
             this.duration = duration;
@@ -124,6 +126,8 @@ public class Effect {
 
             this.received = data.received;
             this.messageType = data.messageType;
+
+            this.owner = owner;
         } else {
             Debug.LogError($"Effect '{effectName}' not found in database!");
         }

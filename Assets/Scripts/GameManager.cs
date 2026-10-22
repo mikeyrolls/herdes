@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Die() {
-        UIManager.Instance.ShowGameOver();
+        StartCoroutine(UIManager.Instance.ShowGameOver());
     }
 
     public void LoadScene(string sceneName) {
@@ -91,6 +91,10 @@ public class GameManager : MonoBehaviour {
         InitNewRun();
         UIManager.Instance.HideGameOver();
         StartCoroutine(LoadNewScene("Room_Between"));
+    }
+
+    public void SetDefaultSprites() {
+        CursorManager.Instance.SwitchCursors(DefaultSprites);
     }
 
 }
