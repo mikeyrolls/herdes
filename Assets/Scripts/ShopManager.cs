@@ -17,7 +17,7 @@ public class ShopManager : MonoBehaviour {
 
         hero = GameManager.Instance.hero;
 
-        heroGO = Instantiate(heroPrefab, new Vector3(-1f, -3f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
+        heroGO = Instantiate(heroPrefab, new Vector3(-1f, -2f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
         heroGO.InitGO(hero.spriteSet);
         hero.sceneObject = heroGO;
 

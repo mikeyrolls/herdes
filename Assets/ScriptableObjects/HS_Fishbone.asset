@@ -19,15 +19,15 @@ MonoBehaviour:
   specialFast: {fileID: 21300000, guid: 86861fcce8c89d642b943ec66a331907, type: 3}
   specialCharged1: {fileID: 0}
   specialCharged2: {fileID: 0}
-  roomIdle: {fileID: 679481600277344169, guid: 457d5f0270cb4fe45ab3a8877d423076, type: 3}
-  roomDamaged: {fileID: 8554009836666190831, guid: 73b8721d5b1e9d24ab7907da039f35d4, type: 3}
-  roomDead: {fileID: 6219476322086543514, guid: 547bea5ab4066a6408de613837335fb0, type: 3}
-  pet: {fileID: 6219476322086543514, guid: 547bea5ab4066a6408de613837335fb0, type: 3}
+  roomIdle: {fileID: 21300000, guid: 394625507ac2b0f478febf2ebedd3ca9, type: 3}
+  roomDamaged: {fileID: 21300000, guid: 628e353b45a25a74e9e2604b1d47c9ea, type: 3}
+  roomDead: {fileID: 21300000, guid: 9ca7c79dc09bb8943a697fed91356f9e, type: 3}
+  pet: {fileID: 21300000, guid: 9724a06496c90e04aa779dc5c558efde, type: 3}
   normalCursor: {fileID: 2800000, guid: e3892014af78f1e4ba0b82d9af435ed8, type: 3}
   grabCursor: {fileID: 2800000, guid: 277aa68e28c98624c92e473edd31e50f, type: 3}
   attackCursor: {fileID: 2800000, guid: fe03e9b91e0e77a44b5e58e7089e3ee6, type: 3}
   specialCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
-  holdingCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
+  holdingCursor: {fileID: 2800000, guid: e56c786452094394ea62af4969762f92, type: 3}
   stateIconHp1: {fileID: 21300000, guid: 9997b3e722a5afd4aa9bc22ba60d2050, type: 3}
   stateIconHp2: {fileID: 21300000, guid: d80f5fab63ac47c49b45370d03249d51, type: 3}
   stateIconHp3: {fileID: 21300000, guid: 615e89e063b300145b392daf15aa1969, type: 3}

@@ -1,4 +1,4 @@
-commit: unifying hero sprites, prep for proper load and reset, cursor fix and prep
+commit:
 
 Todo next time:
 
@@ -13,6 +13,8 @@ Todo next time:
         - design and make backgrounds and other textures
 
     go thru list and find small tasks maybe
+
+    readme
 
 
 
@@ -33,6 +35,8 @@ Random future:
     check combat state switching too
 
     move debug from door to game manager and let it load fishbone currently, separate fishbone from code lol
+
+    blocking doesn't work anymore?
 
 
 death:
@@ -126,12 +130,10 @@ Textures:
 
     cat in hub:
 
-        - normal
         - jumping to screen
         - walking to door
         - hitting the wall
         - getting hit by rocks
-        - headpat
 
     trash slot fix, anim?
 

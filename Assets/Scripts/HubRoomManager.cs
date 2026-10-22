@@ -28,7 +28,7 @@ public class HubRoomManager : MonoBehaviour {
     void Start() {
         hero = GameManager.Instance.hero;
 
-        heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -3f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
+        heroGO = Instantiate(heroPrefab, new Vector3(-5.5f, -2f, 0f), Quaternion.identity).GetComponent<HeroRoomGO>();
         heroGO.InitGO(hero.spriteSet);
         
         hero.sceneObject = heroGO;

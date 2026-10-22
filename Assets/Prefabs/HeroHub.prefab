@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -21.52, y: -22.44, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -149,5 +149,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fightSpriteSet: {fileID: 0}
   floatingTextPrefab: {fileID: 5176619840349391443, guid: 31d40870521b4ae49a240bd920a96399, type: 3}
-  roomSpriteSet: {fileID: 0}
+  isEnemy: 0
   isAnimated: 0
+  heroSpriteSet: {fileID: 0}

@@ -12,23 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f19774501679848b0aa3cd8b2cabbc, type: 3}
   m_Name: HS_Ghost
   m_EditorClassIdentifier: 
-  idle: {fileID: 0}
-  damaged: {fileID: 0}
-  attacking: {fileID: 0}
-  dead: {fileID: 0}
-  specialFast: {fileID: 0}
-  specialCharged1: {fileID: 0}
-  specialCharged2: {fileID: 0}
-  roomIdle: {fileID: 0}
-  roomDamaged: {fileID: 0}
-  roomDead: {fileID: 0}
-  pet: {fileID: 0}
-  normalCursor: {fileID: 0}
-  grabCursor: {fileID: 0}
-  attackCursor: {fileID: 0}
-  specialCursor: {fileID: 0}
-  holdingCursor: {fileID: 0}
-  stateIconHp1: {fileID: 0}
-  stateIconHp2: {fileID: 0}
-  stateIconHp3: {fileID: 0}
-  stateIconHp4: {fileID: 0}
+  idle: {fileID: 21300000, guid: 4d48af36c704cd14aa1d8078ddad80b0, type: 3}
+  damaged: {fileID: 21300000, guid: c9ce3c6d0d7d03c409f83cfae856094e, type: 3}
+  attacking: {fileID: 21300000, guid: a8278aa27881be74e8b35e3360ad1f88, type: 3}
+  dead: {fileID: 21300000, guid: d97d13a0fffa57b4080d3f52587573a8, type: 3}
+  specialFast: {fileID: 21300000, guid: f17af41665debd44b85a5666e555d979, type: 3}
+  specialCharged1: {fileID: 21300000, guid: f17af41665debd44b85a5666e555d979, type: 3}
+  specialCharged2: {fileID: 21300000, guid: b6a0480c66c19004f96a2c1dcc22a007, type: 3}
+  roomIdle: {fileID: 21300000, guid: 72bdc315376b3b744b98963674dc5526, type: 3}
+  roomDamaged: {fileID: 21300000, guid: 20fe54fd3e935e046bfed586b5d35f38, type: 3}
+  roomDead: {fileID: 21300000, guid: b96449b67c389e9488dcff513eeff779, type: 3}
+  pet: {fileID: 21300000, guid: 6e8f21f39de90ce4d8c6fb7f8738eebc, type: 3}
+  normalCursor: {fileID: 2800000, guid: f6214723830b3d048b06c3f0883bfb7c, type: 3}
+  grabCursor: {fileID: 2800000, guid: 2731a756fd234ae4f9672d21dea31dea, type: 3}
+  attackCursor: {fileID: 2800000, guid: a1296423fccb9d040b7e48cc9a5508c0, type: 3}
+  specialCursor: {fileID: 2800000, guid: 1f16430271720d44e92700d9233d830d, type: 3}
+  holdingCursor: {fileID: 2800000, guid: 281f3a4b2df67c2439241b173e8bc0ea, type: 3}
+  stateIconHp1: {fileID: 21300000, guid: 5fb9f726016f4ab45a54bb57dbbec509, type: 3}
+  stateIconHp2: {fileID: 21300000, guid: e3f4357298293ae4aa6c84d8e4c7aaae, type: 3}
+  stateIconHp3: {fileID: 21300000, guid: 280c791f8bb02c5418ca3b4a3cf9028f, type: 3}
+  stateIconHp4: {fileID: 21300000, guid: 089cebbfed3863b48892f1ca4cd4a1c4, type: 3}
