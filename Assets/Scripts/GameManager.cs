@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour {
     public HeroSpriteSet FishboneSprites;
     public HeroSpriteSet DefaultSprites;
 
+    public Enemy currEnemy;
+
     void Start() { //after awake
         InitNewRun();
         UIManager.Instance.RefreshHUD();
@@ -98,6 +100,17 @@ public class GameManager : MonoBehaviour {
 
     public void SetDefaultSprites() {
         CursorManager.Instance.SwitchCursors(DefaultSprites);
+    }
+
+    public void StartingCombatWith(Enemy enemy) {
+        combat = true;
+        currEnemy = enemy;
+        UIManager.Instance.StartingCombat();
+    }
+
+    public void EndingCombat() {
+        combat = false;
+        UIManager.Instance.EndingCombat();
     }
 
 }

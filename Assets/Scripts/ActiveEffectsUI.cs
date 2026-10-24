@@ -13,14 +13,14 @@ public class ActiveEffectsUI : MonoBehaviour {
 
     private List<Image> spawnedIcons = new List<Image>();
 
-    public void Refresh() {
+    public void Refresh(Creature owner) {
         // Clear existing icons
         foreach (var icon in spawnedIcons)
             Destroy(icon.gameObject);
         spawnedIcons.Clear();
 
         // Spawn one icon per active effect
-        foreach (var effect in GameManager.Instance.hero.effectList.effects) {
+        foreach (var effect in owner.effectList.effects) {
             Sprite sprite = effectSpriteDB.Get(effect.name);
             if (sprite == null) continue;
 

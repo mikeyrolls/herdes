@@ -76,18 +76,6 @@ public class Enemy : Creature {
         }
     }
 
-    protected override int TakeDmg(int rawDmg) {
-        int ad = base.TakeDmg(rawDmg);
-        ((EnemyGO)sceneObject).SetHpBar(GetHpPerc());
-        return ad;
-    }
-
-
-    public override void Heal(int amount) {
-        base.Heal(amount);
-        ((EnemyGO)sceneObject).SetHpBar(GetHpPerc());
-    }
-
     public ItemName GetDrop() {
         if (dropRate > Helper.GetPerc()) {
             return dropItem;

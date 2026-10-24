@@ -53,8 +53,10 @@ public class Hero : Creature {
             //effect duration value perc
             case HeroType.Fishbone:
                 attackEffects[1].Add((EffectName.DefInc, 1, 100, 100)); break;
-            // case HeroType.Ghost:
-            //     attackEffects[2].Add((EffectName.DodgeInc, 5, 50, 100)); break;
+            case HeroType.Ghost:
+                // attackEffects[2].Add((EffectName.DodgeInc, 5, 50, 100));
+                attackEffects[0].Add((EffectName.Poison, 5, 1, 100));
+                break;
 
         }
     }

@@ -11,9 +11,6 @@ using UnityEngine.EventSystems;
 
 public class EnemyGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler {
 
-    public GameObject hpBarGreen;
-    public GameObject hpBarRed;
-
     bool hovered;
     bool cursorActive;
     HallwayManager hallway;
@@ -57,28 +54,5 @@ public class EnemyGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, I
             CursorManager.Instance.RemoveRequest(this);
             cursorActive = false;
         }
-    }
-
-    public void SetHpBar(float percent) {
-        StartCoroutine(SetHpBarAnim(percent/100));
-        if(percent == 0) {
-            StartCoroutine(HideHpBarAnim());
-        }
-    }
-
-    public IEnumerator SetHpBarAnim(float size) {
-        yield return new WaitForSeconds(animSpeed/2);
-        hpBarGreen.transform.localScale = new Vector3(size, 1, 1);
-        hpBarGreen.transform.localPosition = new Vector3(-(1 - size)/2, 0, 0);
-    }
-
-    public void SetHpBarWidth(int maxHP) {
-        float width = 0.4f + Mathf.Sqrt(maxHP / 4);
-        hpBarRed.transform.localScale = new Vector3(width, 0.4f, 1);
-    }
-
-    public IEnumerator HideHpBarAnim() {
-        yield return new WaitForSeconds(animSpeed/2);
-        hpBarRed.SetActive(false);
     }
 }

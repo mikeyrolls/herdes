@@ -21,10 +21,13 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField] Image stateIcon;
     [SerializeField] Slider hpSlider;
+    [SerializeField] Slider hpSliderEnemy;
+    [SerializeField] TMP_Text hpTextEnemy;
 
     [SerializeField] InventorySlot[] inventorySlots = new InventorySlot[10];
 
     [SerializeField] private ActiveEffectsUI activeEffectsUI;
+    [SerializeField] private ActiveEffectsUI activeEffectsUIEnemy;
 
     [SerializeField] GameObject infobox;
     [SerializeField] TMP_Text infoBoxName;
@@ -43,6 +46,10 @@ public class UIManager : MonoBehaviour {
     public void Init() {
         hpSlider.minValue = 0f;
         hpSlider.maxValue = 100f;
+        hpSliderEnemy.minValue = 0f;
+        hpSliderEnemy.maxValue = 100f;
+
+        hpSliderEnemy.gameObject.SetActive(false);
 
         for(int i = 0; i < 10; i++) {
             inventorySlots[i].Init(GameManager.Instance.hero.inventory, i);
@@ -96,7 +103,6 @@ public class UIManager : MonoBehaviour {
 
         float width = 50f + 60f * Mathf.Sqrt(GameManager.Instance.hero.currMaxHP);
         ((RectTransform)hpSlider.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        // hpText needs no change
 
         int hpPerc = GameManager.Instance.hero.GetHpPerc();
         hpSlider.value = hpPerc;
@@ -110,7 +116,33 @@ public class UIManager : MonoBehaviour {
             inventorySlots[i].UpdateSprite();
         }
 
-        activeEffectsUI.Refresh();
+        activeEffectsUI.Refresh(GameManager.Instance.hero);
+
+        if(GameManager.Instance.combat) RefreshEnemy(GameManager.Instance.currEnemy);
+    }
+
+    public void RefreshEnemy(Enemy enemy) {
+
+        hpTextEnemy.text = enemy.currHP.ToString() + "/" + enemy.currMaxHP.ToString();
+
+        float width = 50f + 60f * Mathf.Sqrt(enemy.currMaxHP);
+        ((RectTransform)hpSliderEnemy.transform).SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        hpSliderEnemy.value = enemy.GetHpPerc();
+
+        if(!enemy.IsAlive()) {
+            hpSliderEnemy.fillRect.gameObject.SetActive(false);
+        }
+
+        activeEffectsUIEnemy.Refresh(enemy);
+    }
+
+    public void StartingCombat() {
+        hpSliderEnemy.gameObject.SetActive(true);
+        hpSliderEnemy.fillRect.gameObject.SetActive(true);
+    }
+
+    public void EndingCombat() {
+        hpSliderEnemy.gameObject.SetActive(false);
     }
 
     public void ShowInfobox(Item item, RectTransform slotRect, int index) {
@@ -149,6 +181,7 @@ public class UIManager : MonoBehaviour {
     }
 
     public void ClickedTryAgain() {
+        gameOverMenu.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 800f);
         GameManager.Instance.Retry();
     }
 

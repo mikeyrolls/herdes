@@ -92,13 +92,12 @@ public class HallwayManager : MonoBehaviour {
 
     void HandleFightRoom() {
 
-        GameManager.Instance.combat = true;
         AddInfoText("entered combat");
 
         //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
 
         //debugging picked enemy----------------------------
-        EnemyType spawnedEnemy = EnemyType.Rat;
+        EnemyType spawnedEnemy = EnemyType.Golem;
         //-------------------------
 
         enemy = new Enemy();
@@ -106,12 +105,11 @@ public class HallwayManager : MonoBehaviour {
         enemyGO = Instantiate(enemyPrefab, new Vector3(2f, -0.5f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
         enemyGO.InitGO(EnemyDB.sprites[spawnedEnemy]);
         enemy.sceneObject = enemyGO;
-        enemyGO.SetHpBarWidth(enemy.currMaxHP);
         enemyGO.onDeath = () => EnemyDied();
 
+        GameManager.Instance.StartingCombatWith(enemy);
         AddInfoText("spawned enemy: " + enemy.nameStr);
         combatState = CombatState.PlayerTurn;
-        
     }
 
     public void OnEnemyClicked() {
@@ -199,6 +197,9 @@ public class HallwayManager : MonoBehaviour {
             }
         }
 
+        UIManager.Instance.RefreshHUD();
+        yield return new WaitForSeconds(0.65f);
+
         if (healAttacker > 0)
             attacker.Heal(healAttacker);
 
@@ -207,12 +208,13 @@ public class HallwayManager : MonoBehaviour {
         else
             attacked.ApplyEffects(); // die should happen here too hopefully?
 
+        
         yield return null;
 
     }
 
     void EnemyDied() {
-        GameManager.Instance.combat = false;
+        GameManager.Instance.EndingCombat();
         combatState = CombatState.Won;
 
         SpawnItem(enemy.GetDrop());
