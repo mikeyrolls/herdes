@@ -26,10 +26,10 @@ public class Creature {
     public int def; //todo back
 
     public int currMaxHP;
-    protected int currMinDMG;
-    protected int currMaxDMG;
-    protected int currDodge;
-    protected int currAcc;
+    public int currMinDMG;
+    public int currMaxDMG;
+    public int currDodge;
+    public int currAcc;
     public int currDef;
 
     public EffectList effectList;

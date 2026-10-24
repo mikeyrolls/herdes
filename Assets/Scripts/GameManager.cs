@@ -53,8 +53,10 @@ public class GameManager : MonoBehaviour {
 
     public void InitNewRun() {
         hero = new Hero();
-        hero.InitializeFromDB(HeroType.Fishbone);
-        hero.spriteSet = FishboneSprites;
+        hero.InitializeFromDB(HeroType.Ghost);
+        hero.spriteSet = DefaultSprites;
+
+
         CursorManager.Instance.SwitchCursors((HeroSpriteSet)hero.spriteSet);
         Debug.Log("hero sprites = " + hero.spriteSet);
 
@@ -90,6 +92,7 @@ public class GameManager : MonoBehaviour {
     public void Retry() {
         InitNewRun();
         UIManager.Instance.HideGameOver();
+        FindAnyObjectByType<CharInfo>().Unload();
         StartCoroutine(LoadNewScene("Room_Between"));
     }
 

@@ -171,9 +171,10 @@ public enum HeroType {
 }
 
 public static class HeroDB {
-    public static Dictionary<HeroType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc )> heroes = new() {
-        //name                  hp      dmg     dodge   acc
-        [HeroType.Fishbone] =   (40,   2, 2,   0,     100),   //(40,    8, 10,  10,     100),
+    public static Dictionary<HeroType, ( int maxHP, int minDMG, int maxDMG, int dodge, int acc, int specialType, string specialDescription)> heroes = new() {
+        //name                  hp      dmg     dodge   acc     specialtype special descp
+        [HeroType.Fishbone] =   (40,   8, 10,   10,     100,    1,      "Shields to reduce incoming damage. Doesn't prevent effects."),   //(40,    8, 10,  10,     100),
+        [HeroType.Ghost] =      (20,   2, 2,    0,      90,     2,      "Meows! Meow meow meow!."),
 
     };
 }

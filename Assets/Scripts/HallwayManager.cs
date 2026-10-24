@@ -125,7 +125,7 @@ public class HallwayManager : MonoBehaviour {
         if (combatState != CombatState.PlayerTurn) return;
 
         combatState = CombatState.EnemyTurn;
-        StartCoroutine(CombatRound(1)); //change for mage
+        StartCoroutine(CombatRound(hero.specialType)); //change for mage
 
     }
 
