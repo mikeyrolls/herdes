@@ -36,6 +36,7 @@ public class UIManager : MonoBehaviour {
 
     [SerializeField] GameObject gameOverScreen;
     [SerializeField] GameObject gameOverMenu;
+    [SerializeField] GameObject screenBlock;
 
 
     void Start() {
@@ -183,6 +184,12 @@ public class UIManager : MonoBehaviour {
     public void ClickedTryAgain() {
         gameOverMenu.GetComponent<RectTransform>().anchoredPosition = new Vector2(0f, 800f);
         GameManager.Instance.Retry();
+    }
+
+    public IEnumerator BlockScreenFor(float seconds) {
+        screenBlock.gameObject.SetActive(true);
+        yield return new WaitForSeconds(seconds);
+        screenBlock.gameObject.SetActive(false);
     }
 
     public void HideGameOver() {

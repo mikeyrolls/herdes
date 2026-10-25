@@ -8,13 +8,13 @@ using UnityEngine.EventSystems;
 
 public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
+    void Update() {
+        if (hovered) 
+            RefreshCursor();
+    }
+
     public void OnPointerClick(PointerEventData e) {
         if (GameManager.Instance.isTransitioning) return;
-
-        if(!GameManager.Instance.hero.IsAlive()) {
-            GameManager.Instance.Die();
-            return;
-        }
 
         // entering room
         if (GameManager.Instance.currentRoomType == RoomType.None) {
@@ -47,8 +47,10 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
         // leaving room
         } else if (!GameManager.Instance.combat) {
             GameManager.Instance.currentRoomType = RoomType.None;
-            CursorManager.Instance.RemoveRequest(this);
             GameManager.Instance.LoadScene("Room_Between");
+        } else {
+            //fleeing from combat
+            StartCoroutine(FindAnyObjectByType<HallwayManager>().OnDoorClicked());
         }
     }
 

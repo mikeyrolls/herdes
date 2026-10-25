@@ -1,12 +1,14 @@
-commit: 
+commit: fleeing (50% chance for now)
 
 Todo next time:
+
+    change cursor behavior to work with fleeing
 
     charms
 
     design and make shop+hallway backgrounds
 
-    fleeing system make
+    fleeing system make (just 50% chance for now)
 
     add mimic
 

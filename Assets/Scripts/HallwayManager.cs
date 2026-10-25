@@ -127,6 +127,32 @@ public class HallwayManager : MonoBehaviour {
 
     }
 
+    public IEnumerator OnDoorClicked() {
+        if (combatState != CombatState.PlayerTurn) yield break;
+
+        combatState = CombatState.EnemyTurn;
+
+        if(Helper.GetPerc() < 50) {
+            //fled
+            heroGO.ShowFloatingText("Fleeing", FloatingTextType.Default);
+            StartCoroutine(UIManager.Instance.BlockScreenFor(0.5f));
+            yield return new WaitForSeconds(0.5f);
+            GameManager.Instance.EndingCombat();
+            GameManager.Instance.currentRoomType = RoomType.None;
+            GameManager.Instance.LoadScene("Room_Between");
+
+        } else {
+            //failed to flee
+            heroGO.ShowFloatingText("Fleeing failed", FloatingTextType.Default);
+            yield return new WaitForSeconds(0.8f);
+
+            StartCoroutine(AttackRound(enemy, hero, enemy.GetAttackType())); //get hit, check hp
+            yield return new WaitForSeconds(0.60f); // enemy attack duration
+            combatState = CombatState.PlayerTurn;
+        }
+
+    }
+
     IEnumerator CombatRound(int attackType) {
 
         //player attack
