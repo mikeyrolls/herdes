@@ -17,7 +17,7 @@ public enum Duration{Temporary, Permanent}
 
 public enum SpriteColor{Normal, Red}
 
-public enum CursorType {Normal, Attack, Grab, Special, Holding}
+public enum CursorType {Normal, Attack, Grab, Special, Holding, Leave}
 
 public enum Prio {Base, Holding, Background, World, UI, Overlay}
 

@@ -2615,7 +2615,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 64
   m_TargetDisplay: 0
 --- !u!224 &851225205
 RectTransform:
@@ -5420,6 +5420,7 @@ MonoBehaviour:
   attackCursor: {fileID: 2800000, guid: fe03e9b91e0e77a44b5e58e7089e3ee6, type: 3}
   specialCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
   holdingCursor: {fileID: 2800000, guid: 74f9c2f4065e4674ab9f9fd8169d1f7f, type: 3}
+  leaveCursor: {fileID: 0}
 --- !u!4 &1568520784
 Transform:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 /**
- * Sprite holder heroes (adding out of combat sprites)
+ * Sprite holder heroes (adding out of combat sprites + cursors)
  */
 
 using UnityEngine;
@@ -17,6 +17,7 @@ public class HeroSpriteSet : FightSpriteSet
     public Texture2D attackCursor;
     public Texture2D specialCursor;
     public Texture2D holdingCursor;
+    public Texture2D leaveCursor;
 
     public Sprite stateIconHp1;
     public Sprite stateIconHp2;

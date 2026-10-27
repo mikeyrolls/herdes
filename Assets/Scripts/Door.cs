@@ -8,9 +8,30 @@ using UnityEngine.EventSystems;
 
 public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler {
 
+    bool hovered;
+    bool cursorActive;
+    HallwayManager hallway;
+
     void Update() {
         if (hovered) 
             RefreshCursor();
+    }
+
+    void RefreshCursor() {
+        if (hallway == null) hallway = FindAnyObjectByType<HallwayManager>();
+
+        bool isInCombat = GameManager.Instance.combat;
+        bool blocked = isInCombat && !hallway.IsPlayerTurn;
+        bool wantGrab = hovered && !blocked;
+
+        if (wantGrab && !cursorActive) {
+            if (isInCombat) CursorManager.Instance.AddRequest(this, CursorType.Leave, Prio.Background, "try to flee");
+            else CursorManager.Instance.AddRequest(this, CursorType.Leave, Prio.Background, "enter door");
+            cursorActive = true;
+        } else if (!wantGrab && cursorActive) {
+            CursorManager.Instance.RemoveRequest(this);
+            cursorActive = false;
+        }
     }
 
     public void OnPointerClick(PointerEventData e) {
@@ -55,14 +76,18 @@ public class Door : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
     }
 
     public void OnPointerEnter(PointerEventData e) {
-        CursorManager.Instance.AddRequest(this, CursorType.Grab, Prio.Background, "enter door");
+        hovered = true;
+        RefreshCursor();
     }
 
     public void OnPointerExit(PointerEventData e) {
-        CursorManager.Instance.RemoveRequest(this);
+        hovered = false;
+        RefreshCursor();
     }
 
     public void OnDisable() {
+        hovered = false;
+        cursorActive = false;
         if (CursorManager.Instance != null) {
             CursorManager.Instance.RemoveRequest(this);
         }

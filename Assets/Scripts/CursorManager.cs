@@ -14,6 +14,7 @@ public class CursorManager : MonoBehaviour {
     public Texture2D attackCursor;
     public Texture2D specialCursor;
     public Texture2D holdingCursor;
+    public Texture2D leaveCursor;
 
     private Dictionary<(object source, bool holding), (CursorType type, int priority, string tooltip)> requests = new();
 
@@ -42,6 +43,7 @@ public class CursorManager : MonoBehaviour {
         attackCursor = set.attackCursor;
         specialCursor = set.specialCursor;
         holdingCursor = set.holdingCursor;
+        leaveCursor = set.leaveCursor;
         Refresh();
     }
 
@@ -84,6 +86,7 @@ public class CursorManager : MonoBehaviour {
         CursorType.Attack => attackCursor,
         CursorType.Special => specialCursor,
         CursorType.Holding => holdingCursor,
+        CursorType.Leave => leaveCursor,
         _                 => normalCursor
     };
 }

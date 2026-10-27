@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8680093649527303122}
   - component: {fileID: 5176619840349391443}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: FloatingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 3693930855833892771}
   - component: {fileID: 2120357119002006980}
   - component: {fileID: 7145648029598448303}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 30
+  m_SortingOrder: 84
   m_TargetDisplay: 0
 --- !u!114 &2120357119002006980
 MonoBehaviour:
@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 3339171400112464853}
   - component: {fileID: 9051759810157736606}
   - component: {fileID: 6534660600943165946}
-  m_Layer: 5
+  m_Layer: 31
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

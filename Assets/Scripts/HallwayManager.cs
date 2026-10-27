@@ -136,6 +136,7 @@ public class HallwayManager : MonoBehaviour {
             //fled
             heroGO.ShowFloatingText("Fleeing", FloatingTextType.Default);
             StartCoroutine(UIManager.Instance.BlockScreenFor(0.5f));
+            heroGO.LeaveSprite();
             yield return new WaitForSeconds(0.5f);
             GameManager.Instance.EndingCombat();
             GameManager.Instance.currentRoomType = RoomType.None;

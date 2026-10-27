@@ -11,6 +11,7 @@ public class FightSpriteSet : ScriptableObject
     public Sprite damaged;
     public Sprite attacking;
     public Sprite dead;
+    public Sprite leaving;
 
     public Sprite specialFast;
     public Sprite specialCharged1;

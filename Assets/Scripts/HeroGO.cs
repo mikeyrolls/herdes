@@ -27,5 +27,9 @@ public class HeroGO : CreatureGO, IPointerClickHandler, IPointerEnterHandler, IP
     public void OnPointerExit(PointerEventData e) {
         CursorManager.Instance.RemoveRequest(this);
     }
+
+    public void LeaveSprite() {
+        sr.sprite = fightSpriteSet.leaving;
+    }
     
 }
