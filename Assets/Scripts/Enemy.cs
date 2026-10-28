@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class Enemy : Creature {
 
-    private EnemyType enemyType;
+    public EnemyType enemyType;
 	
 	public ItemName dropItem;
 	int dropRate;
@@ -20,7 +20,7 @@ public class Enemy : Creature {
 
     public void InitEnemy(EnemyType enemyType) {
         this.enemyType = enemyType;
-        if (enemyType == EnemyType.MimicFishbone) {
+        if (enemyType == EnemyType.Mimic) {
             InitializeMimic();
         } else {
             InitializeFromDB(enemyType);    
@@ -63,16 +63,23 @@ public class Enemy : Creature {
 
             nameStr = enemyType.ToString();
 
-            maxHP = hero.maxHP;
+            switch(hero.heroType) {
+                case HeroType.Fishbone: 
+                default: 
+                    enemyType = EnemyType.MimicFishbone; break;
+            }
+            
+
+            maxHP = hero.currMaxHP;
             currHP = maxHP;
-            minDMG = hero.minDMG;
-            maxDMG = hero.maxDMG;
-            dodge = hero.dodge;
-            acc = hero.acc;
+            minDMG = hero.currMinDMG;
+            maxDMG = hero.currMaxDMG;
+            dodge = hero.currDodge;
+            acc = hero.currAcc;
             gold = 0;
             dropItem = ItemName.None;
             dropRate = 0;
-            def = hero.def;
+            def = hero.currDef;
 
             ResetToBaseStats();
             LoadEffects();
@@ -117,7 +124,13 @@ public class Enemy : Creature {
     }
 
     public int GetAttackType() {
-        //if is mimic todo
+
+        if (isMimic) {
+            if (Helper.GetPerc() < 33)
+                return GameManager.Instance.hero.specialType;
+            else 
+                return 0;
+        }
 
 
         switch(enemyType) {

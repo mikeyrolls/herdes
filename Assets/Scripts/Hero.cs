@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 
 public class Hero : Creature {
 
-    HeroType heroType;
+    public HeroType heroType;
 
     public String specialDescription;
     public int specialType;

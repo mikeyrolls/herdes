@@ -103,7 +103,7 @@ public class HallwayManager : MonoBehaviour {
         enemy = new Enemy();
         enemy.InitEnemy(spawnedEnemy);
         enemyGO = Instantiate(enemyPrefab, new Vector3(2f, -0.5f, 0f), Quaternion.identity).GetComponent<EnemyGO>();
-        enemyGO.InitGO(EnemyDB.sprites[spawnedEnemy]);
+        enemyGO.InitGO(EnemyDB.sprites[enemy.enemyType]);
         enemy.sceneObject = enemyGO;
         enemyGO.onDeath = () => EnemyDied();
 
