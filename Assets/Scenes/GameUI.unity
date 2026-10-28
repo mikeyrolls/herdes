@@ -2439,6 +2439,7 @@ MonoBehaviour:
   currentDirection: 1
   roomCount: 0
   combat: 0
+  mimicsOn: 1
   isTransitioning: 0
   FishboneSprites: {fileID: 11400000, guid: 26bd3078861a96c4e8db886320ba8ccb, type: 2}
   DefaultSprites: {fileID: 11400000, guid: 2bd04711579449343bc478352479fd55, type: 2}
@@ -3208,6 +3209,7 @@ MonoBehaviour:
   fliesSprites: {fileID: 11400000, guid: b68eb37a54ba3e3458b32d7f61c3da52, type: 2}
   ratSprites: {fileID: 11400000, guid: 5713cf6d53ead52468f64cbcba72dabe, type: 2}
   snakeSprites: {fileID: 11400000, guid: d4214f7b30fa42d408bb6f2d054a91aa, type: 2}
+  mimicFishboneSprites: {fileID: 11400000, guid: 6afbf745fda8f4d468255b5ee78e286d, type: 2}
   fishboneSprites: {fileID: 11400000, guid: bd15018a8e9616a4c917c8c251719938, type: 2}
 --- !u!1 &1126127104
 GameObject:
@@ -6187,7 +6189,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.795898, y: 4.0231934}
+  m_AnchoredPosition: {x: -13.795837, y: 4.0231934}
   m_SizeDelta: {x: 76.5402, y: 71.3733}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1771292735

@@ -2,6 +2,14 @@ commit:
 
 Todo next time:
 
+    setenemy used?
+
+    mimic load effects properly, split between heroes (start with default mimic and change to different in enemy class somewhere)
+
+    mimic fix sprites (blue not see thru but sword is?)
+
+    mimic special skills
+
     fleeing sprite
 
     charms

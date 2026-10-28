@@ -94,11 +94,11 @@ public class HallwayManager : MonoBehaviour {
 
         AddInfoText("entered combat");
 
-        //EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
+        EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
 
-        //debugging picked enemy----------------------------
-        EnemyType spawnedEnemy = EnemyType.Golem;
-        //-------------------------
+        // //debugging picked enemy----------------------------
+        // EnemyType spawnedEnemy = EnemyType.Golem;
+        // //-------------------------
 
         enemy = new Enemy();
         enemy.InitEnemy(spawnedEnemy);

@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour {
     // gen
     public int roomCount = 0;
     public bool combat = false;
+    public bool mimicsOn = true;
 
     // for scene switches
     public bool isTransitioning;

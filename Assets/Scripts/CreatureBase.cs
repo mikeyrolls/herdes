@@ -18,11 +18,11 @@ public class Creature {
     public String nameStr;
     public int currHP;
 
-    protected int maxHP;
-	protected int minDMG;
-	protected int maxDMG;
-	protected int dodge;
-	protected int acc;
+    public int maxHP;
+	public int minDMG;
+	public int maxDMG;
+	public int dodge;
+	public int acc;
     public int def; //todo back
 
     public int currMaxHP;

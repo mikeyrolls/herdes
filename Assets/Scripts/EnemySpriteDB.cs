@@ -17,6 +17,8 @@ public class EnemySpriteDB : MonoBehaviour {
     [SerializeField] FightSpriteSet ratSprites;
     [SerializeField] FightSpriteSet snakeSprites;
 
+    [SerializeField] FightSpriteSet mimicFishboneSprites;
+
     [SerializeField] FightSpriteSet fishboneSprites;
 
     void Awake() {
@@ -31,6 +33,8 @@ public class EnemySpriteDB : MonoBehaviour {
             [EnemyType.Flies] = fliesSprites,
             [EnemyType.Rat] = ratSprites,
             [EnemyType.Snake] = snakeSprites,
+
+            [EnemyType.MimicFishbone] = mimicFishboneSprites,
 
             [EnemyType.Fishbone] = fishboneSprites,
         });

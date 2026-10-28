@@ -16,9 +16,15 @@ public class Enemy : Creature {
 	int dropRate;
     public int gold;
 
+    public bool isMimic = false;
+
     public void InitEnemy(EnemyType enemyType) {
         this.enemyType = enemyType;
-        InitializeFromDB(enemyType);
+        if (enemyType == EnemyType.MimicFishbone) {
+            InitializeMimic();
+        } else {
+            InitializeFromDB(enemyType);    
+        }
     }
 
     void setEnemyType(){
@@ -49,6 +55,29 @@ public class Enemy : Creature {
         } else {
             Debug.LogError($"Enemy type '{enemyType}' not found in database!");
         }
+    }
+
+    public void InitializeMimic() {
+            Hero hero = GameManager.Instance.hero;
+            isMimic = true;
+
+            nameStr = enemyType.ToString();
+
+            maxHP = hero.maxHP;
+            currHP = maxHP;
+            minDMG = hero.minDMG;
+            maxDMG = hero.maxDMG;
+            dodge = hero.dodge;
+            acc = hero.acc;
+            gold = 0;
+            dropItem = ItemName.None;
+            dropRate = 0;
+            def = hero.def;
+
+            ResetToBaseStats();
+            LoadEffects();
+
+            Debug.Log($"Spawned {nameStr} with {currHP}/{maxHP} HP");
     }
 
     protected override void LoadEffects() {
@@ -88,9 +117,13 @@ public class Enemy : Creature {
     }
 
     public int GetAttackType() {
+        //if is mimic todo
+
+
         switch(enemyType) {
             case EnemyType.Slime:
             case EnemyType.Rat:
+            case EnemyType.MimicFishbone:
                 if(Helper.GetPerc() < 33 && GetHpPerc() < 70) return 1;
                 break;
             case EnemyType.Bandit:
