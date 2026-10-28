@@ -177,7 +177,9 @@ public class CreatureGO : MonoBehaviour {
 
     public void ShowFloatingText(string message, FloatingTextType type) {
         Vector3 offset = (dirEdge == Direction.Right) ? new Vector3(-0.2f,1.2f,0f) : new Vector3(0.5f,2f,0f);
-        Instantiate(floatingTextPrefab, transform.position + offset + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-0.8f, 0.8f)), Quaternion.identity).Show(message, type);
+        Instantiate(floatingTextPrefab, transform.position + offset 
+                    + new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-0.8f, 0.8f)), 
+                    Quaternion.identity).Show(message, type);
     }
 
     public void SetChargingIdle() {

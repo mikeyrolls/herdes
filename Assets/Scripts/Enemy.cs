@@ -27,12 +27,6 @@ public class Enemy : Creature {
         }
     }
 
-    void setEnemyType(){
-        enemyType = (EnemyType)Random.Range(0, 
-            Enum.GetNames(typeof(EnemyType)).Length
-        );
-    }
-
     void InitializeFromDB(EnemyType enemyType) {
         if (EnemyDB.enemies.TryGetValue(enemyType, out var enemyData)) {
 
@@ -125,25 +119,21 @@ public class Enemy : Creature {
 
     public int GetAttackType() {
 
-        if (isMimic) {
-            if (Helper.GetPerc() < 33)
+        if (Helper.GetPerc() < 30) {
+            if (isMimic) {
                 return GameManager.Instance.hero.specialType;
-            else 
-                return 0;
-        }
-
-
-        switch(enemyType) {
-            case EnemyType.Slime:
-            case EnemyType.Rat:
-            case EnemyType.MimicFishbone:
-                if(Helper.GetPerc() < 33 && GetHpPerc() < 70) return 1;
-                break;
-            case EnemyType.Bandit:
-            case EnemyType.Spider:
-            case EnemyType.Golem:
-                if(Helper.GetPerc() < 25) return 2;
-                break;
+            } else {
+                switch(enemyType) {
+                    case EnemyType.Slime:
+                    case EnemyType.Rat:
+                    case EnemyType.MimicFishbone:
+                        if(GetHpPerc() < 70) return 1; break;
+                    case EnemyType.Bandit:
+                    case EnemyType.Spider:
+                    case EnemyType.Golem:
+                        return 2;
+                }
+            }
         }
         return 0;
     }

@@ -1,5 +1,5 @@
 /**
- * Sprite holder for effect icons (combat only)
+ * Sprite holder for effect icons
  */
 
 using UnityEngine;

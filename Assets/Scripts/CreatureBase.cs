@@ -141,35 +141,37 @@ public class Creature {
     }
 
     protected int GiveDmg() {
-        int rawDmg = Random.Range(currMinDMG, currMaxDMG);
+        int rawDmg = Helper.AddPositive(Random.Range(currMinDMG, currMaxDMG + 1), 0);
         return rawDmg;
     }
 
     protected bool Dodge() {
-        return Helper.GetPerc() <= currDodge;
+        return Helper.GetPerc() <= (int)((1.0 - StatToMult(currDodge)) * 100 + 0.5);
     }
 
     public int GetHpPerc() {
-        return 100 * currHP / currMaxHP;
+        if (currMaxHP > 0)
+            return 100 * currHP / currMaxHP;
+        else return 0;
     }
 
     public void IncreaseStatPermanent(int amount, StatType stat) {
         switch(stat) {  //MaxHP, DMG, Dodge, Acc, Def, 
             case StatType.MaxHP:
-                maxHP = Helper.AddPositive(maxHP, amount);
+                maxHP += amount;
                 break;
             case StatType.DMG:
-                minDMG = Helper.AddPositive(minDMG, amount);
-                maxDMG = Helper.AddPositive(maxDMG, amount);
+                minDMG += amount;
+                maxDMG += amount;
                 break;
             case StatType.Dodge:
-                dodge = Helper.AddPositive(dodge, amount);
+                dodge += amount;
                 break;
             case StatType.Acc:
-                acc = Helper.AddPositive(acc, amount);
+                acc += amount;
                 break;
             case StatType.Def:
-                def = Helper.AddPositive(def, amount);
+                def += amount;
                 break;
         }
         RecalculateStats();
@@ -179,27 +181,28 @@ public class Creature {
     public void IncreaseStatTemporary(int amount, StatType stat) {
         switch(stat) {  //MaxHP, DMG, Dodge, Acc, Def, 
             case StatType.MaxHP:
-                currMaxHP = Helper.AddPositive(currMaxHP, amount);
+                currMaxHP += amount;
                 break;
             case StatType.DMG:
-                currMinDMG = Helper.AddPositive(currMinDMG, amount);
-                currMaxDMG = Helper.AddPositive(currMaxDMG, amount);
+                currMinDMG += amount;
+                currMaxDMG += amount;
                 break;
             case StatType.Dodge:
-                currDodge = Helper.AddPositive(currDodge, amount);
+                currDodge += amount;
                 break;
             case StatType.Acc:
-                currAcc = Helper.AddPositive(currAcc, amount);
+                currAcc += amount;
                 break;
             case StatType.Def:
-                currDef = Helper.AddPositive(currDef, amount);
+                currDef += amount;
                 break;
         }
         UIManager.Instance.RefreshHUD();
     }
 
     double StatToMult(int stat) { //decimal, 0 -> 1
-        return ((1)/(1+0.02*stat));
+        if (stat >= 0) return 1.0 / (1.0 + 0.02 * stat);
+        return 1.0 - 0.02 * stat;
     }
 
     public List<(EffectName effect, int duration, int value)> GetEffectsFromAtkType(int type) {

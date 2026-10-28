@@ -19,8 +19,6 @@ public class EnemySpriteDB : MonoBehaviour {
 
     [SerializeField] FightSpriteSet mimicFishboneSprites;
 
-    [SerializeField] FightSpriteSet fishboneSprites;
-
     void Awake() {
         EnemyDB.InitSprites(new Dictionary<EnemyType, FightSpriteSet>() {
             // name           sprites
@@ -35,8 +33,6 @@ public class EnemySpriteDB : MonoBehaviour {
             [EnemyType.Snake] = snakeSprites,
 
             [EnemyType.MimicFishbone] = mimicFishboneSprites,
-
-            [EnemyType.Fishbone] = fishboneSprites,
         });
 
     }

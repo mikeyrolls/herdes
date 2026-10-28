@@ -192,8 +192,6 @@ public enum EnemyType {
 
     Mimic,
     MimicFishbone,
-
-    Fishbone, //for sprites rn
 }
 
 public static class EnemyDB {
@@ -249,7 +247,7 @@ public static class EnemyDB {
 
         bool WillSpawnMimic() {
             int x = GameManager.Instance.roomCount;
-            return Helper.GetPerc() < 10*x - 100; // for debug, 10-20 rand //50-((1)/(1+0.01 x))*70;
+            return Helper.GetPerc() < 50-((1)/(1+0.01*x))*70;
         }
     }
 

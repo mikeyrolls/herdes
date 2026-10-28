@@ -1,5 +1,5 @@
 /**
- * Main logic handles, hell on earth of code
+ * Main logic
  */
 
 using UnityEngine;

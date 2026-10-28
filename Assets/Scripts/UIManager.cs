@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour {
 
     void Start() {
         GameManager.Instance.LoadScene("Room_Between");
-        //Init();
     }
 
     public void Init() {

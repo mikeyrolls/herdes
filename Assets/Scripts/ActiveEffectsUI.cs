@@ -1,5 +1,5 @@
 /**
- * Buffs and debuffs UI icons, just hero for now
+ * Buffs and debuffs UI icons, for both hero and enemy
  */
 
 using UnityEngine;

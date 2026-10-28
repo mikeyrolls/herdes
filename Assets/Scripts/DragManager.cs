@@ -1,3 +1,7 @@
+/**
+ * Script for dragging objects
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 

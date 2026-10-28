@@ -7,9 +7,10 @@ using UnityEngine;
 public class Inventory {
 
     private int inventorySize = 6;
-    public Item[] itemInventory  = new Item[10];     // indexes 0-5 normal
-                                                    //         6 weapon
+    public Item[] itemInventory  = new Item[10];    // indexes 0-5 normal
+                                                    //         6 charm
                                                     //         7-8 rings
+                                                    //         9 trash
     private int gold = 1000;
 
     private int GetEmptyInvSlot() {

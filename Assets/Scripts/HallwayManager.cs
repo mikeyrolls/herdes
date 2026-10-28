@@ -1,5 +1,6 @@
 /**
- * Hell on earth 2.0
+ * Manager for empty, treasure, and fight
+ * Atual hell on earth
  */
 
 using UnityEngine;
@@ -16,7 +17,6 @@ public class HallwayManager : MonoBehaviour {
     [SerializeField] TMP_Text textTmp;
 
     string[] infoTextStrings = {"", "", ""};
-
 
     EnemyGO enemyGO;
     Enemy enemy;
@@ -92,13 +92,13 @@ public class HallwayManager : MonoBehaviour {
 
     void HandleFightRoom() {
 
-        AddInfoText("entered combat");
+        UIManager.Instance.RefreshHUD();
 
-        EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount);
+        // EnemyType spawnedEnemy = EnemyDB.GetRandomEnemy(GameManager.Instance.roomCount); //has mimics 
 
-        // //debugging picked enemy----------------------------
-        // EnemyType spawnedEnemy = EnemyType.Golem;
-        // //-------------------------
+        //debugging picked enemy----------------------------
+        EnemyType spawnedEnemy = EnemyType.Golem;
+        //--------------------------------------------------
 
         enemy = new Enemy();
         enemy.InitEnemy(spawnedEnemy);
@@ -108,22 +108,20 @@ public class HallwayManager : MonoBehaviour {
         enemyGO.onDeath = () => EnemyDied();
 
         GameManager.Instance.StartingCombatWith(enemy);
-        AddInfoText("spawned enemy: " + enemy.nameStr);
+        UIManager.Instance.RefreshHUD();
         combatState = CombatState.PlayerTurn;
     }
 
     public void OnEnemyClicked() {
         if (combatState != CombatState.PlayerTurn) return;
-
         combatState = CombatState.EnemyTurn;
         StartCoroutine(CombatRound(0)); //change for mage if overcharging
     }
 
     public void OnHeroClicked() {
         if (combatState != CombatState.PlayerTurn) return;
-
         combatState = CombatState.EnemyTurn;
-        StartCoroutine(CombatRound(hero.specialType)); //change for mage
+        StartCoroutine(CombatRound(hero.specialType));
 
     }
 
@@ -154,15 +152,16 @@ public class HallwayManager : MonoBehaviour {
 
     }
 
+    // holds 2 attack rounds, asynchronous + manual waits
     IEnumerator CombatRound(int attackType) {
 
         //player attack
         StartCoroutine(AttackRound(hero, enemy, attackType)); //get hit, check hp
-        yield return new WaitForSeconds(0.8f); //for anim
+        yield return new WaitForSeconds(0.8f); //wait for anim
 
         //enemy attack
         StartCoroutine(AttackRound(enemy, hero, enemy.GetAttackType())); //get hit, check hp
-        yield return new WaitForSeconds(0.60f); // enemy attack duration
+        yield return new WaitForSeconds(0.60f); //wait for enemy attack duration
         combatState = CombatState.PlayerTurn;
     }
 
@@ -246,14 +245,6 @@ public class HallwayManager : MonoBehaviour {
 
         SpawnItem(enemy.GetDrop());
         SpawnGold(enemy.GetGoldValue());
-    }
-
-    void AddInfoText(string newText) {
-        infoTextStrings[0] = infoTextStrings[1];
-        infoTextStrings[1] = infoTextStrings[2];
-        infoTextStrings[2] = newText;
-        textTmp.text = infoTextStrings[0] + "\n" + infoTextStrings[1] + "\n" + infoTextStrings[2];
-        UIManager.Instance.RefreshHUD();
     }
 
 }

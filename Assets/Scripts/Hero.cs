@@ -43,11 +43,6 @@ public class Hero : Creature {
         }
     }
 
-    // public override void DoSpecialFast(string text = "", FloatingTextType type = FloatingTextType.Default) {
-    //     if(heroType == HeroType.Fishbone)
-    //         base.DoSpecialFast("Blocking");
-    // }
-
     protected override void LoadEffects() {
         switch(heroType) {
             //effect duration value perc

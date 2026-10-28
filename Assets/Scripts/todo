@@ -2,17 +2,11 @@ commit:
 
 Todo next time:
 
-    setenemy used?
-
-    set numbers in info better
-
-    draw: fleeing sprite, leaving cursor, mimic fix sprites (blue not see thru but sword is?)
+    draw: fleeing sprite, charinfo pic, leaving cursor, mimic fix sprites (blue not see thru but sword is?)
 
     charms
 
     design and make shop+hallway backgrounds
-
-    add mimic
 
     hub background, animations and more interactive
 
@@ -30,6 +24,8 @@ Todo next time:
 Random future:
 
     attack round is sometimes slow
+
+    overcapping accuracy does rerolls on enemy dodging?
 
 
 Items:

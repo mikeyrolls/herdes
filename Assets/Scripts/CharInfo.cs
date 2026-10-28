@@ -1,5 +1,5 @@
 /**
- * 
+ * Script for show char info menu
  */
 
 using UnityEngine;
@@ -14,7 +14,13 @@ public class CharInfo : MonoBehaviour {
     public Hero hero;
 
     [SerializeField] TMP_Text heroName;
-    [SerializeField] TMP_Text statText;
+    
+    [SerializeField] CharInfoStatRow rowHp;
+    [SerializeField] CharInfoStatRow rowAtk;
+    [SerializeField] CharInfoStatRow rowDef;
+    [SerializeField] CharInfoStatRow rowDodge;
+    [SerializeField] CharInfoStatRow rowAcc;
+
     [SerializeField] TMP_Text specialSkill;
 
     [SerializeField] Transform effectsContainer;
@@ -36,14 +42,11 @@ public class CharInfo : MonoBehaviour {
 
     private void UpdateCharInfo() {
         // stats
-        statText.text = hero.currMaxHP + "\n";
-        if (hero.currMinDMG == hero.currMaxDMG)
-            statText.text += hero.currMinDMG + "\n";
-        else 
-            statText.text += hero.currMinDMG + " - " + hero.currMaxDMG + "\n";
-        statText.text += hero.currDef + "\n";
-        statText.text += hero.currDodge + "\n";
-        statText.text += hero.currAcc + "";
+        rowHp.SetValuesCurrBase(hero.currMaxHP, hero.maxHP);
+        rowAtk.SetValuesCurrBase(hero.currMinDMG, hero.minDMG, hero.maxDMG);
+        rowDef.SetValuesCurrBase(hero.currDef, hero.def);
+        rowDodge.SetValuesCurrBase(hero.currDodge, hero.dodge);
+        rowAcc.SetValuesCurrBase(hero.currAcc, hero.acc);
 
         //effects
         UpdateEffects();
