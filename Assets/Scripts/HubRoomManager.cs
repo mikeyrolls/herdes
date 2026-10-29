@@ -19,11 +19,18 @@ public class HubRoomManager : MonoBehaviour {
     [SerializeField] Sprite doorWall;
     [SerializeField] Sprite doorShop;
 
+    [SerializeField] SpriteRenderer background;
+    [SerializeField] Sprite bg1;
+    [SerializeField] Sprite bg2;
+    [SerializeField] Sprite bg3;
+
     private bool debug = true;
 
     [SerializeField] GameObject heroPrefab;
     HeroRoomGO heroGO;
     Hero hero;
+
+    bool isRotating;
 
     void Start() {
         hero = GameManager.Instance.hero;
@@ -122,13 +129,64 @@ public class HubRoomManager : MonoBehaviour {
     }
 
     public void RotateLeft() {
+        if (isRotating) return;
+        StartCoroutine(Rotate(Direction.Left));
         GameManager.Instance.currentDirection = (Direction)(((int)GameManager.Instance.currentDirection - 1 + 4) % 4);
-        ResetDoorSprite();
     }
 
     public void RotateRight() {
+        if (isRotating) return;
+        StartCoroutine(Rotate(Direction.Right));
         GameManager.Instance.currentDirection = (Direction)(((int)GameManager.Instance.currentDirection + 1) % 4);
+    }
+
+    IEnumerator Rotate(Direction direction) {
+        isRotating = true;
+        bool isLeft = direction == Direction.Left;
+
+        float duration = 0.7f;
+        // block input
+        UIManager.Instance.BlockScreenFor(duration);
+
+        // (hide kitty), dim door
+        float elapsed = 0f;
+        while (elapsed < duration / 4) {
+            elapsed += Time.deltaTime;
+            float alpha = 1f - (elapsed / duration * 4);
+            doorSprite.color = new Color(1f, 1f, 1f, alpha);
+            yield return null;
+        }
+        doorSprite.color = new Color(1f, 1f, 1f, 0f);
+
+        // rotate 2 3 3rev 2rev 1 (5 in total)
+        float t = duration / 2 / 5;
+        background.sprite = bg2; 
+        background.flipX = isLeft;
+        yield return new WaitForSeconds(t);
+        background.sprite = bg3;
+        yield return new WaitForSeconds(t);
+        background.flipX = !isLeft;
+        yield return new WaitForSeconds(t);
+        background.sprite = bg2;
+        yield return new WaitForSeconds(t);
+        background.sprite = bg1; 
+        background.flipX = false;
+
+        // reset door
         ResetDoorSprite();
+
+        // undim door, (unhide kitty)
+        elapsed = 0f;
+        while (elapsed < duration / 4) {
+            elapsed += Time.deltaTime;
+            float alpha = (elapsed / duration * 4);
+            doorSprite.color = new Color(1f, 1f, 1f, alpha);
+            yield return null;
+        }
+        doorSprite.color = new Color(1f, 1f, 1f, 1f);
+
+        //end
+        isRotating = false;
     }
 
     public void ResetDoorSprite() {

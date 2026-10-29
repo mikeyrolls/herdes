@@ -1,18 +1,20 @@
-commit: textures (mainly for char info)
+commit: 
 
 Todo next time:
 
     charms
 
-    design and make shop+hallway backgrounds
+    design and make shop background
 
-    hub background, animations and more interactive
+    hub doors, more interactive
 
-    settings (animation speed?)
+    settings (animation speed? unify enemy + hero anims + room rotate + text etc.)
 
     title screen, pick char/skin + debug mode
 
     clear todos where possible, finish this list part 1, we ball
+
+    special cursor out of combat on hero?
 
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -24,6 +26,8 @@ Random future:
     attack round is sometimes slow
 
     overcapping accuracy does rerolls on enemy dodging?
+
+    kitty rotate in hub, add to future
 
 
 Items:
