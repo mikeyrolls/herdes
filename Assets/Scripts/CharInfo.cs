@@ -10,10 +10,10 @@ using System.Collections;
 public class CharInfo : MonoBehaviour {
 
     public GameObject charInfoScreen;
-    public Image heroImage;
     public Hero hero;
 
-    [SerializeField] TMP_Text heroName;
+    public Image heroImage;
+    [SerializeField] Image heroName;
     
     [SerializeField] CharInfoStatRow rowHp;
     [SerializeField] CharInfoStatRow rowAtk;
@@ -35,8 +35,8 @@ public class CharInfo : MonoBehaviour {
     void Load() {
         hero = GameManager.Instance.hero;
 
-        heroName.text = hero.nameStr;
-        heroImage.sprite = hero.spriteSet.idle; //todo change
+        heroName.sprite = ((HeroSpriteSet)hero.spriteSet).namePic;
+        heroImage.sprite = ((HeroSpriteSet)hero.spriteSet).bigPic; //todo change
         specialSkill.text = hero.specialDescription;
     }
 

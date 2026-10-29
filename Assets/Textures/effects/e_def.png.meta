@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 314252d0c0d25a34f93dcfdedc1540e3
+guid: b8c8f6425f6fc6144b9cfd3c8f58a983
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2937398419305208115
-    second: mimic_f5_0
-  - first:
-      213: -6185231646591693197
-    second: mimic_f5_1
-  - first:
-      213: -2137786446105167415
-    second: mimic_f5_2
+      213: 105656423269189812
+    second: e_def_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mimic_f5_0
+      name: e_def_0
       rect:
         serializedVersion: 2
-        x: 56
-        y: 16
-        width: 289
-        height: 483
+        x: 4
+        y: 0
+        width: 55
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc6e48d53b34c37d0800000000000000
-      internalID: -2937398419305208115
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mimic_f5_1
-      rect:
-        serializedVersion: 2
-        x: 345
-        y: 453
-        width: 30
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 37ec5639694a92aa0800000000000000
-      internalID: -6185231646591693197
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mimic_f5_2
-      rect:
-        serializedVersion: 2
-        x: 345
-        y: 412
-        width: 30
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9c9b142cd8e0552e0800000000000000
-      internalID: -2137786446105167415
+      spriteID: 4b8c23905fd577100800000000000000
+      internalID: 105656423269189812
       vertices: []
       indices: 
       edges: []
@@ -198,9 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      mimic_f5_0: -2937398419305208115
-      mimic_f5_1: -6185231646591693197
-      mimic_f5_2: -2137786446105167415
+      e_def_0: 105656423269189812
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -7,6 +7,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "HeroSpriteSet", menuName = "Game/Hero Sprite Set")]
 public class HeroSpriteSet : FightSpriteSet
 {
+    public Sprite bigPic;
+    public Sprite namePic;
+
     public Sprite roomIdle;
     public Sprite roomDamaged;
     public Sprite roomDead;
