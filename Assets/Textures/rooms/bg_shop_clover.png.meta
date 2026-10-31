@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 457d5f0270cb4fe45ab3a8877d423076
+guid: 6be67f1aede15cb4ab79eaa306a41cf7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 679481600277344169
-    second: CatPlaceholder_0
+      213: 421918613433013594
+    second: bg_shop_clover_0
+  - first:
+      213: -7152338813022410150
+    second: bg_shop_clover_1
+  - first:
+      213: 2305051155486609718
+    second: bg_shop_clover_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +119,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CatPlaceholder_0
+      name: bg_shop_clover_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 296
-        height: 369
+        x: 5
+        y: 5
+        width: 254
+        height: 76
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9afe1f75ae00e6900800000000000000
-      internalID: 679481600277344169
+      spriteID: a55dcc55eb4fad500800000000000000
+      internalID: 421918613433013594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_shop_clover_1
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 6
+        width: 262
+        height: 277
+      alignment: 9
+      pivot: {x: -0.0018463135, y: -0.5181824}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a6f888eb9cdbc90800000000000000
+      internalID: -7152338813022410150
       vertices: []
       indices: 
       edges: []
@@ -138,7 +166,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4409a9a70e971f74abae5629a2d47b28
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +176,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CatPlaceholder_0: 679481600277344169
+      bg_shop_clover_0: 421918613433013594
+      bg_shop_clover_1: -7152338813022410150
+      bg_shop_clover_2: 2305051155486609718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

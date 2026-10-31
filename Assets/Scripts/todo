@@ -2,19 +2,30 @@ commit:
 
 Todo next time:
 
-    charms
+    draw:   hub doors all:
+                back
+                back2
+                combat
+                empty
+                wall
+                fakewall
+                shop
+                treasure
+            transparent door in wall
+            trash slot
+            settings icon
+            button to rotate
 
-    design and make shop background
-
-    hub doors, more interactive
-
-    settings (animation speed? unify enemy + hero anims + room rotate + text etc.)
-
-    title screen, pick char/skin + debug mode
-
-    clear todos where possible, finish this list part 1, we ball
+    back door slides gate down rn, hurts kitty
 
     special cursor out of combat on hero?
+
+    !!! attack round is sometimes slow
+
+    better room spawn, wall can be in the middle but make sure all aren't wall
+
+    OPTIONAL: title screen, pick char/skin + debug mode
+                settings: quit to menu and/or reset?
 
 
 ----------------------------------------------------------------------------------------------------------------------------
@@ -23,11 +34,17 @@ Todo next time:
 
 Random future:
 
-    attack round is sometimes slow
+    charms
+
+    clear todos where possible
 
     overcapping accuracy does rerolls on enemy dodging?
 
     kitty rotate in hub, add to future
+
+    shop more lively (candle flickers, clover clickable)
+
+    settings (animation speed? unify enemy + hero anims + room rotate + text etc.), in tabs like stardew with charinfo and bestiary
 
 
 Items:
@@ -60,25 +77,15 @@ Small misc:
 
     interactable shop kitty (meow, dress?)
 
-    check what stats use addpositive and why not formula
-
     drops don't overlap?
 
 
 Hub:
 
-    going back hurts
-
-    make animation (spawn left/right? move bg and cat? idk man)
-
-    better room spawn, wall can be in the middle but make sure all aren't wall
-
     hitting wall lowers dodge temporarily
 
 
 Textures:
-
-    (send the paint and current screenshot to dc to check dimensions)
 
     cat in hub:
 
@@ -89,25 +96,13 @@ Textures:
 
     trash slot fix, anim?
 
-    hub bg
-
-    hallway bg
-
-    doors all
-
-    animation of rocks falling to the back?
-
     title screen
-
-    prettier shop (bg, purchases at least colors, animated kitty?)
 
     starting cutscene skippable?
 
     idle animations for fight
 
     items have shadows?
-
-    better font
 
     small delay before fight could help idk make the enemy slide in or something
 
@@ -116,15 +111,9 @@ Textures:
 
 Fight:
 
-    beastiary
+    beastiary, then add instant fleeing after 10 kills (door initially blocked), (free door after 10 kills?)
 
-    effects show on enemies
-
-    mimics, increasing chance to meet them
-
-    FLEEING.. fleeing (door initially blocked), (free door after 10 kills?)
-
-    debuff enemies test or make or whatever
+    ghost mimic
 
 
 balancing:

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 6416f92456a438d4394cfe1e6a9e9e12
+guid: 64b68b1c78231534399d248df19a5325
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1158466740829950769
-    second: bgShop_0
+      213: 3307596794660176884
+    second: bg_shop_table_0
+  - first:
+      213: -3091730266420733752
+    second: bg_shop_table_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bgShop_0
+      name: bg_shop_table_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1186
-        height: 619
+        x: 449
+        y: 146
+        width: 765
+        height: 392
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fcce9b413ac4cefe0800000000000000
-      internalID: -1158466740829950769
+      spriteID: 4f3c0f5a2c1f6ed20800000000000000
+      internalID: 3307596794660176884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bg_shop_table_1
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 535
+        width: 30
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c81ba014b7f715d0800000000000000
+      internalID: -3091730266420733752
       vertices: []
       indices: 
       edges: []
@@ -138,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      bgShop_0: -1158466740829950769
+      bg_shop_table_0: 3307596794660176884
+      bg_shop_table_1: -3091730266420733752
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

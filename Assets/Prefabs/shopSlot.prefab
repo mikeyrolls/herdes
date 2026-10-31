@@ -273,6 +273,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cursorType: 2
   textOnHover: buy
+  reactiWhileHolding: 0
+  textOnHoverHolding: 
 --- !u!1 &3398868472459561575
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,7 +754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.8662382, b: 0.51886785, a: 1}
+  m_Color: {r: 1, g: 0.8325283, b: 0.5176471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1179,7 +1181,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.91823894, g: 0.74856067, b: 0.14148946, a: 1}
+  m_Color: {r: 0.91764706, g: 0.67558724, b: 0.14117646, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -13,6 +13,9 @@ public class ShopManager : MonoBehaviour {
     HeroRoomGO heroGO;
     Hero hero;
 
+    [SerializeField] ShopkeeperGO shopkeeper;
+
+
     void Start() {
 
         hero = GameManager.Instance.hero;
@@ -26,6 +29,8 @@ public class ShopManager : MonoBehaviour {
             slot.Init(ItemDB.GetRandomForShop(GameManager.Instance.roomCount));
             
         DisableExpensive();
+
+       StartCoroutine(shopkeeper.RockChair());
 
     }
 
